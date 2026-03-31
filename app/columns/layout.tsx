@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-export default function ColumnLayout({
+export default function ColumnsLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -47,17 +47,17 @@ export default function ColumnLayout({
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-xl font-extrabold text-gray-900 mb-8">関連コラム</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/column/houmon-shika-hajimekata" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-              <span className="text-xs font-bold text-green-700 mb-2 block">訪問歯科 どうやる</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">訪問歯科の始め方を完全ガイド</h3>
+            <Link href="/columns/sales-trap" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">営業の落とし穴</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">院長自らの飛び込み営業。そのパンフレット、実は「その他大勢」の束に埋もれています</h3>
             </Link>
-            <Link href="/column/houmon-shika-santei" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-              <span className="text-xs font-bold text-green-700 mb-2 block">訪問歯科 算定</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">訪問歯科の算定を徹底解説</h3>
+            <Link href="/columns/communication" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">現場コミュニケーション</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。</h3>
             </Link>
-            <Link href="/column/houmon-shika-eigyo" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-              <span className="text-xs font-bold text-green-700 mb-2 block">訪問歯科 営業</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">訪問歯科の営業戦略を徹底解説</h3>
+            <Link href="/columns/facility-needs" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">施設の本音</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由</h3>
             </Link>
           </div>
         </div>

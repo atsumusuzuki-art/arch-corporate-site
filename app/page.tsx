@@ -34,12 +34,18 @@ export default function Home() {
           <div className="flex justify-between h-20 items-center">
             {/* ---------- Logo ---------- */}
             <Link href="/" className="flex-shrink-0 flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/logo.jpg"
-                alt="合同会社ARCH"
-                className="h-12 w-auto rounded-lg"
-              />
+              {/*
+                TODO: 会社のロゴ画像が用意できたら、以下のコメントを解除し
+                <div> ブロックと <span> を削除してください。
+                <img
+                  src="/images/logo.png"
+                  alt="合同会社ARCH"
+                  className="h-10 w-auto"
+                />
+              */}
+              <div className="w-10 h-10 bg-gradient-to-br from-green-700 to-green-900 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-green-900/20">
+                A
+              </div>
               <div className="flex flex-col leading-tight">
                 <span className="font-bold text-2xl tracking-wider text-gray-900">
                   ARCH
@@ -63,6 +69,9 @@ export default function Home() {
               </a>
               <a href="#ceo" className="text-sm font-bold text-gray-600 hover:text-green-700 transition-colors">
                 代表メッセージ
+              </a>
+              <a href="#columns" className="text-sm font-bold text-gray-600 hover:text-green-700 transition-colors">
+                コラム
               </a>
               <a
                 href="#contact"
@@ -99,6 +108,9 @@ export default function Home() {
             </a>
             <a href="#ceo" onClick={() => setIsMenuOpen(false)} className="block text-sm font-bold text-gray-600 hover:text-green-700 transition-colors">
               代表メッセージ
+            </a>
+            <a href="#columns" onClick={() => setIsMenuOpen(false)} className="block text-sm font-bold text-gray-600 hover:text-green-700 transition-colors">
+              コラム
             </a>
             <a
               href="#contact"
@@ -155,8 +167,8 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/hero.jpg"
-                  alt="訪問歯科コンサルティング - ARCH"
+                  src="https://images.unsplash.com/photo-1576091160550-2173ff9e5eb3?auto=format&fit=crop&w=800&q=80"
+                  alt="Medical Consulting"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
@@ -442,11 +454,15 @@ export default function Home() {
             <div className="lg:grid lg:grid-cols-5">
               {/* Photo */}
               <div className="lg:col-span-2 relative">
+                {/*
+                  TODO: 代表の顔写真が用意できたら、以下の <img> の src を差し替えてください。
+                  例: src="/images/ceo.jpg"
+                */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/ceo.jpg"
-                  alt="代表 鈴木集"
-                  className="w-full h-72 lg:h-full object-cover object-top"
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+                  alt="代表 鈴木"
+                  className="w-full h-72 lg:h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-transparent"></div>
               </div>
@@ -479,6 +495,96 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================== */}
+      {/* Latest Columns Section         */}
+      {/* ============================== */}
+      <section id="columns" className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3">
+          <div className="w-[500px] h-[500px] rounded-full bg-gradient-to-br from-green-50 to-green-100/30 blur-3xl opacity-50"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-green-800 font-extrabold tracking-widest text-sm uppercase mb-3">
+              Columns
+            </h2>
+            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+              現場向けコラム
+            </h3>
+            <p className="text-gray-500 text-lg font-medium leading-relaxed">
+              訪問歯科の「現場のリアル」を、経営・営業・運営の視点から発信しています。
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Column 1 */}
+            <Link
+              href="/columns/sales-trap"
+              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+            >
+              <div className="h-2 bg-gradient-to-r from-green-700 to-green-500"></div>
+              <div className="p-8">
+                <span className="inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">
+                  営業の落とし穴
+                </span>
+                <h4 className="text-lg font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors leading-snug">
+                  院長自らの飛び込み営業。そのパンフレット、実は「その他大勢」の束に埋もれています
+                </h4>
+                <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                  院長の貴重な診療時間を削っての営業活動、本当に成果が出ていますか？施設側のリアルと、選ばれる仕組みの作り方。
+                </p>
+                <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 group-hover:gap-2 transition-all">
+                  続きを読む <ArrowRight size={14} />
+                </span>
+              </div>
+            </Link>
+
+            {/* Column 2 */}
+            <Link
+              href="/columns/communication"
+              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+            >
+              <div className="h-2 bg-gradient-to-r from-green-700 to-green-500"></div>
+              <div className="p-8">
+                <span className="inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">
+                  現場コミュニケーション
+                </span>
+                <h4 className="text-lg font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors leading-snug">
+                  介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。
+                </h4>
+                <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                  一生懸命なコミュニケーションが逆効果に。施設に選ばれ続けるための「適切な距離感」とは。
+                </p>
+                <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 group-hover:gap-2 transition-all">
+                  続きを読む <ArrowRight size={14} />
+                </span>
+              </div>
+            </Link>
+
+            {/* Column 3 */}
+            <Link
+              href="/columns/facility-needs"
+              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+            >
+              <div className="h-2 bg-gradient-to-r from-green-700 to-green-500"></div>
+              <div className="p-8">
+                <span className="inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">
+                  施設の本音
+                </span>
+                <h4 className="text-lg font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors leading-snug">
+                  介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由
+                </h4>
+                <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                  介護現場における口腔ケアの優先順位のリアルと、手放されない訪問歯科になる方法。
+                </p>
+                <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 group-hover:gap-2 transition-all">
+                  続きを読む <ArrowRight size={14} />
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -583,67 +689,15 @@ export default function Home() {
       </section>
 
       {/* ============================== */}
-      {/* Column / SEO Articles Section  */}
-      {/* ============================== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-green-800 font-extrabold tracking-widest text-sm uppercase mb-3">
-              Column
-            </h2>
-            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
-              訪問歯科お役立ちコラム
-            </h3>
-            <p className="text-lg text-gray-600 font-medium">
-              訪問歯科の始め方・算定・営業について、現場を知るプロが徹底解説するコラム集です。
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <a href="/column/houmon-shika-hajimekata" className="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 border border-gray-100 hover:border-green-200 hover:shadow-xl transition-all group">
-              <span className="text-xs font-bold text-green-700 mb-3 block tracking-wider">訪問歯科 どうやる・始め方</span>
-              <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">
-                訪問歯科の始め方を完全ガイド
-              </h4>
-              <p className="text-sm text-gray-600 font-medium leading-relaxed">
-                届出・人員配置・機材・営業・算定まで、訪問歯科の立ち上げに必要な全ステップを解説します。
-              </p>
-            </a>
-            <a href="/column/houmon-shika-santei" className="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 border border-gray-100 hover:border-green-200 hover:shadow-xl transition-all group">
-              <span className="text-xs font-bold text-green-700 mb-3 block tracking-wider">訪問歯科 算定</span>
-              <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">
-                訪問歯科の算定を徹底解説
-              </h4>
-              <p className="text-sm text-gray-600 font-medium leading-relaxed">
-                歯科訪問診療料・各種加算・レセプトの実務ポイントまで、算定漏れゼロで収益を最大化する方法を解説。
-              </p>
-            </a>
-            <a href="/column/houmon-shika-eigyo" className="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 border border-gray-100 hover:border-green-200 hover:shadow-xl transition-all group">
-              <span className="text-xs font-bold text-green-700 mb-3 block tracking-wider">訪問歯科 営業</span>
-              <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">
-                訪問歯科の営業戦略を徹底解説
-              </h4>
-              <p className="text-sm text-gray-600 font-medium leading-relaxed">
-                介護施設への営業アプローチ、ケアマネとの信頼関係構築、営業トークのコツまで網羅的に解説します。
-              </p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================== */}
       {/* Footer                         */}
       {/* ============================== */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/logo.jpg"
-                alt="合同会社ARCH"
-                className="h-9 w-auto rounded-md"
-              />
+              <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-800 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                A
+              </div>
               <div className="flex flex-col leading-tight">
                 <span className="font-bold text-lg tracking-wider text-white">ARCH</span>
                 <span className="text-[9px] font-semibold text-gray-500 tracking-[0.2em]">アーチ</span>
