@@ -167,8 +167,8 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1576091160550-2173ff9e5eb3?auto=format&fit=crop&w=800&q=80"
-                  alt="Medical Consulting"
+                  src="/images/hero.jpg"
+                  alt="訪問歯科コンサルティング"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 to-transparent"></div>
@@ -460,8 +460,8 @@ export default function Home() {
                 */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
-                  alt="代表 鈴木"
+                  src="/images/ceo.jpg"
+                  alt="代表 鈴木 集"
                   className="w-full h-72 lg:h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-transparent"></div>
