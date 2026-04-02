@@ -12,11 +12,13 @@ import {
   Zap,
   Crown,
   Send,
+  Stethoscope,
+  Users,
+  Building2,
 } from "lucide-react";
 
 /* ================================================================
-   ARCH Corporate Site — Hierarchical B2B Venture Design
-   Inspired by circus-group.jp style
+   ARCH Corporate Site — Hierarchical Green B2B Design
    ================================================================ */
 
 export default function Home() {
@@ -54,11 +56,11 @@ export default function Home() {
                 { href: "#company", label: "Company" },
                 { href: "#columns", label: "Columns" },
               ].map((item) => (
-                <a key={item.href} href={item.href} className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-gray-900 transition-colors">
+                <a key={item.href} href={item.href} className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-green-700 transition-colors">
                   {item.label}
                 </a>
               ))}
-              <a href="#contact" className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded text-xs font-bold tracking-wider uppercase transition-colors">
+              <a href="#contact" className="bg-green-800 hover:bg-green-900 text-white px-5 py-2.5 rounded text-xs font-bold tracking-wider uppercase transition-colors">
                 Contact
               </a>
             </div>
@@ -77,11 +79,11 @@ export default function Home() {
               { href: "#company", label: "Company" },
               { href: "#columns", label: "Columns" },
             ].map((item) => (
-              <a key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold tracking-widest uppercase text-gray-400 hover:text-gray-900 transition-colors">
+              <a key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold tracking-widest uppercase text-gray-400 hover:text-green-700 transition-colors">
                 {item.label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="block bg-gray-900 text-white px-6 py-3.5 rounded text-sm font-bold tracking-wider uppercase text-center">
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="block bg-green-800 text-white px-6 py-3.5 rounded text-sm font-bold tracking-wider uppercase text-center">
               Contact
             </a>
           </div>
@@ -91,29 +93,29 @@ export default function Home() {
       {/* ============================================================
           01 — HERO
           ============================================================ */}
-      <section className="pt-32 pb-20 sm:pt-44 sm:pb-32 lg:pt-52 lg:pb-40 bg-white">
+      <section className="pt-32 pb-20 sm:pt-44 sm:pb-32 lg:pt-52 lg:pb-40 bg-gradient-to-b from-green-50/60 to-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <p className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-green-700 mb-6 sm:mb-8">
             Dental Consulting Pioneer
           </p>
           <h1 className="text-[2.5rem] sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.1] tracking-tight text-gray-900 mb-8 sm:mb-10">
-            訪問歯科の
+            医療・介護事業の
             <br />
-            「現場のリアル」から、
+            <span className="text-green-800">「現場力」と「収益力」</span>
             <br />
-            <span className="text-green-800">地域No.1医院</span>を創る。
+            の最大化へ
           </h1>
           <p className="text-base sm:text-lg text-gray-400 leading-relaxed sm:leading-loose max-w-2xl mb-10 sm:mb-14">
+            現場の想いと経営の現実をつなぐ、戦略的パートナーシップ。
             独自の現場ノウハウ・専用アプリ・BPO支援で、
-            立ち上げからV字回復まで伴走。
-            ランニングコストを抑え、収益最大化を実現します。
+            立ち上げからV字回復まで伴走します。
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#contact" className="bg-gray-900 hover:bg-black text-white px-8 py-4 sm:py-5 rounded text-sm sm:text-base font-bold tracking-wider transition-colors flex items-center justify-center gap-3">
+            <a href="#contact" className="bg-green-800 hover:bg-green-900 text-white px-8 py-4 sm:py-5 rounded text-sm sm:text-base font-bold tracking-wider transition-colors flex items-center justify-center gap-3">
               無料オンライン相談
               <ArrowRight size={18} />
             </a>
-            <a href="#service" className="border border-gray-200 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-8 py-4 sm:py-5 rounded text-sm sm:text-base font-bold tracking-wider transition-colors flex items-center justify-center">
+            <a href="#service" className="border border-gray-200 hover:border-green-300 text-gray-600 hover:text-green-800 px-8 py-4 sm:py-5 rounded text-sm sm:text-base font-bold tracking-wider transition-colors flex items-center justify-center">
               事業内容を見る
             </a>
           </div>
@@ -128,25 +130,43 @@ export default function Home() {
           ============================================================ */}
       <section className="py-20 sm:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="flex items-end justify-between mb-12 sm:mb-16">
-            <div>
-              <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-gray-300 mb-3">02</p>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Pick Up</h2>
-              <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">注目のコラム</p>
-            </div>
+          <div className="mb-12 sm:mb-16">
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">02</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Pick Up</h2>
+            <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">注目のコラム</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
-              { href: "/columns/broker-trap", cat: "業界の闘", title: "「施設を紹介しますよ」の甘い罠。悪質ブローカーの正体", desc: "売上の20〜40％を吸い取るブローカーの実態と、自立した経営の作り方。", bg: "bg-red-50" },
-              { href: "/columns/document-hell", cat: "業務改善", title: "訪問歯科が陥る「書類地獄」。クレームを防ぐ唯一の解決策", desc: "書類管理のブラックボックス化を防ぐ仕組みづくり。", bg: "bg-amber-50" },
-              { href: "/columns/profit-trap", cat: "経営改善", title: "一生懸命訪問しているのに「黒字化」しない医院の罠", desc: "KPIの不在と経費計算の甘さが「忙しいのに儲からない」の正体。", bg: "bg-green-50" },
+              {
+                href: "/columns/broker-trap",
+                cat: "業界の闇",
+                title: "「施設を紹介しますよ」の甘い罠。悪質ブローカーの正体",
+                desc: "売上の20〜40％を吸い取るブローカーの実態と、自立した経営の作り方。",
+                img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=500&fit=crop&q=80",
+              },
+              {
+                href: "/columns/document-hell",
+                cat: "業務改善",
+                title: "訪問歯科が陥る「書類地獄」。クレームを防ぐ唯一の解決策",
+                desc: "書類管理のブラックボックス化を防ぐ仕組みづくり。",
+                img: "https://images.unsplash.com/photo-1568667256549-094345857637?w=800&h=500&fit=crop&q=80",
+              },
+              {
+                href: "/columns/profit-trap",
+                cat: "経営改善",
+                title: "一生懸命訪問しているのに「黒字化」しない医院の罠",
+                desc: "KPIの不在と経費計算の甘さが「忙しいのに儲からない」の正体。",
+                img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=500&fit=crop&q=80",
+              },
             ].map((a) => (
               <Link key={a.href} href={a.href} className="group block">
-                <div className={`${a.bg} aspect-[3/2] rounded-lg mb-5 flex items-end p-5 sm:p-6`}>
-                  <span className="text-xs font-bold tracking-wider uppercase text-gray-400">{a.cat}</span>
+                <div className="aspect-[3/2] rounded-lg mb-5 overflow-hidden bg-gray-100">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={a.img} alt={a.cat} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold leading-relaxed mb-2 group-hover:text-green-700 transition-colors">
+                <span className="text-xs font-bold tracking-wider text-green-700">{a.cat}</span>
+                <h3 className="text-base sm:text-lg font-bold leading-relaxed mt-2 mb-2 group-hover:text-green-700 transition-colors">
                   {a.title}
                 </h3>
                 <p className="text-sm text-gray-400 leading-relaxed">{a.desc}</p>
@@ -159,69 +179,68 @@ export default function Home() {
       {/* ============================================================
           03 — SERVICE
           ============================================================ */}
-      <section id="service" className="py-20 sm:py-28 bg-gray-950 text-white">
+      <section id="service" className="py-20 sm:py-28 bg-green-900 text-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-gray-500 mb-3">03</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-3">03</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Service</h2>
-            <p className="text-sm sm:text-base text-gray-500 mt-3 sm:mt-4">事業内容</p>
+            <p className="text-sm sm:text-base text-green-300 mt-3 sm:mt-4">ARCHの3つの柱</p>
           </div>
 
-          <div className="space-y-0">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Service 1 */}
-            <div className="border-t border-gray-800 py-10 sm:py-14 lg:grid lg:grid-cols-12 lg:gap-8 items-start">
-              <div className="lg:col-span-1 mb-4 lg:mb-0">
-                <span className="text-xs font-bold tracking-widest text-gray-600">01</span>
+            <a href="#service-consulting" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
+              <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
+                <Stethoscope className="text-green-200" size={28} />
               </div>
-              <div className="lg:col-span-4 mb-4 lg:mb-0">
-                <h3 className="text-xl sm:text-2xl font-bold leading-snug">
-                  医療介護特化型
-                  <br />営業コンサルティング
-                </h3>
-              </div>
-              <div className="lg:col-span-7">
-                <p className="text-sm sm:text-base text-gray-400 leading-loose">
-                  訪問歯科・訪問看護で培った泥臭いノウハウをベースに、戦略立案から同行営業での実地指導まで。元小学校教諭の代表だからこそできる「営業担当者の自己肯定感を高め、行動を変える」マインドセットからの伴走支援が特徴です。
-                </p>
-              </div>
-            </div>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">01 — Consulting</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-4">
+                訪問歯科
+                <br />コンサルティング
+              </h3>
+              <p className="text-sm text-green-200/70 leading-relaxed mb-6">
+                立ち上げから黒字化まで伴走。運営の標準化・収益最大化・法令順守を一気通貫でサポートします。
+              </p>
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
+                詳しく見る <ArrowRight size={14} />
+              </span>
+            </a>
 
             {/* Service 2 */}
-            <div className="border-t border-gray-800 py-10 sm:py-14 lg:grid lg:grid-cols-12 lg:gap-8 items-start">
-              <div className="lg:col-span-1 mb-4 lg:mb-0">
-                <span className="text-xs font-bold tracking-widest text-gray-600">02</span>
+            <a href="#service-sales" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
+              <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
+                <Users className="text-green-200" size={28} />
               </div>
-              <div className="lg:col-span-4 mb-4 lg:mb-0">
-                <h3 className="text-xl sm:text-2xl font-bold leading-snug">
-                  独自アプリケーション
-                  <br />提供
-                </h3>
-              </div>
-              <div className="lg:col-span-7">
-                <p className="text-sm sm:text-base text-gray-400 leading-loose">
-                  現場の事務作業やルート調整の工数を激減させる、ARCH専用システム。導入医院の業務効率を飛躍的に改善し、スタッフがコア業務に集中できる環境を実現します。契約医院はすべて無料でご利用いただけます。
-                </p>
-              </div>
-            </div>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">02 — Sales</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-4">
+                医療介護特化型
+                <br />営業コンサルティング
+              </h3>
+              <p className="text-sm text-green-200/70 leading-relaxed mb-6">
+                属人化しがちな営業を「科学」します。トークスクリプト・行動計画の型化で、誰でも成果が出る仕組みに。
+              </p>
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
+                詳しく見る <ArrowRight size={14} />
+              </span>
+            </a>
 
             {/* Service 3 */}
-            <div className="border-t border-gray-800 py-10 sm:py-14 lg:grid lg:grid-cols-12 lg:gap-8 items-start">
-              <div className="lg:col-span-1 mb-4 lg:mb-0">
-                <span className="text-xs font-bold tracking-widest text-gray-600">03</span>
+            <a href="#service-senior" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block sm:col-span-2 lg:col-span-1">
+              <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
+                <Building2 className="text-green-200" size={28} />
               </div>
-              <div className="lg:col-span-4 mb-4 lg:mb-0">
-                <h3 className="text-xl sm:text-2xl font-bold leading-snug">
-                  訪問歯科BPO
-                  <br />（裏側事務代行）
-                </h3>
-              </div>
-              <div className="lg:col-span-7">
-                <p className="text-sm sm:text-base text-gray-400 leading-loose">
-                  レセプト業務、書類作成、施設とのスケジュール調整など、煩雑なバックオフィス業務を丸ごと代行。少数精鋭の医院でも、診療に100%集中できる体制を構築します。月額プランで柔軟に対応可能です。
-                </p>
-              </div>
-            </div>
-            <div className="border-t border-gray-800"></div>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">03 — Senior Living</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-4">
+                老人ホーム
+                <br />紹介事業
+              </h3>
+              <p className="text-sm text-green-200/70 leading-relaxed mb-6">
+                病院・施設・入居者様の三方良しを実現。施設現場経験のある看護師が医療的観点からも最適な施設選びをサポート。
+              </p>
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
+                詳しく見る <ArrowRight size={14} />
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -232,14 +251,14 @@ export default function Home() {
       <section id="pricing" className="py-20 sm:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-gray-300 mb-3">04</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">04</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Pricing</h2>
             <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">料金プラン</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {/* Light */}
-            <div className="border border-gray-200 rounded-lg p-7 sm:p-9 flex flex-col">
+            <div className="border border-gray-200 rounded-xl p-7 sm:p-9 flex flex-col">
               <div className="mb-6 sm:mb-8">
                 <div className="flex items-center gap-2 mb-3">
                   <Zap className="text-gray-400" size={18} />
@@ -249,7 +268,7 @@ export default function Home() {
                 <p className="text-xs text-gray-400">まずは始めたい方に</p>
               </div>
               <div className="mb-8">
-                <span className="text-4xl sm:text-5xl font-extrabold">10</span>
+                <span className="text-4xl sm:text-5xl font-extrabold text-green-800">10</span>
                 <span className="text-base font-bold text-gray-400 ml-1">万円</span>
                 <span className="text-sm text-gray-300 ml-1">/月</span>
               </div>
@@ -261,49 +280,49 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <a href="#contact" className="mt-8 block text-center border border-gray-200 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-5 py-3.5 rounded text-sm font-bold tracking-wider transition-colors">
+              <a href="#contact" className="mt-8 block text-center border border-gray-200 hover:border-green-300 text-gray-600 hover:text-green-800 px-5 py-3.5 rounded text-sm font-bold tracking-wider transition-colors">
                 お問い合わせ
               </a>
             </div>
 
             {/* Standard */}
-            <div className="bg-gray-950 text-white rounded-lg p-7 sm:p-9 flex flex-col relative lg:-mt-4 lg:mb-[-16px]">
+            <div className="bg-green-800 text-white rounded-xl p-7 sm:p-9 flex flex-col relative lg:-mt-4 lg:mb-[-16px]">
               <div className="absolute -top-3 left-6">
-                <span className="bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded tracking-wider uppercase flex items-center gap-1">
-                  <Star size={10} /> Most Popular
+                <span className="bg-yellow-400 text-yellow-900 text-[10px] font-bold px-3 py-1 rounded tracking-wider flex items-center gap-1">
+                  <Star size={10} /> 一番人気
                 </span>
               </div>
               <div className="mb-6 sm:mb-8 mt-2">
                 <div className="flex items-center gap-2 mb-3">
-                  <Star className="text-green-400" size={18} />
-                  <span className="text-xs font-bold tracking-widest uppercase text-gray-500">Standard</span>
+                  <Star className="text-yellow-300" size={18} />
+                  <span className="text-xs font-bold tracking-widest uppercase text-green-300">Standard</span>
                 </div>
                 <h3 className="text-lg font-bold mb-1">スタンダードプラン</h3>
-                <p className="text-xs text-gray-500">成長を加速させたい方に</p>
+                <p className="text-xs text-green-200">成長を加速させたい方に</p>
               </div>
               <div className="mb-8">
                 <span className="text-4xl sm:text-5xl font-extrabold">30</span>
-                <span className="text-base font-bold text-gray-500 ml-1">万円</span>
-                <span className="text-sm text-gray-600 ml-1">/月</span>
+                <span className="text-base font-bold text-green-200 ml-1">万円</span>
+                <span className="text-sm text-green-300 ml-1">/月</span>
               </div>
-              <div className="border-t border-gray-800 pt-6 space-y-3.5 flex-1">
+              <div className="border-t border-green-700 pt-6 space-y-3.5 flex-1">
                 {["ライトプランの全内容を含む", "月4回 Web/対面ミーティング", "経営相談", "BPO（内容要相談）", "実地支援（月1回無償 / 2回目以降別途2万円）"].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="text-green-400 shrink-0 mt-0.5" size={15} />
-                    <p className="text-sm text-gray-300">{item}</p>
+                    <CheckCircle2 className="text-yellow-300 shrink-0 mt-0.5" size={15} />
+                    <p className="text-sm text-green-50">{item}</p>
                   </div>
                 ))}
               </div>
-              <a href="#contact" className="mt-8 block text-center bg-white hover:bg-gray-100 text-gray-900 px-5 py-3.5 rounded text-sm font-bold tracking-wider transition-colors">
+              <a href="#contact" className="mt-8 block text-center bg-white hover:bg-green-50 text-green-900 px-5 py-3.5 rounded text-sm font-bold tracking-wider transition-colors">
                 お問い合わせ
               </a>
             </div>
 
             {/* Premium */}
-            <div className="border border-gray-200 rounded-lg p-7 sm:p-9 flex flex-col relative">
+            <div className="border border-gray-200 rounded-xl p-7 sm:p-9 flex flex-col relative">
               <div className="absolute -top-3 right-6">
-                <span className="bg-yellow-500 text-white text-[10px] font-bold px-3 py-1 rounded tracking-wider uppercase flex items-center gap-1">
-                  <Crown size={10} /> Premium
+                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 text-[10px] font-bold px-3 py-1 rounded tracking-wider flex items-center gap-1">
+                  <Crown size={10} /> 最上位
                 </span>
               </div>
               <div className="mb-6 sm:mb-8 mt-2">
@@ -315,7 +334,7 @@ export default function Home() {
                 <p className="text-xs text-gray-400">圧倒的な成長を実現</p>
               </div>
               <div className="mb-8">
-                <span className="text-4xl sm:text-5xl font-extrabold">50</span>
+                <span className="text-4xl sm:text-5xl font-extrabold text-green-800">50</span>
                 <span className="text-base font-bold text-gray-400 ml-1">万円</span>
                 <span className="text-sm text-gray-300 ml-1">/月</span>
               </div>
@@ -327,7 +346,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <a href="#contact" className="mt-8 block text-center bg-gray-900 hover:bg-black text-white px-5 py-3.5 rounded text-sm font-bold tracking-wider transition-colors">
+              <a href="#contact" className="mt-8 block text-center bg-green-800 hover:bg-green-900 text-white px-5 py-3.5 rounded text-sm font-bold tracking-wider transition-colors">
                 お問い合わせ
               </a>
             </div>
@@ -341,39 +360,34 @@ export default function Home() {
           <div id="trial" className="mt-20 sm:mt-28 border-t border-gray-100 pt-16 sm:pt-20">
             <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
               <div className="lg:col-span-5 mb-8 lg:mb-0">
-                <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-300 block mb-3">Trial Plan</span>
+                <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-green-700 block mb-3">Trial Plan</span>
                 <h3 className="text-2xl sm:text-3xl font-extrabold mb-3">お試しコンサルティング</h3>
                 <span className="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded tracking-wider">
                   初回限定・1ヶ月
                 </span>
                 <div className="mt-6">
-                  <span className="text-4xl sm:text-5xl font-extrabold">70,000</span>
+                  <span className="text-4xl sm:text-5xl font-extrabold text-green-800">70,000</span>
                   <span className="text-base font-bold text-gray-400 ml-1">円</span>
                   <span className="text-sm text-gray-300 ml-1">/月</span>
                 </div>
               </div>
               <div className="lg:col-span-7">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {[
-                    "訪問歯科の運営サポート", "月1回のWeb/対面ミーティング",
-                    "ARCH独自アプリ使用可能", "経営相談",
-                    "1日限定の実地支援", "訪問歯科事業立ち上げ相談",
-                    "LINE等での相談", "月間レポート（簡易）",
-                  ].map((item) => (
+                  {["訪問歯科の運営サポート", "月1回のWeb/対面ミーティング", "ARCH独自アプリ使用可能", "経営相談", "1日限定の実地支援", "訪問歯科事業立ち上げ相談", "LINE等での相談", "月間レポート（簡易）"].map((item) => (
                     <div key={item} className="flex items-start gap-2.5">
                       <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={15} />
                       <p className="text-sm text-gray-600">{item}</p>
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 bg-gray-950 rounded-lg p-4 text-center">
-                  <p className="text-gray-300 text-sm font-medium">まずは1ヶ月、訪問歯科コンサルティングの可能性を体感してください。</p>
+                <div className="mt-6 bg-green-800 rounded-lg p-4 text-center">
+                  <p className="text-green-50 text-sm font-medium">まずは1ヶ月、訪問歯科コンサルティングの可能性を体感してください。</p>
                 </div>
                 <div className="mt-3 text-xs text-gray-300 space-y-0.5">
                   <p>※ お試し期間終了後、本契約される場合は初期費用を無償とさせていただきます。</p>
                   <p>※ お試しプランは初回契約時のみご利用いただけます。</p>
                 </div>
-                <a href="#contact" className="mt-5 inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white px-6 py-3 rounded text-sm font-bold tracking-wider transition-colors">
+                <a href="#contact" className="mt-5 inline-flex items-center gap-2 bg-green-800 hover:bg-green-900 text-white px-6 py-3 rounded text-sm font-bold tracking-wider transition-colors">
                   お試しプランについて相談する <ArrowRight size={16} />
                 </a>
               </div>
@@ -384,13 +398,11 @@ export default function Home() {
           <div id="onsite" className="mt-16 sm:mt-20 border-t border-gray-100 pt-16 sm:pt-20">
             <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
               <div className="lg:col-span-5 mb-8 lg:mb-0">
-                <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-300 block mb-3">On-site Support</span>
+                <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-green-700 block mb-3">On-site Support</span>
                 <h3 className="text-2xl sm:text-3xl font-extrabold mb-3">単発 実地支援サービス</h3>
-                <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded tracking-wider">
-                  単発プラン
-                </span>
+                <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded tracking-wider">単発プラン</span>
                 <div className="mt-6">
-                  <span className="text-4xl sm:text-5xl font-extrabold">50,000</span>
+                  <span className="text-4xl sm:text-5xl font-extrabold text-green-800">50,000</span>
                   <span className="text-base font-bold text-gray-400 ml-1">円</span>
                   <span className="text-sm text-gray-300 ml-1">/1回</span>
                 </div>
@@ -403,7 +415,7 @@ export default function Home() {
                     { num: "03", title: "算定可能な点数の提案", desc: "取りこぼしている算定項目を洗い出し。算定の最適化だけで月数万円〜数十万円の収益改善につながるケースも。" },
                   ].map((step) => (
                     <div key={step.num} className="flex gap-4">
-                      <span className="text-xs font-bold tracking-widest text-gray-300 mt-1 shrink-0">{step.num}</span>
+                      <span className="text-xs font-bold tracking-widest text-green-700 mt-1 shrink-0">{step.num}</span>
                       <div>
                         <h4 className="font-bold text-gray-900 mb-1">{step.title}</h4>
                         <p className="text-sm text-gray-400 leading-relaxed">{step.desc}</p>
@@ -411,11 +423,11 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 bg-gray-950 rounded-lg p-4 text-center">
-                  <p className="text-gray-300 text-sm font-medium">「訪問歯科に興味はあるが、まずは現状を診てほしい」という医院様に最適です。</p>
+                <div className="mt-6 bg-green-800 rounded-lg p-4 text-center">
+                  <p className="text-green-50 text-sm font-medium">「訪問歯科に興味はあるが、まずは現状を診てほしい」という医院様に最適です。</p>
                 </div>
                 <p className="text-xs text-gray-300 mt-3">※ 実地支援は単発でのご利用が可能です。料金は税別表示です。</p>
-                <a href="#contact" className="mt-5 inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white px-6 py-3 rounded text-sm font-bold tracking-wider transition-colors">
+                <a href="#contact" className="mt-5 inline-flex items-center gap-2 bg-green-800 hover:bg-green-900 text-white px-6 py-3 rounded text-sm font-bold tracking-wider transition-colors">
                   実地支援について相談する <ArrowRight size={16} />
                 </a>
               </div>
@@ -427,43 +439,39 @@ export default function Home() {
       {/* ============================================================
           05 — COMPANY / VISION
           ============================================================ */}
-      <section id="company" className="py-20 sm:py-28 bg-gray-50">
+      <section id="company" className="py-20 sm:py-28 bg-green-50/50">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-gray-300 mb-3">05</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">05</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Company</h2>
-            <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">代表ストーリー</p>
+            <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">代表・会社概要</p>
           </div>
 
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             <div className="mb-10 lg:mb-0">
-              <div className="rounded-lg overflow-hidden bg-green-900 aspect-square sm:aspect-[4/3] flex items-center justify-center p-10 sm:p-16">
+              <div className="rounded-xl overflow-hidden bg-green-900 aspect-square sm:aspect-[4/3] flex items-center justify-center p-10 sm:p-16">
                 <Image src="/images/logo.jpg" alt="合同会社ARCH" width={400} height={400} className="w-full max-w-[180px] sm:max-w-[220px] h-auto" />
               </div>
             </div>
 
             <div>
-              <p className="text-base sm:text-lg text-gray-600 leading-loose sm:leading-loose mb-6">
-                元小学校教諭が見た、訪問歯科のいびつな現実と挑戦——。
-                「人の成長に寄り添う」経験を活かし、
-                医療・介護の現場で働く方々が自信を持って事業を成長させられるよう伴走したい。
-                そんな想いでARCHを立ち上げました。
-              </p>
-              <p className="text-base sm:text-lg text-gray-600 leading-loose sm:leading-loose mb-10">
-                訪問歯科という成長市場で、現場力と収益力の両立は容易ではありません。
-                だからこそ、机上の空論ではなく泥臭い現場主義で結果を出し続けます。
-              </p>
-
-              <div className="border-t border-gray-200 pt-6">
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-300 mb-1">CEO</p>
-                <p className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4">鈴木 集</p>
-                <div className="space-y-1 text-sm text-gray-400">
-                  <p>元小学校教諭 → 訪問歯科業界へ転身</p>
-                  <p>訪問歯科コンサルティングの第一人者として活躍</p>
-                </div>
+              <div className="bg-green-100/60 rounded-lg p-5 sm:p-6 mb-8 border-l-4 border-green-700">
+                <p className="text-base sm:text-lg text-green-900 font-medium leading-relaxed italic">
+                  現場の『想い』と経営の『現実』をつなぐ架け橋になりたい
+                </p>
               </div>
 
-              <a href="#ceo-detail" className="mt-8 inline-flex items-center gap-2 text-sm font-bold tracking-wider text-gray-900 hover:text-green-700 transition-colors">
+              <div className="mb-8">
+                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-green-700 mb-1">合同会社ARCH 代表</p>
+                <p className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4">鈴木 集 <span className="text-lg font-medium text-gray-400 ml-2">Atsumu Suzuki</span></p>
+              </div>
+
+              <div className="space-y-3 text-sm sm:text-base text-gray-600 leading-relaxed mb-8">
+                <p><span className="font-bold text-gray-900">経歴：</span>元小学校教員。その後、横浜市の広域医療法人にて歯科事務局として経営再建を主導。北海道の医療グループにて新規事業を推進。</p>
+                <p><span className="font-bold text-gray-900">実績：</span>医療グループにて訪問歯科事業を単独で立ち上げ。徹底した営業強化と運営効率化により、わずか6ヶ月で黒字化を達成。</p>
+              </div>
+
+              <a href="#ceo-detail" className="inline-flex items-center gap-2 text-sm font-bold tracking-wider text-green-800 hover:text-green-900 transition-colors">
                 代表ストーリーを読む <ArrowRight size={16} />
               </a>
             </div>
@@ -477,7 +485,7 @@ export default function Home() {
       <section id="columns" className="py-20 sm:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-gray-300 mb-3">06</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">06</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Columns</h2>
             <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">現場向けコラム</p>
           </div>
@@ -487,7 +495,7 @@ export default function Home() {
               <Link
                 key={`${col.href}-${i}`}
                 href={col.href}
-                className="group block border-t border-gray-100 py-6 sm:py-8 lg:grid lg:grid-cols-12 lg:gap-6 items-start hover:bg-gray-50 transition-colors -mx-5 sm:-mx-8 px-5 sm:px-8"
+                className="group block border-t border-gray-100 py-6 sm:py-8 lg:grid lg:grid-cols-12 lg:gap-6 items-start hover:bg-green-50/50 transition-colors -mx-5 sm:-mx-8 px-5 sm:px-8"
               >
                 <div className="lg:col-span-1 mb-2 lg:mb-0">
                   <span className="text-xs font-bold tracking-widest text-gray-300">{String(i + 1).padStart(2, "0")}</span>
@@ -514,60 +522,39 @@ export default function Home() {
       {/* ============================================================
           07 — CONTACT
           ============================================================ */}
-      <section id="contact" className="py-20 sm:py-28 bg-gray-950 text-white">
+      <section id="contact" className="py-20 sm:py-28 bg-green-900 text-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-gray-600 mb-3">07</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-3">07</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Contact</h2>
-            <p className="text-sm sm:text-base text-gray-500 mt-3 sm:mt-4">お問い合わせ</p>
+            <p className="text-sm sm:text-base text-green-300 mt-3 sm:mt-4">お問い合わせ</p>
           </div>
 
           <div className="max-w-2xl">
-            <form
-              action="https://formsubmit.co/50ee2f45d5bdcbfa397c1f5135d41780"
-              method="POST"
-              className="space-y-6"
-            >
+            <form action="https://formsubmit.co/50ee2f45d5bdcbfa397c1f5135d41780" method="POST" className="space-y-6">
               <input type="hidden" name="_subject" value="ARCHホームページからのお問い合わせ" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_next" value="https://www.arch-yh.com/" />
 
               <div>
-                <label htmlFor="name" className="block text-xs font-bold tracking-wider uppercase text-gray-500 mb-2">
-                  お名前 <span className="text-red-400">*</span>
-                </label>
-                <input type="text" id="name" name="name" required placeholder="山田 太郎"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 text-white placeholder-gray-600 focus:outline-none focus:border-white text-base transition-colors" />
+                <label htmlFor="name" className="block text-xs font-bold tracking-wider uppercase text-green-300 mb-2">お名前 <span className="text-red-400">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="山田 太郎" className="w-full px-0 py-3 bg-transparent border-0 border-b border-green-700 text-white placeholder-green-600 focus:outline-none focus:border-green-300 text-base transition-colors" />
               </div>
-
               <div>
-                <label htmlFor="organization" className="block text-xs font-bold tracking-wider uppercase text-gray-500 mb-2">
-                  医院・施設名
-                </label>
-                <input type="text" id="organization" name="organization" placeholder="○○歯科クリニック"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 text-white placeholder-gray-600 focus:outline-none focus:border-white text-base transition-colors" />
+                <label htmlFor="organization" className="block text-xs font-bold tracking-wider uppercase text-green-300 mb-2">医院・施設名</label>
+                <input type="text" id="organization" name="organization" placeholder="○○歯科クリニック" className="w-full px-0 py-3 bg-transparent border-0 border-b border-green-700 text-white placeholder-green-600 focus:outline-none focus:border-green-300 text-base transition-colors" />
               </div>
-
               <div>
-                <label htmlFor="email" className="block text-xs font-bold tracking-wider uppercase text-gray-500 mb-2">
-                  メールアドレス <span className="text-red-400">*</span>
-                </label>
-                <input type="email" id="email" name="email" required placeholder="info@example.com"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 text-white placeholder-gray-600 focus:outline-none focus:border-white text-base transition-colors" />
+                <label htmlFor="email" className="block text-xs font-bold tracking-wider uppercase text-green-300 mb-2">メールアドレス <span className="text-red-400">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="info@example.com" className="w-full px-0 py-3 bg-transparent border-0 border-b border-green-700 text-white placeholder-green-600 focus:outline-none focus:border-green-300 text-base transition-colors" />
               </div>
-
               <div>
-                <label htmlFor="message" className="block text-xs font-bold tracking-wider uppercase text-gray-500 mb-2">
-                  お問い合わせ内容 <span className="text-red-400">*</span>
-                </label>
-                <textarea id="message" name="message" required rows={5} placeholder="ご相談内容をお書きください"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 text-white placeholder-gray-600 focus:outline-none focus:border-white text-base resize-none transition-colors"></textarea>
+                <label htmlFor="message" className="block text-xs font-bold tracking-wider uppercase text-green-300 mb-2">お問い合わせ内容 <span className="text-red-400">*</span></label>
+                <textarea id="message" name="message" required rows={5} placeholder="ご相談内容をお書きください" className="w-full px-0 py-3 bg-transparent border-0 border-b border-green-700 text-white placeholder-green-600 focus:outline-none focus:border-green-300 text-base resize-none transition-colors"></textarea>
               </div>
-
               <div className="pt-4">
-                <button type="submit" className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded text-sm font-bold tracking-wider transition-colors flex items-center gap-3">
-                  <Send size={16} />
-                  送信する
+                <button type="submit" className="bg-white hover:bg-green-50 text-green-900 px-8 py-4 rounded text-sm font-bold tracking-wider transition-colors flex items-center gap-3">
+                  <Send size={16} /> 送信する
                 </button>
               </div>
             </form>
@@ -576,15 +563,53 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-          FOOTER
+          FOOTER — circus-group.jp style multi-column
           ============================================================ */}
-      <footer className="bg-white border-t border-gray-100 py-10 sm:py-12">
+      <footer className="bg-gray-950 text-gray-400 pt-16 sm:pt-20 pb-8">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-5">
-            <Image src="/images/logo.jpg" alt="合同会社ARCH" width={120} height={120} className="h-8 sm:h-10 w-auto" />
-            <p className="text-xs text-gray-300">
-              &copy; {new Date().getFullYear()} 合同会社ARCH All rights reserved.
-            </p>
+          <div className="lg:grid lg:grid-cols-12 lg:gap-12 mb-16">
+            {/* Logo + Address */}
+            <div className="lg:col-span-4 mb-10 lg:mb-0">
+              <Image src="/images/logo.jpg" alt="合同会社ARCH" width={120} height={120} className="h-12 w-auto mb-6 brightness-200" />
+              <div className="space-y-1 text-sm">
+                <p>合同会社ARCH（アーチ）</p>
+                <p>TEL: 090-7247-3013</p>
+                <p>Mail: atsumu.suzuki@arch-yh.com</p>
+              </div>
+            </div>
+
+            {/* Links columns */}
+            <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+              <div>
+                <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Service</h4>
+                <ul className="space-y-3 text-sm">
+                  <li><a href="#service" className="hover:text-white transition-colors">訪問歯科コンサルティング</a></li>
+                  <li><a href="#service" className="hover:text-white transition-colors">営業コンサルティング</a></li>
+                  <li><a href="#service" className="hover:text-white transition-colors">老人ホーム紹介事業</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Company</h4>
+                <ul className="space-y-3 text-sm">
+                  <li><a href="#company" className="hover:text-white transition-colors">代表メッセージ</a></li>
+                  <li><a href="#company" className="hover:text-white transition-colors">会社概要</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Contents</h4>
+                <ul className="space-y-3 text-sm">
+                  <li><a href="#columns" className="hover:text-white transition-colors">コラム</a></li>
+                  <li><a href="#pricing" className="hover:text-white transition-colors">料金プラン</a></li>
+                  <li><a href="#contact" className="hover:text-white transition-colors">お問い合わせ</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-gray-500">&copy; {new Date().getFullYear()} 合同会社ARCH All rights reserved.</p>
+            <a href="#" className="text-xs text-gray-500 hover:text-white transition-colors">プライバシーポリシー</a>
           </div>
         </div>
       </footer>
