@@ -772,15 +772,13 @@ export default function Home() {
 
           <div className="max-w-2xl mx-auto">
             <form
-              action="https://formsubmit.co/atsumu.suzuki@arch-yh.com"
+              action="https://formsubmit.co/50ee2f45d5bdcbfa397c1f5135d41780"
               method="POST"
               className="bg-gray-50 rounded-3xl p-8 lg:p-12 shadow-lg shadow-gray-200/50 border border-gray-100 space-y-6"
             >
-              {/* FormSubmit設定 (リダイレクト先などを後で変更可能) */}
               <input type="hidden" name="_subject" value="ARCHホームページからのお問い合わせ" />
               <input type="hidden" name="_captcha" value="false" />
-              {/* TODO: サンクスページURLを設定する場合は以下を有効化 */}
-              {/* <input type="hidden" name="_next" value="https://your-domain.com/thanks" /> */}
+              <input type="hidden" name="_next" value="https://www.arch-yh.com/" />
 
               <div>
                 <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-2">
