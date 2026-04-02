@@ -44,20 +44,40 @@ export default function ColumnsLayout({
 
       {/* Related Articles */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <h2 className="text-xl font-extrabold text-gray-900 mb-8">関連コラム</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Link href="/columns/sales-trap" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
               <span className="text-xs font-bold text-green-700 mb-2 block">営業の落とし穴</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">院長自らの飛び込み営業。そのパンフレット、実は「その他大勢」の束に埋もれています</h3>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">院長自らの飛び込み営業。そのパンフレット、実は「その他大勢」の束に埋もれています</h3>
             </Link>
             <Link href="/columns/communication" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
               <span className="text-xs font-bold text-green-700 mb-2 block">現場コミュニケーション</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。</h3>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。</h3>
             </Link>
             <Link href="/columns/facility-needs" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
               <span className="text-xs font-bold text-green-700 mb-2 block">施設の本音</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由</h3>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由</h3>
+            </Link>
+            <Link href="/columns/document-hell" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">業務改善</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">訪問歯科が陥る「書類地獄」。ご家族からのクレームを防ぐ唯一の解決策</h3>
+            </Link>
+            <Link href="/columns/profit-trap" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">経営改善</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">一生懸命訪問しているのに「黒字化」しない医院。院長が見落としている罠</h3>
+            </Link>
+            <Link href="/columns/invisible-profit" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">営業戦略</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">現場がドブに捨てている「見えない利益」。患者だけを診る歯医者は淘汰される</h3>
+            </Link>
+            <Link href="/columns/staff-role" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">組織マネジメント</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">優秀なスタッフが辞めない医院の秘密。元小学校教諭が教える「係活動」マネジメント</h3>
+            </Link>
+            <Link href="/columns/turnover-strategy" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">経営戦略</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">「スタッフの退職」に怯える院長へ。離職防止よりも優先すべき、たった一つの経営戦略</h3>
             </Link>
           </div>
         </div>

@@ -680,72 +680,39 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Column 1 */}
-            <Link
-              href="/columns/sales-trap"
-              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-            >
-              <div className="h-2 bg-gradient-to-r from-green-700 to-green-500"></div>
-              <div className="p-8">
-                <span className="inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">
-                  営業の落とし穴
-                </span>
-                <h4 className="text-lg font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors leading-snug">
-                  院長自らの飛び込み営業。そのパンフレット、実は「その他大勢」の束に埋もれています
-                </h4>
-                <p className="text-sm text-gray-500 leading-relaxed mb-6">
-                  院長の貴重な診療時間を削っての営業活動、本当に成果が出ていますか？施設側のリアルと、選ばれる仕組みの作り方。
-                </p>
-                <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 group-hover:gap-2 transition-all">
-                  続きを読む <ArrowRight size={14} />
-                </span>
-              </div>
-            </Link>
-
-            {/* Column 2 */}
-            <Link
-              href="/columns/communication"
-              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-            >
-              <div className="h-2 bg-gradient-to-r from-green-700 to-green-500"></div>
-              <div className="p-8">
-                <span className="inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">
-                  現場コミュニケーション
-                </span>
-                <h4 className="text-lg font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors leading-snug">
-                  介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。
-                </h4>
-                <p className="text-sm text-gray-500 leading-relaxed mb-6">
-                  一生懸命なコミュニケーションが逆効果に。施設に選ばれ続けるための「適切な距離感」とは。
-                </p>
-                <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 group-hover:gap-2 transition-all">
-                  続きを読む <ArrowRight size={14} />
-                </span>
-              </div>
-            </Link>
-
-            {/* Column 3 */}
-            <Link
-              href="/columns/facility-needs"
-              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-            >
-              <div className="h-2 bg-gradient-to-r from-green-700 to-green-500"></div>
-              <div className="p-8">
-                <span className="inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">
-                  施設の本音
-                </span>
-                <h4 className="text-lg font-extrabold text-gray-900 mb-3 group-hover:text-green-700 transition-colors leading-snug">
-                  介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由
-                </h4>
-                <p className="text-sm text-gray-500 leading-relaxed mb-6">
-                  介護現場における口腔ケアの優先順位のリアルと、手放されない訪問歯科になる方法。
-                </p>
-                <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 group-hover:gap-2 transition-all">
-                  続きを読む <ArrowRight size={14} />
-                </span>
-              </div>
-            </Link>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { href: "/columns/turnover-strategy", cat: "経営戦略", title: "「スタッフの退職」に怯える院長へ。離職防止よりも優先すべき、たった一つの経営戦略", desc: "属人化を排除し、誰が来ても回る強固な組織の作り方。" },
+              { href: "/columns/staff-role", cat: "組織マネジメント", title: "優秀なスタッフが辞めない医院の秘密。元小学校教諭が教える「係活動」マネジメント", desc: "スタッフの定着に必要なのは技術研修ではなくマインド教育。" },
+              { href: "/columns/invisible-profit", cat: "営業戦略", title: "現場がドブに捨てている「見えない利益」。患者だけを診る歯医者は淘汰される", desc: "施設スタッフやケアマネとの「信用利益」の築き方。" },
+              { href: "/columns/profit-trap", cat: "経営改善", title: "一生懸命訪問しているのに「黒字化」しない医院。院長が見落としている罠", desc: "KPIの不在と経費計算の甘さが「忙しいのに儲からない」の正体。" },
+              { href: "/columns/document-hell", cat: "業務改善", title: "訪問歯科が陥る「書類地獄」。ご家族からのクレームを防ぐ唯一の解決策", desc: "書類管理のブラックボックス化を防ぐ仕組みづくり。" },
+              { href: "/columns/sales-trap", cat: "営業の落とし穴", title: "院長自らの飛び込み営業。そのパンフレット、実は「その他大勢」の束に埋もれています", desc: "施設側のリアルと、選ばれる仕組みの作り方。" },
+              { href: "/columns/communication", cat: "現場コミュニケーション", title: "介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。", desc: "施設に選ばれ続けるための「適切な距離感」とは。" },
+              { href: "/columns/facility-needs", cat: "施設の本音", title: "介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由", desc: "介護現場における口腔ケアの優先順位と、手放されない訪問歯科になる方法。" },
+            ].map((col) => (
+              <Link
+                key={col.href}
+                href={col.href}
+                className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+              >
+                <div className="h-2 bg-gradient-to-r from-green-700 to-green-500"></div>
+                <div className="p-6">
+                  <span className="inline-block text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full mb-3">
+                    {col.cat}
+                  </span>
+                  <h4 className="text-sm font-extrabold text-gray-900 mb-2 group-hover:text-green-700 transition-colors leading-snug">
+                    {col.title}
+                  </h4>
+                  <p className="text-xs text-gray-500 leading-relaxed mb-4">
+                    {col.desc}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-green-700 group-hover:gap-2 transition-all">
+                    続きを読む <ArrowRight size={12} />
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
