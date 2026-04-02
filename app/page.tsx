@@ -304,7 +304,7 @@ export default function Home() {
               料金プラン
             </h3>
             <p className="text-lg text-gray-600 font-medium">
-              訪問歯科コンサルティングの3つのプラン。貴院のフェーズに合わせてお選びいただけます。
+              貴院のフェーズに合わせてお選びいただけます。
             </p>
           </div>
 
@@ -328,11 +328,23 @@ export default function Home() {
               <div className="border-t border-gray-100 pt-6 space-y-4 flex-1">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
-                  <p className="text-sm text-gray-700 font-medium">訪問歯科の基本サポート</p>
+                  <p className="text-sm text-gray-700 font-medium">訪問歯科の運営サポート</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
-                  <p className="text-sm text-gray-700 font-medium">ARCH独自アプリケーション使用可能</p>
+                  <p className="text-sm text-gray-700 font-medium">月1回 Web/対面ミーティング</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">ARCH独自アプリ使用可能</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">LINE等での相談</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">実地支援（別途3万円）</p>
                 </div>
               </div>
               <a
@@ -371,11 +383,19 @@ export default function Home() {
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-yellow-300 shrink-0 mt-0.5" size={18} />
-                  <p className="text-sm text-green-50 font-medium">月2回程度のWeb/対面ミーティングによる密な経営支援</p>
+                  <p className="text-sm text-green-50 font-medium">月4回 Web/対面ミーティング</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-yellow-300 shrink-0 mt-0.5" size={18} />
-                  <p className="text-sm text-green-50 font-medium">ARCH独自アプリケーション使用可能</p>
+                  <p className="text-sm text-green-50 font-medium">経営相談</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-yellow-300 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-green-50 font-medium">BPO（内容要相談）</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-yellow-300 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-green-50 font-medium">実地支援（月1回無償 / 2回目以降別途2万円）</p>
                 </div>
               </div>
               <a
@@ -399,7 +419,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="text-xl font-extrabold text-gray-900">プレミアムプラン</h4>
-                  <p className="text-xs text-gray-500 font-medium">圧倒的な成長を実現したい方に</p>
+                  <p className="text-xs text-gray-500 font-medium">圧倒的な成長を実現</p>
                 </div>
               </div>
               <div className="mb-6">
@@ -414,11 +434,15 @@ export default function Home() {
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
-                  <p className="text-sm text-gray-700 font-medium">週1回程度のWeb/対面ミーティング</p>
+                  <p className="text-sm text-gray-700 font-medium">医院オリジナルWebアプリ開発</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
-                  <p className="text-sm text-gray-700 font-medium">貴院専用「医院オリジナルアプリケーション等の開発」をフルサポート</p>
+                  <p className="text-sm text-gray-700 font-medium">営業同行・代行</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">経営層との会合セッティング</p>
                 </div>
               </div>
               <a
@@ -431,8 +455,145 @@ export default function Home() {
           </div>
 
           <p className="text-center text-sm text-gray-400 mt-10 font-medium">
-            ※ 料金はすべて税別表示です。詳細はお問い合わせください。
+            ※ 別途初期費用 100,000円（税別）がかかります。料金はすべて税別表示です。
           </p>
+
+          {/* ---- お試しコンサルティングプラン ---- */}
+          <div id="trial" className="mt-20">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <h2 className="text-green-800 font-extrabold tracking-widest text-sm uppercase mb-3">
+                Trial Plan
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                お試しコンサルティングプラン
+              </h3>
+              <span className="inline-block bg-yellow-400 text-yellow-900 text-sm font-extrabold px-5 py-1.5 rounded-full">
+                初回限定・1ヶ月
+              </span>
+            </div>
+            <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-10 shadow-lg shadow-gray-200/50 border-2 border-green-200">
+              <div className="text-center mb-8">
+                <h4 className="text-xl font-extrabold text-gray-900 mb-2">お試しコンサルティング</h4>
+                <div>
+                  <span className="text-5xl font-extrabold text-green-800">70,000</span>
+                  <span className="text-lg font-bold text-gray-500 ml-1">円</span>
+                  <span className="text-sm text-gray-400 ml-1">/月</span>
+                </div>
+              </div>
+              <div className="border-t border-gray-100 pt-6 grid sm:grid-cols-2 gap-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">訪問歯科の運営サポート</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">月1回のWeb/対面ミーティング</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">ARCH独自アプリ使用可能</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">経営相談</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">1日限定の実地支援</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">訪問歯科事業立ち上げ相談</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">LINE等での相談</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={18} />
+                  <p className="text-sm text-gray-700 font-medium">月間レポート（簡易）</p>
+                </div>
+              </div>
+              <p className="text-center text-xs text-gray-500 mt-6 font-medium">
+                ライトプラン（10万円）の内容＋スタンダードプランの一部を含む充実のお試し内容
+              </p>
+              <div className="mt-6 bg-green-800 rounded-xl p-4 text-center">
+                <p className="text-green-50 text-sm font-bold">
+                  まずは1ヶ月、訪問歯科コンサルティングの可能性を体感してください。
+                </p>
+              </div>
+              <div className="mt-4 space-y-1 text-xs text-gray-400">
+                <p>※ お試し期間終了後、本契約される場合は初期費用を無償とさせていただきます。</p>
+                <p>※ お試しプランは初回契約時のみご利用いただけます。料金は税別表示です。</p>
+              </div>
+              <a
+                href="#contact"
+                className="mt-6 block text-center bg-green-800 hover:bg-green-900 text-white px-6 py-3.5 rounded-full text-sm font-bold transition-all shadow-lg"
+              >
+                お試しプランについて相談する
+              </a>
+            </div>
+          </div>
+
+          {/* ---- 単発 実地支援サービス ---- */}
+          <div id="onsite" className="mt-20">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <h2 className="text-green-800 font-extrabold tracking-widest text-sm uppercase mb-3">
+                On-site Support
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                単発 実地支援サービス
+              </h3>
+              <span className="inline-block bg-green-100 text-green-800 text-sm font-extrabold px-5 py-1.5 rounded-full">
+                単発プラン
+              </span>
+            </div>
+            <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-10 shadow-lg shadow-gray-200/50 border border-gray-200">
+              <div className="text-center mb-8">
+                <h4 className="text-lg font-bold text-gray-700 mb-2">1日実地支援（訪問診療同行＋改善レポート）</h4>
+                <div>
+                  <span className="text-5xl font-extrabold text-green-800">50,000</span>
+                  <span className="text-lg font-bold text-gray-500 ml-1">円</span>
+                  <span className="text-sm text-gray-400 ml-1">/1回</span>
+                </div>
+              </div>
+              <div className="border-t border-gray-100 pt-8 grid md:grid-cols-3 gap-8">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-800 font-extrabold text-sm">01</span>
+                    <h5 className="font-bold text-gray-900">訪問診療の同行</h5>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">実際の訪問診療に同行し、現場のオペレーション・患者様対応・スタッフの動きを確認します。</p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-800 font-extrabold text-sm">02</span>
+                    <h5 className="font-bold text-gray-900">改善レポートの作成</h5>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">同行後1週間を目処に詳細レポートを提出。伸ばすべきポイント・改善すべきポイントを具体的なアクション付きでまとめます。</p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-800 font-extrabold text-sm">03</span>
+                    <h5 className="font-bold text-gray-900">算定可能な点数の提案</h5>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">医院のスタッフ数・診療内容をヒアリングし、取りこぼしている算定項目を洗い出し。算定の最適化だけで月数万円〜数十万円の収益改善につながるケースもあります。</p>
+                </div>
+              </div>
+              <div className="mt-8 bg-green-800 rounded-xl p-4 text-center">
+                <p className="text-green-50 text-sm font-bold">
+                  「訪問歯科に興味はあるが、まずは現状を診てほしい」という医院様に最適なプランです。
+                </p>
+              </div>
+              <p className="text-xs text-gray-400 mt-4">※ 実地支援は単発でのご利用が可能です。料金は税別表示です。</p>
+              <a
+                href="#contact"
+                className="mt-6 block text-center bg-green-800 hover:bg-green-900 text-white px-6 py-3.5 rounded-full text-sm font-bold transition-all shadow-lg max-w-md mx-auto"
+              >
+                実地支援について相談する
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
