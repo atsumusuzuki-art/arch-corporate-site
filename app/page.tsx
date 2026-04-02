@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -80,14 +81,15 @@ export default function Home() {
       <nav className="fixed w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 sm:h-20 items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center gap-2.5">
-              <div className="w-9 h-9 bg-gradient-to-br from-green-700 to-green-900 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-sm">
-                A
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="font-bold text-xl tracking-wider text-gray-900">ARCH</span>
-                <span className="text-[9px] font-semibold text-gray-400 tracking-[0.25em]">アーチ</span>
-              </div>
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/images/logo.jpg"
+                alt="合同会社ARCH"
+                width={120}
+                height={120}
+                className="h-10 sm:h-12 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Nav */}
@@ -307,16 +309,14 @@ export default function Home() {
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             {/* Logo area */}
             <div className="mb-8 lg:mb-0">
-              <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-green-800 to-green-900 aspect-[4/3] flex items-center justify-center">
-                <div className="flex flex-col items-center gap-4">
-                  <div className="w-24 h-24 sm:w-32 sm:h-32 bg-white/10 rounded-2xl flex items-center justify-center text-white font-bold text-5xl sm:text-6xl shadow-lg">
-                    A
-                  </div>
-                  <div className="flex flex-col items-center leading-tight">
-                    <span className="font-bold text-3xl sm:text-4xl tracking-wider text-white">ARCH</span>
-                    <span className="text-xs sm:text-sm font-semibold text-green-300 tracking-[0.3em] mt-1">アーチ</span>
-                  </div>
-                </div>
+              <div className="rounded-2xl overflow-hidden bg-green-900 aspect-[4/3] flex items-center justify-center p-12 sm:p-16">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="合同会社ARCH"
+                  width={400}
+                  height={400}
+                  className="w-full max-w-[200px] sm:max-w-[240px] h-auto"
+                />
               </div>
             </div>
 
@@ -706,14 +706,14 @@ export default function Home() {
       <footer className="bg-gray-900 text-gray-400 py-10 sm:py-12">
         <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-5">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-800 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                A
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="font-bold text-base tracking-wider text-white">ARCH</span>
-                <span className="text-[8px] font-semibold text-gray-500 tracking-[0.2em]">アーチ</span>
-              </div>
+            <div>
+              <Image
+                src="/images/logo.jpg"
+                alt="合同会社ARCH"
+                width={120}
+                height={120}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-xs sm:text-sm">
               &copy; {new Date().getFullYear()} 合同会社ARCH All rights reserved.
