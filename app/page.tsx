@@ -189,7 +189,7 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Service 1 */}
-            <a href="#service-consulting" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
+            <a href="/services/consulting" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
               <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
                 <Stethoscope className="text-green-200" size={28} />
               </div>
@@ -207,7 +207,7 @@ export default function Home() {
             </a>
 
             {/* Service 2 */}
-            <a href="#service-sales" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
+            <a href="/services/sales" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
               <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
                 <Users className="text-green-200" size={28} />
               </div>
@@ -225,7 +225,7 @@ export default function Home() {
             </a>
 
             {/* Service 3 */}
-            <a href="#service-senior" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block sm:col-span-2 lg:col-span-1">
+            <a href="/services/senior-home" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block sm:col-span-2 lg:col-span-1">
               <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
                 <Building2 className="text-green-200" size={28} />
               </div>
