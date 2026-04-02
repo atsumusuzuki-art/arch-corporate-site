@@ -1,116 +1,86 @@
-import { Stethoscope, CheckCircle2, ArrowRight, Star, Zap, Crown } from "lucide-react";
+import { CheckCircle2, Star, Zap, Crown, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "訪問歯科コンサルティング | 合同会社ARCH",
+  title: "訪問歯科 経営コンサルティング | 合同会社ARCH",
   description:
-    "訪問歯科の立ち上げから黒字化まで。6ヶ月で黒字化を実現するARCHの訪問歯科コンサルティングサービス。",
+    "属人化と「忙しいのに儲からない」を終わらせる。6ヶ月で黒字化を実現するARCHの訪問歯科コンサルティング。",
 };
 
 export default function ConsultingPage() {
   return (
     <article>
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-900 text-white py-20 sm:py-28">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10">
-              <Stethoscope className="text-green-300" size={24} />
-            </span>
-            <span className="text-green-300 text-sm font-bold tracking-widest uppercase">
-              Service 01
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
-            訪問歯科コンサルティング
+      {/* ──────────────────────────────────────────
+          HERO
+      ────────────────────────────────────────── */}
+      <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-700 bg-green-50 px-4 py-1.5 rounded-full mb-8">
+            経営コンサルティング
+          </span>
+          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-gray-900 mb-6 sm:mb-8">
+            属人化と「忙しいのに儲からない」を
+            <br className="hidden sm:block" />
+            終わらせる。
+            <br />
+            <span className="text-green-800">次世代の訪問歯科経営。</span>
           </h1>
-          <p className="text-lg sm:text-xl text-green-100 max-w-3xl leading-relaxed">
-            訪問歯科の立ち上げから営業・算定・運営改善まで、ワンストップでサポート。
-            開始6ヶ月での黒字化を実現する実践型コンサルティングです。
+          <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
+            属人化の排除、どんぶり勘定からの脱却、そして離職に怯えない組織作り。
+            元小学校教諭の知見と独自システムで、確実な利益とスタッフの笑顔を両立します。
           </p>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-800/20"
+          >
+            無料オンライン相談を予約する
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 
-      {/* 課題 */}
-      <section className="py-16 sm:py-20 bg-green-50/50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8">
-          <h2 className="text-sm font-bold text-green-700 tracking-widest uppercase mb-3">
+      {/* ──────────────────────────────────────────
+          課題セクション
+      ────────────────────────────────────────── */}
+      <section className="bg-gray-50 py-20 sm:py-28">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8">
+          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
             Problem
-          </h2>
-          <p className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-10">
-            こんなお悩みはありませんか？
           </p>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-14 sm:mb-16">
+            こんなお悩みありませんか？
+          </h2>
+
+          <div className="space-y-5 sm:space-y-6">
             {[
-              "訪問歯科を始めたいが、何から手を付ければいいか分からない",
-              "訪問歯科を始めたが、患者数が増えず赤字が続いている",
-              "営業の仕方が分からず、施設との関係が築けない",
-              "算定が複雑で、取りこぼしが発生している気がする",
-              "スタッフの教育体制が整っておらず、属人化している",
-              "コンサルを名乗るブローカーに不安を感じている",
+              {
+                emoji: "🔥",
+                title: "極度な属人化",
+                body: "ベテランが辞めると現場も書類も回らなくなる。ノウハウが個人に集中し、組織として機能しない。",
+              },
+              {
+                emoji: "💸",
+                title: "忙しいのに利益が残らない",
+                body: "毎日訪問しているのに、月末に通帳を見ると赤字。経費と算定の実態が見えていない。",
+              },
+              {
+                emoji: "🚪",
+                title: "止まらない離職",
+                body: "スタッフの離職が絶えず、常に採用活動に追われている。育てても育てても抜けていく。",
+              },
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-start gap-3 bg-white rounded-xl p-5 border border-gray-100 shadow-sm"
+                className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm flex gap-5 items-start"
               >
-                <span className="text-red-500 mt-0.5 font-bold text-lg">✕</span>
-                <p className="text-gray-700 font-medium leading-relaxed">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* サービス内容 */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8">
-          <h2 className="text-sm font-bold text-green-700 tracking-widest uppercase mb-3">
-            Service
-          </h2>
-          <p className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-10">
-            ARCHの訪問歯科コンサルティング
-          </p>
-
-          <div className="space-y-8">
-            {[
-              {
-                num: "01",
-                title: "立ち上げ支援",
-                desc: "訪問歯科の開始に必要な届出・機材準備・算定体制の構築をゼロからサポート。院内体制の整備から施設開拓まで、立ち上げに必要な全工程を伴走します。",
-              },
-              {
-                num: "02",
-                title: "営業戦略の設計と実行",
-                desc: "飛び込み営業に頼らない仕組みづくり。施設のニーズを的確に把握した提案型営業で、安定的に新規施設を獲得するルートを構築します。",
-              },
-              {
-                num: "03",
-                title: "算定最適化",
-                desc: "訪問歯科の複雑な算定を徹底分析。取りこぼしを防ぎ、正しい算定フローを構築することで、同じ患者数でも売上を大幅に改善します。",
-              },
-              {
-                num: "04",
-                title: "スタッフ教育・組織づくり",
-                desc: "属人化を排除し、誰が来ても回る組織体制を構築。マニュアル整備・研修制度・マインド教育を組み合わせた独自メソッドで離職率を低減します。",
-              },
-              {
-                num: "05",
-                title: "運営改善・KPI管理",
-                desc: "月次レポート・KPI分析で経営状態を可視化。数字に基づいた改善提案で「忙しいのに儲からない」状態から脱却します。",
-              },
-            ].map((item) => (
-              <div
-                key={item.num}
-                className="flex gap-5 sm:gap-8 items-start border-b border-gray-100 pb-8"
-              >
-                <span className="text-3xl sm:text-4xl font-extrabold text-green-200 flex-shrink-0">
-                  {item.num}
-                </span>
+                <span className="text-2xl sm:text-3xl flex-shrink-0 mt-0.5">{item.emoji}</span>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-gray-900 mb-2">
+                  <h3 className="font-extrabold text-gray-900 text-base sm:text-lg mb-1.5">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                  <p className="text-sm sm:text-base text-gray-500 leading-relaxed">
+                    {item.body}
+                  </p>
                 </div>
               </div>
             ))}
@@ -118,16 +88,71 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* 実績 */}
-      <section className="py-16 sm:py-20 bg-green-900 text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8">
-          <h2 className="text-sm font-bold text-green-300 tracking-widest uppercase mb-3">
-            Results
-          </h2>
-          <p className="text-2xl sm:text-3xl font-extrabold mb-10">
-            導入実績
+      {/* ──────────────────────────────────────────
+          解決策 — 3本柱
+      ────────────────────────────────────────── */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
+            Solution
           </p>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6">
+            ARCHが選ばれる3つの理由
+          </h2>
+          <p className="text-center text-sm sm:text-base text-gray-400 mb-14 sm:mb-16 max-w-2xl mx-auto">
+            現場経験に裏打ちされた独自メソッドで、根本から経営体質を変えます。
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                num: "01",
+                title: "アプリとBPOによる\n「書類地獄」の完全撤廃",
+                body: "人の注意力に頼る管理をシステム化。誰が休んでも辞めても、絶対に業務が停滞しない裏側の仕組みを構築します。",
+              },
+              {
+                num: "02",
+                title: "KPIと精緻な経費計算による\n「黒字化の仕組み」",
+                body: "単価に上限がある保険診療だからこそ、稼働数とケア1回あたりの経費を徹底管理。どんぶり勘定を終わらせます。",
+              },
+              {
+                num: "03",
+                title: "元教員が教える\n「自己肯定感」を高める組織づくり",
+                body: "マニュアルだけでは人は育ちません。「係活動」のような役割を与え、スタッフが自ら進んで動きたくなるエンゲージメントの高い組織を作ります。",
+              },
+            ].map((item) => (
+              <div
+                key={item.num}
+                className="bg-gray-50 rounded-2xl p-7 sm:p-9 border border-gray-100 flex flex-col"
+              >
+                <span className="text-4xl sm:text-5xl font-extrabold text-green-100 mb-5">
+                  {item.num}
+                </span>
+                <h3 className="font-extrabold text-gray-900 text-base sm:text-lg leading-snug mb-4 whitespace-pre-line">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed flex-1">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────
+          具体的なメリット（実績数値）
+      ────────────────────────────────────────── */}
+      <section className="bg-green-900 py-20 sm:py-28 text-white">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-300 mb-4">
+            Results
+          </p>
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold mb-14 sm:mb-16">
+            導入医院が実感した変化
+          </h2>
+
+          <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 mb-16">
             {[
               { num: "6ヶ月", label: "平均黒字化期間" },
               { num: "150%", label: "売上改善率（平均）" },
@@ -135,31 +160,42 @@ export default function ConsultingPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white/10 rounded-xl p-8 text-center border border-white/10"
+                className="bg-white/10 backdrop-blur rounded-2xl p-8 sm:p-10 text-center border border-white/10"
               >
-                <p className="text-3xl sm:text-4xl font-extrabold text-green-300 mb-2">
+                <p className="text-4xl sm:text-5xl font-extrabold text-green-300 mb-2">
                   {item.num}
                 </p>
-                <p className="text-green-100 font-medium">{item.label}</p>
+                <p className="text-green-100 text-sm font-medium">{item.label}</p>
               </div>
             ))}
+          </div>
+
+          <div className="bg-white/10 backdrop-blur rounded-2xl p-8 sm:p-10 border border-white/10 max-w-3xl mx-auto">
+            <p className="text-green-100 text-sm sm:text-base leading-loose">
+              「忙しいのに利益が残らない」状態が半年以上続いていました。ARCHさんに入ってもらい、まず算定の取りこぼしを洗い出してもらったところ、
+              同じ患者数のまま<span className="text-white font-bold">月40万円以上</span>の改善が見られました。
+              スタッフ教育も体系的で、以前のような属人化の不安はほぼなくなりました。
+            </p>
+            <p className="text-green-300 text-sm font-bold mt-4">— 関東圏 訪問歯科クリニック院長</p>
           </div>
         </div>
       </section>
 
-      {/* 料金プラン */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8">
-          <h2 className="text-sm font-bold text-green-700 tracking-widest uppercase mb-3">
+      {/* ──────────────────────────────────────────
+          料金プラン
+      ────────────────────────────────────────── */}
+      <section className="bg-gray-50 py-20 sm:py-28">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
             Pricing
-          </h2>
-          <p className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-10">
-            料金プラン
           </p>
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-14 sm:mb-16">
+            料金プラン
+          </h2>
 
-          <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {/* Light */}
-            <div className="border border-gray-200 rounded-xl p-7 flex flex-col">
+            <div className="bg-white border border-gray-200 rounded-2xl p-7 sm:p-9 flex flex-col shadow-sm">
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Zap className="text-gray-400" size={18} />
@@ -168,12 +204,12 @@ export default function ConsultingPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-1">ライトプラン</h3>
                 <p className="text-xs text-gray-400">まずは始めたい方に</p>
               </div>
-              <div className="mb-6">
-                <span className="text-4xl font-extrabold text-green-800">10</span>
+              <div className="mb-8">
+                <span className="text-4xl sm:text-5xl font-extrabold text-green-800">10</span>
                 <span className="text-base font-bold text-gray-400 ml-1">万円</span>
                 <span className="text-sm text-gray-300 ml-1">/月</span>
               </div>
-              <div className="border-t border-gray-100 pt-5 space-y-3 flex-1">
+              <div className="border-t border-gray-100 pt-6 space-y-3.5 flex-1">
                 {["訪問歯科の運営サポート", "月1回 Web/対面ミーティング", "ARCH独自アプリ使用可能", "LINE等での相談", "実地支援（別途3万円）"].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={15} />
@@ -181,15 +217,15 @@ export default function ConsultingPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/#contact" className="mt-6 block text-center border border-gray-200 hover:border-green-300 text-gray-600 hover:text-green-800 px-5 py-3 rounded text-sm font-bold tracking-wider transition-colors">
+              <Link href="/#contact" className="mt-8 block text-center border border-gray-200 hover:border-green-300 text-gray-600 hover:text-green-800 px-5 py-3.5 rounded-lg text-sm font-bold tracking-wider transition-colors">
                 お問い合わせ
               </Link>
             </div>
 
             {/* Standard */}
-            <div className="bg-green-800 text-white rounded-xl p-7 flex flex-col relative lg:-mt-3 lg:mb-[-12px]">
+            <div className="bg-green-800 text-white rounded-2xl p-7 sm:p-9 flex flex-col relative lg:-mt-4 lg:mb-[-16px] shadow-xl shadow-green-900/20">
               <div className="absolute -top-3 left-6">
-                <span className="bg-yellow-400 text-yellow-900 text-[10px] font-bold px-3 py-1 rounded tracking-wider flex items-center gap-1">
+                <span className="bg-yellow-400 text-yellow-900 text-[10px] font-bold px-3 py-1 rounded-full tracking-wider flex items-center gap-1">
                   <Star size={10} /> 一番人気
                 </span>
               </div>
@@ -201,12 +237,12 @@ export default function ConsultingPage() {
                 <h3 className="text-lg font-bold mb-1">スタンダードプラン</h3>
                 <p className="text-xs text-green-200">成長を加速させたい方に</p>
               </div>
-              <div className="mb-6">
-                <span className="text-4xl font-extrabold">30</span>
+              <div className="mb-8">
+                <span className="text-4xl sm:text-5xl font-extrabold">30</span>
                 <span className="text-base font-bold text-green-200 ml-1">万円</span>
                 <span className="text-sm text-green-300 ml-1">/月</span>
               </div>
-              <div className="border-t border-green-700 pt-5 space-y-3 flex-1">
+              <div className="border-t border-green-700 pt-6 space-y-3.5 flex-1">
                 {["ライトプランの全内容を含む", "月4回 Web/対面ミーティング", "経営相談", "BPO（内容要相談）", "実地支援（月1回無償 / 2回目以降別途2万円）"].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <CheckCircle2 className="text-yellow-300 shrink-0 mt-0.5" size={15} />
@@ -214,15 +250,15 @@ export default function ConsultingPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/#contact" className="mt-6 block text-center bg-white hover:bg-green-50 text-green-900 px-5 py-3 rounded text-sm font-bold tracking-wider transition-colors">
+              <Link href="/#contact" className="mt-8 block text-center bg-white hover:bg-green-50 text-green-900 px-5 py-3.5 rounded-lg text-sm font-bold tracking-wider transition-colors">
                 お問い合わせ
               </Link>
             </div>
 
             {/* Premium */}
-            <div className="border border-gray-200 rounded-xl p-7 flex flex-col relative">
+            <div className="bg-white border border-gray-200 rounded-2xl p-7 sm:p-9 flex flex-col relative shadow-sm">
               <div className="absolute -top-3 right-6">
-                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 text-[10px] font-bold px-3 py-1 rounded tracking-wider flex items-center gap-1">
+                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 text-[10px] font-bold px-3 py-1 rounded-full tracking-wider flex items-center gap-1">
                   <Crown size={10} /> 最上位
                 </span>
               </div>
@@ -234,12 +270,12 @@ export default function ConsultingPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-1">プレミアムプラン</h3>
                 <p className="text-xs text-gray-400">圧倒的な成長を実現</p>
               </div>
-              <div className="mb-6">
-                <span className="text-4xl font-extrabold text-green-800">50</span>
+              <div className="mb-8">
+                <span className="text-4xl sm:text-5xl font-extrabold text-green-800">50</span>
                 <span className="text-base font-bold text-gray-400 ml-1">万円</span>
                 <span className="text-sm text-gray-300 ml-1">/月</span>
               </div>
-              <div className="border-t border-gray-100 pt-5 space-y-3 flex-1">
+              <div className="border-t border-gray-100 pt-6 space-y-3.5 flex-1">
                 {["スタンダードプランの全内容を含む", "医院オリジナルWebアプリ開発", "営業同行・代行", "経営層との会合セッティング"].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <CheckCircle2 className="text-green-600 shrink-0 mt-0.5" size={15} />
@@ -247,23 +283,23 @@ export default function ConsultingPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/#contact" className="mt-6 block text-center bg-green-800 hover:bg-green-900 text-white px-5 py-3 rounded text-sm font-bold tracking-wider transition-colors">
+              <Link href="/#contact" className="mt-8 block text-center bg-green-800 hover:bg-green-900 text-white px-5 py-3.5 rounded-lg text-sm font-bold tracking-wider transition-colors">
                 お問い合わせ
               </Link>
             </div>
           </div>
 
-          <p className="text-center text-xs text-gray-300 mt-8">
+          <p className="text-center text-xs text-gray-400 mt-10">
             ※ 別途初期費用 100,000円（税別）がかかります。料金はすべて税別表示です。
           </p>
 
           {/* ---- Trial ---- */}
-          <div className="mt-16 border-t border-gray-100 pt-14">
-            <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
+          <div className="mt-20 border-t border-gray-200 pt-16">
+            <div className="bg-white rounded-2xl p-8 sm:p-10 border border-gray-100 shadow-sm lg:grid lg:grid-cols-12 lg:gap-12 items-start">
               <div className="lg:col-span-5 mb-8 lg:mb-0">
-                <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-green-700 block mb-3">Trial Plan</span>
-                <h3 className="text-2xl font-extrabold mb-3">お試しコンサルティング</h3>
-                <span className="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded tracking-wider">初回限定・1ヶ月</span>
+                <span className="inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">Trial Plan</span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 mb-3">お試しコンサルティング</h3>
+                <span className="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full tracking-wider">初回限定・1ヶ月</span>
                 <div className="mt-5">
                   <span className="text-4xl font-extrabold text-green-800">70,000</span>
                   <span className="text-base font-bold text-gray-400 ml-1">円</span>
@@ -279,10 +315,7 @@ export default function ConsultingPage() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-5 bg-green-800 rounded-lg p-4 text-center">
-                  <p className="text-green-50 text-sm font-medium">まずは1ヶ月、訪問歯科コンサルティングの可能性を体感してください。</p>
-                </div>
-                <div className="mt-3 text-xs text-gray-300 space-y-0.5">
+                <div className="mt-5 text-xs text-gray-400 space-y-0.5">
                   <p>※ お試し期間終了後、本契約される場合は初期費用を無償とさせていただきます。</p>
                   <p>※ お試しプランは初回契約時のみご利用いただけます。</p>
                 </div>
@@ -291,12 +324,12 @@ export default function ConsultingPage() {
           </div>
 
           {/* ---- On-site ---- */}
-          <div className="mt-14 border-t border-gray-100 pt-14">
-            <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
+          <div className="mt-8">
+            <div className="bg-white rounded-2xl p-8 sm:p-10 border border-gray-100 shadow-sm lg:grid lg:grid-cols-12 lg:gap-12 items-start">
               <div className="lg:col-span-5 mb-8 lg:mb-0">
-                <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-green-700 block mb-3">On-site Support</span>
-                <h3 className="text-2xl font-extrabold mb-3">単発 実地支援サービス</h3>
-                <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded tracking-wider">単発プラン</span>
+                <span className="inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">On-site Support</span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 mb-3">単発 実地支援サービス</h3>
+                <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full tracking-wider">単発プラン</span>
                 <div className="mt-5">
                   <span className="text-4xl font-extrabold text-green-800">50,000</span>
                   <span className="text-base font-bold text-gray-400 ml-1">円</span>
@@ -304,7 +337,7 @@ export default function ConsultingPage() {
                 </div>
               </div>
               <div className="lg:col-span-7">
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {[
                     { num: "01", title: "訪問診療の同行", desc: "実際の訪問診療に同行し、現場のオペレーション・患者様対応・スタッフの動きを確認します。" },
                     { num: "02", title: "改善レポートの作成", desc: "同行後1週間を目処に詳細レポートを提出。改善すべきポイントを具体的なアクション付きでまとめます。" },
@@ -314,71 +347,14 @@ export default function ConsultingPage() {
                       <span className="text-xs font-bold tracking-widest text-green-700 mt-1 shrink-0">{step.num}</span>
                       <div>
                         <h4 className="font-bold text-gray-900 mb-1">{step.title}</h4>
-                        <p className="text-sm text-gray-400 leading-relaxed">{step.desc}</p>
+                        <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="mt-5 bg-green-800 rounded-lg p-4 text-center">
-                  <p className="text-green-50 text-sm font-medium">「訪問歯科に興味はあるが、まずは現状を診てほしい」という医院様に最適です。</p>
-                </div>
-                <p className="text-xs text-gray-300 mt-3">※ 実地支援は単発でのご利用が可能です。料金は税別表示です。</p>
+                <p className="text-xs text-gray-400 mt-4">※ 実地支援は単発でのご利用が可能です。料金は税別表示です。</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 流れ */}
-      <section className="py-16 sm:py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8">
-          <h2 className="text-sm font-bold text-green-700 tracking-widest uppercase mb-3">
-            Flow
-          </h2>
-          <p className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-10">
-            ご契約までの流れ
-          </p>
-          <div className="space-y-6">
-            {[
-              { step: "STEP 1", title: "無料相談", desc: "現状のヒアリングと課題の整理を行います。オンライン・対面どちらでも対応可能です。" },
-              { step: "STEP 2", title: "現状分析・プラン提案", desc: "ヒアリング内容を元に、最適なコンサルティングプランをご提案します。" },
-              { step: "STEP 3", title: "ご契約・キックオフ", desc: "プランにご納得いただいた上でご契約。初月からKPIを設定し、伴走を開始します。" },
-              { step: "STEP 4", title: "実行・改善サイクル", desc: "月次レポートで進捗を確認しながら、PDCAサイクルで継続的に改善していきます。" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex gap-5 items-start bg-green-50/50 rounded-xl p-6 border border-green-100"
-              >
-                <span className="text-xs font-bold text-green-700 bg-green-100 px-3 py-1 rounded-full flex-shrink-0">
-                  {item.step}
-                </span>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 関連コラム */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-xl font-extrabold text-gray-900 mb-8">関連コラム</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/columns/broker-trap" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-              <span className="text-xs font-bold text-green-700 mb-2 block">業界の闇</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">「施設を紹介しますよ」の甘い罠。コンサルを自称する悪質ブローカーの正体</h3>
-            </Link>
-            <Link href="/columns/profit-trap" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-              <span className="text-xs font-bold text-green-700 mb-2 block">経営改善</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">一生懸命訪問しているのに「黒字化」しない医院。院長が見落としている罠</h3>
-            </Link>
-            <Link href="/columns/document-hell" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-              <span className="text-xs font-bold text-green-700 mb-2 block">業務改善</span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">訪問歯科が陥る「書類地獄」。ご家族からのクレームを防ぐ唯一の解決策</h3>
-            </Link>
           </div>
         </div>
       </section>

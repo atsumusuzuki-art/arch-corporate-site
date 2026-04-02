@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function ServicesLayout({
   children,
@@ -14,7 +14,7 @@ export default function ServicesLayout({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-green-700 transition-colors"
+            className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-green-700 transition-colors"
           >
             <ArrowLeft size={16} />
             トップページへ戻る
@@ -23,9 +23,9 @@ export default function ServicesLayout({
             <Image
               src="/images/logo.jpg"
               alt="合同会社ARCH"
-              width={80}
-              height={80}
-              className="h-8 w-auto"
+              width={64}
+              height={64}
+              className="h-7 w-auto"
             />
           </Link>
         </div>
@@ -34,62 +34,69 @@ export default function ServicesLayout({
       {/* Content */}
       <main>{children}</main>
 
-      {/* CTA */}
-      <section className="bg-green-800 py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
-            まずは無料相談から
+      {/* ──────────────────────────────────────────
+          共通 CTA
+      ────────────────────────────────────────── */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-900 leading-snug mb-5">
+            まずは無料オンライン相談で、
+            <br className="hidden sm:block" />
+            貴院（貴施設）の課題をお聞かせください。
           </h2>
-          <p className="text-green-100 font-medium mb-8 max-w-2xl mx-auto">
-            ARCHは訪問歯科・医療介護業界に特化した経営コンサルティング会社です。お気軽にご相談ください。
+          <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl mx-auto mb-10">
+            業界のリアルを知り尽くしたARCHが、現状の課題分析から具体的な解決策のロードマップまでをご提案します。無理な営業は一切行いません。
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 bg-white text-green-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-green-50 transition-all shadow-lg"
+            className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-800/20"
           >
-            無料相談を予約する
+            無料オンライン相談を予約する
+            <ArrowRight size={18} />
           </Link>
         </div>
       </section>
 
-      {/* Other Services */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-xl font-extrabold text-gray-900 mb-8">
+      {/* ──────────────────────────────────────────
+          その他のサービス
+      ────────────────────────────────────────── */}
+      <section className="bg-gray-50 py-16 sm:py-20">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <h2 className="text-lg font-extrabold text-gray-900 mb-8">
             その他のサービス
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             <Link
               href="/services/consulting"
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
             >
-              <span className="text-xs font-bold text-green-700 mb-2 block">
+              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
                 Service 01
               </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">
-                訪問歯科コンサルティング
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
+                経営コンサルティング
               </h3>
             </Link>
             <Link
               href="/services/sales"
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
             >
-              <span className="text-xs font-bold text-green-700 mb-2 block">
+              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
                 Service 02
               </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">
-                医療介護特化型営業コンサルティング
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
+                営業コンサルティング
               </h3>
             </Link>
             <Link
               href="/services/senior-home"
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
             >
-              <span className="text-xs font-bold text-green-700 mb-2 block">
+              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
                 Service 03
               </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors">
-                老人ホーム紹介事業
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
+                介護事業者様向け
               </h3>
             </Link>
           </div>
