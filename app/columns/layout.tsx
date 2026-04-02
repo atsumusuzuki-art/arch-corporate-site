@@ -79,6 +79,10 @@ export default function ColumnsLayout({
               <span className="text-xs font-bold text-green-700 mb-2 block">経営戦略</span>
               <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">「スタッフの退職」に怯える院長へ。離職防止よりも優先すべき、たった一つの経営戦略</h3>
             </Link>
+            <Link href="/columns/broker-trap" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">業界の闇</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">「施設を紹介しますよ」の甘い罠。コンサルを自称する悪質ブローカーの正体</h3>
+            </Link>
           </div>
         </div>
       </section>
