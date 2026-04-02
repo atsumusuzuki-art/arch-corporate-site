@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
   title: "営業コンサルティング | 合同会社ARCH",
   description:
-    "施設から"指名"される圧倒的な営業戦略。ブローカー依存を脱却し、自立した集客基盤を構築するARCHの営業コンサルティング。",
+    "施設から指名される圧倒的な営業戦略。ブローカー依存を脱却し、自立した集客基盤を構築するARCHの営業コンサルティング。",
 };
 
 export default function SalesPage() {
