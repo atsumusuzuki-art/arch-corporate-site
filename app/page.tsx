@@ -305,23 +305,18 @@ export default function Home() {
           </div>
 
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-            {/* Image area */}
+            {/* Logo area */}
             <div className="mb-8 lg:mb-0">
-              <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-green-100 to-green-50 aspect-[4/3] flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/ceo.jpg"
-                  alt="代表 鈴木 集"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                    if (target.parentElement) {
-                      target.parentElement.innerHTML =
-                        '<div class="flex flex-col items-center justify-center h-full text-green-700 opacity-50"><p class="text-sm font-semibold">代表 鈴木 集</p><p class="text-xs mt-1">合同会社ARCH</p></div>';
-                    }
-                  }}
-                />
+              <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-green-800 to-green-900 aspect-[4/3] flex items-center justify-center">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-24 h-24 sm:w-32 sm:h-32 bg-white/10 rounded-2xl flex items-center justify-center text-white font-bold text-5xl sm:text-6xl shadow-lg">
+                    A
+                  </div>
+                  <div className="flex flex-col items-center leading-tight">
+                    <span className="font-bold text-3xl sm:text-4xl tracking-wider text-white">ARCH</span>
+                    <span className="text-xs sm:text-sm font-semibold text-green-300 tracking-[0.3em] mt-1">アーチ</span>
+                  </div>
+                </div>
               </div>
             </div>
 
