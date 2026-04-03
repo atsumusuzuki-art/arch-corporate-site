@@ -1,4 +1,17 @@
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Target,
+  Users,
+  MessageSquare,
+  Handshake,
+  Clock,
+  Smartphone,
+  MapPin,
+  TrendingUp,
+  Shield,
+  UserCheck,
+} from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -40,7 +53,7 @@ export default function SalesPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          課題セクション
+          課題セクション（左ボーダーアクセント）
       ────────────────────────────────────────── */}
       <section className="bg-gray-50 py-20 sm:py-28">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
@@ -51,87 +64,29 @@ export default function SalesPage() {
             こんなお悩みありませんか？
           </h2>
 
-          <div className="space-y-5 sm:space-y-6">
+          <div className="space-y-5">
             {[
               {
-                emoji: "📋",
                 title: "飛び込み営業の限界",
-                body: "院長自ら施設に挨拶に行っているが、まったく依頼が増えない。パンフレットは「その他大勢」の束に埋もれている。",
+                body: "院長自ら施設に挨拶に行っているが、まったく依頼が増えない。パンフレットは束に埋もれている。",
               },
               {
-                emoji: "🕸️",
                 title: "ブローカーへの高額マージン",
-                body: "「施設を紹介する」というブローカーに、毎月売上の20〜40％を吸い取られている。お金で買った関係は脆い。",
+                body: "「施設を紹介する」というブローカーに、毎月売上の20〜40％を吸い取られている。",
               },
               {
-                emoji: "😤",
                 title: "現場から煙たがられる",
-                body: "一生懸命コミュニケーションをとっているつもりが、なぜか介護現場から嫌がられる。距離感が分からない。",
+                body: "一生懸命コミュニケーションをとっているつもりが、なぜか介護現場から嫌がられる。",
               },
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm flex gap-5 items-start"
+                className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 border-l-4 border-l-red-400"
               >
-                <span className="text-2xl sm:text-3xl flex-shrink-0 mt-0.5">{item.emoji}</span>
-                <div>
-                  <h3 className="font-extrabold text-gray-900 text-base sm:text-lg mb-1.5">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-500 leading-relaxed">
-                    {item.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────
-          解決策 — 3本柱
-      ────────────────────────────────────────── */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
-            Solution
-          </p>
-          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6">
-            ARCHが選ばれる3つの理由
-          </h2>
-          <p className="text-center text-sm sm:text-base text-gray-400 mb-14 sm:mb-16 max-w-2xl mx-auto">
-            業界の裏側を知り尽くした専門チームが、再現性のある営業の仕組みをつくります。
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                num: "01",
-                title: "ブローカー依存からの脱却。\n自立した集客基盤の構築",
-                body: "売上の20〜40％を吸い取る紹介屋への依存を断ち切ります。お金で買った関係ではなく、自院の実力で選ばれる圧倒的な営業力をスタッフにインストールします。",
-              },
-              {
-                num: "02",
-                title: "「信用利益」を積み上げる\n独自のコミュニケーション術",
-                body: "患者様だけを診ていても依頼は増えません。手前にいる施設スタッフ、後ろにいるご家族といったキーマンの負担を減らし、信頼を勝ち取る方法を指導します。",
-              },
-              {
-                num: "03",
-                title: "現場に迷惑をかけない\n「時短」のアプローチ",
-                body: "介護現場が求めているのは、長々とした申し送りではありません。施設側の業務フローを邪魔しない、最適な距離感とシステムを通じた情報共有を提案します。",
-              },
-            ].map((item) => (
-              <div
-                key={item.num}
-                className="bg-gray-50 rounded-2xl p-7 sm:p-9 border border-gray-100 flex flex-col"
-              >
-                <span className="text-4xl sm:text-5xl font-extrabold text-green-100 mb-5">
-                  {item.num}
-                </span>
-                <h3 className="font-extrabold text-gray-900 text-base sm:text-lg leading-snug mb-4 whitespace-pre-line">
+                <h3 className="font-extrabold text-gray-900 text-base sm:text-lg mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed flex-1">
+                <p className="text-sm text-gray-500 leading-relaxed">
                   {item.body}
                 </p>
               </div>
@@ -141,12 +96,229 @@ export default function SalesPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          具体的なメリット
+          解決策 — SmartHR風 ナンバリング+2カラム + サブフィーチャー
+      ────────────────────────────────────────── */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
+            Solution
+          </p>
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6">
+            ARCHの営業コンサルティングの<span className="text-green-800">3つの強み</span>
+          </h2>
+          <p className="text-center text-sm sm:text-base text-gray-400 mb-16 sm:mb-20 max-w-2xl mx-auto">
+            業界の裏側を知り尽くした専門チームが、再現性のある営業の仕組みをつくります。
+          </p>
+        </div>
+
+        {/* Feature 01 - ブローカー依存脱却 */}
+        <div className="bg-green-50/60 py-16 sm:py-24">
+          <div className="max-w-5xl mx-auto px-5 sm:px-8">
+            <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+              <div>
+                <span className="text-green-700 text-sm font-bold tracking-widest">01</span>
+                <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
+                  ブローカー依存からの脱却。
+                  <br />
+                  <span className="text-green-800">自立した<span className="border-b-2 border-green-300">集客基盤</span>の構築</span>
+                </h3>
+                <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
+                  売上の20〜40％を吸い取る紹介屋への依存を断ち切ります。お金で買った関係ではなく、自院の実力で選ばれる圧倒的な営業力をスタッフにインストールします。
+                </p>
+                <div className="space-y-3">
+                  {["紹介屋との契約構造を分析・見直し", "自院ブランドの営業ツール整備", "施設が求める提案型営業の設計"].map((t) => (
+                    <div key={t} className="flex items-start gap-2.5">
+                      <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
+                      <p className="text-sm text-gray-600 font-medium">{t}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="hidden lg:flex items-center justify-center">
+                <div className="w-full max-w-sm aspect-[4/3] bg-white rounded-2xl border border-gray-200 shadow-sm flex items-center justify-center p-10">
+                  <div className="text-center">
+                    <div className="text-4xl font-extrabold text-green-800 mb-2">20〜40%</div>
+                    <p className="text-sm text-gray-400 font-medium">ブローカーに搾取される売上割合</p>
+                    <p className="text-xs text-red-400 font-bold mt-2">ARCHで0%へ</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sub-feature cards for Feature 01 */}
+          <div className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16">
+            <div className="grid sm:grid-cols-3 gap-5">
+              {[
+                {
+                  icon: Shield,
+                  title: "契約構造分析",
+                  desc: "既存のブローカー契約を詳細に分析し、見直しのポイントを明確化します。",
+                },
+                {
+                  icon: Target,
+                  title: "自院ブランド構築",
+                  desc: "貴院独自の営業ツールやブランディングを整備し、施設に選ばれる仕組みを作ります。",
+                },
+                {
+                  icon: MessageSquare,
+                  title: "提案営業設計",
+                  desc: "施設が本当に求めている提案型営業のアプローチを設計・指導します。",
+                },
+              ].map((card, i) => (
+                <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200">
+                  <card.icon className="text-green-700 mb-4" size={28} />
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">{card.title}</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Feature 02 - 信用利益のコミュニケーション */}
+        <div className="bg-white py-16 sm:py-24">
+          <div className="max-w-5xl mx-auto px-5 sm:px-8">
+            <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+              <div className="hidden lg:flex items-center justify-center order-first">
+                <div className="w-full max-w-sm aspect-[4/3] bg-gray-50 rounded-2xl border border-gray-200 flex flex-col items-center justify-center p-10">
+                  <div className="space-y-3 w-full">
+                    {["患者様", "施設スタッフ", "ケアマネ", "ご家族"].map((person, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                          <span className="text-green-700 text-xs font-bold">{i + 1}</span>
+                        </div>
+                        <p className="text-sm text-gray-600 font-medium">{person}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400 mt-4 font-medium">全キーマンへの信頼構築</p>
+                </div>
+              </div>
+              <div>
+                <span className="text-green-700 text-sm font-bold tracking-widest">02</span>
+                <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
+                  「<span className="border-b-2 border-green-300">信用利益</span>」を積み上げる
+                  <br />
+                  <span className="text-green-800">独自のコミュニケーション術</span>
+                </h3>
+                <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
+                  患者様だけを診ていても依頼は増えません。手前にいる施設スタッフ、後ろにいるご家族といったキーマンの負担を減らし、信頼を勝ち取る方法を指導します。
+                </p>
+                <div className="space-y-3">
+                  {["キーマンマッピングによる関係構築戦略", "施設スタッフの負担を減らす立ち回り", "紹介の連鎖を生む信頼の積み上げ方"].map((t) => (
+                    <div key={t} className="flex items-start gap-2.5">
+                      <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
+                      <p className="text-sm text-gray-600 font-medium">{t}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sub-feature cards for Feature 02 */}
+          <div className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16">
+            <div className="grid sm:grid-cols-3 gap-5">
+              {[
+                {
+                  icon: UserCheck,
+                  title: "キーマンマッピング",
+                  desc: "患者背後のすべてのキーマンを特定し、信頼構築の優先順位を決定します。",
+                },
+                {
+                  icon: Users,
+                  title: "スタッフ負担軽減",
+                  desc: "施設側の業務負担を減らしながら、信頼を深める立ち回りの方法を指導します。",
+                },
+                {
+                  icon: TrendingUp,
+                  title: "紹介の連鎖構築",
+                  desc: "一度の信頼から紹介の連鎖が生まれる、再現性のある仕組みを作ります。",
+                },
+              ].map((card, i) => (
+                <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200">
+                  <card.icon className="text-green-700 mb-4" size={28} />
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">{card.title}</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Feature 03 - 時短アプローチ */}
+        <div className="bg-green-50/60 py-16 sm:py-24">
+          <div className="max-w-5xl mx-auto px-5 sm:px-8">
+            <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+              <div>
+                <span className="text-green-700 text-sm font-bold tracking-widest">03</span>
+                <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
+                  現場に迷惑をかけない
+                  <br />
+                  <span className="text-green-800">「<span className="border-b-2 border-green-300">時短</span>」のアプローチ</span>
+                </h3>
+                <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
+                  介護現場が求めているのは、長々とした申し送りではありません。施設側の業務フローを邪魔しない、最適な距離感とシステムを通じた情報共有を提案します。
+                </p>
+                <div className="space-y-3">
+                  {["施設業務フローに合わせた訪問設計", "アプリによるストレスフリーな情報共有", "短時間で最大効果を出す現場オペレーション"].map((t) => (
+                    <div key={t} className="flex items-start gap-2.5">
+                      <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
+                      <p className="text-sm text-gray-600 font-medium">{t}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="hidden lg:flex items-center justify-center">
+                <div className="w-full max-w-sm aspect-[4/3] bg-white rounded-2xl border border-gray-200 shadow-sm flex items-center justify-center p-10">
+                  <div className="text-center">
+                    <div className="text-5xl font-extrabold text-green-800 mb-2">5分</div>
+                    <p className="text-sm text-gray-400 font-medium">施設側の対応時間を最小化</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sub-feature cards for Feature 03 */}
+          <div className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16">
+            <div className="grid sm:grid-cols-3 gap-5">
+              {[
+                {
+                  icon: MapPin,
+                  title: "訪問フロー設計",
+                  desc: "施設の業務スケジュールに最適な訪問パターンを設計し、現場の邪魔にならない立ち回りを実現します。",
+                },
+                {
+                  icon: Smartphone,
+                  title: "アプリ導入",
+                  desc: "情報共有をアプリ化し、施設スタッフの手間を大幅に削減します。",
+                },
+                {
+                  icon: Clock,
+                  title: "効率オペレーション",
+                  desc: "限られた時間の中で最大の効果を出すための現場オペレーション術を指導します。",
+                },
+              ].map((card, i) => (
+                <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200">
+                  <card.icon className="text-green-700 mb-4" size={28} />
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">{card.title}</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────
+          Before / After
       ────────────────────────────────────────── */}
       <section className="bg-green-900 py-20 sm:py-28 text-white">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
           <p className="text-center text-sm font-bold tracking-widest uppercase text-green-300 mb-4">
-            Merit
+            Before &amp; After
           </p>
           <h2 className="text-center text-2xl sm:text-3xl font-extrabold mb-14 sm:mb-16">
             ARCH導入で変わること
