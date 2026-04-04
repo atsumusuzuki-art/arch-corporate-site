@@ -24,7 +24,7 @@ import Link from "next/link";
 export const metadata = {
   title: "訪問歯科 経営コンサルティング | 合同会社ARCH",
   description:
-    "属人化と忙しいのに儲からないを終わらせる。6ヶ月で黒字化を実現するARCHの訪問歯科コンサルティング。",
+    "売上より人の問題に向き合うコンサル。スタッフ離職、院長の孤独、後継者不在。訪問歯科の本当の課題をARCHが解決します。",
 };
 
 export default function ConsultingPage() {
@@ -39,15 +39,15 @@ export default function ConsultingPage() {
             経営コンサルティング
           </span>
           <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-gray-900 mb-6 sm:mb-8">
-            属人化と「忙しいのに儲からない」を
+            集患の前に、
             <br className="hidden sm:block" />
-            終わらせる。
+            人が残る組織をつくりませんか。
             <br />
-            <span className="text-green-800">次世代の訪問歯科経営。</span>
+            <span className="text-green-800">ARCHは院長の心に寄り添うコンサル。</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
-            属人化の排除、どんぶり勘定からの脱却、そして離職に怯えない組織作り。
-            元小学校教諭の知見と独自システムで、確実な利益とスタッフの笑顔を両立します。
+            売上は上がったのに人が辞めていく。経営の悩みを誰にも言えない。この医院の10年後が不安。
+            そんな院長の本当の課題に向き合い、スタッフが「ここで働き続けたい」と思える組織づくりを支援します。
           </p>
           <Link
             href="/#contact"
@@ -74,16 +74,16 @@ export default function ConsultingPage() {
           <div className="grid sm:grid-cols-3 gap-5 sm:gap-6">
             {[
               {
-                title: "極度な属人化",
-                body: "ベテランが辞めると現場も書類も回らなくなる。ノウハウが個人に集中し、組織として機能しない。",
+                title: "「売上は上がった。でもDHが辞めた。」",
+                body: "コンサルに言われた通り集患は成功した。でもスタッフが次々と辞めていく。売上を支える人がいない。",
               },
               {
-                title: "忙しいのに利益が残らない",
-                body: "毎日訪問しているのに、月末に通帳を見ると赤字。経費と算定の実態が見えていない。",
+                title: "「経営の悩みを、誰にも言えない。」",
+                body: "スタッフには弱みを見せられない。同業者にも言えない。配偶者にも理解されない。院長はいつも孤独だ。",
               },
               {
-                title: "止まらない離職",
-                body: "スタッフの離職が絶えず、常に採用活動に追われている。育てても育てても抜けていく。",
+                title: "「この医院、10年後どうなるんだろう。」",
+                body: "後継者がいない。自分が倒れたら終わり。始め方は教わったが、終わり方は誰も教えてくれない。",
               },
             ].map((item, i) => (
               <div
@@ -117,7 +117,7 @@ export default function ConsultingPage() {
             </span>
           </h2>
           <p className="text-center text-sm sm:text-base text-gray-400 mb-16 sm:mb-20 max-w-2xl mx-auto">
-            現場経験に裏打ちされた独自メソッドで、根本から経営体質を変えます。
+            数字よりも人を見つめるコンサル。売上の前に、スタッフの笑顔と院長の心を整えます。
           </p>
         </div>
 
@@ -128,20 +128,21 @@ export default function ConsultingPage() {
               <div>
                 <span className="text-green-700 text-sm font-bold tracking-widest">01</span>
                 <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
-                  アプリとBPOによる
+                  「辞めない組織」をつくる
                   <br />
                   <span className="text-green-800 underline decoration-green-300 decoration-4 underline-offset-2">
-                    「書類地獄」の完全撤廃
+                    訪問歯科コンサル
                   </span>
                 </h3>
                 <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
-                  人の注意力に頼る管理をシステム化。誰が休んでも辞めても、絶対に業務が停滞しない裏側の仕組みを構築します。
+                  売上最適化ではなく、スタッフが「ここで働き続けたい」と思える組織をつくることを最優先。
+                  ARCHは泥臭く現場に入り込み、離職の根本原因に向き合います。成功の先にある人の問題こそが、本当の経営課題です。
                 </p>
                 <div className="space-y-3">
                   {[
-                    "ARCH独自アプリで書類作成を自動化",
-                    "BPOで事務作業を外部委託",
-                    "属人化リスクを構造的に排除",
+                    "離職の根本原因に切り込む",
+                    "現場に入る泥臭い伴走",
+                    "離職率をKPIに設定する独自メソッド",
                   ].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
                       <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
@@ -154,10 +155,10 @@ export default function ConsultingPage() {
                 <div className="w-full max-w-sm aspect-[4/3] bg-white rounded-2xl border border-gray-200 shadow-sm flex items-center justify-center p-10">
                   <div className="text-center">
                     <div className="text-5xl font-extrabold text-green-800 mb-2">
-                      -80%
+                      -65%
                     </div>
                     <p className="text-sm text-gray-400 font-medium">
-                      書類作業時間の削減
+                      平均離職率改善
                     </p>
                   </div>
                 </div>
@@ -170,19 +171,19 @@ export default function ConsultingPage() {
             <div className="grid sm:grid-cols-3 gap-5">
               {[
                 {
-                  icon: FileText,
-                  title: "自動書類作成",
-                  desc: "ARCH独自アプリがテンプレートから自動生成。ヒューマンエラーをゼロに近づけます。",
+                  icon: Users,
+                  title: "離職の根本原因に切り込む",
+                  desc: "「給料が安い」という表面的な理由の奥にある、人間関係、やりがい、成長の課題を徹底的にヒアリング。",
                 },
                 {
-                  icon: BarChart3,
-                  title: "BPO統合管理",
-                  desc: "事務作業を専門家に委託。現場はケアに専念でき、生産性が向上します。",
+                  icon: Briefcase,
+                  title: "現場に入る泥臭い伴走",
+                  desc: "月1回のZoomではなく、実際に医院に足を運び、スタッフの声を聞き、一緒に改善策を実行します。",
                 },
                 {
-                  icon: Shield,
-                  title: "属人化排除",
-                  desc: "システム化により、誰が担当してもクオリティを保証します。",
+                  icon: TrendingUp,
+                  title: "離職率をKPIに設定",
+                  desc: "売上ではなく『スタッフが辞めない』『満足度が上がる』を目標に。組織の体温が下がらない経営を実現。",
                 },
               ].map((card, i) => (
                 <div
@@ -208,10 +209,10 @@ export default function ConsultingPage() {
                 <div className="w-full max-w-sm aspect-[4/3] bg-gray-50 rounded-2xl border border-gray-200 flex items-center justify-center p-10">
                   <div className="text-center">
                     <div className="text-5xl font-extrabold text-green-800 mb-2">
-                      6ヶ月
+                      98%
                     </div>
                     <p className="text-sm text-gray-400 font-medium">
-                      平均黒字化達成期間
+                      院長満足度
                     </p>
                   </div>
                 </div>
@@ -221,20 +222,22 @@ export default function ConsultingPage() {
                   02
                 </span>
                 <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
-                  KPIと精緻な経費計算による
+                  院長の「精神的参謀」
                   <br />
                   <span className="text-green-800 underline decoration-green-300 decoration-4 underline-offset-2">
-                    「黒字化の仕組み」
+                    になるコンサル
                   </span>
                 </h3>
                 <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
-                  単価に上限がある保険診療だからこそ、稼働数とケア1回あたりの経費を徹底管理。どんぶり勘定を終わらせます。
+                  「数字の前に、あなた自身の話を聞かせてください。」
+                  経営判断の前に、院長の心と感情を整える。スタッフには見せられない弱音を吐ける場所。
+                  月次面談では数字ではなく、あなたの状態をチェックします。
                 </p>
                 <div className="space-y-3">
                   {[
-                    "算定の取りこぼしを徹底的に洗い出し",
-                    "ケア1回あたりの経費を可視化",
-                    "月次KPIレポートで進捗を数値管理",
+                    "感情と事実を分離する整理",
+                    "院長の状態チェック（月次）",
+                    "冷静な経営判断の土台づくり",
                   ].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
                       <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
@@ -251,19 +254,19 @@ export default function ConsultingPage() {
             <div className="grid sm:grid-cols-3 gap-5">
               {[
                 {
-                  icon: Calculator,
-                  title: "算定最適化",
-                  desc: "取りこぼしている算定項目を洗い出し。月数万円〜数十万円の改善が可能です。",
+                  icon: Heart,
+                  title: "心理的安全の確保",
+                  desc: "院長の本音、不安、迷い。スタッフや家族には言えないことを、安全に話す環境をつくります。",
                 },
                 {
-                  icon: TrendingUp,
-                  title: "KPI管理",
-                  desc: "月次レポートで経営数字を可視化。改善すべきポイントが一目瞭然です。",
+                  icon: Clock,
+                  title: "月次メンタルチェック",
+                  desc: "数字よりも先に院長の心身の状態を確認。疲弊していれば休息を、迷っていれば思考の整理を支援。",
                 },
                 {
-                  icon: BarChart3,
-                  title: "経費分析",
-                  desc: "ケア1回あたりの原価を徹底管理。利益構造が明確になります。",
+                  icon: Target,
+                  title: "感情と事実の分離",
+                  desc: "「怖い」「不安」という感情と「現実」を分け、冷静な経営判断ができる状態に導きます。",
                 },
               ].map((card, i) => (
                 <div
@@ -290,20 +293,22 @@ export default function ConsultingPage() {
                   03
                 </span>
                 <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
-                  元教員が教える
+                  「出口戦略」まで見据えた
                   <br />
                   <span className="text-green-800 underline decoration-green-300 decoration-4 underline-offset-2">
-                    「自己肯定感」を高める組織づくり
+                    訪問歯科コンサル
                   </span>
                 </h3>
                 <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
-                  マニュアルだけでは人は育ちません。「係活動」のような役割を与え、スタッフが自ら進んで動きたくなるエンゲージメントの高い組織を作ります。
+                  「始める支援だけじゃない。あなたの医院の10年後まで、一緒に考えます。」
+                  訪問歯科診療所の90%超が後継者不在。そこでARCHは、事業承継、スケールダウン、廃止など、
+                  院長のライフプランと統合した「出口戦略」を設計します。
                 </p>
                 <div className="space-y-3">
                   {[
-                    "役割付与で主体性を引き出す独自メソッド",
-                    "マインド教育×実務研修の二軸育成",
-                    "離職率を構造的に低減する仕組み",
+                    "事業承継・後継者育成の設計",
+                    "地域歯科ネットワーク構築",
+                    "院長の人生設計との統合",
                   ].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
                       <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
@@ -316,10 +321,10 @@ export default function ConsultingPage() {
                 <div className="w-full max-w-sm aspect-[4/3] bg-white rounded-2xl border border-gray-200 shadow-sm flex items-center justify-center p-10">
                   <div className="text-center">
                     <div className="text-5xl font-extrabold text-green-800 mb-2">
-                      150%
+                      95%
                     </div>
                     <p className="text-sm text-gray-400 font-medium">
-                      スタッフ定着率の改善
+                      継続契約率
                     </p>
                   </div>
                 </div>
@@ -332,19 +337,19 @@ export default function ConsultingPage() {
             <div className="grid sm:grid-cols-3 gap-5">
               {[
                 {
-                  icon: Users,
-                  title: "役割付与メソッド",
-                  desc: "スタッフに役割を与え、主体性と自己肯定感を育成します。",
+                  icon: Briefcase,
+                  title: "事業承継の設計",
+                  desc: "子息への継承、スタッフへの譲渡、スケールダウン、廃止。複数のシナリオから最適な出口を設計します。",
                 },
                 {
-                  icon: BookOpen,
-                  title: "二軸育成プログラム",
-                  desc: "マインド教育と実務研修で、自律的に動くスタッフを育てます。",
+                  icon: Users,
+                  title: "地域歯科ネットワーク構築",
+                  desc: "診療圏内の歯科医院との関係構築。パートナー歯科医が見つかれば、柔軟な事業承継が可能になります。",
                 },
                 {
                   icon: Heart,
-                  title: "離職防止設計",
-                  desc: "エンゲージメント向上で離職率を大幅低減。安定した体制が実現します。",
+                  title: "人生設計との統合",
+                  desc: "医院経営だけでなく、院長のセカンドライフ、家族との時間、夢と向き合う。包括的なプランを立案します。",
                 },
               ].map((card, i) => (
                 <div
@@ -377,9 +382,9 @@ export default function ConsultingPage() {
 
           <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 mb-16">
             {[
-              { num: "6ヶ月", label: "平均黒字化期間" },
-              { num: "150%", label: "売上改善率（平均）" },
-              { num: "30+", label: "コンサルティング実績" },
+              { num: "65%", label: "平均離職率改善" },
+              { num: "98%", label: "院長満足度" },
+              { num: "95%", label: "継続契約率" },
             ].map((item, i) => (
               <div
                 key={i}
@@ -395,11 +400,12 @@ export default function ConsultingPage() {
 
           <div className="bg-white/10 backdrop-blur rounded-2xl p-8 sm:p-10 border border-white/10 max-w-3xl mx-auto text-left">
             <p className="text-green-100 text-sm sm:text-base leading-loose">
-              「忙しいのに利益が残らない」状態が半年以上続いていました。ARCHさんに入ってもらい、まず算定の取りこぼしを洗い出してもらったところ、
-              同じ患者数のまま
-              <span className="text-white font-bold">月40万円以上</span>
-              の改善が見られました。
-              スタッフ教育も体系的で、以前のような属人化の不安はほぼなくなりました。
+              「数字だけじゃなく、自分自身のことまで気にかけてくれるコンサルは初めてだった」
+              <span className="text-white font-bold block mt-2">
+                スタッフも定着して、ようやく医院経営に余裕が出てきました。
+              </span>
+              それだけじゃなく、ARCHさんと一緒に「10年後どうしたいのか」という人生レベルの話もできて、
+              経営の不安が減りました。
             </p>
             <p className="text-green-300 text-sm font-bold mt-4">
               — 関東圏 訪問歯科クリニック院長
@@ -495,6 +501,7 @@ export default function ConsultingPage() {
                   "ライトプランの全内容を含む",
                   "月4回 Web/対面ミーティング",
                   "経営相談",
+                  "院長メンタルチェック（月次）",
                   "BPO（内容要相談）",
                   "実地支援（月1回無償 / 2回目以降別途2万円）",
                 ].map((item) => (
@@ -543,6 +550,7 @@ export default function ConsultingPage() {
               <div className="border-t border-gray-100 pt-6 space-y-3.5 flex-1">
                 {[
                   "スタンダードプランの全内容を含む",
+                  "院長メンタルチェック（月次）",
                   "医院オリジナルWebアプリ開発",
                   "営業同行・代行",
                   "経営層との会合セッティング",
@@ -652,8 +660,8 @@ export default function ConsultingPage() {
                     },
                     {
                       num: "03",
-                      title: "算定可能な点数の提案",
-                      desc: "取りこぼしている算定項目を洗い出し。算定の最適化だけで月数万円〜数十万円の収益改善につながるケースも。",
+                      title: "組織改善のアドバイス",
+                      desc: "スタッフ間のコミュニケーション、院長の意思決定、組織文化の改善提案。人の課題に焦点を当てます。",
                     },
                   ].map((step) => (
                     <div key={step.num} className="flex gap-4">

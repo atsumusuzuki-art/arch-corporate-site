@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
   title: "介護事業者様向け 訪問歯科マッチング | 合同会社ARCH",
   description:
-    "介護現場の負担を最小に。ARCHが質を担保した、本当に頼れる訪問歯科をマッチングします。",
+    "スタッフが笑顔で働く歯科医院だから、入居者様にも笑顔が届く。ARCHが「人」で選んだ訪問歯科をマッチングします。",
 };
 
 export default function SeniorHomePage() {
@@ -19,13 +19,12 @@ export default function SeniorHomePage() {
             介護事業者様向け
           </span>
           <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-gray-900 mb-6 sm:mb-8">
-            介護現場の負担を最小に。
+            スタッフが笑顔で働く歯科医院だから、
             <br />
-            <span className="text-green-800">「丸投げ」ではない、<br className="sm:hidden" />本当に頼れる訪問歯科を<br className="sm:hidden" />マッチング。</span>
+            <span className="text-green-800">入居者様にも<br className="sm:hidden" />笑顔が届く。</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
-            質の低い歯科によるトラブルや、現場への一方的な業務の押し付けを防ぎます。
-            ARCHが質を担保した、本当に患者様と現場を第一に考える歯科医院だけをお繋ぎします。
+            ARCHは単なる訪問歯科マッチングではありません。スタッフ定着率が高く、チーム文化が健全な歯科医院だけをお繋ぎします。人間関係が安定した歯科チームだからこそ、入居者様への一貫性のある、心からのケアが実現できるのです。
           </p>
           <Link
             href="/#contact"
@@ -52,16 +51,16 @@ export default function SeniorHomePage() {
           <div className="space-y-5 sm:space-y-6">
             {[
               {
-                title: "口腔ケアの丸投げ",
-                body: "歯科が来てくれるのはいいが、日々の口腔ケアを現場に丸投げされて負担が重い。指導は理想論ばかり。",
+                title: "来る歯科医師が毎回違う。",
+                body: "担当がコロコロ変わり、入居者様が不安を感じている。スタッフの入れ替わりが激しい歯科医院と組んでしまった。",
               },
               {
-                title: "質の低い歯科によるトラブル",
-                body: "紹介された歯科の態度が悪く、入居者様やご家族からクレームが来る。施設の信頼が損なわれている。",
+                title: "歯科のスタッフが疲弊しているのが伝わる。",
+                body: "来てくれる歯科衛生士が明らかに疲れている。やっつけ仕事になっていて、ケアの質が下がっている。",
               },
               {
-                title: "アナログな情報共有",
-                body: "申し送りや情報共有が紙ベース。忙しい廊下での立ち話が引き継ぎの場になり、トラブルが絶えない。",
+                title: "形だけの訪問歯科になっている。",
+                body: "月に数回来るだけで、入居者様との信頼関係が築けていない。施設側としてもどう連携すればいいかわからない。",
               },
             ].map((item, i) => (
               <div
@@ -103,15 +102,15 @@ export default function SeniorHomePage() {
               <div>
                 <span className="text-green-700 text-sm font-bold tracking-widest">01</span>
                 <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
-                  <span className="border-b-2 border-green-300">現場の時短</span>にコミットする
+                  <span className="border-b-2 border-green-300">「人が辞めない歯科医院」</span>
                   <br />
-                  <span className="text-green-800">歯科医院だけを厳選</span>
+                  <span className="text-green-800">だけをご紹介</span>
                 </h3>
                 <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
-                  理想論を押し付けず、限られた時間の中で最大の効果を出す「効率的なケアのポイント」を的確に指導できる歯科医院だけをご紹介します。
+                  ARCHはスタッフ定着率と組織文化を審査基準にしています。人間関係が安定した歯科医院のスタッフは、心に余裕を持って患者様と向き合うことができます。一貫性のある、温かみのあるケアが、毎回同じ担当者から提供されるのです。
                 </p>
                 <div className="space-y-3">
-                  {["介護現場の業務フローを理解した歯科のみ", "口腔ケア指導は実践的・短時間で完結", "現場スタッフの負担を最小化する運用設計"].map((t) => (
+                  {["スタッフ定着率を審査基準に", "チーム文化の健全性を確認", "担当者の継続性を担保"].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
                       <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
                       <p className="text-sm text-gray-600 font-medium">{t}</p>
@@ -124,7 +123,7 @@ export default function SeniorHomePage() {
                   <div className="text-center">
                     <p className="text-sm text-gray-400 font-medium mb-3">ARCH認定基準</p>
                     <div className="space-y-2.5 text-left">
-                      {["現場業務フローの理解", "時短ケア指導の実績", "施設満足度の継続調査"].map((c, i) => (
+                      {["スタッフ定着率の実績", "組織の離職率が低い", "チーム内の信頼関係が構築されている"].map((c, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <CheckCircle2 className="text-green-600 flex-shrink-0" size={16} />
                           <p className="text-sm text-gray-600 font-medium">{c}</p>
@@ -142,18 +141,18 @@ export default function SeniorHomePage() {
             <div className="grid sm:grid-cols-3 gap-5">
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <Building className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">介護現場の理解</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">入居者様の状態や施設の業務フローを深く理解した歯科医院のみを厳選</p>
+                <h4 className="font-bold text-gray-900 mb-2">スタッフ定着率を審査</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">離職率が低く、スタッフが長く働き続けたいと思える歯科医院のみを厳選</p>
               </div>
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
-                <Clock className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">実践的な指導</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">短時間で効果的なケアのポイントを実装できる、現場に寄り添った口腔ケア指導</p>
+                <Heart className="text-green-700 mb-4" size={28} />
+                <h4 className="font-bold text-gray-900 mb-2">チーム文化の確認</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">スタッフ同士の関係が良好で、職場環境が健全な組織文化を持つ歯科医院</p>
               </div>
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <UserCheck className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">負担最小化</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">スタッフの心身的負担を最小化しながら、医療品質を維持する運用設計</p>
+                <h4 className="font-bold text-gray-900 mb-2">担当者の継続性を担保</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">毎回同じ衛生士や担当者が来訪。入居者様との信頼関係が深まります</p>
               </div>
             </div>
           </div>
@@ -167,7 +166,7 @@ export default function SeniorHomePage() {
                 <div className="w-full max-w-sm aspect-[4/3] bg-gray-50 rounded-2xl border border-gray-200 flex items-center justify-center p-10">
                   <div className="text-center">
                     <div className="grid grid-cols-3 gap-3 mb-4">
-                      {["報告書", "スケジュール", "申し送り", "写真記録", "同意書", "連絡事項"].map((label, i) => (
+                      {["ケア記録", "信頼構築", "会話ログ", "ご家族情報", "連携事項", "個別対応"].map((label, i) => (
                         <div key={i} className="bg-white rounded-lg px-2 py-2 border border-gray-200 text-xs text-gray-500 font-medium">{label}</div>
                       ))}
                     </div>
@@ -178,15 +177,15 @@ export default function SeniorHomePage() {
               <div>
                 <span className="text-green-700 text-sm font-bold tracking-widest">02</span>
                 <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
-                  独自アプリによる、
+                  入居者様の<span className="border-b-2 border-green-300">「人生」に寄り添う</span>
                   <br />
-                  <span className="text-green-800"><span className="border-b-2 border-green-300">ストレスフリー</span>な情報共有</span>
+                  <span className="text-green-800">ケア</span>
                 </h3>
                 <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
-                  忙しい廊下での引き留めや、紙の書類探しはもう不要です。ARCHの専用アプリを通じて、施設の好きなタイミングで必要な情報をすぐに確認できます。
+                  ARCHがマッチングする歯科医院は、口腔ケアの「やり方」ではなく、入居者様という「人間」と向き合います。毎回同じ担当者が来ることで、入居者様の人生観やご家族との関係を深く理解し、その方に最適なケアを提供できるのです。
                 </p>
                 <div className="space-y-3">
-                  {["報告書・申し送りをアプリで即時共有", "施設の好きなタイミングで確認可能", "紙・口頭伝達のトラブルを根絶"].map((t) => (
+                  {["一人ひとりに向き合うケア", "ご家族との信頼関係構築", "アプリで負担のない情報共有"].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
                       <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
                       <p className="text-sm text-gray-600 font-medium">{t}</p>
@@ -201,19 +200,19 @@ export default function SeniorHomePage() {
           <div className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16">
             <div className="grid sm:grid-cols-3 gap-5">
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
-                <FileText className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">即時報告共有</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">訪問後の報告書や申し送りをアプリでリアルタイム共有。紙の手間を削減</p>
+                <Heart className="text-green-700 mb-4" size={28} />
+                <h4 className="font-bold text-gray-900 mb-2">一人ひとりに向き合う</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">入居者様の人生経験や個性を尊重し、その方の価値観に沿ったケアを実現</p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-200">
+                <UserCheck className="text-green-700 mb-4" size={28} />
+                <h4 className="font-bold text-gray-900 mb-2">ご家族との信頼構築</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">継続した関係で家族の不安を払拭。口腔ケアについて真摯に相談できる関係へ</p>
               </div>
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <Smartphone className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">いつでもアクセス</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">施設の都合に合わせて、好きな時間に必要な情報を確認できる柔軟性</p>
-              </div>
-              <div className="bg-white rounded-2xl p-6 border border-gray-200">
-                <Shield className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">トラブル防止</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">記録が正確に共有されるため、口頭伝達のミスや情報漏れを完全に排除</p>
+                <h4 className="font-bold text-gray-900 mb-2">負担のない情報共有</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">ケア内容やご家族との会話をアプリで記録。施設の引き継ぎ負担を最小化</p>
               </div>
             </div>
           </div>
@@ -226,15 +225,15 @@ export default function SeniorHomePage() {
               <div>
                 <span className="text-green-700 text-sm font-bold tracking-widest">03</span>
                 <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-gray-900 leading-snug mt-3 mb-5">
-                  患者様の尊厳と
+                  施設の<span className="border-b-2 border-green-300">「現場の声」を</span>
                   <br />
-                  <span className="text-green-800"><span className="border-b-2 border-green-300">利益を絶対に守る</span></span>
+                  <span className="text-green-800">一番に聞く</span>
                 </h3>
                 <p className="text-sm sm:text-base text-gray-500 leading-loose mb-6">
-                  お金儲け主義の歯科やブローカーを排除します。正しく訪問歯科を行い、患者様に真摯に向き合う「ARCH認定の質の高い医院」と連携することで、施設としての価値も向上します。
+                  ARCHは経営層だけでなく、毎日の現場で働く介護スタッフの声を最優先に聞きます。定期的にヒアリングを行い、問題が生じたときはARCHが間に入って迅速に解決します。施設の皆様が孤立することなく、パートナーシップを感じながら運用できる環境を実現します。
                 </p>
                 <div className="space-y-3">
-                  {["営利目的の過剰治療を行う歯科を排除", "患者様第一の治療方針を担保", "施設としての医療提供品質を向上"].map((t) => (
+                  {["定期的な現場ヒアリング", "迅速な問題解決の仲介", "施設スタッフの声を反映"].map((t) => (
                     <div key={t} className="flex items-start gap-2.5">
                       <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
                       <p className="text-sm text-gray-600 font-medium">{t}</p>
@@ -257,19 +256,19 @@ export default function SeniorHomePage() {
           <div className="max-w-5xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16">
             <div className="grid sm:grid-cols-3 gap-5">
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
-                <AlertTriangle className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">営利目的を排除</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">不必要な治療や過剰な処置を行う歯科医院を徹底的に排除</p>
+                <Clock className="text-green-700 mb-4" size={28} />
+                <h4 className="font-bold text-gray-900 mb-2">定期的な現場ヒアリング</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">3ヶ月ごと、現場スタッフから直接お話しを伺う。細かな課題もキャッチします</p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-200">
+                <Shield className="text-green-700 mb-4" size={28} />
+                <h4 className="font-bold text-gray-900 mb-2">迅速な問題解決</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">歯科と施設の間に問題が生じたとき、ARCHが仲介役となって迅速に解決</p>
               </div>
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <Heart className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">患者様第一主義</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">入居者様の健康と尊厳を第一に考える治療方針を確実に担保</p>
-              </div>
-              <div className="bg-white rounded-2xl p-6 border border-gray-200">
-                <Stethoscope className="text-green-700 mb-4" size={28} />
-                <h4 className="font-bold text-gray-900 mb-2">医療品質向上</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">ARCH認定の質の高い医院との連携により、施設全体の医療水準を向上</p>
+                <h4 className="font-bold text-gray-900 mb-2">スタッフの声を反映</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">現場からのフィードバックを歯科医院に伝え、より良い連携体制へ改善</p>
               </div>
             </div>
           </div>
@@ -290,10 +289,10 @@ export default function SeniorHomePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { step: "01", title: "お問い合わせ", desc: "お電話またはフォームからお気軽にご相談ください。" },
-              { step: "02", title: "詳細ヒアリング", desc: "入居者様の状態・現在の歯科連携の課題をお聞きします。" },
-              { step: "03", title: "歯科医院のご紹介", desc: "ARCH品質基準を満たした歯科医院を厳選してご紹介。" },
-              { step: "04", title: "連携スタート", desc: "連携開始後も定期フォロー。アプリ導入もサポート。" },
+              { step: "01", title: "お問い合わせ", desc: "まずはお気軽にご相談ください。" },
+              { step: "02", title: "施設の想いをヒアリング", desc: "入居者様のこと、現場の悩み、理想の連携像をお聞きします。" },
+              { step: "03", title: "「人」で選んだ歯科医院を紹介", desc: "スタッフが安定し、人間力の高い歯科医院を厳選してご紹介。" },
+              { step: "04", title: "連携スタート&継続フォロー", desc: "開始後も定期的に現場の声を確認。何かあればARCHが仲介。" },
             ].map((item) => (
               <div
                 key={item.step}
