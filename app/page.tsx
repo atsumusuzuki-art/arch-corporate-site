@@ -229,7 +229,7 @@ export default function Home() {
                 <br />紹介事業
               </h3>
               <p className="text-sm text-green-200/70 leading-relaxed mb-6">
-                病院・施設・入居者様の三方良しを実現。施設現場経験のある看護師が医療的観点からも最適な施設選びをサポート。
+                退院後の住まい探しをサポート。現在のご病気やADLから最適な老人ホームをご提案。現役看護師がパートナーだから医療面も安心。
               </p>
               <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
                 詳しく見る <ArrowRight size={14} />
@@ -391,6 +391,7 @@ export default function Home() {
                   <li><a href="/services/consulting" className="hover:text-white transition-colors">訪問歯科コンサルティング</a></li>
                   <li><a href="/services/sales" className="hover:text-white transition-colors">営業コンサルティング</a></li>
                   <li><a href="/services/senior-home" className="hover:text-white transition-colors">老人ホーム紹介事業</a></li>
+                  <li><a href="/services/dental-matching" className="hover:text-white transition-colors">介護施設向け訪問歯科マッチング</a></li>
                 </ul>
               </div>
               <div>

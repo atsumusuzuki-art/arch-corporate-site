@@ -65,7 +65,7 @@ export default function ServicesLayout({
           <h2 className="text-lg font-extrabold text-gray-900 mb-8">
             その他のサービス
           </h2>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             <Link
               href="/services/consulting"
               className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
@@ -96,7 +96,18 @@ export default function ServicesLayout({
                 Service 03
               </span>
               <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
-                介護事業者様向け
+                老人ホーム紹介
+              </h3>
+            </Link>
+            <Link
+              href="/services/dental-matching"
+              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
+            >
+              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
+                Service 04
+              </span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
+                介護施設向け訪問歯科マッチング
               </h3>
             </Link>
           </div>
