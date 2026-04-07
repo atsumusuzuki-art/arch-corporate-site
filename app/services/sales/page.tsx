@@ -24,24 +24,28 @@ export default function SalesPage() {
       {/* ──────────────────────────────────────────
           HERO
       ────────────────────────────────────────── */}
-      <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-700 bg-green-50 px-4 py-1.5 rounded-full mb-8">
+      <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-24 pb-20 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-green-400 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/4"></div>
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-300 rounded-full blur-[100px] translate-y-1/2 translate-x-1/4"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-8">
             営業コンサルティング
           </span>
-          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-gray-900 mb-6 sm:mb-8">
+          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-6 sm:mb-8">
             営業しなくても、
             <br className="hidden sm:block" />
             選ばれる医院へ。
             <br />
-            <span className="text-green-800">信頼と人間関係が<br className="sm:hidden" />生み出す自然な紹介の連鎖。</span>
+            <span className="text-green-300">信頼と人間関係が<br className="sm:hidden" />生み出す自然な紹介の連鎖。</span>
           </h1>
-          <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
+          <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             営業テクニックや営業ツールはいりません。スタッフが定着し、ケアが本当に良くなれば、施設から自然と選ばれます。信頼を基盤とした組織づくりで、紹介の連鎖が生まれる医院を実現しましょう。
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-800/20"
+            className="inline-flex items-center gap-2.5 bg-white hover:bg-green-50 text-green-900 px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg"
           >
             無料オンライン相談を予約する
             <ArrowRight size={18} />

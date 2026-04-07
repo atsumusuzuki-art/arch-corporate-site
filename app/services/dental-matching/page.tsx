@@ -13,22 +13,26 @@ export default function DentalMatchingPage() {
       {/* ──────────────────────────────────────────
           HERO
       ────────────────────────────────────────── */}
-      <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-700 bg-green-50 px-4 py-1.5 rounded-full mb-8">
+      <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-24 pb-20 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/2 w-[500px] h-[500px] bg-green-400 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-300 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-8">
             介護事業者様向け
           </span>
-          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-gray-900 mb-6 sm:mb-8">
+          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-6 sm:mb-8">
             スタッフが笑顔で働く歯科医院だから、
             <br />
-            <span className="text-green-800">入居者様にも<br className="sm:hidden" />笑顔が届く。</span>
+            <span className="text-green-300">入居者様にも<br className="sm:hidden" />笑顔が届く。</span>
           </h1>
-          <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
+          <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             ARCHは単なる訪問歯科マッチングではありません。スタッフ定着率が高く、チーム文化が健全な歯科医院だけをお繋ぎします。人間関係が安定した歯科チームだからこそ、入居者様への一貫性のある、心からのケアが実現できるのです。
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-800/20"
+            className="inline-flex items-center gap-2.5 bg-white hover:bg-green-50 text-green-900 px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg"
           >
             無料オンライン相談を予約する
             <ArrowRight size={18} />

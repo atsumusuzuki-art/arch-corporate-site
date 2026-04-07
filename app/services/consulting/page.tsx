@@ -33,25 +33,30 @@ export default function ConsultingPage() {
       {/* ──────────────────────────────────────────
           HERO
       ────────────────────────────────────────── */}
-      <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-700 bg-green-50 px-4 py-1.5 rounded-full mb-8">
+      <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-24 pb-20 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-400 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-300 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-8">
             経営コンサルティング
           </span>
-          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-gray-900 mb-6 sm:mb-8">
+          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-6 sm:mb-8">
             集患の前に、
             <br className="hidden sm:block" />
             人が残る組織をつくりませんか。
             <br />
-            <span className="text-green-800">ARCHは院長の心に寄り添うコンサル。</span>
+            <span className="text-green-300">ARCHは院長の心に寄り添うコンサル。</span>
           </h1>
-          <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
+          <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             売上は上がったのに人が辞めていく。経営の悩みを誰にも言えない。この医院の10年後が不安。
             そんな院長の本当の課題に向き合い、スタッフが「ここで働き続けたい」と思える組織づくりを支援します。
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-800/20"
+            className="inline-flex items-center gap-2.5 bg-white hover:bg-green-50 text-green-900 px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg"
           >
             無料オンライン相談を予約する
             <ArrowRight size={18} />

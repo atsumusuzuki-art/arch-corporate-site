@@ -13,22 +13,26 @@ export default function SeniorHomePage() {
       {/* ──────────────────────────────────────────
           HERO
       ────────────────────────────────────────── */}
-      <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-700 bg-green-50 px-4 py-1.5 rounded-full mb-8">
+      <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-24 pb-20 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-400 rounded-full blur-[120px] -translate-y-1/3 translate-x-1/4"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-300 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-8">
             老人ホーム紹介事業
           </span>
-          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-gray-900 mb-6 sm:mb-8">
+          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-6 sm:mb-8">
             退院後の暮らし、
             <br />
-            <span className="text-green-800">最適な「住まい」を<br className="sm:hidden" />一緒に探します。</span>
+            <span className="text-green-300">最適な「住まい」を<br className="sm:hidden" />一緒に探します。</span>
           </h1>
-          <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
+          <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             病院からの退院が決まった方、ご高齢のご家族の住まいをお探しの方へ。現在のご病気やお身体の状態（ADL）から、最適な老人ホームをご提案します。パートナーに現役の看護師がいるから、医療的な視点でも安心してお任せいただけます。
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-800/20"
+            className="inline-flex items-center gap-2.5 bg-white hover:bg-green-50 text-green-900 px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg"
           >
             まずは無料相談する
             <ArrowRight size={18} />

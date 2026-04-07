@@ -123,7 +123,7 @@ export default function Home() {
       {/* ============================================================
           02 — PICK UP
           ============================================================ */}
-      <section className="py-20 sm:py-28 bg-white">
+      <section className="py-20 sm:py-28 bg-gray-50/70">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-12 sm:mb-16">
             <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">02</p>
@@ -136,35 +136,37 @@ export default function Home() {
               {
                 href: "/columns/broker-trap",
                 cat: "業界の闇",
+                num: "01",
                 title: "「施設を紹介しますよ」の甘い罠。悪質ブローカーの正体",
                 desc: "売上の20〜40％を吸い取るブローカーの実態と、自立した経営の作り方。",
-                img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=500&fit=crop&q=80",
               },
               {
                 href: "/columns/document-hell",
                 cat: "業務改善",
+                num: "02",
                 title: "訪問歯科が陥る「書類地獄」。クレームを防ぐ唯一の解決策",
                 desc: "書類管理のブラックボックス化を防ぐ仕組みづくり。",
-                img: "https://images.unsplash.com/photo-1568667256549-094345857637?w=800&h=500&fit=crop&q=80",
               },
               {
                 href: "/columns/profit-trap",
                 cat: "経営改善",
+                num: "03",
                 title: "一生懸命訪問しているのに「黒字化」しない医院の罠",
                 desc: "KPIの不在と経費計算の甘さが「忙しいのに儲からない」の正体。",
-                img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=500&fit=crop&q=80",
               },
             ].map((a) => (
-              <Link key={a.href} href={a.href} className="group block">
-                <div className="aspect-[3/2] rounded-lg mb-5 overflow-hidden bg-gray-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={a.img} alt={a.cat} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Link key={a.href} href={a.href} className="group block bg-white rounded-xl border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all duration-300 p-6 sm:p-8">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-bold tracking-wider text-green-700 bg-green-50 px-3 py-1 rounded-full">{a.cat}</span>
+                  <span className="text-3xl font-extrabold text-gray-100 group-hover:text-green-100 transition-colors">{a.num}</span>
                 </div>
-                <span className="text-xs font-bold tracking-wider text-green-700">{a.cat}</span>
-                <h3 className="text-base sm:text-lg font-bold leading-relaxed mt-2 mb-2 group-hover:text-green-700 transition-colors">
+                <h3 className="text-base sm:text-lg font-bold leading-relaxed mb-3 group-hover:text-green-700 transition-colors">
                   {a.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{a.desc}</p>
+                <p className="text-sm text-gray-400 leading-relaxed mb-4">{a.desc}</p>
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-green-700 group-hover:gap-2.5 transition-all">
+                  続きを読む <ArrowRight size={14} />
+                </span>
               </Link>
             ))}
           </div>
@@ -271,8 +273,8 @@ export default function Home() {
 
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             <div className="mb-10 lg:mb-0">
-              <div className="rounded-xl overflow-hidden bg-green-900 aspect-square sm:aspect-[4/3] flex items-center justify-center p-12 sm:p-20">
-                <Image src="/images/logo.jpg" alt="合同会社ARCH" width={300} height={300} className="w-full max-w-[140px] sm:max-w-[170px] h-auto" />
+              <div className="rounded-xl overflow-hidden bg-gray-100 aspect-square sm:aspect-[4/3]">
+                <Image src="/images/ceo.jpg" alt="代表 鈴木 集" width={676} height={676} className="w-full h-full object-cover" />
               </div>
             </div>
 
