@@ -2,9 +2,9 @@ import { ArrowRight, Check, Heart, Shield, UserCheck, Building, Stethoscope, Cli
 import Link from "next/link";
 
 export const metadata = {
-  title: "老人ホーム紹介事業 | 合同会社ARCH",
+  title: "ARCH 介護・暮らしの選択相談所（旧：老人ホーム紹介業） | 合同会社ARCH",
   description:
-    "病院からの退院後や、ご高齢になって老人ホームをお探しの方へ。現在のお身体の状態やADLから、最適な老人ホームをご提案します。現役看護師がパートナーだから安心。",
+    "退院後の暮らしを、ご本人とご家族の目線で選ぶ場所。現役看護師パートナー・ADL評価・ワンストップ伴走で、「紹介して終わり」ではなく「どう暮らすか」を一緒に考えます。",
 };
 
 export default function SeniorHomePage() {
@@ -19,14 +19,22 @@ export default function SeniorHomePage() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-300 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
         </div>
         <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-8">
-            老人ホーム紹介事業
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-6">
+            Life Choice — 03
           </span>
-          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-6 sm:mb-8">
-            退院後の暮らし、
-            <br />
-            <span className="text-green-300">最適な「住まい」を<br className="sm:hidden" />一緒に探します。</span>
-          </h1>
+          <div className="mb-8">
+            <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-2">
+              ARCH 介護・暮らしの選択相談所
+            </h1>
+            <p className="text-[11px] sm:text-xs tracking-[0.15em] text-green-300/70 font-medium">
+              （旧：老人ホーム紹介業）
+            </p>
+          </div>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-[1.4] tracking-tight text-white mb-6 sm:mb-8">
+            退院後の暮らしを、
+            <br className="hidden sm:block" />
+            <span className="text-green-300">ご本人とご家族の目線</span>で選ぶ場所。
+          </h2>
           <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             病院からの退院が決まった方、ご高齢のご家族の住まいをお探しの方へ。現在のご病気やお身体の状態（ADL）から、最適な老人ホームをご提案します。パートナーに現役の看護師がいるから、医療的な視点でも安心してお任せいただけます。
           </p>

@@ -11,7 +11,8 @@ import {
   Stethoscope,
   Users,
   Building2,
-  Handshake,
+  Gauge,
+  Briefcase,
 } from "lucide-react";
 
 /* ================================================================
@@ -181,22 +182,23 @@ export default function Home() {
           <div className="mb-16 sm:mb-20">
             <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-3">03</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Service</h2>
-            <p className="text-sm sm:text-base text-green-300 mt-3 sm:mt-4">ARCHの4つの柱</p>
+            <p className="text-sm sm:text-base text-green-300 mt-3 sm:mt-4">ARCHの5つの柱</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Service 1 */}
             <a href="/services/consulting" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
               <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
                 <Stethoscope className="text-green-200" size={28} />
               </div>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">01 — Consulting</span>
-              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-4">
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">01 — Producer</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-2">
                 訪問歯科
-                <br />コンサルティング
+                <br />プロデューサー
               </h3>
+              <p className="text-[10px] tracking-wider text-green-300/60 mb-4">（旧：歯科経営コンサルティング）</p>
               <p className="text-sm text-green-200/70 leading-relaxed mb-6">
-                立ち上げから黒字化まで伴走。運営の標準化・収益最大化・法令順守を一気通貫でサポートします。
+                助言ではなく、訪問歯科事業をゼロからプロデュース。書類地獄の撤廃・黒字化の仕組み・自己肯定感を高める組織づくりを一気通貫で。
               </p>
               <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
                 詳しく見る <ArrowRight size={14} />
@@ -208,13 +210,14 @@ export default function Home() {
               <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
                 <Users className="text-green-200" size={28} />
               </div>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">02 — Sales</span>
-              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-4">
-                医療介護特化型
-                <br />営業コンサルティング
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">02 — Sales Academy</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-2">
+                ARCH大学
+                <br />営業学部
               </h3>
+              <p className="text-[10px] tracking-wider text-green-300/60 mb-4">（旧：医療介護特化型 営業支援）</p>
               <p className="text-sm text-green-200/70 leading-relaxed mb-6">
-                属人化しがちな営業を「科学」します。トークスクリプト・行動計画の型化で、誰でも成果が出る仕組みに。
+                「営業マン」は採用ではなく育成する時代へ。講義・演習・実地・卒業要件の4段階カリキュラムで営業の型を教え込みます。
               </p>
               <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
                 詳しく見る <ArrowRight size={14} />
@@ -226,13 +229,14 @@ export default function Home() {
               <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
                 <Building2 className="text-green-200" size={28} />
               </div>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">03 — Senior Living</span>
-              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-4">
-                老人ホーム
-                <br />紹介事業
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">03 — Life Choice</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-2">
+                ARCH 介護・
+                <br />暮らしの選択相談所
               </h3>
+              <p className="text-[10px] tracking-wider text-green-300/60 mb-4">（旧：老人ホーム紹介業）</p>
               <p className="text-sm text-green-200/70 leading-relaxed mb-6">
-                退院後の住まい探しをサポート。現在のご病気やADLから最適な老人ホームをご提案。現役看護師がパートナーだから医療面も安心。
+                退院後の暮らしを、ご本人とご家族の目線で選ぶ場所。現役看護師パートナー・ADL評価・ワンストップ伴走で安心を。
               </p>
               <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
                 詳しく見る <ArrowRight size={14} />
@@ -242,17 +246,37 @@ export default function Home() {
             {/* Service 4 */}
             <a href="/services/dental-matching" className="group bg-white/10 hover:bg-white/15 border border-white/10 rounded-xl p-7 sm:p-9 transition-colors block">
               <div className="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center mb-6">
-                <Handshake className="text-green-200" size={28} />
+                <Gauge className="text-green-200" size={28} />
               </div>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">04 — Dental Matching</span>
-              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-4">
-                介護施設向け
-                <br />訪問歯科マッチング
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-400 block mb-2">04 — Diagnostic</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-2">
+                訪問歯科・
+                <br />品質診断エンジン
               </h3>
+              <p className="text-[10px] tracking-wider text-green-300/60 mb-4">（旧：施設向け歯科評価ツール）</p>
               <p className="text-sm text-green-200/70 leading-relaxed mb-6">
-                スタッフが笑顔で働く歯科医院だけをご紹介。人が辞めない歯科だから、入居者様にも一貫した温かいケアが届きます。
+                6項目×5段階で、今の訪問歯科を「診断」する。鈴木センサー・ロジックが即刻変えるべき／相談／継続推奨を自動判定。
               </p>
               <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
+                診断を受ける <ArrowRight size={14} />
+              </span>
+            </a>
+
+            {/* Service 5 — BPO */}
+            <a href="/bpo-service" className="group bg-gradient-to-br from-yellow-500/15 to-yellow-600/5 hover:from-yellow-500/25 hover:to-yellow-600/10 border border-yellow-400/30 rounded-xl p-7 sm:p-9 transition-colors block sm:col-span-2 lg:col-span-1">
+              <div className="w-14 h-14 bg-yellow-600/30 rounded-xl flex items-center justify-center mb-6">
+                <Briefcase className="text-yellow-200" size={28} />
+              </div>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-yellow-300 block mb-2">05 — BPO</span>
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug mb-2">
+                ARCH・
+                <br />外付け事務局
+              </h3>
+              <p className="text-[10px] tracking-wider text-yellow-200/70 mb-4">（事務代行・BPO）</p>
+              <p className="text-sm text-green-100/80 leading-relaxed mb-6">
+                先生を事務から解放し、医院に「最強の外部エンジン」を装着する。13体のエージェントが裏側で連動する次世代バックオフィス。
+              </p>
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-yellow-200 group-hover:text-white group-hover:gap-3 transition-all">
                 詳しく見る <ArrowRight size={14} />
               </span>
             </a>
@@ -409,10 +433,11 @@ export default function Home() {
               <div>
                 <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Service</h4>
                 <ul className="space-y-3 text-sm">
-                  <li><a href="/services/consulting" className="hover:text-white transition-colors">訪問歯科コンサルティング</a></li>
-                  <li><a href="/services/sales" className="hover:text-white transition-colors">営業コンサルティング</a></li>
-                  <li><a href="/services/senior-home" className="hover:text-white transition-colors">老人ホーム紹介事業</a></li>
-                  <li><a href="/services/dental-matching" className="hover:text-white transition-colors">介護施設向け訪問歯科マッチング</a></li>
+                  <li><a href="/services/consulting" className="hover:text-white transition-colors">訪問歯科プロデューサー</a></li>
+                  <li><a href="/services/sales" className="hover:text-white transition-colors">ARCH大学 営業学部</a></li>
+                  <li><a href="/services/senior-home" className="hover:text-white transition-colors">ARCH 介護・暮らしの選択相談所</a></li>
+                  <li><a href="/services/dental-matching" className="hover:text-white transition-colors">訪問歯科・品質診断エンジン</a></li>
+                  <li><a href="/bpo-service" className="hover:text-white transition-colors">ARCH・外付け事務局（BPO）</a></li>
                 </ul>
               </div>
               <div>

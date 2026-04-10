@@ -22,9 +22,9 @@ import {
 import Link from "next/link";
 
 export const metadata = {
-  title: "訪問歯科 経営コンサルティング | 合同会社ARCH",
+  title: "訪問歯科プロデューサー（旧：歯科経営コンサルティング） | 合同会社ARCH",
   description:
-    "売上より人の問題に向き合うコンサル。スタッフ離職、院長の孤独、後継者不在。訪問歯科の本当の課題をARCHが解決します。",
+    "助言ではなく、訪問歯科事業をゼロからプロデュース。書類地獄の完全撤廃、黒字化の仕組み、自己肯定感を高める組織づくりまで一気通貫で伴走します。",
 };
 
 export default function ConsultingPage() {
@@ -40,16 +40,22 @@ export default function ConsultingPage() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-300 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
         </div>
         <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-8">
-            経営コンサルティング
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-6">
+            Producer — 01
           </span>
-          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-6 sm:mb-8">
-            集患の前に、
+          <div className="mb-8">
+            <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-2">
+              訪問歯科プロデューサー
+            </h1>
+            <p className="text-[11px] sm:text-xs tracking-[0.15em] text-green-300/70 font-medium">
+              （旧：歯科経営コンサルティング）
+            </p>
+          </div>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-[1.4] tracking-tight text-white mb-6 sm:mb-8">
+            助言ではなく、
             <br className="hidden sm:block" />
-            人が残る組織をつくりませんか。
-            <br />
-            <span className="text-green-300">ARCHは院長の心に寄り添うコンサル。</span>
-          </h1>
+            事業そのものを<span className="text-green-300">プロデュース</span>する。
+          </h2>
           <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             売上は上がったのに人が辞めていく。経営の悩みを誰にも言えない。この医院の10年後が不安。
             そんな院長の本当の課題に向き合い、スタッフが「ここで働き続けたい」と思える組織づくりを支援します。

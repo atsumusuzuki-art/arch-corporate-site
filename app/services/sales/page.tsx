@@ -13,9 +13,9 @@ import {
 import Link from "next/link";
 
 export const metadata = {
-  title: "営業コンサルティング | 合同会社ARCH",
+  title: "ARCH大学 営業学部（旧：医療介護特化型 営業支援） | 合同会社ARCH",
   description:
-    "営業しなくても選ばれる医院へ。スタッフ定着と信頼関係が生み出す自然な紹介の連鎖。ARCHの人間中心の営業戦略。",
+    "「営業マン」は採用ではなく、育成する時代へ。講義・演習・実地・卒業要件の4段階カリキュラムで、医療介護特化型の営業の型を教え込みます。",
 };
 
 export default function SalesPage() {
@@ -30,16 +30,22 @@ export default function SalesPage() {
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-300 rounded-full blur-[100px] translate-y-1/2 translate-x-1/4"></div>
         </div>
         <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-8">
-            営業コンサルティング
+          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-green-300 border border-green-600 px-4 py-1.5 rounded-full mb-6">
+            Sales Academy — 02
           </span>
-          <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-6 sm:mb-8">
-            営業しなくても、
+          <div className="mb-8">
+            <h1 className="text-[1.75rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.35] tracking-tight text-white mb-2">
+              ARCH大学 営業学部
+            </h1>
+            <p className="text-[11px] sm:text-xs tracking-[0.15em] text-green-300/70 font-medium">
+              （旧：医療介護特化型 営業支援）
+            </p>
+          </div>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-[1.4] tracking-tight text-white mb-6 sm:mb-8">
+            「営業マン」は採用ではなく、
             <br className="hidden sm:block" />
-            選ばれる医院へ。
-            <br />
-            <span className="text-green-300">信頼と人間関係が<br className="sm:hidden" />生み出す自然な紹介の連鎖。</span>
-          </h1>
+            <span className="text-green-300">育成する時代</span>へ。
+          </h2>
           <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             営業テクニックや営業ツールはいりません。スタッフが定着し、ケアが本当に良くなれば、施設から自然と選ばれます。信頼を基盤とした組織づくりで、紹介の連鎖が生まれる医院を実現しましょう。
           </p>
