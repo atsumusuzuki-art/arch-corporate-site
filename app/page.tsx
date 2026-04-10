@@ -14,6 +14,7 @@ import {
   Gauge,
   Briefcase,
 } from "lucide-react";
+import { NEWS, formatNewsDate, categoryBadgeClasses } from "@/lib/news";
 
 /* ================================================================
    ARCH Corporate Site — Hierarchical Green B2B Design
@@ -50,6 +51,7 @@ export default function Home() {
             <div className="hidden md:flex items-center gap-8">
               {[
                 { href: "#service", label: "Service" },
+                { href: "#news", label: "News" },
                 { href: "#company", label: "Company" },
                 { href: "#columns", label: "Columns" },
               ].map((item) => (
@@ -72,6 +74,7 @@ export default function Home() {
           <div className="md:hidden bg-white border-t border-gray-100 px-5 py-8 space-y-6">
             {[
               { href: "#service", label: "Service" },
+              { href: "#news", label: "News" },
               { href: "#company", label: "Company" },
               { href: "#columns", label: "Columns" },
             ].map((item) => (
@@ -122,12 +125,81 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8"><div className="border-t border-gray-100"></div></div>
 
       {/* ============================================================
-          02 — PICK UP
+          02 — NEWS (compact strip)
+          ============================================================ */}
+      <section id="news" className="py-14 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-10">
+            {/* Left label */}
+            <div className="lg:col-span-3 mb-8 lg:mb-0">
+              <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">02</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">News</h2>
+              <p className="text-xs sm:text-sm text-gray-400 mt-3">お知らせ</p>
+              <Link
+                href="/news"
+                className="hidden lg:inline-flex mt-8 items-center gap-2 text-xs font-bold tracking-wider text-green-800 hover:text-green-900 border border-green-200 hover:border-green-300 px-5 py-2.5 rounded transition-colors"
+              >
+                一覧を見る <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            {/* Right list */}
+            <div className="lg:col-span-9">
+              {NEWS.length === 0 ? (
+                <p className="text-sm text-gray-400 py-6">現在お知らせはありません。</p>
+              ) : (
+                <ul className="divide-y divide-gray-100 border-t border-gray-100">
+                  {NEWS.slice(0, 4).map((n, i) => {
+                    const isExternal = n.external ?? /^https?:\/\//.test(n.href);
+                    return (
+                      <li key={`${n.date}-${i}`}>
+                        <Link
+                          href={n.href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noopener noreferrer" : undefined}
+                          className="group flex items-start sm:items-center gap-4 sm:gap-6 py-4 sm:py-5 hover:bg-green-50/40 transition-colors -mx-3 sm:-mx-4 px-3 sm:px-4 rounded"
+                        >
+                          <time dateTime={n.date} className="shrink-0 text-xs sm:text-sm font-bold tracking-wider text-gray-400 w-20 sm:w-24 pt-0.5 sm:pt-0">
+                            {formatNewsDate(n.date)}
+                          </time>
+                          <span className={`shrink-0 hidden sm:inline-block text-[10px] sm:text-xs font-bold tracking-wider px-2.5 py-1 rounded ${categoryBadgeClasses(n.category)}`}>
+                            {n.category}
+                          </span>
+                          <h3 className="flex-1 text-sm sm:text-base font-bold leading-relaxed text-gray-900 group-hover:text-green-700 transition-colors">
+                            {n.title}
+                          </h3>
+                          <ArrowRight size={16} className="shrink-0 text-gray-300 group-hover:text-green-700 group-hover:translate-x-1 transition-all hidden sm:block" />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+
+              {/* Mobile "view all" button */}
+              <div className="mt-8 lg:hidden">
+                <Link
+                  href="/news"
+                  className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-green-800 hover:text-green-900 border border-green-200 hover:border-green-300 px-5 py-2.5 rounded transition-colors"
+                >
+                  一覧を見る <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8"><div className="border-t border-gray-100"></div></div>
+
+      {/* ============================================================
+          03 — PICK UP
           ============================================================ */}
       <section className="py-20 sm:py-28 bg-gray-50/70">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-12 sm:mb-16">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">02</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">03</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Pick Up</h2>
             <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">注目のコラム</p>
           </div>
@@ -175,12 +247,12 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-          03 — SERVICE
+          04 — SERVICE
           ============================================================ */}
       <section id="service" className="py-20 sm:py-28 bg-green-900 text-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-3">03</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-3">04</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Service</h2>
             <p className="text-sm sm:text-base text-green-300 mt-3 sm:mt-4">ARCHの5つの柱</p>
           </div>
@@ -285,12 +357,12 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-          04 — COMPANY / VISION
+          05 — COMPANY / VISION
           ============================================================ */}
       <section id="company" className="py-20 sm:py-28 bg-green-50/50">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">04</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">05</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Company</h2>
             <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">代表・会社概要</p>
           </div>
@@ -330,7 +402,7 @@ export default function Home() {
       <section id="columns" className="py-20 sm:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">05</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-700 mb-3">06</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Columns</h2>
             <p className="text-sm sm:text-base text-gray-400 mt-3 sm:mt-4">現場向けコラム</p>
           </div>
@@ -375,7 +447,7 @@ export default function Home() {
       <section id="contact" className="py-20 sm:py-28 bg-green-900 text-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="mb-16 sm:mb-20">
-            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-3">06</p>
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-3">07</p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">Contact</h2>
             <p className="text-sm sm:text-base text-green-300 mt-3 sm:mt-4">お問い合わせ</p>
           </div>
@@ -450,6 +522,7 @@ export default function Home() {
               <div>
                 <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Contents</h4>
                 <ul className="space-y-3 text-sm">
+                  <li><Link href="/news" className="hover:text-white transition-colors">お知らせ（News）</Link></li>
                   <li><a href="#columns" className="hover:text-white transition-colors">コラム</a></li>
                   <li><a href="#contact" className="hover:text-white transition-colors">お問い合わせ</a></li>
                 </ul>
