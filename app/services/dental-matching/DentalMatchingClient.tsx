@@ -18,7 +18,7 @@ import {
 
    - 5段階のLikert尺度で、現在ご契約中／検討中の訪問歯科医院を
      施設側の立場から「品質診断」します。
-   - 鈴木センサー・ロジックに基づき、合計スコアに応じて
+   - ARCHセンサー・ロジックに基づき、合計スコアに応じて
      3段階の判定と具体的な次アクションを提示します。
    ================================================================ */
 
@@ -88,7 +88,7 @@ export default function DentalMatchingClient() {
   const averageScore =
     answeredCount > 0 ? totalScore / answeredCount : 0;
 
-  /* ─────────── 鈴木センサー・ロジック ─────────── */
+  /* ─────────── ARCHセンサー・ロジック ─────────── */
   //   低: 平均 < 2.5   → 即刻変えるべき
   //   中: 2.5 ≤ 平均 < 4.0 → 相談すべきポイントあり
   //   高: 平均 ≥ 4.0  → 長く付き合うべき良医院
@@ -129,7 +129,7 @@ export default function DentalMatchingClient() {
           </p>
           <p className="text-sm sm:text-base text-green-200/90 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
             6つの指標を5段階で答えるだけ。元 医療グループ歯科事務局長・鈴木集の現場知見をロジックに落とし込んだ
-            「鈴木センサー」が、あなたの施設が現在ご契約中の訪問歯科医院の"品質"を診断します。
+            「ARCHセンサー」が、あなたの施設が現在ご契約中の訪問歯科医院の"品質"を診断します。
           </p>
           <a
             href="#diagnostic"
@@ -289,7 +289,7 @@ export default function DentalMatchingClient() {
               }`}
             >
               <Sparkles size={20} />
-              鈴木センサーで診断する
+              ARCHセンサーで診断する
             </button>
             {!canSubmit && (
               <p className="text-xs text-gray-400 mt-4">
@@ -310,7 +310,7 @@ export default function DentalMatchingClient() {
               Result
             </p>
             <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2">
-              鈴木センサーの診断結果
+              ARCHセンサーの診断結果
             </h2>
             <p className="text-center text-sm sm:text-base text-gray-500 mb-10">
               合計スコア
@@ -472,7 +472,7 @@ export default function DentalMatchingClient() {
       )}
 
       {/* ──────────────────────────────────────────
-          ロジックの根拠（鈴木センサー）
+          ロジックの根拠（ARCHセンサー）
       ────────────────────────────────────────── */}
       <section className="bg-green-900 py-20 sm:py-28 text-white">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
@@ -480,7 +480,7 @@ export default function DentalMatchingClient() {
             About the Logic
           </p>
           <h2 className="text-center text-2xl sm:text-3xl font-extrabold mb-6">
-            「鈴木センサー・ロジック」とは
+            「ARCHセンサー・ロジック」とは
           </h2>
           <p className="text-center text-sm sm:text-base text-green-100 leading-loose max-w-3xl mx-auto mb-10">
             広域医療法人にて歯科事務局として経営再建を主導してきた代表・鈴木集の現場知見を、

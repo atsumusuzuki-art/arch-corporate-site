@@ -255,7 +255,7 @@ export default function Home() {
               </h3>
               <p className="text-[10px] tracking-wider text-green-300/60 mb-4">（旧：施設向け歯科評価ツール）</p>
               <p className="text-sm text-green-200/70 leading-relaxed mb-6">
-                6項目×5段階で、今の訪問歯科を「診断」する。鈴木センサー・ロジックが即刻変えるべき／相談／継続推奨を自動判定。
+                6項目×5段階で、今の訪問歯科を「診断」する。ARCHセンサー・ロジックが即刻変えるべき／相談／継続推奨を自動判定。
               </p>
               <span className="inline-flex items-center gap-2 text-xs font-bold text-green-300 group-hover:text-white group-hover:gap-3 transition-all">
                 診断を受ける <ArrowRight size={14} />
