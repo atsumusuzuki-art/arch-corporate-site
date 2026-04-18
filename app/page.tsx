@@ -33,6 +33,10 @@ export default function Home() {
     { href: "/columns/communication", cat: "現場コミュニケーション", title: "介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。", desc: "施設に選ばれ続けるための「適切な距離感」とは。" },
     { href: "/columns/broker-trap", cat: "業界の闇", title: "「施設を紹介しますよ」の甘い罠。コンサルを自称する悪質ブローカーの正体", desc: "売上の20〜40％を吸い取るブローカーの実態と、自立した経営の作り方。" },
     { href: "/columns/facility-needs", cat: "施設の本音", title: "介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由", desc: "介護現場における口腔ケアの優先順位と、手放されない訪問歯科になる方法。" },
+    { href: "/columns/facility-collaboration", cat: "施設連携", title: "施設が本当に求めているのは「治療の腕」ではない。訪問歯科の施設連携で選ばれる医院の条件", desc: "家族対応のワンストップ体制と施設置き去りファイルで連携の質を変える。" },
+    { href: "/columns/communication-timelag", cat: "施設連携", title: "「返信は夕方になります」——その一言が、施設の信頼を静かに削っている", desc: "CCに1人加えるだけで、施設評価が激変するARCHの即レス仲介。" },
+    { href: "/columns/sns-dx-recruitment", cat: "採用・DX", title: "「ハローワークに出しておけば来る」時代は終わった。訪問歯科の採用を変えるSNS×DX戦略", desc: "SNSで「入口」を、WEBアプリで「居場所」を作る二刀流。" },
+    { href: "/columns/waiting-room-visual", cat: "院内マーケティング", title: "その待合室、患者さんに「何も伝わっていない」かもしれない。モニターと掲示物を戦略資産に変える方法", desc: "サイネージと掲示物の「動」×「静」二刀流で待合室を経営資産に。" },
   ];
 
   return (

@@ -29,6 +29,30 @@ export type NewsItem = {
 
 export const NEWS: NewsItem[] = [
   {
+    date: "2026-04-18",
+    category: "コラム",
+    title: "新コラム「その待合室、患者さんに何も伝わっていないかもしれない」を公開しました",
+    href: "/columns/waiting-room-visual",
+  },
+  {
+    date: "2026-04-18",
+    category: "コラム",
+    title: "新コラム「ハローワークに出しておけば来る時代は終わった」を公開しました",
+    href: "/columns/sns-dx-recruitment",
+  },
+  {
+    date: "2026-04-18",
+    category: "コラム",
+    title: "新コラム「返信は夕方になります——施設の信頼を削るタイムラグ」を公開しました",
+    href: "/columns/communication-timelag",
+  },
+  {
+    date: "2026-04-18",
+    category: "コラム",
+    title: "新コラム「施設が本当に求めているのは治療の腕ではない」を公開しました",
+    href: "/columns/facility-collaboration",
+  },
+  {
     date: "2026-04-10",
     category: "リリース",
     title: "新サービス「ARCH・外付け事務局（BPO）」を新設しました",

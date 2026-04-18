@@ -83,6 +83,22 @@ export default function ColumnsLayout({
               <span className="text-xs font-bold text-green-700 mb-2 block">業界の闇</span>
               <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">「施設を紹介しますよ」の甘い罠。コンサルを自称する悪質ブローカーの正体</h3>
             </Link>
+            <Link href="/columns/facility-collaboration" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">施設連携</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">施設が本当に求めているのは「治療の腕」ではない。訪問歯科の施設連携で選ばれる医院の条件</h3>
+            </Link>
+            <Link href="/columns/communication-timelag" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">施設連携</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">「返信は夕方になります」——その一言が、施設の信頼を静かに削っている</h3>
+            </Link>
+            <Link href="/columns/sns-dx-recruitment" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">採用・DX</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">「ハローワークに出しておけば来る」時代は終わった。訪問歯科の採用を変えるSNS×DX戦略</h3>
+            </Link>
+            <Link href="/columns/waiting-room-visual" className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+              <span className="text-xs font-bold text-green-700 mb-2 block">院内マーケティング</span>
+              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm">その待合室、患者さんに「何も伝わっていない」かもしれない。モニターと掲示物を戦略資産に変える方法</h3>
+            </Link>
           </div>
         </div>
       </section>
