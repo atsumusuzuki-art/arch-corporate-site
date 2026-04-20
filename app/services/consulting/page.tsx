@@ -294,7 +294,7 @@ export default function ConsultingPage() {
             {PROBLEMS.map((item, i) => (
               <div
                 key={i}
-                className={`border-b border-arch-rule md:border-b-0 md:border-r last:md:border-r-0 py-8 md:py-10 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
+                className={`border-b border-arch-rule md:border-b-0 md:border-r md:last:border-r-0 py-8 md:py-10 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
               >
                 <p className="mono-label text-arch-moss mb-4 tabular-nums">
                   CASE — {String(i + 1).padStart(2, "0")}
@@ -382,7 +382,7 @@ export default function ConsultingPage() {
                 {f.cards.map((card, i) => (
                   <div
                     key={i}
-                    className={`border-b md:border-b-0 md:border-r border-arch-rule last:md:border-r-0 py-6 md:py-8 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
+                    className={`border-b md:border-b-0 md:border-r border-arch-rule md:last:border-r-0 py-6 md:py-8 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
                   >
                     <p className="mono-micro text-arch-moss mb-3 tabular-nums">
                       {f.num} — {String(i + 1).padStart(2, "0")}
@@ -427,7 +427,7 @@ export default function ConsultingPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className={`border-b border-arch-rule-dark md:border-b-0 md:border-r last:md:border-r-0 py-10 md:py-14 md:px-10 ${i === 0 ? "md:pl-0" : ""}`}
+                className={`border-b border-arch-rule-dark md:border-b-0 md:border-r md:last:border-r-0 py-10 md:py-14 md:px-10 ${i === 0 ? "md:pl-0" : ""}`}
               >
                 <p className="mono-micro text-arch-sage/60 mb-4 tabular-nums">
                   0{i + 1}
@@ -448,7 +448,7 @@ export default function ConsultingPage() {
               {VOICES.map((v, i) => (
                 <figure
                   key={i}
-                  className={`border-b border-arch-rule-dark md:border-b-0 md:border-r last:md:border-r-0 py-10 md:py-12 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
+                  className={`border-b border-arch-rule-dark md:border-b-0 md:border-r md:last:border-r-0 py-10 md:py-12 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
                 >
                   <p className="mono-micro text-arch-sage/60 mb-5 tabular-nums">
                     VOICE — 0{i + 1}

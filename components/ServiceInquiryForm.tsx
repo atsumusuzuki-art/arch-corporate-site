@@ -100,7 +100,7 @@ export default function ServiceInquiryForm({
               {types!.map((t, i) => (
                 <label
                   key={t.value}
-                  className="group flex items-start gap-3 cursor-pointer p-4 border border-arch-rule bg-arch-cream hover:border-arch-forest/50 transition-colors has-[:checked]:border-arch-forest has-[:checked]:bg-arch-forest/5"
+                  className="flex items-start gap-3 cursor-pointer p-4 border border-arch-rule bg-arch-cream hover:bg-arch-cream-raised transition-colors"
                 >
                   <input
                     type="radio"
@@ -108,7 +108,7 @@ export default function ServiceInquiryForm({
                     value={t.subjectTag}
                     defaultChecked={t.defaultChecked ?? i === 0}
                     required
-                    className="mt-1 accent-arch-forest"
+                    className="mt-1"
                   />
                   <div className="flex-1">
                     <span className="display-jp text-base text-arch-ink block">
