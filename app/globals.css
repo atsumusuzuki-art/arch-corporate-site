@@ -1,51 +1,137 @@
 @import "tailwindcss";
 
+/* ============================================
+   ARCH Design System v2 — Tokens
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Page canvas */
+  --background: #F3EDE0;          /* arch-cream (default body) */
+  --foreground: #0F1211;          /* arch-ink */
+
+  /* ARCH palette */
+  --arch-cream: #F3EDE0;
+  --arch-cream-raised: #FAF6EC;
+  --arch-ink: #0F1211;
+  --arch-ink-soft: #3A3C3A;
+  --arch-ink-muted: #7A7C78;
+  --arch-forest: #0D3B2E;         /* deep forest — dominant brand */
+  --arch-forest-soft: #1E5A40;
+  --arch-moss: #3B7A5F;           /* label green */
+  --arch-sage: #9DBBA6;           /* on-dark caption */
+  --arch-gold: #B8944A;
+  --arch-rule: #D8CFBC;
+  --arch-rule-dark: #1C4A38;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* ARCH brand colors — usable as bg-arch-*, text-arch-*, border-arch-* */
+  --color-arch-cream: var(--arch-cream);
+  --color-arch-cream-raised: var(--arch-cream-raised);
+  --color-arch-ink: var(--arch-ink);
+  --color-arch-ink-soft: var(--arch-ink-soft);
+  --color-arch-ink-muted: var(--arch-ink-muted);
+  --color-arch-forest: var(--arch-forest);
+  --color-arch-forest-soft: var(--arch-forest-soft);
+  --color-arch-moss: var(--arch-moss);
+  --color-arch-sage: var(--arch-sage);
+  --color-arch-gold: var(--arch-gold);
+  --color-arch-rule: var(--arch-rule);
+  --color-arch-rule-dark: var(--arch-rule-dark);
+
+  /* Font families — loaded in layout.tsx as next/font */
   --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-noto-jp);
+  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), "Noto Sans JP", Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility: mono-label — category tag used at top of every section */
+.mono-label {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arch-moss);
+}
+
+.mono-micro {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* Utility: display headline — massive Japanese titles */
+.display-jp {
+  font-family: var(--font-noto-jp), var(--font-geist-sans), "Noto Sans JP", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Keyboard focus ring — applies to all interactive elements */
+*:focus-visible {
+  outline: 2px solid var(--arch-forest);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* ── Column article prose styles ── */
 .prose-custom {
   font-size: 1rem;
-  line-height: 2;
-  color: #374151;
+  line-height: 1.9;
+  color: var(--arch-ink-soft);
 }
 .prose-custom p {
   margin-bottom: 1.75rem;
 }
 .prose-custom h2 {
+  font-family: var(--font-noto-jp), var(--font-geist-sans), sans-serif;
   font-size: 1.5rem;
-  font-weight: 800;
-  color: #111827;
+  font-weight: 900;
+  color: var(--arch-ink);
   margin-top: 3rem;
   margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #166534;
-  letter-spacing: -0.01em;
+  border-bottom: 1px solid var(--arch-forest);
+  letter-spacing: -0.02em;
 }
 .prose-custom blockquote {
-  border-left: 4px solid #d1d5db;
-  padding: 1rem 1.5rem;
+  border-left: 3px solid var(--arch-forest);
+  padding: 0.5rem 1.5rem;
   margin: 2rem 0;
-  background: #f9fafb;
-  border-radius: 0 0.75rem 0.75rem 0;
-  font-style: italic;
-  color: #4b5563;
+  font-style: normal;
+  color: var(--arch-ink-soft);
+  background: var(--arch-cream-raised);
 }
 .prose-custom strong {
-  color: #111827;
+  color: var(--arch-ink);
   font-weight: 700;
+}
+.prose-custom a {
+  color: var(--arch-forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
