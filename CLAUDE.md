@@ -1,9 +1,9 @@
-# 合同会社ARCH — エージェント共通ビジネス定義（v2.0）
+# 合同会社ARCH — エージェント共通ビジネス定義（v3.0）
 
 このドキュメントは、ARCHの13体エージェント（Claude Code + Cowork + Design + BPO 等）が
 共通の語彙でクライアント業務にあたるための「正」の定義です。
 
-最終更新：2026-04-11（News 追加ワークフロー節を追記 v2.1）
+最終更新：2026-04-20（技術アーキテクチャ・サイト構成節を追記 v3.0）
 
 ---
 
@@ -167,8 +167,121 @@ export const NEWS: NewsItem[] = [
 
 ---
 
-## 6. 変更履歴
+---
 
+## 6. 技術アーキテクチャ・サイト構成
+
+### 6.1 技術スタック
+
+- **フレームワーク**：Next.js 16.1.6（App Router）
+- **言語**：TypeScript
+- **React**：19.2.3
+- **スタイリング**：Tailwind CSS（`globals.css` に `prose-custom` 等のカスタムクラス定義あり）
+- **アイコン**：lucide-react
+- **ホスティング**：Vercel（GitHub `main` ブランチへの push で自動デプロイ）
+- **ドメイン**：arch-yh.com
+- **リポジトリ**：github.com/atsumusuzuki-art/arch-corporate-site
+- **ローカル作業ディレクトリ**：`/Volumes/ARCH_SSD/arch-corporate-site`（鈴木氏の Mac 上の外部 SSD）
+
+### 6.2 デザイン規約
+
+- **メインカラー**：green-900 / green-800 / green-700（グラデーション `from-green-900 via-green-800 to-green-950`）
+- **BPO カード強調色**：yellow-500/yellow-600 系（ゴールドアクセント）
+- **ヒーローセクション**：全サービスページ共通で `bg-gradient-to-br from-green-900 via-green-800 to-green-950` + 装飾的なぼかし円
+- **本文スタイル**：コラム記事は `prose-custom` クラス（`globals.css` で定義）を `<div>` に当てる
+- **CTA ボタン**：白背景 + green-900 テキスト or green-800 背景 + 白テキスト
+- **フォント**：Geist（Google Fonts、`layout.tsx` で読み込み）
+
+### 6.3 ファイル構成
+
+```
+app/
+├── layout.tsx              # ルートレイアウト（metadata, JSON-LD, Geist フォント）
+├── page.tsx                # トップページ（"use client" — Nav/Hero/News/PickUp/Service/Company/Columns/Contact/Footer）
+├── globals.css             # Tailwind + prose-custom 等カスタムスタイル
+├── sitemap.ts              # SEO サイトマップ
+├── robots.ts               # robots.txt
+├── news/page.tsx           # /news — お知らせ一覧（Server Component）
+├── bpo-service/page.tsx    # /bpo-service — ARCH・外付け事務局（13体エージェント）
+├── services/
+│   ├── layout.tsx          # サービスページ共通レイアウト（ヘッダー・CTA・フッター）
+│   ├── consulting/page.tsx # 訪問歯科プロデューサー
+│   ├── sales/page.tsx      # ARCH大学 営業学部
+│   ├── senior-home/page.tsx# ARCH 介護・暮らしの選択相談所
+│   └── dental-matching/
+│       ├── page.tsx            # Server wrapper（metadata のみ）
+│       └── DentalMatchingClient.tsx  # Client Component（診断エンジン UI + ARCHセンサー・ロジック）
+├── columns/
+│   ├── layout.tsx          # コラム共通レイアウト（ヘッダー・CTA・関連コラム・フッター）
+│   ├── broker-trap/        # 既存9本 + 新規4本 = 計13本
+│   ├── facility-collaboration/  # ★ 新規：施設連携で選ばれる医院の条件
+│   ├── communication-timelag/   # ★ 新規：タイムラグ問題とARCH即レス仲介
+│   ├── sns-dx-recruitment/      # ★ 新規：SNS×DX採用戦略
+│   ├── waiting-room-visual/     # ★ 新規：待合室サイネージ＋掲示物
+│   └── ...
+├── column/                 # 旧 SEO 記事3本（/column/houmon-shika-*）別レイアウト
+│   ├── layout.tsx
+│   └── houmon-shika-*/
+lib/
+└── news.ts                 # News データソース（型定義 + NEWS 配列 + ユーティリティ関数）
+public/images/
+├── logo.jpg                # 会社ロゴ
+├── ceo.jpg                 # 代表写真
+└── hero.jpg                # ヒーロー画像（現在未使用）
+```
+
+### 6.4 トップページ（`app/page.tsx`）のセクション構成
+
+`"use client"` コンポーネント。Nav → Hero → **News（02）** → Pick Up（03）→ **Service（04・5カード）** → Company（05）→ Columns（06）→ Contact（07）→ Footer。
+
+- Service セクション：`grid sm:grid-cols-2 lg:grid-cols-3` で5カード。BPO カードのみゴールドアクセント
+- News セクション：`lib/news.ts` の `NEWS` 配列から最新4件を表示。`/news` へ「一覧を見る」リンク
+- Columns セクション：`allColumns` 配列から先頭3件をリスト表示
+- Contact セクション：FormSubmit.co 経由のメールフォーム
+
+### 6.5 診断エンジン（`dental-matching/DentalMatchingClient.tsx`）
+
+- 6項目×5段階のLikert尺度。useState で回答管理
+- **ARCHセンサー・ロジック**（閾値は v2.0 で確定）:
+  - LOW（平均 < 2.5）：⚠️ 即刻変えるべき
+  - MID（2.5 ≤ 平均 < 4.0）：💬 現在の歯科医院と相談
+  - HIGH（平均 ≥ 4.0）：✅ 素晴らしい歯科医院
+- Server Component（`page.tsx`）で metadata を export し、Client Component を import する分離構造
+
+### 6.6 Git ワークフロー・制約
+
+- **VM（Cowork）からの `git push` は不可**（HTTP プロキシ 403）。VM 側で `git add` + `git commit` まで行い、ユーザー（鈴木氏）に `git push origin main` を依頼する
+- ユーザーの push 手順：`cd /Volumes/ARCH_SSD/arch-corporate-site && git push origin main`
+- push 後は Vercel が自動デプロイ（通常2〜3分）
+- `npm run build`（`next build`）は VM 内では SWC バイナリ欠落により実行不可。`npx tsc --noEmit -p tsconfig.json` で型チェックのみ実施。`.next/types/validator.ts` の既存警告（`/columns` vs `/column` ルート不一致）は無視して可
+- `.git/index.lock` が macOS Finder 由来で残ることがあるため、git 操作前に `rm -f .git/index.lock` を入れると安全
+
+### 6.7 コラム記事の追加パターン
+
+1. `app/columns/<slug>/page.tsx` を作成。既存記事（例：`broker-trap`）をテンプレートとして使用
+2. `export const metadata: Metadata` で title / description を定義
+3. 本文は `<article className="py-16 md:py-24">` → `<div className="max-w-3xl mx-auto px-4 sm:px-6">` → `<div className="prose-custom">` の入れ子構造
+4. `app/columns/layout.tsx` の関連コラムグリッドに `<Link>` を1つ追加
+5. `app/page.tsx` の `allColumns` 配列に1エントリ追加
+6. `lib/news.ts` の `NEWS` 配列先頭にコラム公開エントリを追加（News 追加ワークフロー＝第5章に従う）
+7. `app/sitemap.ts` に URL 追加
+
+### 6.8 最近のコミット履歴（参考）
+
+```
+1327eda feat: 新コラム4本を公開（施設連携×2 / 採用DX / 院内マーケティング）
+b5af458 docs: CLAUDE.md v2.1 — News 追加ワークフロー節を追記
+18c4c39 feat: News 欄を新設（トップページ + 専用ページ /news）
+3841fcb refactor: 「鈴木センサー」→「ARCHセンサー」へブランド名統一
+e287a41 feat: 全サービス名刷新 (v2.0) + BPOページ新設 + 品質診断エンジン
+746f3ce design: AI風ストック写真を排除しプレミアムなデザインに刷新
+```
+
+---
+
+## 7. 変更履歴
+
+- **v3.0 (2026-04-20)**：技術アーキテクチャ・サイト構成節（第6章）を追記。新規セッションへの引き継ぎ用に、技術スタック・デザイン規約・ファイル構成・Git ワークフロー・コラム追加パターンを明文化。
 - **v2.1 (2026-04-11)**：News 追加ワークフロー節（第5章）を追記。新規チャットでもエージェントが迷わず News 追加を実行できるよう手順を明文化。
 - **v2.0 (2026-04-10)**：サービス名全面刷新。訪問歯科プロデューサー、ARCH大学 営業学部、ARCH 介護・暮らしの選択相談所、訪問歯科・品質診断エンジン、ARCH・外付け事務局（新規）の5事業体制に移行。
 - **v1.0**：初版リリース。訪問歯科コンサル／営業コンサル／老人ホーム紹介の3事業体制。
