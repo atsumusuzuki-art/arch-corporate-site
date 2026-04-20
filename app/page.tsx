@@ -52,7 +52,6 @@ const SERVICES = [
     title: "ARCH・外付け事務局",
     old: "事務代行・BPO",
     desc: "先生を事務から解放し、医院に「最強の外部エンジン」を装着する。13体のエージェントが裏側で連動。",
-    gold: true,
   },
 ];
 
@@ -343,47 +342,19 @@ export default function Home() {
               <Link
                 key={s.href}
                 href={s.href}
-                className={`group relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-16 border-b border-arch-rule-dark transition-colors ${
-                  s.gold
-                    ? "bg-arch-gold/[0.035] hover:bg-arch-gold/[0.09]"
-                    : "hover:bg-arch-forest-soft/40"
-                }`}
+                className="group relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-16 border-b border-arch-rule-dark transition-colors hover:bg-arch-gold/[0.06]"
               >
-                {/* Gold accent stripe (BPO only) */}
-                {s.gold && (
-                  <span
-                    className="absolute left-0 top-0 bottom-0 w-[3px] bg-arch-gold"
-                    aria-hidden
-                  />
-                )}
-
-                {/* HUGE editorial number — visual anchor */}
+                {/* HUGE editorial number — gold visual anchor */}
                 <div className="col-span-2 md:col-span-2 flex items-start pl-1 md:pl-4">
-                  <span
-                    className={`display-jp leading-none tabular-nums text-[3.5rem] md:text-[5.5rem] ${
-                      s.gold ? "text-arch-gold" : "text-arch-sage/25"
-                    }`}
-                  >
+                  <span className="display-jp leading-none tabular-nums text-[3.5rem] md:text-[5.5rem] text-arch-gold/50 group-hover:text-arch-gold transition-colors">
                     {s.num}
                   </span>
                 </div>
 
                 {/* Tag + Title stack — title is the clear hero */}
                 <div className="col-span-10 md:col-span-6">
-                  <p
-                    className={`mono-micro mb-4 ${
-                      s.gold ? "text-arch-gold" : "text-arch-sage/60"
-                    }`}
-                  >
-                    {s.tag}
-                  </p>
-                  <h3
-                    className={`font-display font-black leading-[1.1] text-3xl md:text-[2.75rem] ${
-                      s.gold
-                        ? "text-arch-cream group-hover:text-arch-gold"
-                        : "text-arch-cream group-hover:text-arch-sage"
-                    } transition-colors`}
-                  >
+                  <p className="mono-micro mb-4 text-arch-gold">{s.tag}</p>
+                  <h3 className="font-display font-black leading-[1.1] text-3xl md:text-[2.75rem] text-arch-cream group-hover:text-arch-gold transition-colors">
                     {s.title}
                   </h3>
                   <p className="mono-micro text-arch-sage/40 mt-4 tracking-wider">
@@ -400,9 +371,7 @@ export default function Home() {
                 <div className="hidden md:flex col-span-1 items-end justify-end pb-2">
                   <ArrowRight
                     size={22}
-                    className={`${
-                      s.gold ? "text-arch-gold" : "text-arch-sage"
-                    } group-hover:translate-x-2 transition-transform`}
+                    className="text-arch-gold group-hover:translate-x-2 transition-transform"
                   />
                 </div>
               </Link>
