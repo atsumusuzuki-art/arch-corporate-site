@@ -343,30 +343,42 @@ export default function Home() {
               <Link
                 key={s.href}
                 href={s.href}
-                className="group grid grid-cols-12 gap-4 md:gap-8 py-8 md:py-12 border-b border-arch-rule-dark hover:bg-arch-forest-soft/40 transition-colors -mx-3 px-3"
+                className={`group relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-16 border-b border-arch-rule-dark transition-colors ${
+                  s.gold
+                    ? "bg-arch-gold/[0.035] hover:bg-arch-gold/[0.09]"
+                    : "hover:bg-arch-forest-soft/40"
+                }`}
               >
-                {/* Number */}
-                <div className="col-span-2 md:col-span-1 pt-1">
+                {/* Gold accent stripe (BPO only) */}
+                {s.gold && (
                   <span
-                    className={`mono-micro ${
-                      s.gold ? "text-arch-gold" : "text-arch-sage/70"
+                    className="absolute left-0 top-0 bottom-0 w-[3px] bg-arch-gold"
+                    aria-hidden
+                  />
+                )}
+
+                {/* HUGE editorial number — visual anchor */}
+                <div className="col-span-2 md:col-span-2 flex items-start pl-1 md:pl-4">
+                  <span
+                    className={`display-jp leading-none tabular-nums text-[3.5rem] md:text-[5.5rem] ${
+                      s.gold ? "text-arch-gold" : "text-arch-sage/25"
                     }`}
                   >
                     {s.num}
                   </span>
                 </div>
 
-                {/* Tag + Title */}
-                <div className="col-span-10 md:col-span-5">
+                {/* Tag + Title stack — title is the clear hero */}
+                <div className="col-span-10 md:col-span-6">
                   <p
-                    className={`mono-label ${
-                      s.gold ? "text-arch-gold" : "text-arch-sage"
+                    className={`mono-micro mb-4 ${
+                      s.gold ? "text-arch-gold" : "text-arch-sage/60"
                     }`}
                   >
                     {s.tag}
                   </p>
                   <h3
-                    className={`font-display font-black text-2xl md:text-3xl leading-tight mt-2 ${
+                    className={`font-display font-black leading-[1.1] text-3xl md:text-[2.75rem] ${
                       s.gold
                         ? "text-arch-cream group-hover:text-arch-gold"
                         : "text-arch-cream group-hover:text-arch-sage"
@@ -374,21 +386,23 @@ export default function Home() {
                   >
                     {s.title}
                   </h3>
-                  <p className="mono-micro text-arch-sage/50 mt-2">（{s.old}）</p>
+                  <p className="mono-micro text-arch-sage/40 mt-4 tracking-wider">
+                    （{s.old}）
+                  </p>
                 </div>
 
-                {/* Description */}
-                <div className="col-span-12 md:col-span-5 text-arch-sage text-sm md:text-base leading-relaxed">
+                {/* Description — narrower, quieter right column */}
+                <div className="col-span-12 md:col-span-3 md:pt-14 text-arch-sage/70 text-sm leading-loose">
                   {s.desc}
                 </div>
 
                 {/* Arrow */}
-                <div className="hidden md:flex col-span-1 items-start justify-end pt-2">
+                <div className="hidden md:flex col-span-1 items-end justify-end pb-2">
                   <ArrowRight
-                    size={18}
+                    size={22}
                     className={`${
                       s.gold ? "text-arch-gold" : "text-arch-sage"
-                    } group-hover:translate-x-1 transition-transform`}
+                    } group-hover:translate-x-2 transition-transform`}
                   />
                 </div>
               </Link>
