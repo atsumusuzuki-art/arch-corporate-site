@@ -96,11 +96,15 @@ export default function Home() {
       <nav className="fixed w-full bg-arch-forest/95 backdrop-blur-md z-50 border-b border-arch-rule-dark">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex justify-between h-16 md:h-20 items-center">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-8 h-8 md:w-9 md:h-9 rounded-[4px] bg-arch-cream/10 border border-arch-sage/30 flex items-center justify-center">
-                <span className="text-arch-cream font-mono text-[10px] md:text-xs font-bold tracking-[0.1em]">A</span>
-              </div>
-              <span className="mono-label text-arch-cream">ARCH</span>
+            <Link href="/" className="flex items-center" aria-label="合同会社ARCH">
+              <Image
+                src="/images/logo.jpg"
+                alt="合同会社ARCH"
+                width={160}
+                height={160}
+                className="h-10 md:h-12 w-auto"
+                priority
+              />
             </Link>
 
             <div className="hidden md:flex items-center gap-10">
@@ -167,16 +171,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* ARCH logo mark — slide 1 style */}
           <div className="mb-16 md:mb-20">
-            <div className="w-20 h-20 md:w-24 md:h-24 bg-arch-forest rounded-[12px] flex items-center justify-center">
-              <Image
-                src="/images/logo.jpg"
-                alt="合同会社ARCH"
-                width={96}
-                height={96}
-                className="w-12 h-12 md:w-14 md:h-14 object-contain opacity-90"
-                priority
-              />
-            </div>
+            <Image
+              src="/images/logo.jpg"
+              alt="合同会社ARCH"
+              width={240}
+              height={240}
+              className="w-24 h-24 md:w-32 md:h-32 rounded-[12px]"
+              priority
+            />
           </div>
 
           {/* Kicker */}
@@ -587,12 +589,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-12 gap-10 md:gap-12 mb-16">
             <div className="md:col-span-4">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-9 h-9 rounded-[4px] bg-arch-forest border border-arch-sage/30 flex items-center justify-center">
-                  <span className="text-arch-cream font-mono text-xs font-bold tracking-[0.1em]">A</span>
-                </div>
-                <span className="mono-label text-arch-cream">ARCH</span>
-              </div>
+              <Image
+                src="/images/logo.jpg"
+                alt="合同会社ARCH"
+                width={200}
+                height={200}
+                className="w-20 h-20 md:w-24 md:h-24 rounded-[8px] mb-6"
+              />
               <div className="space-y-1 text-sm">
                 <p className="text-arch-cream font-bold">合同会社ARCH（アーチ）</p>
                 <p>TEL: 090-7247-3013</p>
