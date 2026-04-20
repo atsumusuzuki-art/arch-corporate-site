@@ -1,5 +1,6 @@
 import { ArrowRight, Check, Heart, Shield, UserCheck, Building, Stethoscope, ClipboardList, Phone, Home, Activity } from "lucide-react";
 import Link from "next/link";
+import FacilityRecommender from "./FacilityRecommender";
 
 export const metadata = {
   title: "ARCH 介護・暮らしの選択相談所（旧：老人ホーム紹介業） | 合同会社ARCH",
@@ -90,6 +91,11 @@ export default function SeniorHomePage() {
           </div>
         </div>
       </section>
+
+      {/* ──────────────────────────────────────────
+          Sample Matching — 条件入力で「合いそうな施設」サンプル提示
+      ────────────────────────────────────────── */}
+      <FacilityRecommender />
 
       {/* ──────────────────────────────────────────
           ARCHの強み

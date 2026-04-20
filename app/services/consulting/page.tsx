@@ -409,18 +409,38 @@ export default function ConsultingPage() {
             ))}
           </div>
 
-          <div className="bg-white/10 backdrop-blur rounded-2xl p-8 sm:p-10 border border-white/10 max-w-3xl mx-auto text-left">
-            <p className="text-green-100 text-sm sm:text-base leading-loose">
-              「数字だけじゃなく、自分自身のことまで気にかけてくれるコンサルは初めてだった」
-              <span className="text-white font-bold block mt-2">
-                スタッフも定着して、ようやく医院経営に余裕が出てきました。
-              </span>
-              それだけじゃなく、ARCHさんと一緒に「10年後どうしたいのか」という人生レベルの話もできて、
-              経営の不安が減りました。
+          <div className="mt-4">
+            <p className="text-center text-xs font-bold tracking-widest uppercase text-green-300 mb-8">
+              Client Voices — 取引先院長のリアルな声
             </p>
-            <p className="text-green-300 text-sm font-bold mt-4">
-              — 関東圏 訪問歯科クリニック院長
-            </p>
+            <div className="grid md:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto text-left">
+              {[
+                {
+                  body: "LINEの返信が異常に早く、困った時にはすぐに助けてくれます。また、昨今webで済ます業者が多い中でARCHさんは会いにきてくれるので本当に信頼がおける。訪問歯科のコンサルはもちろんのことそれ以外にも最近は医院モニターに映す広告動画の作成も行なってもらいました。何でもやってくれるのでついつい色んなことをお願いしてしまいます。",
+                  author: "東京都世田谷区 歯科医院",
+                },
+                {
+                  body: "採用の相談や新規入職したスタッフ（歯科医師、歯科衛生士、事務）の初期研修も担当してくれています。歯科医師より歯科のことを分かっているので安心して任せています。また他のコンサルとは違って、課題などを指摘して終わることはなく一緒に伴走して解決に導いてくれるので本当に助かっています。",
+                  author: "北海道札幌市 歯科医院",
+                },
+                {
+                  body: "遠方なのでたまにしか直接お会いしませんが、いつも電話やLINEで連絡してくれます。報酬改定など私はあまり詳しくないですが、ARCHさんが弊院に合ったポイントなど丁寧に説明してくれるので助かっています。ARCHの代表は医療や介護関係に顔が広いので、経営層の方などの紹介もしてくれます。",
+                  author: "地方 歯科医院 院長",
+                },
+              ].map((t, i) => (
+                <div
+                  key={i}
+                  className="bg-white/10 backdrop-blur rounded-2xl p-6 sm:p-7 border border-white/10 flex flex-col"
+                >
+                  <p className="text-green-50 text-sm leading-loose flex-1">
+                    「{t.body}」
+                  </p>
+                  <p className="text-green-300 text-xs font-bold mt-5 pt-5 border-t border-white/10">
+                    — {t.author}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

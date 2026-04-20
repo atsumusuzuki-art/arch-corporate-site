@@ -9,13 +9,18 @@ import {
   Shield,
   UserCheck,
   Handshake,
+  GraduationCap,
+  BookOpen,
+  Stethoscope,
+  Pill,
+  HeartHandshake,
 } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
   title: "ARCH大学 営業学部（旧：医療介護特化型 営業支援） | 合同会社ARCH",
   description:
-    "「営業マン」は採用ではなく、育成する時代へ。講義・演習・実地・卒業要件の4段階カリキュラムで、医療介護特化型の営業の型を教え込みます。",
+    "歯科医院・訪問クリニック・訪問薬局・訪問看護など、在宅医療介護の営業を「学問」として教える。元小学校教諭が開発した講義・演習・実地・卒業要件の4段階カリキュラム。",
 };
 
 export default function SalesPage() {
@@ -46,8 +51,14 @@ export default function SalesPage() {
             <br className="hidden sm:block" />
             <span className="text-green-300">育成する時代</span>へ。
           </h2>
-          <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
-            営業テクニックや営業ツールはいりません。スタッフが定着し、ケアが本当に良くなれば、施設から自然と選ばれます。信頼を基盤とした組織づくりで、紹介の連鎖が生まれる医院を実現しましょう。
+          <p className="text-base sm:text-lg text-green-100/80 leading-relaxed max-w-2xl mx-auto mb-6 sm:mb-8">
+            歯科医院・訪問クリニック・訪問薬局・訪問看護ステーションなど、
+            在宅医療介護のすべての事業体が対象です。<br className="hidden sm:block" />
+            営業テクニックや営業ツールはいりません。スタッフが定着し、ケアが本当に良くなれば、施設や地域から自然と選ばれます。信頼を基盤とした組織づくりで、紹介の連鎖が生まれる事業を実現しましょう。
+          </p>
+          <p className="text-xs sm:text-sm text-green-200/90 italic max-w-2xl mx-auto mb-10 sm:mb-12">
+            カリキュラム設計を担うのは、<strong className="text-white not-italic">元小学校教諭</strong>。
+            「教えることのプロ」が、営業を <span className="text-green-300 not-italic font-bold">“学問”</span> として体系化しました。
           </p>
           <Link
             href="/#contact"
@@ -56,6 +67,74 @@ export default function SalesPage() {
             無料オンライン相談を予約する
             <ArrowRight size={18} />
           </Link>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────
+          なぜARCH大学か — 元小学校教諭 × 4段階カリキュラム
+      ────────────────────────────────────────── */}
+      <section className="bg-white py-20 sm:py-28 border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
+            Why ARCH Academy
+          </p>
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4">
+            「教える」プロフェッショナルが設計した、<br className="hidden sm:block" />
+            <span className="text-green-800">在宅医療介護の営業カリキュラム</span>
+          </h2>
+          <p className="text-center text-sm sm:text-base text-gray-500 max-w-3xl mx-auto leading-loose mb-14 sm:mb-16">
+            ARCH代表・鈴木集は<strong className="text-gray-900">元小学校教諭</strong>。
+            「どうすれば人は学び、身につけ、再現できるのか」——教育現場で磨いた技術を、
+            医療介護の営業に応用しました。属人的なセンスに頼らない、体系化された「学問」としての営業教育を提供します。
+          </p>
+
+          {/* 対象となる事業体 */}
+          <div className="bg-green-50/60 rounded-2xl p-7 sm:p-10 border border-green-100 mb-14">
+            <p className="text-center text-[11px] sm:text-xs font-bold tracking-[0.25em] uppercase text-green-700 mb-6">
+              Target Organizations — ARCH大学の対象となる事業体
+            </p>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              {[
+                { icon: Stethoscope, title: "訪問歯科", desc: "歯科医院・訪問歯科診療所" },
+                { icon: Heart, title: "訪問クリニック", desc: "在宅医療・往診専門医院" },
+                { icon: Pill, title: "訪問薬局", desc: "在宅医療に関わる薬局" },
+                { icon: HeartHandshake, title: "訪問看護", desc: "訪問看護ステーション" },
+              ].map((t) => (
+                <div key={t.title} className="bg-white rounded-xl p-5 border border-green-100 text-center">
+                  <t.icon className="text-green-700 mx-auto mb-3" size={28} />
+                  <p className="font-bold text-gray-900 text-sm sm:text-base mb-1">{t.title}</p>
+                  <p className="text-xs text-gray-500 leading-relaxed">{t.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 教育メソッド3つの柱 */}
+          <div className="grid sm:grid-cols-3 gap-5">
+            {[
+              {
+                icon: GraduationCap,
+                title: "小学校の学級経営ノウハウ",
+                body: "30人の子どもを一つの方向に導く——この難題に取り組んだ経験が、スタッフ全員が主体的に動く組織づくりの土台になっています。",
+              },
+              {
+                icon: BookOpen,
+                title: "「指導案」で型を言語化",
+                body: "教師は毎時間「指導案」を書きます。営業も同じ。なぜこの順番か、なぜこの問いかけか——全ての所作を言語化して再現性を担保します。",
+              },
+              {
+                icon: UserCheck,
+                title: "評価と振り返りの文化",
+                body: "できた／できないを明確にし、次の授業に活かす。これが教育の本質です。営業も同じサイクルで、誰もが着実に成長できる設計にしています。",
+              },
+            ].map((m, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200">
+                <m.icon className="text-green-700 mb-4" size={28} />
+                <h4 className="font-extrabold text-gray-900 mb-2 text-base">{m.title}</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">{m.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

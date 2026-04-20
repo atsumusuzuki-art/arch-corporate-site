@@ -218,18 +218,18 @@ export default function Home() {
                 desc: "売上の20〜40％を吸い取るブローカーの実態と、自立した経営の作り方。",
               },
               {
-                href: "/columns/document-hell",
-                cat: "業務改善",
+                href: "/columns/turnover-strategy",
+                cat: "経営戦略",
                 num: "02",
-                title: "訪問歯科が陥る「書類地獄」。クレームを防ぐ唯一の解決策",
-                desc: "書類管理のブラックボックス化を防ぐ仕組みづくり。",
+                title: "「スタッフの退職」に怯える院長へ。離職防止より優先すべき経営戦略",
+                desc: "属人化を排除し、誰が来ても回る強固な組織の作り方。",
               },
               {
-                href: "/columns/profit-trap",
-                cat: "経営改善",
+                href: "/columns/facility-collaboration",
+                cat: "施設連携",
                 num: "03",
-                title: "一生懸命訪問しているのに「黒字化」しない医院の罠",
-                desc: "KPIの不在と経費計算の甘さが「忙しいのに儲からない」の正体。",
+                title: "施設が本当に求めているのは「治療の腕」ではない。選ばれる医院の条件",
+                desc: "家族対応のワンストップ体制と施設置き去りファイルで連携の質を変える。",
               },
             ].map((a) => (
               <Link key={a.href} href={a.href} className="group block bg-white rounded-xl border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all duration-300 p-6 sm:p-8">

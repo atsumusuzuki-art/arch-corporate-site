@@ -15,12 +15,17 @@ import {
   MessageSquare,
   Palette,
   Cpu,
+  Zap,
+  Globe,
+  ClipboardCheck,
+  Sparkles,
+  Stethoscope,
 } from "lucide-react";
 
 export const metadata = {
-  title: "ARCH・外付け事務局（事務代行・BPO） | 合同会社ARCH",
+  title: "ARCH・外付け事務局（スポット型BPO） | 合同会社ARCH",
   description:
-    "先生を事務から解放し、医院に『最強の外部エンジン』を装着する。13体のエージェントが裏側で動き続ける、次世代バックオフィス・BPO。",
+    "資料作成・ホームページ制作・カルテ/レセプトBPOなど、必要な業務を必要な分だけ。13体のエージェント活用で他社より圧倒的に早く・安く提供する、スポット型外付け事務局。",
 };
 
 /* 13体のエージェント定義 —— #4, #5, #7 を特に強調 */
@@ -65,8 +70,10 @@ export default function BpoServicePage() {
             医院に「最強の外部エンジン」を装着する。
           </p>
           <p className="text-sm sm:text-base text-green-200/90 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
-            書類地獄も、労務の悩みも、経理の煩雑さも——全部、ARCHの裏側で動き続ける13体のエージェントにお任せください。
-            先生は「診療」と「経営判断」だけに集中できる、次世代のバックオフィスをご提供します。
+            資料作成・ホームページ制作・カルテやレセプトのBPOまで、
+            <strong className="text-white">必要なエージェントを、必要な分だけ</strong>。
+            月額定期契約や定期ミーティングを前提としない <span className="text-yellow-300 font-bold">「スポット型BPO」</span> として、
+            医院のご予算に合わせて柔軟にご利用いただけます。
           </p>
           <Link
             href="/#contact"
@@ -134,8 +141,8 @@ export default function BpoServicePage() {
           </h2>
           <p className="text-center text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl mx-auto mb-14 sm:mb-16">
             ARCH・外付け事務局は、単なる「人の派遣」ではありません。
-            役割ごとに特化した13体のエージェント（専門担当）が、ARCH統括ディレクターの指揮のもと連動し、
-            医院に必要なバックオフィス機能を<strong>フルスタックで</strong>装着します。
+            役割ごとに特化した13体のエージェントが、ARCH統括ディレクターの指揮のもと連動します。
+            医院のご予算と業務内容に合わせて、必要なエージェントを<strong>スポットで組み合わせて</strong>ご活用いただける設計です。
           </p>
 
           {/* Agent grid */}
@@ -240,42 +247,185 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          What's included
+          Pricing — Spot BPO 料金プラン
       ────────────────────────────────────────── */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+      <section id="pricing" className="bg-white py-20 sm:py-28">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
-            Included
+            Pricing — Spot BPO
           </p>
-          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-14 sm:mb-16">
-            ARCH・外付け事務局に<span className="text-green-800">含まれるもの</span>
+          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4">
+            必要な業務を、必要な分だけ。
+            <br />
+            <span className="text-green-800">スポット型BPOの料金体系</span>
           </h2>
+          <p className="text-center text-sm sm:text-base text-gray-500 leading-loose max-w-3xl mx-auto mb-10 sm:mb-12">
+            成果物に対してご費用をいただくため、費用対効果が明確です。
+            <br className="hidden sm:block" />
+            エージェント活用により、他社より
+            <strong className="text-green-800">圧倒的に早く、圧倒的に安く</strong>ご提供できます。
+          </p>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
-            {[
-              "カルテ・報告書の作成補助",
-              "請求・レセプト業務の補助",
-              "月次決算・KPIレポート",
-              "採用業務の代行（求人票作成・面接調整）",
-              "就業規則・労務書類の整備",
-              "契約書・覚書のレビュー・管理",
-              "施設・ご家族向け資料の作成代行",
-              "営業用パンフ・提案書のデザイン",
-              "コンプライアンス監査・リスクチェック",
-              "月次オンラインミーティング",
-              "ARCH独自アプリの使用権",
-              "制度改正・業界動向のレポート",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3 bg-green-50/60 rounded-xl p-4 border border-green-100">
-                <Check className="text-green-600 shrink-0 mt-0.5" size={18} />
-                <p className="text-sm sm:text-base text-gray-700 font-medium">{item}</p>
-              </div>
-            ))}
+          {/* Budget Banner */}
+          <div className="bg-gradient-to-r from-green-50 to-green-100/60 rounded-2xl p-6 sm:p-8 border border-green-200 mb-12 text-center">
+            <p className="text-[11px] sm:text-xs font-bold tracking-[0.25em] uppercase text-green-700 mb-3">
+              Budget Range — 目安予算
+            </p>
+            <p className="text-3xl sm:text-5xl font-extrabold text-green-900 leading-none">
+              5万円
+              <span className="text-xl sm:text-3xl text-green-700 font-bold mx-3">〜</span>
+              30万円
+            </p>
+            <p className="text-xs sm:text-sm text-gray-500 mt-4 leading-relaxed max-w-xl mx-auto">
+              ご予算に合わせて、
+              <strong className="text-gray-700">複数のエージェントを組み合わせて</strong>
+              ご活用いただけます。まずはお気軽にご相談ください。
+            </p>
           </div>
 
-          <p className="text-center text-xs text-gray-400 mt-10">
-            ※ 具体的な業務範囲と料金はヒアリングの上、医院ごとにカスタマイズしてご提案します。
+          {/* 3 pricing cards */}
+          <div className="grid md:grid-cols-3 gap-5 sm:gap-6 mb-10 items-stretch">
+            {/* Card 1 — 施設・ご家族向け資料作成 */}
+            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-gray-200 flex flex-col">
+              <div className="w-12 h-12 rounded-xl bg-green-50 text-green-700 flex items-center justify-center mb-5">
+                <FileText size={24} />
+              </div>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-green-700 mb-1">
+                Spot — 成果物型
+              </p>
+              <h3 className="text-lg font-extrabold text-gray-900 mb-3">
+                施設・ご家族向け資料作成
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-5 flex-1">
+                営業資料・ご家族向け説明資料・パンフレットなどを成果物単位でご依頼いただけます。
+                エージェント活用により、納期は他社より
+                <strong className="text-green-700">圧倒的に早く</strong>
+                お届けします。
+              </p>
+              <div className="pt-5 border-t border-gray-100">
+                <p className="text-[10px] tracking-widest text-gray-400 mb-1">料金</p>
+                <p>
+                  <span className="text-3xl font-extrabold text-green-800">5</span>
+                  <span className="text-base font-bold text-gray-600 ml-1">万円〜</span>
+                  <span className="text-xs text-gray-400 ml-2">/ 件</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 — ホームページ作成 */}
+            <div className="bg-gradient-to-br from-green-800 to-green-900 text-white rounded-2xl p-6 sm:p-7 border border-green-700 flex flex-col relative shadow-lg shadow-green-900/20">
+              <div className="absolute -top-3 left-6 bg-yellow-300 text-green-900 text-[10px] font-bold px-3 py-1 rounded-full tracking-wider flex items-center gap-1">
+                <Zap size={10} /> Best Value
+              </div>
+              <div className="w-12 h-12 rounded-xl bg-yellow-300/20 text-yellow-300 flex items-center justify-center mb-5 mt-2">
+                <Globe size={24} />
+              </div>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-yellow-300 mb-1">
+                Spot — 成果物型
+              </p>
+              <h3 className="text-lg font-extrabold mb-3">ホームページ作成</h3>
+              <p className="text-sm text-green-100/90 leading-relaxed mb-5 flex-1">
+                医院・クリニックの公式サイト構築。エージェント活用で、他社よりも
+                <strong className="text-yellow-300">圧倒的に安く、そして早く</strong>
+                完成します。
+              </p>
+              <div className="pt-5 border-t border-white/10">
+                <p className="text-[10px] tracking-widest text-green-300 mb-1">料金</p>
+                <p>
+                  <span className="text-3xl font-extrabold text-white">30</span>
+                  <span className="text-base font-bold text-green-200 ml-1">万円〜</span>
+                  <span className="text-xs text-green-300 ml-2">/ 一式</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 — カルテ・レセプトBPO */}
+            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-gray-200 flex flex-col">
+              <div className="w-12 h-12 rounded-xl bg-green-50 text-green-700 flex items-center justify-center mb-5">
+                <ClipboardCheck size={24} />
+              </div>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-green-700 mb-1">
+                Continuous — 継続BPO
+              </p>
+              <h3 className="text-lg font-extrabold text-gray-900 mb-3">
+                カルテ・レセプトBPO
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-5 flex-1">
+                カルテ作成補助・レセプト業務は継続的な運用が必要なため、月額の
+                <strong className="text-gray-800">継続BPO契約</strong>
+                でご対応します。業務量・医院規模によりお見積りいたします。
+              </p>
+              <div className="pt-5 border-t border-gray-100">
+                <p className="text-[10px] tracking-widest text-gray-400 mb-1">料金</p>
+                <p>
+                  <span className="text-xl font-extrabold text-gray-700">要相談</span>
+                  <span className="text-xs text-gray-400 ml-2">(月額)</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-gray-400 leading-relaxed">
+            ※ 上記以外にも、動画制作・採用支援・営業資料作成など、幅広いスポットBPOにご対応可能。
+            <br className="hidden sm:block" />
+            具体的な業務範囲と料金はヒアリングの上、医院ごとにお見積りいたします。
           </p>
+
+          {/* 全体活用の場合 → 訪問歯科プロデューサー導線 */}
+          <div className="mt-16 bg-gradient-to-br from-green-50 to-green-100/60 rounded-3xl p-8 sm:p-12 border border-green-200">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-8">
+              <div className="w-16 h-16 rounded-2xl bg-green-800 text-white flex items-center justify-center shrink-0">
+                <Stethoscope size={32} />
+              </div>
+              <div className="flex-1">
+                <p className="text-xs font-bold tracking-[0.25em] uppercase text-green-700 mb-2">
+                  For Full-Stack Engagement
+                </p>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 mb-3 leading-snug">
+                  13体のエージェントを
+                  <span className="text-green-800">横断的・継続的に</span>
+                  活用したい方へ
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  事業全体に深く入り込み、経営視点で13体のエージェントを統合運用したい場合は、
+                  <strong className="text-gray-900">
+                    「訪問歯科プロデューサー」（経営コンサルティング）
+                  </strong>
+                  をご検討ください。月額契約で、ARCHが経営パートナーとして常時伴走します。
+                </p>
+              </div>
+              <Link
+                href="/services/consulting"
+                className="inline-flex items-center gap-2 bg-green-800 hover:bg-green-900 text-white px-6 py-3.5 rounded-lg text-sm font-bold tracking-wider transition-colors shadow-md shrink-0 w-full lg:w-auto justify-center"
+              >
+                訪問歯科プロデューサーを見る
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+
+          {/* Coming Soon — AIエージェント発注システム teaser */}
+          <div className="mt-10 bg-gray-900 text-white rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"></div>
+            <div className="relative flex flex-col sm:flex-row items-start gap-5 sm:gap-6">
+              <div className="w-12 h-12 rounded-xl bg-yellow-400/20 text-yellow-300 flex items-center justify-center shrink-0">
+                <Sparkles size={24} />
+              </div>
+              <div className="flex-1">
+                <span className="inline-block text-[10px] font-bold tracking-[0.25em] uppercase text-yellow-300 bg-yellow-400/10 px-3 py-1 rounded-full mb-3">
+                  Coming Soon
+                </span>
+                <h3 className="text-lg sm:text-xl font-extrabold mb-3 leading-snug">
+                  AIエージェント発注システム（開発中）
+                </h3>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  「資料作成」ボタンを押すと、必要な資料の種類をヒアリング。
+                  ARCHの各エージェントがどの業務を、何日で、いくらで対応するかを自動見積りし、
+                  そのままワンクリックで発注できる——そんなBPO体験を準備中です。リリース時にはご案内いたします。
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
