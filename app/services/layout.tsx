@@ -2,30 +2,40 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+const OTHER_SERVICES = [
+  { num: "01", href: "/services/consulting", new: "訪問歯科プロデューサー", old: "（旧：歯科経営コンサルティング）" },
+  { num: "02", href: "/services/sales", new: "ARCH大学 営業学部", old: "（旧：医療介護特化型 営業支援）" },
+  { num: "03", href: "/services/senior-home", new: "ARCH 介護・暮らしの選択相談所", old: "（旧：老人ホーム紹介業）" },
+  { num: "04", href: "/services/dental-matching", new: "訪問歯科・品質診断エンジン", old: "（旧：施設向け歯科評価ツール）" },
+  { num: "05", href: "/bpo-service", new: "ARCH・外付け事務局", old: "— 事務代行・BPO" },
+];
+
 export default function ServicesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+    <div className="min-h-screen bg-arch-cream">
+      {/* ──────────────────────────────────────────
+          Header — editorial top bar, forest green
+      ────────────────────────────────────────── */}
+      <header className="sticky top-0 z-50 bg-arch-forest border-b border-arch-rule-dark">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 py-3 md:py-4 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-green-700 transition-colors"
+            className="inline-flex items-center gap-2 mono-label text-arch-sage hover:text-white transition-colors"
           >
-            <ArrowLeft size={16} />
-            トップページへ戻る
+            <ArrowLeft size={14} strokeWidth={2} />
+            <span>BACK / トップへ</span>
           </Link>
           <Link href="/" className="flex-shrink-0">
             <Image
               src="/images/logo.jpg"
               alt="合同会社ARCH"
-              width={64}
-              height={64}
-              className="h-7 w-auto"
+              width={120}
+              height={120}
+              className="h-8 md:h-9 w-auto"
             />
           </Link>
         </div>
@@ -35,88 +45,104 @@ export default function ServicesLayout({
       <main>{children}</main>
 
       {/* ──────────────────────────────────────────
-          共通 CTA
+          共通 CTA — deep forest editorial band
       ────────────────────────────────────────── */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-900 leading-snug mb-5">
-            まずは無料オンライン相談で、
-            <br className="hidden sm:block" />
-            貴院（貴施設）の課題をお聞かせください。
+      <section className="relative bg-arch-forest text-arch-cream py-24 md:py-32 overflow-hidden">
+        {/* corner labels */}
+        <div className="absolute top-6 left-6 md:top-8 md:left-10 pointer-events-none">
+          <span className="mono-label text-arch-sage/70">CONTACT — 無料オンライン相談</span>
+        </div>
+        <div className="absolute top-6 right-6 md:top-8 md:right-10 pointer-events-none text-right">
+          <span className="mono-micro text-arch-sage/60">NEXT STEP</span>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-5 sm:px-8">
+          <p className="mono-label text-arch-gold mb-6">無料オンライン相談</p>
+          <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
+            まずは、現場の課題を
+            <br />
+            そのまま聞かせてください。
           </h2>
-          <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl mx-auto mb-10">
-            業界のリアルを知り尽くしたARCHが、現状の課題分析から具体的な解決策のロードマップまでをご提案します。無理な営業は一切行いません。
+          <p className="text-base md:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10">
+            業界のリアルを知り尽くしたARCHが、現状の課題分析から解決策のロードマップまでをご提案します。無理な営業は一切行いません。
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-800/20"
+            className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
           >
             無料オンライン相談を予約する
             <ArrowRight size={18} />
           </Link>
         </div>
-      </section>
 
-      {/* ──────────────────────────────────────────
-          その他のサービス
-      ────────────────────────────────────────── */}
-      <section className="bg-gray-50 py-16 sm:py-20">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <h2 className="text-lg font-extrabold text-gray-900 mb-8">
-            その他のサービス
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <Link
-              href="/services/consulting"
-              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
-            >
-              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
-                Service 01
-              </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
-                経営コンサルティング
-              </h3>
-            </Link>
-            <Link
-              href="/services/sales"
-              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
-            >
-              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
-                Service 02
-              </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
-                営業コンサルティング
-              </h3>
-            </Link>
-            <Link
-              href="/services/senior-home"
-              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
-            >
-              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
-                Service 03
-              </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
-                老人ホーム紹介
-              </h3>
-            </Link>
-            <Link
-              href="/services/dental-matching"
-              className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group"
-            >
-              <span className="text-[10px] font-bold tracking-widest text-green-700 block mb-2">
-                Service 04
-              </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-green-700 transition-colors text-sm sm:text-base">
-                介護施設向け訪問歯科マッチング
-              </h3>
-            </Link>
-          </div>
+        {/* bottom mono rule */}
+        <div className="absolute bottom-6 left-6 md:bottom-8 md:left-10 pointer-events-none">
+          <span className="mono-label text-arch-sage/60">ARCH</span>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-8 text-center text-sm font-medium">
-        &copy; {new Date().getFullYear()} 合同会社ARCH All rights reserved.
+      {/* ──────────────────────────────────────────
+          その他のサービス — 5 cards, editorial list
+      ────────────────────────────────────────── */}
+      <section className="bg-arch-cream-raised py-20 md:py-24 border-t border-arch-rule">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="flex items-baseline justify-between mb-10 md:mb-12 border-b border-arch-rule pb-4">
+            <p className="mono-label text-arch-moss">SERVICES — 全5事業</p>
+            <p className="mono-micro text-arch-ink-muted hidden sm:block">RELATED</p>
+          </div>
+          <h2 className="display-jp text-2xl md:text-3xl text-arch-ink mb-10 md:mb-12">
+            その他のサービス
+          </h2>
+
+          <ul className="divide-y divide-arch-rule border-t border-b border-arch-rule">
+            {OTHER_SERVICES.map((s) => (
+              <li key={s.href}>
+                <Link
+                  href={s.href}
+                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 md:gap-8 py-6 md:py-7 hover:bg-arch-cream transition-colors"
+                >
+                  <span className="mono-label text-arch-moss tabular-nums pl-1 md:pl-2">
+                    {s.num}
+                  </span>
+                  <div>
+                    <p className="display-jp text-base md:text-xl text-arch-ink group-hover:text-arch-forest transition-colors">
+                      {s.new}
+                    </p>
+                    <p className="mono-micro text-arch-ink-muted mt-1">{s.old}</p>
+                  </div>
+                  <ArrowRight
+                    size={18}
+                    className="text-arch-moss group-hover:translate-x-1 transition-transform mr-1 md:mr-2"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────
+          Footer — near-black editorial strip
+      ────────────────────────────────────────── */}
+      <footer className="bg-arch-ink text-arch-sage py-10 md:py-12 border-t border-arch-rule-dark">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <Image
+              src="/images/logo.jpg"
+              alt="合同会社ARCH"
+              width={80}
+              height={80}
+              className="h-9 w-auto opacity-90"
+            />
+            <div>
+              <p className="mono-label text-arch-sage">ARCH / 合同会社</p>
+              <p className="mono-micro text-arch-sage/60 mt-1">arch-yh.com</p>
+            </div>
+          </div>
+          <p className="mono-micro text-arch-sage/50">
+            &copy; {new Date().getFullYear()} 合同会社ARCH ALL RIGHTS RESERVED.
+          </p>
+        </div>
       </footer>
     </div>
   );
