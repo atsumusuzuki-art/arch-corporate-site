@@ -29,6 +29,12 @@ export type NewsItem = {
 
 export const NEWS: NewsItem[] = [
   {
+    date: "2026-04-20",
+    category: "更新",
+    title: "ホームページを改修しました",
+    href: "/",
+  },
+  {
     date: "2026-04-18",
     category: "コラム",
     title: "新コラム「その待合室、患者さんに何も伝わっていないかもしれない」を公開しました",
