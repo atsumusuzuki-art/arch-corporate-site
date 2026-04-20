@@ -2,18 +2,11 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Check,
-  AlertTriangle,
-  MessageSquare,
-  ShieldCheck,
-  Gauge,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, Check, AlertTriangle, MessageSquare, ShieldCheck, Sparkles } from "lucide-react";
+import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
 
 /* ================================================================
-   訪問歯科・品質診断エンジン
+   訪問歯科・品質診断エンジン — editorial v2
    （旧：介護施設向け 訪問歯科マッチング／施設向け歯科評価ツール）
 
    - 5段階のLikert尺度で、現在ご契約中／検討中の訪問歯科医院を
@@ -75,6 +68,39 @@ const SCALE_LABELS = [
   "5: 非常にそう思う",
 ];
 
+const WHY_CASES = [
+  {
+    title: "現場のクレーム",
+    body: "入居者様・ご家族からの態度への苦情、ケア指導の理想論が負担に。",
+  },
+  {
+    title: "報告書が読めない",
+    body: "KPIが見えず、現場スタッフが「何がどうなっているか」分からない。",
+  },
+  {
+    title: "コンプラ不安",
+    body: "算定根拠・同意取得・記録管理が曖昧で、施設側にリスクが残る。",
+  },
+];
+
+const TIER_LEGEND = [
+  {
+    tier: "LOW",
+    range: "平均 1.0 – 2.4",
+    label: "即刻変更を推奨",
+  },
+  {
+    tier: "MID",
+    range: "平均 2.5 – 3.9",
+    label: "改善要相談",
+  },
+  {
+    tier: "HIGH",
+    range: "平均 4.0 – 5.0",
+    label: "長期継続推奨",
+  },
+];
+
 export default function DentalMatchingClient() {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -85,8 +111,7 @@ export default function DentalMatchingClient() {
   );
   const answeredCount = Object.keys(answers).length;
   const maxScore = QUESTIONS.length * 5;
-  const averageScore =
-    answeredCount > 0 ? totalScore / answeredCount : 0;
+  const averageScore = answeredCount > 0 ? totalScore / answeredCount : 0;
 
   /* ─────────── ARCHセンサー・ロジック ─────────── */
   //   低: 平均 < 2.5   → 即刻変えるべき
@@ -95,9 +120,9 @@ export default function DentalMatchingClient() {
   const tier: "low" | "mid" | "high" =
     averageScore < 2.5 ? "low" : averageScore < 4.0 ? "mid" : "high";
 
-  const lowestCategories = QUESTIONS
-    .filter((q) => (answers[q.id] ?? 5) <= 3)
-    .map((q) => q.label);
+  const lowestCategories = QUESTIONS.filter(
+    (q) => (answers[q.id] ?? 5) <= 3
+  ).map((q) => q.label);
 
   const handleSelect = (qid: string, value: number) => {
     setAnswers((prev) => ({ ...prev, [qid]: value }));
@@ -106,87 +131,90 @@ export default function DentalMatchingClient() {
   const canSubmit = answeredCount === QUESTIONS.length;
 
   return (
-    <article>
+    <article className="bg-arch-cream">
       {/* ──────────────────────────────────────────
-          HERO
+          HERO — editorial cover, deep forest
       ────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-green-900 via-green-800 to-green-950 pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-36 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.08),transparent_50%)]"></div>
-        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
-          <span className="inline-block text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-green-200 bg-white/10 backdrop-blur px-4 py-1.5 rounded-full mb-6 border border-white/20">
-            Service 04 — Dental Quality Diagnostic Engine
-          </span>
-          <h1 className="font-extrabold leading-[1.25] tracking-tight text-white mb-3 sm:mb-4">
-            <span className="block text-[1.6rem] sm:text-[2.2rem] lg:text-[2.7rem]">
-              訪問歯科・<span className="text-yellow-300">品質診断エンジン</span>
-            </span>
-            <span className="block text-[0.85rem] sm:text-sm font-medium text-green-300 mt-2 tracking-wider">
-              （ 旧：施設向け歯科評価ツール ）
-            </span>
-          </h1>
-          <p className="text-lg sm:text-2xl lg:text-[1.6rem] font-bold text-green-100 leading-snug mt-6 mb-6 sm:mb-8">
-            今の歯科医院、本当に<span className="text-yellow-300">施設の味方</span>ですか？
-          </p>
-          <p className="text-sm sm:text-base text-green-200/90 leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12">
-            6つの指標を5段階で答えるだけ。元 医療グループ歯科事務局長・鈴木集の現場知見をロジックに落とし込んだ
-            「ARCHセンサー」が、あなたの施設が現在ご契約中の訪問歯科医院の"品質"を診断します。
-          </p>
-          <a
-            href="#diagnostic"
-            className="inline-flex items-center gap-2.5 bg-white hover:bg-green-50 text-green-900 px-8 py-4 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-black/20"
-          >
-            無料で診断を始める
-            <ArrowRight size={18} />
-          </a>
+      <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
+        <CornerMarkers
+          topRight="DIAGNOSTIC — 04 / 品質診断"
+          bottomLeft="SERVICE"
+          bottomRight="04 / 05"
+          theme="dark"
+        />
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <SectionTag category="DIAGNOSTIC" number="04" label="訪問歯科・品質診断エンジン" theme="dark" />
+
+          <div className="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
+            <div className="md:col-span-8">
+              <h1 className="display-jp text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl text-arch-cream leading-[1.1]">
+                今の歯科医院、
+                <br />
+                本当に<span className="text-arch-gold">施設の味方</span>？
+              </h1>
+              <p className="mono-micro text-arch-sage/70 mt-6">
+                （旧：施設向け歯科評価ツール）
+              </p>
+            </div>
+            <div className="md:col-span-4">
+              <div className="border-l-2 border-arch-gold pl-5">
+                <p className="mono-label text-arch-gold mb-3">CORE MESSAGE</p>
+                <p className="text-base md:text-lg text-arch-sage leading-loose">
+                  6項目×5段階で、<br />今の訪問歯科を"診断"する。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14 md:mt-20 grid md:grid-cols-12 gap-8 items-end border-t border-arch-rule-dark pt-8">
+            <p className="md:col-span-8 text-sm md:text-base text-arch-sage/90 leading-loose max-w-2xl">
+              6つの指標を5段階で答えるだけ。元 医療グループ歯科事務局長・鈴木集の現場知見をロジックに落とし込んだ「ARCHセンサー」が、あなたの施設が現在ご契約中の訪問歯科医院の"品質"を診断します。
+            </p>
+            <div className="md:col-span-4 flex md:justify-end">
+              <a
+                href="#diagnostic"
+                className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
+              >
+                無料で診断を始める
+                <ArrowRight size={18} />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ──────────────────────────────────────────
-          なぜ品質診断が必要なのか
+          WHY NOW — なぜ品質診断が必要なのか
       ────────────────────────────────────────── */}
-      <section className="bg-gray-50 py-20 sm:py-28">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
-            Why Now
-          </p>
-          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6">
-            その歯科医院、<span className="text-green-800">"惰性"で続けていませんか？</span>
+      <section className="bg-arch-cream py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
+            <SectionTag category="WHY NOW" number="02" label="なぜ今、品質診断が必要か" />
+            <p className="mono-micro text-arch-ink-muted hidden sm:block">03 CASES</p>
+          </div>
+
+          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-12 md:mb-16 max-w-3xl leading-[1.2]">
+            その歯科医院、
+            <br />
+            <span className="text-arch-forest">"惰性" で続けていませんか？</span>
           </h2>
-          <p className="text-center text-sm sm:text-base text-gray-500 leading-relaxed mb-14 sm:mb-16 max-w-3xl mx-auto">
-            「昔からお世話になっているから」「他を知らないから」という理由だけで、
-            本来守るべき入居者様の口腔健康と、現場スタッフの負担が犠牲になっていませんか？
-            まずは"今"の状態を可視化するところから始めましょう。
+          <p className="text-base text-arch-ink-soft leading-loose max-w-3xl mb-12 md:mb-16">
+            「昔からお世話になっているから」「他を知らないから」という理由だけで、本来守るべき入居者様の口腔健康と、現場スタッフの負担が犠牲になっていませんか？ まずは"今"の状態を可視化するところから始めましょう。
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-5 sm:gap-6">
-            {[
-              {
-                icon: <AlertTriangle className="text-red-500" size={22} />,
-                title: "現場のクレーム",
-                body: "入居者様・ご家族からの態度への苦情、ケア指導の理想論が負担に。",
-              },
-              {
-                icon: <Gauge className="text-yellow-500" size={22} />,
-                title: "報告書が読めない",
-                body: "KPIが見えず、現場スタッフが「何がどうなっているか」分からない。",
-              },
-              {
-                icon: <ShieldCheck className="text-green-600" size={22} />,
-                title: "コンプラ不安",
-                body: "算定根拠・同意取得・記録管理が曖昧で、施設側にリスクが残る。",
-              },
-            ].map((item, i) => (
+          <div className="grid md:grid-cols-3 gap-0 border-t border-arch-rule">
+            {WHY_CASES.map((item, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-6 sm:p-7 border border-gray-200"
+                className={`border-b border-arch-rule md:border-b-0 ${i < WHY_CASES.length - 1 ? "md:border-r" : ""} py-8 md:py-10 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
               >
-                <div className="w-11 h-11 rounded-full bg-gray-50 flex items-center justify-center mb-4">
-                  {item.icon}
-                </div>
-                <h3 className="font-extrabold text-gray-900 text-base sm:text-lg mb-2">
+                <p className="mono-label text-arch-moss mb-4 tabular-nums">
+                  RISK — {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="display-jp text-lg md:text-xl text-arch-ink mb-4 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-arch-ink-soft leading-loose">
                   {item.body}
                 </p>
               </div>
@@ -196,60 +224,64 @@ export default function DentalMatchingClient() {
       </section>
 
       {/* ──────────────────────────────────────────
-          診断エンジン本体
+          DIAGNOSTIC ENGINE — 6項目 × 5段階
       ────────────────────────────────────────── */}
-      <section id="diagnostic" className="bg-white py-20 sm:py-28">
-        <div className="max-w-3xl mx-auto px-5 sm:px-8">
-          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
-            Diagnostic Engine
-          </p>
-          <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4">
-            <span className="text-green-800">6項目 × 5段階</span>で、いまの歯科医院を診断
+      <section id="diagnostic" className="bg-arch-cream-raised py-20 md:py-28 border-t border-arch-rule">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8">
+          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
+            <SectionTag category="ENGINE" number="03" label="診断エンジン" />
+            <p className="mono-micro text-arch-ink-muted hidden sm:block">6 × 5 LIKERT</p>
+          </div>
+
+          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-6 max-w-3xl leading-[1.2]">
+            <span className="text-arch-forest">6項目 × 5段階</span>で、
+            <br />
+            いまの歯科医院を診断する。
           </h2>
-          <p className="text-center text-sm sm:text-base text-gray-500 leading-relaxed mb-10 sm:mb-14">
+          <p className="text-base text-arch-ink-soft leading-loose mb-12 md:mb-14 max-w-2xl">
             現時点でご契約中／検討中の訪問歯科医院について、各項目を直感的に回答してください。
           </p>
 
           {/* 進捗バー */}
-          <div className="mb-10">
-            <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-500 mb-2">
-              <span>回答済み: {answeredCount} / {QUESTIONS.length}</span>
-              <span className="text-green-700">
-                {answeredCount > 0 ? `平均: ${averageScore.toFixed(1)} / 5.0` : "未回答"}
+          <div className="mb-12 border-t border-b border-arch-rule py-5">
+            <div className="flex items-center justify-between mono-micro text-arch-ink-muted mb-3">
+              <span>
+                PROGRESS / 回答済み: <strong className="text-arch-forest tabular-nums">{answeredCount}</strong> / {QUESTIONS.length}
+              </span>
+              <span className="text-arch-forest tabular-nums">
+                {answeredCount > 0 ? `AVG ${averageScore.toFixed(1)} / 5.0` : "未回答"}
               </span>
             </div>
-            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div className="h-1 bg-arch-rule">
               <div
-                className="h-full bg-gradient-to-r from-green-600 to-green-800 transition-all duration-500"
-                style={{
-                  width: `${(answeredCount / QUESTIONS.length) * 100}%`,
-                }}
+                className="h-full bg-arch-forest transition-all duration-500"
+                style={{ width: `${(answeredCount / QUESTIONS.length) * 100}%` }}
               />
             </div>
           </div>
 
           {/* 質問 */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {QUESTIONS.map((q, i) => (
               <div
                 key={q.id}
-                className="bg-gray-50 rounded-2xl p-6 sm:p-7 border border-gray-100"
+                className="bg-arch-cream border border-arch-rule p-6 md:p-8"
               >
-                <div className="flex items-start gap-3 mb-4">
-                  <span className="shrink-0 w-8 h-8 rounded-full bg-green-800 text-white text-xs font-bold flex items-center justify-center">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span className="display-jp text-3xl md:text-4xl text-arch-forest/40 tabular-nums leading-none shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="flex-1">
-                    <h3 className="font-extrabold text-gray-900 text-base sm:text-lg mb-1">
+                    <h3 className="display-jp text-lg md:text-xl text-arch-ink mb-2 leading-snug">
                       {q.label}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                    <p className="text-sm text-arch-ink-soft leading-loose">
                       {q.description}
                     </p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-5 gap-2 sm:gap-3">
+                <div className="grid grid-cols-5 gap-2 sm:gap-3 border-t border-arch-rule pt-5">
                   {[1, 2, 3, 4, 5].map((v) => {
                     const selected = answers[q.id] === v;
                     return (
@@ -257,10 +289,10 @@ export default function DentalMatchingClient() {
                         key={v}
                         type="button"
                         onClick={() => handleSelect(q.id, v)}
-                        className={`py-3 sm:py-4 rounded-lg text-sm sm:text-base font-bold transition-all ${
+                        className={`py-3 sm:py-4 text-sm sm:text-base font-bold tabular-nums transition-all ${
                           selected
-                            ? "bg-green-800 text-white shadow-md shadow-green-900/20 scale-[1.03]"
-                            : "bg-white text-gray-400 border border-gray-200 hover:border-green-300 hover:text-green-700"
+                            ? "bg-arch-forest text-arch-cream"
+                            : "bg-arch-cream-raised text-arch-ink-muted border border-arch-rule hover:border-arch-forest hover:text-arch-forest"
                         }`}
                       >
                         {v}
@@ -268,7 +300,7 @@ export default function DentalMatchingClient() {
                     );
                   })}
                 </div>
-                <div className="mt-2 flex justify-between text-[10px] sm:text-xs text-gray-400 font-medium">
+                <div className="mt-3 flex justify-between mono-micro text-arch-ink-muted">
                   <span>{SCALE_LABELS[0]}</span>
                   <span>{SCALE_LABELS[4]}</span>
                 </div>
@@ -282,17 +314,17 @@ export default function DentalMatchingClient() {
               type="button"
               disabled={!canSubmit}
               onClick={() => setSubmitted(true)}
-              className={`inline-flex items-center gap-2.5 px-10 py-5 rounded-lg text-base sm:text-lg font-bold tracking-wider transition-all ${
+              className={`inline-flex items-center gap-3 px-10 py-5 text-base sm:text-lg font-bold tracking-[0.15em] transition-all ${
                 canSubmit
-                  ? "bg-green-800 hover:bg-green-900 text-white shadow-lg shadow-green-900/20"
-                  : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  ? "bg-arch-forest hover:bg-arch-gold hover:text-arch-ink text-arch-cream"
+                  : "bg-arch-cream-raised text-arch-ink-muted border border-arch-rule cursor-not-allowed"
               }`}
             >
               <Sparkles size={20} />
               ARCHセンサーで診断する
             </button>
             {!canSubmit && (
-              <p className="text-xs text-gray-400 mt-4">
+              <p className="mono-micro text-arch-ink-muted mt-4">
                 全項目にご回答いただくと診断できます
               </p>
             )}
@@ -301,62 +333,55 @@ export default function DentalMatchingClient() {
       </section>
 
       {/* ──────────────────────────────────────────
-          診断結果（条件分岐）
+          RESULT — 診断結果（条件分岐）
       ────────────────────────────────────────── */}
       {submitted && canSubmit && (
-        <section className="bg-gradient-to-b from-white to-green-50/60 py-20 sm:py-28 scroll-mt-24" id="result">
-          <div className="max-w-3xl mx-auto px-5 sm:px-8">
-            <p className="text-center text-sm font-bold tracking-widest uppercase text-green-700 mb-4">
-              Result
-            </p>
-            <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2">
-              ARCHセンサーの診断結果
-            </h2>
-            <p className="text-center text-sm sm:text-base text-gray-500 mb-10">
-              合計スコア
-              <span className="text-green-800 font-bold text-lg mx-1">
-                {totalScore}
-              </span>
-              / {maxScore}（平均 {averageScore.toFixed(1)} / 5.0）
-            </p>
+        <section
+          className="bg-arch-cream py-20 md:py-28 border-t border-arch-rule scroll-mt-24"
+          id="result"
+        >
+          <div className="max-w-4xl mx-auto px-5 sm:px-8">
+            <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12">
+              <SectionTag category="RESULT" number="04" label="ARCHセンサー 診断結果" />
+              <p className="mono-micro text-arch-ink-muted tabular-nums">
+                {totalScore} / {maxScore} (AVG {averageScore.toFixed(1)})
+              </p>
+            </div>
 
             {/* LOW — 即刻変えるべき */}
             {tier === "low" && (
-              <div className="bg-red-50 border-2 border-red-200 rounded-3xl p-8 sm:p-10">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center shrink-0">
-                    <AlertTriangle className="text-white" size={24} />
+              <div className="border-2 border-arch-danger bg-arch-cream-raised p-8 md:p-12">
+                <div className="flex items-start gap-5 mb-6 pb-6 border-b border-arch-danger/30">
+                  <div className="w-12 h-12 bg-arch-danger flex items-center justify-center shrink-0">
+                    <AlertTriangle className="text-arch-cream" size={24} />
                   </div>
                   <div>
-                    <p className="text-xs font-bold tracking-widest text-red-600 mb-1">
-                      LOW — 危険水域
-                    </p>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-red-700 leading-snug">
-                      ⚠️ 即刻変えるべき！
+                    <p className="mono-label text-arch-danger mb-2">LOW — 危険水域</p>
+                    <h3 className="display-jp text-3xl md:text-4xl text-arch-danger leading-snug">
+                      即刻変えるべき！
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-loose mb-6">
-                  このままご契約を続けると、入居者様のQOLと施設スタッフの負担、そして施設全体の信頼にリスクを及ぼす可能性があります。
-                  ARCHが<strong className="text-red-700">円滑な切り替えをプロデュース</strong>します。既存契約の解約調整、次の歯科医院の選定、現場への説明まで、すべて伴走します。
+                <p className="text-sm md:text-base text-arch-ink-soft leading-loose mb-8">
+                  このままご契約を続けると、入居者様のQOLと施設スタッフの負担、そして施設全体の信頼にリスクを及ぼす可能性があります。ARCHが
+                  <strong className="text-arch-danger">円滑な切り替えをプロデュース</strong>
+                  します。既存契約の解約調整、次の歯科医院の選定、現場への説明まで、すべて伴走します。
                 </p>
-                <div className="bg-white rounded-2xl p-5 mb-6 border border-red-100">
-                  <p className="text-xs font-bold text-red-600 mb-2 tracking-wider">
+                <div className="bg-arch-cream border border-arch-danger/30 p-6 mb-6">
+                  <p className="mono-label text-arch-danger mb-4">
                     切り替えプロデュース・パッケージ
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    <li className="flex items-start gap-2">
-                      <Check className="text-red-500 shrink-0 mt-0.5" size={15} />
-                      現行歯科医院との解約調整サポート
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="text-red-500 shrink-0 mt-0.5" size={15} />
-                      ARCH審査済の訪問歯科医院リストをご提示
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="text-red-500 shrink-0 mt-0.5" size={15} />
-                      現場スタッフへの説明会・引き継ぎ伴走
-                    </li>
+                  <ul className="space-y-3">
+                    {[
+                      "現行歯科医院との解約調整サポート",
+                      "ARCH審査済の訪問歯科医院リストをご提示",
+                      "現場スタッフへの説明会・引き継ぎ伴走",
+                    ].map((t) => (
+                      <li key={t} className="flex items-start gap-3">
+                        <Check className="text-arch-danger shrink-0 mt-1" size={15} />
+                        <span className="text-sm text-arch-ink">{t}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -364,46 +389,43 @@ export default function DentalMatchingClient() {
 
             {/* MID — 相談すべき */}
             {tier === "mid" && (
-              <div className="bg-yellow-50 border-2 border-yellow-200 rounded-3xl p-8 sm:p-10">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center shrink-0">
-                    <MessageSquare className="text-white" size={22} />
+              <div className="border-2 border-arch-gold bg-arch-cream-raised p-8 md:p-12">
+                <div className="flex items-start gap-5 mb-6 pb-6 border-b border-arch-gold/40">
+                  <div className="w-12 h-12 bg-arch-gold flex items-center justify-center shrink-0">
+                    <MessageSquare className="text-arch-ink" size={22} />
                   </div>
                   <div>
-                    <p className="text-xs font-bold tracking-widest text-yellow-700 mb-1">
-                      MID — 改善の余地あり
-                    </p>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-yellow-800 leading-snug">
-                      💬 現在の歯科医院と相談しましょう
+                    <p className="mono-label text-arch-gold mb-2">MID — 改善の余地あり</p>
+                    <h3 className="display-jp text-3xl md:text-4xl text-arch-ink leading-snug">
+                      現在の歯科医院と相談しましょう
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-loose mb-6">
-                  悪くはないものの、このままでは現場に我慢を強いるポイントがいくつか見られます。
-                  以下の項目を<strong className="text-yellow-800">具体的な相談項目</strong>として、現在の歯科医院と建設的に話し合うことをお勧めします。
+                <p className="text-sm md:text-base text-arch-ink-soft leading-loose mb-8">
+                  悪くはないものの、このままでは現場に我慢を強いるポイントがいくつか見られます。以下の項目を
+                  <strong className="text-arch-ink">具体的な相談項目</strong>
+                  として、現在の歯科医院と建設的に話し合うことをお勧めします。
                 </p>
-                <div className="bg-white rounded-2xl p-5 mb-6 border border-yellow-100">
-                  <p className="text-xs font-bold text-yellow-700 mb-3 tracking-wider">
-                    相談すべき具体的ポイント
-                  </p>
+                <div className="bg-arch-cream border border-arch-gold/40 p-6 mb-6">
+                  <p className="mono-label text-arch-gold mb-4">相談すべき具体的ポイント</p>
                   {lowestCategories.length > 0 ? (
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <ul className="space-y-3">
                       {lowestCategories.map((cat) => (
-                        <li key={cat} className="flex items-start gap-2">
-                          <span className="text-yellow-500 font-bold shrink-0">●</span>
-                          <span>
-                            <strong>{cat}</strong>について、具体的な改善指標と期限を設定
+                        <li key={cat} className="flex items-start gap-3">
+                          <span className="text-arch-gold font-bold shrink-0 mt-0.5">●</span>
+                          <span className="text-sm text-arch-ink-soft">
+                            <strong className="text-arch-ink">{cat}</strong>について、具体的な改善指標と期限を設定
                           </span>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-arch-ink-soft">
                       全体的にはバランスが取れています。定期レビューの仕組み化をお勧めします。
                     </p>
                   )}
                 </div>
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <p className="mono-micro text-arch-ink-muted">
                   ※ ARCHでは「歯科医院側との交渉代行」や「第三者立ち会いミーティング」もご支援可能です。
                 </p>
               </div>
@@ -411,59 +433,52 @@ export default function DentalMatchingClient() {
 
             {/* HIGH — 長く付き合うべき */}
             {tier === "high" && (
-              <div className="bg-green-50 border-2 border-green-200 rounded-3xl p-8 sm:p-10">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-full bg-green-700 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="text-white" size={24} />
+              <div className="border-2 border-arch-forest bg-arch-cream-raised p-8 md:p-12">
+                <div className="flex items-start gap-5 mb-6 pb-6 border-b border-arch-forest/30">
+                  <div className="w-12 h-12 bg-arch-forest flex items-center justify-center shrink-0">
+                    <ShieldCheck className="text-arch-cream" size={24} />
                   </div>
                   <div>
-                    <p className="text-xs font-bold tracking-widest text-green-700 mb-1">
-                      HIGH — 良好
-                    </p>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-green-800 leading-snug">
-                      ✅ 素晴らしい歯科医院です
+                    <p className="mono-label text-arch-forest mb-2">HIGH — 良好</p>
+                    <h3 className="display-jp text-3xl md:text-4xl text-arch-forest leading-snug">
+                      素晴らしい歯科医院です
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-loose mb-6">
-                  稀有なほど質の高いパートナーです。この関係を<strong className="text-green-800">長く維持する</strong>ために、以下のポイントを押さえておきましょう。
+                <p className="text-sm md:text-base text-arch-ink-soft leading-loose mb-8">
+                  稀有なほど質の高いパートナーです。この関係を
+                  <strong className="text-arch-forest">長く維持する</strong>
+                  ために、以下のポイントを押さえておきましょう。
                 </p>
-                <div className="bg-white rounded-2xl p-5 mb-6 border border-green-100">
-                  <p className="text-xs font-bold text-green-700 mb-3 tracking-wider">
-                    関係を持続させるコツ
-                  </p>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <Check className="text-green-600 shrink-0 mt-0.5" size={15} />
-                      月1回の定例ミーティングで報告書・KPIを相互確認
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="text-green-600 shrink-0 mt-0.5" size={15} />
-                      担当DHの変更時は必ず引継ぎミーティングを実施
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="text-green-600 shrink-0 mt-0.5" size={15} />
-                      "無言のサービス期待"を避け、感謝と要望を言語化する
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="text-green-600 shrink-0 mt-0.5" size={15} />
-                      年1回、本診断エンジンで再診断して品質をモニタリング
-                    </li>
+                <div className="bg-arch-cream border border-arch-forest/30 p-6 mb-6">
+                  <p className="mono-label text-arch-forest mb-4">関係を持続させるコツ</p>
+                  <ul className="space-y-3">
+                    {[
+                      "月1回の定例ミーティングで報告書・KPIを相互確認",
+                      "担当DHの変更時は必ず引継ぎミーティングを実施",
+                      "\"無言のサービス期待\" を避け、感謝と要望を言語化する",
+                      "年1回、本診断エンジンで再診断して品質をモニタリング",
+                    ].map((t) => (
+                      <li key={t} className="flex items-start gap-3">
+                        <Check className="text-arch-forest shrink-0 mt-1" size={15} />
+                        <span className="text-sm text-arch-ink-soft">{t}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
             )}
 
             {/* 共通CTA */}
-            <div className="mt-10 text-center">
+            <div className="mt-12 text-center">
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2.5 bg-green-800 hover:bg-green-900 text-white px-8 py-4 sm:py-5 rounded-lg text-sm sm:text-base font-bold tracking-wider transition-colors shadow-lg shadow-green-900/20"
+                className="inline-flex items-center gap-3 bg-arch-forest hover:bg-arch-gold hover:text-arch-ink text-arch-cream px-8 py-4 sm:py-5 text-sm sm:text-base font-bold tracking-[0.15em] transition-colors"
               >
                 詳細な改善プランを鈴木に相談する
                 <ArrowRight size={18} />
               </Link>
-              <p className="text-xs text-gray-400 mt-4">
+              <p className="mono-micro text-arch-ink-muted mt-4">
                 ※ 初回オンライン相談は無料です。診断結果を直接ヒアリングし、具体的なネクストアクションをご提案します。
               </p>
             </div>
@@ -472,53 +487,49 @@ export default function DentalMatchingClient() {
       )}
 
       {/* ──────────────────────────────────────────
-          ロジックの根拠（ARCHセンサー）
+          LOGIC — ARCHセンサー・ロジックの根拠
       ────────────────────────────────────────── */}
-      <section className="bg-green-900 py-20 sm:py-28 text-white">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8">
-          <p className="text-center text-sm font-bold tracking-widest uppercase text-green-300 mb-4">
-            About the Logic
-          </p>
-          <h2 className="text-center text-2xl sm:text-3xl font-extrabold mb-6">
-            「ARCHセンサー・ロジック」とは
+      <section className="relative bg-arch-forest text-arch-cream py-20 md:py-28 overflow-hidden">
+        <div className="absolute top-6 left-6 md:top-8 md:left-10 pointer-events-none">
+          <span className="mono-label text-arch-sage/70">LOGIC — 05 / ARCHセンサー</span>
+        </div>
+        <div className="absolute top-6 right-6 md:top-8 md:right-10 pointer-events-none text-right">
+          <span className="mono-micro text-arch-sage/60">3-TIER FRAMEWORK</span>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-8">
+          <p className="mono-label text-arch-gold mb-6">ABOUT THE LOGIC</p>
+          <h2 className="display-jp text-4xl md:text-6xl text-arch-cream mb-6 max-w-3xl leading-[1.1]">
+            「ARCHセンサー・
+            <br />
+            <span className="text-arch-gold">ロジック」</span>とは。
           </h2>
-          <p className="text-center text-sm sm:text-base text-green-100 leading-loose max-w-3xl mx-auto mb-10">
-            広域医療法人にて歯科事務局として経営再建を主導してきた代表・鈴木集の現場知見を、
-            定量評価に落とし込んだ独自の評価ロジックです。
+          <p className="text-base md:text-lg text-arch-sage/80 leading-loose max-w-2xl mb-16 md:mb-20">
+            広域医療法人にて歯科事務局として経営再建を主導してきた代表・鈴木集の現場知見を、<strong className="text-arch-cream">定量評価に落とし込んだ独自の評価ロジック</strong>です。
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-5 sm:gap-6">
-            {[
-              {
-                tier: "LOW",
-                range: "平均 1.0 – 2.4",
-                color: "from-red-500 to-red-700",
-                label: "即刻変更を推奨",
-              },
-              {
-                tier: "MID",
-                range: "平均 2.5 – 3.9",
-                color: "from-yellow-500 to-yellow-700",
-                label: "改善要相談",
-              },
-              {
-                tier: "HIGH",
-                range: "平均 4.0 – 5.0",
-                color: "from-green-500 to-green-700",
-                label: "長期継続推奨",
-              },
-            ].map((t) => (
+          <div className="grid md:grid-cols-3 gap-px bg-arch-rule-dark/60 border border-arch-rule-dark/60">
+            {TIER_LEGEND.map((t, i) => (
               <div
                 key={t.tier}
-                className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10"
+                className="bg-arch-forest p-8 md:p-10 flex flex-col min-h-[260px]"
               >
-                <div
-                  className={`inline-block text-[10px] font-bold tracking-widest uppercase text-white bg-gradient-to-r ${t.color} px-3 py-1 rounded-full mb-3`}
-                >
-                  {t.tier}
+                <div className="flex items-start justify-between mb-6">
+                  <p className="mono-micro text-arch-sage/60 tabular-nums">
+                    TIER / 0{i + 1}
+                  </p>
+                  <span className="mono-micro text-arch-gold/70 tabular-nums">
+                    0{i + 1} — 03
+                  </span>
                 </div>
-                <p className="text-xs text-green-300 mb-2">{t.range}</p>
-                <p className="font-bold text-white">{t.label}</p>
+                <p className="display-jp text-5xl md:text-6xl text-arch-gold leading-none mb-5">
+                  {t.tier}
+                </p>
+                <div className="h-px bg-arch-gold/40 w-12 mb-5"></div>
+                <p className="mono-label text-arch-cream mb-2 tabular-nums">{t.range}</p>
+                <p className="text-sm text-arch-sage/85 leading-relaxed mt-auto">
+                  {t.label}
+                </p>
               </div>
             ))}
           </div>
