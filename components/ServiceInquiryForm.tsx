@@ -2,31 +2,53 @@
  * ServiceInquiryForm — サービス別 お申込みフォーム
  *
  * FormSubmit.co 経由で atsumu.suzuki@arch-yh.com に送信。
- * 他の「無料相談」と区別するため、_subject に明確な識別子を含める。
- * 医院名・院長名・所在地・メール・電話 の5項目を必須入力。
+ * 必須5項目: 医院名・院長名・所在地・メール・電話
+ *
+ * 申込種別の選択に対応（`types` プロップ）:
+ *   `types` を渡すとラジオボタンが表示され、選んだ項目の `subjectTag` が
+ *   そのままメール件名（_subject）になる。JSなしで件名を切り替えるため
+ *   `name="_subject"` の value をラジオに直接束ねている。
+ *
+ *   `types` を省略した場合は従来通り単一の `subjectTag` を使う。
  */
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-type Props = {
-  /** メール件名（FormSubmit _subject）。例：「【お試しコンサル申込】〜」 */
+type ApplicationType = {
+  /** ラジオのキー（フォーム内で一意） */
+  value: string;
+  /** 表示ラベル（日本語） */
+  label: string;
+  /** 補足説明（任意） */
+  description?: string;
+  /** 選択時にそのままメール件名になる文字列 */
   subjectTag: string;
-  /** フォーム見出し。例：「お試しコンサルの申込」 */
+  /** 初期選択にするか */
+  defaultChecked?: boolean;
+};
+
+type Props = {
+  /** ラジオで複数選択肢を出す場合に指定。未指定時は subjectTag を直接使う */
+  types?: ApplicationType[];
+  /** types 未指定時に使う固定件名 */
+  subjectTag?: string;
+  /** フォーム見出し */
   heading: string;
   /** 補足説明（任意） */
   description?: string;
-  /** 送信後に表示する追記（任意。単発実地支援の交通費注意書きなどに） */
+  /** フォーム下部の注記（任意） */
   notes?: string[];
-  /** 送信後に戻すURL。省略時は現在ページ */
+  /** 送信後に戻すURL */
   thankYouUrl?: string;
-  /** 一意なID（同ページ内に複数フォームを置く際の name 衝突回避に使用） */
+  /** 一意なID（同ページ内に複数フォームを置く際の name 衝突回避用） */
   idPrefix: string;
   /** 送信ボタン文言 */
   submitLabel?: string;
 };
 
 export default function ServiceInquiryForm({
+  types,
   subjectTag,
   heading,
   description,
@@ -35,11 +57,15 @@ export default function ServiceInquiryForm({
   idPrefix,
   submitLabel = "この内容で申込む",
 }: Props) {
+  const useRadio = types && types.length > 0;
+
   return (
     <div className="bg-arch-cream border border-arch-forest/20 p-8 md:p-10">
       <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-8">
         <p className="mono-label text-arch-forest">APPLY / お申込みフォーム</p>
-        <p className="mono-micro text-arch-ink-muted">5 FIELDS</p>
+        <p className="mono-micro text-arch-ink-muted">
+          {useRadio ? `${5 + 1} FIELDS` : "5 FIELDS"}
+        </p>
       </div>
 
       <h4 className="display-jp text-xl md:text-2xl text-arch-ink mb-3">{heading}</h4>
@@ -55,12 +81,50 @@ export default function ServiceInquiryForm({
         className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5"
       >
         {/* FormSubmit.co 設定 */}
-        <input type="hidden" name="_subject" value={subjectTag} />
+        {!useRadio && subjectTag && (
+          <input type="hidden" name="_subject" value={subjectTag} />
+        )}
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_next" value={thankYouUrl} />
         {/* ハニーポット（スパム対策） */}
         <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+
+        {/* Radio: 申込種別 */}
+        {useRadio && (
+          <fieldset className="md:col-span-2 border border-arch-rule bg-arch-cream-raised p-5 md:p-6">
+            <legend className="mono-micro text-arch-ink-muted px-2">
+              お申込み内容 <span className="text-arch-forest">*</span>
+            </legend>
+            <div className="grid sm:grid-cols-2 gap-4 mt-3">
+              {types!.map((t, i) => (
+                <label
+                  key={t.value}
+                  className="group flex items-start gap-3 cursor-pointer p-4 border border-arch-rule bg-arch-cream hover:border-arch-forest/50 transition-colors has-[:checked]:border-arch-forest has-[:checked]:bg-arch-forest/5"
+                >
+                  <input
+                    type="radio"
+                    name="_subject"
+                    value={t.subjectTag}
+                    defaultChecked={t.defaultChecked ?? i === 0}
+                    required
+                    className="mt-1 accent-arch-forest"
+                  />
+                  <div className="flex-1">
+                    <span className="display-jp text-base text-arch-ink block">
+                      {t.label}
+                    </span>
+                    {t.description && (
+                      <span className="mono-micro text-arch-ink-muted block mt-1">
+                        {t.description}
+                      </span>
+                    )}
+                  </div>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
 
         <div className="md:col-span-2">
           <label

@@ -605,17 +605,6 @@ export default function ConsultingPage() {
               </div>
             </div>
 
-            {/* Trial — 申込フォーム */}
-            <div className="py-10 md:py-12 border-b border-arch-rule">
-              <ServiceInquiryForm
-                idPrefix="trial"
-                subjectTag="【お試しコンサル申込】訪問歯科プロデューサー"
-                heading="お試しコンサル 申込フォーム"
-                description="初回限定・1ヶ月のお試しプランをお申込みいただけます。内容確認後、鈴木より折り返しご連絡いたします。"
-                submitLabel="お試しコンサルを申込む"
-              />
-            </div>
-
             {/* ============ On-site ============ */}
             <div
               className="grid md:grid-cols-12 gap-8 py-10 md:py-12 border-b border-arch-rule"
@@ -680,18 +669,34 @@ export default function ConsultingPage() {
               </div>
             </div>
 
-            {/* On-site — 申込フォーム */}
-            <div className="py-10 md:py-12">
+            {/* ============ 統合申込フォーム（お試し or 単発実地支援） ============ */}
+            <div className="py-10 md:py-14" id="apply">
               <ServiceInquiryForm
-                idPrefix="onsite"
-                subjectTag="【単発実地支援申込】訪問歯科プロデューサー"
-                heading="単発 実地支援 申込フォーム"
-                description="訪問診療への同行・改善レポート・組織改善アドバイスの単発実地支援をお申込みいただけます。"
-                notes={[
-                  "所在地が東京都・神奈川県・埼玉県以外の医院様は、別途交通費（実費）をご請求いたします。",
-                  "実施日程は申込後にメール/LINEで調整いたします。",
+                idPrefix="trial-onsite"
+                heading="お試しコンサル／単発 実地支援 申込フォーム"
+                description="ご希望の内容をお選びの上、必要事項をご入力ください。内容確認後、鈴木より折り返しご連絡いたします。"
+                types={[
+                  {
+                    value: "trial",
+                    label: "お試しコンサルティング",
+                    description: "初回限定・1ヶ月 / 70,000円",
+                    subjectTag: "【お試しコンサル申込】訪問歯科プロデューサー",
+                    defaultChecked: true,
+                  },
+                  {
+                    value: "onsite",
+                    label: "単発 実地支援サービス",
+                    description: "1回ごと / 50,000円",
+                    subjectTag: "【単発実地支援申込】訪問歯科プロデューサー",
+                  },
                 ]}
-                submitLabel="単発実地支援を申込む"
+                notes={[
+                  "【単発実地支援の場合】所在地が東京都・神奈川県・埼玉県以外の医院様は、別途交通費（実費）をご請求いたします。",
+                  "【お試しコンサルの場合】お試し期間終了後に本契約される場合は、初期費用を無償とさせていただきます（初回契約時のみご利用可）。",
+                  "実施日程は申込後にメール/LINEで調整いたします。",
+                  "料金はすべて税別表示です。",
+                ]}
+                submitLabel="この内容で申込む"
               />
             </div>
           </div>
