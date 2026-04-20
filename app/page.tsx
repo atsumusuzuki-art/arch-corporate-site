@@ -415,25 +415,25 @@ export default function Home() {
           </h2>
 
           <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
-            {/* Portrait */}
-            <div className="md:col-span-5">
-              <div className="aspect-[4/5] bg-arch-forest overflow-hidden">
+            {/* Portrait — compact editorial style (slide 14) */}
+            <div className="md:col-span-3">
+              <div className="aspect-[3/4] max-w-[200px] md:max-w-none bg-arch-forest overflow-hidden">
                 <Image
                   src="/images/ceo.jpg"
                   alt="代表 鈴木 集"
-                  width={600}
-                  height={750}
+                  width={400}
+                  height={533}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="mt-4 flex items-baseline justify-between">
-                <p className="mono-label text-arch-moss">CEO / FOUNDER</p>
+              <div className="mt-3 flex items-baseline justify-between max-w-[200px] md:max-w-none">
+                <p className="mono-label text-arch-moss">CEO</p>
                 <p className="mono-micro text-arch-ink-muted">2024 —</p>
               </div>
             </div>
 
             {/* Text */}
-            <div className="md:col-span-7">
+            <div className="md:col-span-9">
               <blockquote className="border-l-2 border-arch-forest pl-6 mb-10">
                 <p className="text-xl md:text-2xl font-display font-black leading-snug text-arch-ink">
                   現場の『想い』と経営の『現実』をつなぐ架け橋になりたい。
