@@ -402,66 +402,132 @@ export default function ConsultingPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          RESULTS — 導入医院の変化 + Client Voices
+          RESULTS — 実績（巨大な数字で押し出す）
       ────────────────────────────────────────── */}
-      <section className="relative bg-arch-forest text-arch-cream py-20 md:py-28">
+      <section className="relative bg-arch-forest text-arch-cream py-20 md:py-28 overflow-hidden">
+        {/* decorative large number in background */}
+        <div className="absolute -right-16 md:-right-24 top-10 md:top-16 pointer-events-none select-none opacity-[0.04]">
+          <span className="display-jp text-[16rem] md:text-[22rem] leading-none text-arch-gold">
+            3
+          </span>
+        </div>
         <div className="absolute top-6 left-6 md:top-8 md:left-10 pointer-events-none">
           <span className="mono-label text-arch-sage/70">RESULTS — 04 / 実績</span>
         </div>
         <div className="absolute top-6 right-6 md:top-8 md:right-10 pointer-events-none text-right">
-          <span className="mono-micro text-arch-sage/60">CLIENT VOICES</span>
+          <span className="mono-micro text-arch-sage/60">IMPACT METRICS</span>
         </div>
 
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <h2 className="display-jp text-3xl md:text-5xl text-arch-cream mb-12 md:mb-16 max-w-3xl leading-[1.2]">
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-8">
+          <p className="mono-label text-arch-gold mb-6">NUMBERS</p>
+          <h2 className="display-jp text-4xl md:text-6xl text-arch-cream mb-6 max-w-3xl leading-[1.1]">
             導入医院が実感した
             <br />
             <span className="text-arch-gold">3つの変化。</span>
           </h2>
+          <p className="text-base md:text-lg text-arch-sage/80 leading-loose max-w-2xl mb-16 md:mb-20">
+            売上ではなく、<strong className="text-arch-cream">「人」と「継続性」</strong>を指標にした時、現場の数字は確実に変わります。
+          </p>
 
-          <div className="grid md:grid-cols-3 gap-0 border-t border-b border-arch-rule-dark">
+          <div className="grid md:grid-cols-3 gap-px bg-arch-rule-dark/60 border border-arch-rule-dark/60">
             {[
-              { num: "-65%", label: "平均離職率改善" },
-              { num: "98%", label: "院長満足度" },
-              { num: "95%", label: "継続契約率" },
+              {
+                num: "-65",
+                unit: "%",
+                label: "平均離職率改善",
+                desc: "『辞めない組織』を最優先に。伴走1年で現場の空気が変わります。",
+              },
+              {
+                num: "98",
+                unit: "%",
+                label: "院長満足度",
+                desc: "月次メンタルチェック受講者のうち、98%が「安心感が増した」と回答。",
+              },
+              {
+                num: "95",
+                unit: "%",
+                label: "継続契約率",
+                desc: "短期ではなく10年単位の伴走設計。契約更新率に現れています。",
+              },
             ].map((item, i) => (
               <div
                 key={i}
-                className={`border-b border-arch-rule-dark md:border-b-0 md:border-r md:last:border-r-0 py-10 md:py-14 md:px-10 ${i === 0 ? "md:pl-0" : ""}`}
+                className="bg-arch-forest p-8 md:p-12 flex flex-col justify-between min-h-[280px] md:min-h-[340px]"
               >
-                <p className="mono-micro text-arch-sage/60 mb-4 tabular-nums">
-                  0{i + 1}
-                </p>
-                <p className="display-jp text-5xl md:text-6xl text-arch-gold tabular-nums mb-3">
-                  {item.num}
-                </p>
-                <p className="mono-label text-arch-sage">{item.label}</p>
+                <div className="flex items-start justify-between mb-8">
+                  <p className="mono-micro text-arch-sage/60 tabular-nums">
+                    METRIC / 0{i + 1}
+                  </p>
+                  <span className="mono-micro text-arch-gold/70 tabular-nums">
+                    0{i + 1} — 03
+                  </span>
+                </div>
+                <div>
+                  <p className="display-jp leading-none mb-6 flex items-baseline text-arch-gold">
+                    <span className="text-7xl md:text-[7rem] tabular-nums">
+                      {item.num}
+                    </span>
+                    <span className="text-3xl md:text-5xl ml-1 tabular-nums">
+                      {item.unit}
+                    </span>
+                  </p>
+                  <div className="h-px bg-arch-gold/40 w-12 mb-5"></div>
+                  <p className="mono-label text-arch-cream mb-4">{item.label}</p>
+                  <p className="text-sm text-arch-sage/85 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-20 md:mt-24">
-            <p className="mono-label text-arch-gold mb-8">
-              CLIENT VOICES — 取引先院長のリアルな声
-            </p>
-            <div className="grid md:grid-cols-3 gap-0 border-t border-b border-arch-rule-dark">
-              {VOICES.map((v, i) => (
-                <figure
-                  key={i}
-                  className={`border-b border-arch-rule-dark md:border-b-0 md:border-r md:last:border-r-0 py-10 md:py-12 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
-                >
-                  <p className="mono-micro text-arch-sage/60 mb-5 tabular-nums">
-                    VOICE — 0{i + 1}
-                  </p>
-                  <blockquote className="text-sm md:text-[15px] text-arch-sage leading-loose mb-6">
-                    「{v.body}」
-                  </blockquote>
-                  <figcaption className="mono-label text-arch-gold border-t border-arch-rule-dark pt-4">
-                    — {v.author}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+      {/* ──────────────────────────────────────────
+          VOICES — クリームカードが深緑に浮かぶ構成
+      ────────────────────────────────────────── */}
+      <section className="relative bg-arch-forest-soft text-arch-cream pt-16 md:pt-20 pb-24 md:pb-32 border-t border-arch-rule-dark/60">
+        {/* giant quote mark in background */}
+        <div className="absolute left-6 md:left-14 top-6 md:top-10 pointer-events-none select-none opacity-[0.08]">
+          <span className="display-jp text-[14rem] md:text-[20rem] leading-none text-arch-gold">
+            “
+          </span>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="flex items-baseline justify-between border-b border-arch-rule-dark/60 pb-4 mb-12 md:mb-16">
+            <p className="mono-label text-arch-gold">VOICES — 04b / 院長の声</p>
+            <p className="mono-micro text-arch-sage/60 hidden sm:block">03 CLIENTS</p>
+          </div>
+
+          <h2 className="display-jp text-3xl md:text-5xl text-arch-cream mb-14 md:mb-20 max-w-3xl leading-[1.2]">
+            取引先院長の、
+            <br />
+            <span className="text-arch-gold">リアルな声。</span>
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+            {VOICES.map((v, i) => (
+              <figure
+                key={i}
+                className="bg-arch-cream text-arch-ink p-7 md:p-9 flex flex-col shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35)]"
+              >
+                <div className="flex items-center justify-between mb-5">
+                  <span className="display-jp text-5xl md:text-6xl text-arch-gold leading-none">
+                    “
+                  </span>
+                  <span className="mono-micro text-arch-ink-muted tabular-nums">
+                    VOICE / 0{i + 1}
+                  </span>
+                </div>
+                <blockquote className="text-sm md:text-[15px] text-arch-ink-soft leading-loose flex-1">
+                  {v.body}
+                </blockquote>
+                <figcaption className="mono-label text-arch-moss border-t border-arch-rule pt-5 mt-6">
+                  — {v.author}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
