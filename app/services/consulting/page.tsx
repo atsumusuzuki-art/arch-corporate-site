@@ -4,6 +4,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import ServiceInquiryForm from "@/components/ServiceInquiryForm";
 
 export const metadata = {
   title: "訪問歯科プロデューサー（旧：歯科経営コンサルティング）",
@@ -489,15 +490,16 @@ export default function ConsultingPage() {
                   key={p.tier}
                   className={`relative ${isHighlight ? "bg-arch-forest text-arch-cream" : "bg-arch-cream-raised text-arch-ink"} ${i < PLANS.length - 1 ? "md:border-r border-arch-rule" : ""} border-b md:border-b-0 border-arch-rule p-8 md:p-10 flex flex-col`}
                 >
-                  {p.badge && (
-                    <div className="mb-6">
+                  {/* Badge area — 全プラン固定高（金額位置を揃えるため） */}
+                  <div className="h-8 mb-6">
+                    {p.badge && (
                       <span
                         className={`inline-block mono-micro px-3 py-1 ${isHighlight ? "bg-arch-gold text-arch-ink" : "bg-arch-ink text-arch-cream"}`}
                       >
                         {p.badge}
                       </span>
-                    </div>
-                  )}
+                    )}
+                  </div>
                   <p
                     className={`mono-label mb-2 ${isHighlight ? "text-arch-gold" : "text-arch-moss"}`}
                   >
@@ -562,8 +564,8 @@ export default function ConsultingPage() {
           </p>
 
           {/* Trial + On-site */}
-          <div className="mt-16 md:mt-20 space-y-0 border-t border-arch-rule">
-            {/* Trial */}
+          <div className="mt-16 md:mt-20 border-t border-arch-rule" id="trial">
+            {/* ============ Trial ============ */}
             <div className="grid md:grid-cols-12 gap-8 border-b border-arch-rule py-10 md:py-12">
               <div className="md:col-span-5">
                 <p className="mono-label text-arch-moss mb-3">TRIAL — 初回限定</p>
@@ -603,8 +605,22 @@ export default function ConsultingPage() {
               </div>
             </div>
 
-            {/* On-site */}
-            <div className="grid md:grid-cols-12 gap-8 py-10 md:py-12">
+            {/* Trial — 申込フォーム */}
+            <div className="py-10 md:py-12 border-b border-arch-rule">
+              <ServiceInquiryForm
+                idPrefix="trial"
+                subjectTag="【お試しコンサル申込】訪問歯科プロデューサー"
+                heading="お試しコンサル 申込フォーム"
+                description="初回限定・1ヶ月のお試しプランをお申込みいただけます。内容確認後、鈴木より折り返しご連絡いたします。"
+                submitLabel="お試しコンサルを申込む"
+              />
+            </div>
+
+            {/* ============ On-site ============ */}
+            <div
+              className="grid md:grid-cols-12 gap-8 py-10 md:py-12 border-b border-arch-rule"
+              id="onsite"
+            >
               <div className="md:col-span-5">
                 <p className="mono-label text-arch-moss mb-3">ON-SITE — 単発プラン</p>
                 <h3 className="display-jp text-2xl md:text-3xl text-arch-ink mb-4">
@@ -655,10 +671,28 @@ export default function ConsultingPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mono-micro text-arch-ink-muted mt-6">
-                  ※ 実地支援は単発でのご利用が可能です。料金は税別表示です。
-                </p>
+                <div className="mono-micro text-arch-ink-muted mt-6 space-y-1">
+                  <p>※ 実地支援は単発でのご利用が可能です。料金は税別表示です。</p>
+                  <p>
+                    ※ 所在地が<strong className="text-arch-ink"> 東京都・神奈川県・埼玉県以外 </strong>の医院様は、別途交通費を申し受けます。
+                  </p>
+                </div>
               </div>
+            </div>
+
+            {/* On-site — 申込フォーム */}
+            <div className="py-10 md:py-12">
+              <ServiceInquiryForm
+                idPrefix="onsite"
+                subjectTag="【単発実地支援申込】訪問歯科プロデューサー"
+                heading="単発 実地支援 申込フォーム"
+                description="訪問診療への同行・改善レポート・組織改善アドバイスの単発実地支援をお申込みいただけます。"
+                notes={[
+                  "所在地が東京都・神奈川県・埼玉県以外の医院様は、別途交通費（実費）をご請求いたします。",
+                  "実施日程は申込後にメール/LINEで調整いたします。",
+                ]}
+                submitLabel="単発実地支援を申込む"
+              />
             </div>
           </div>
         </div>
