@@ -1,114 +1,81 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  Briefcase,
   FileText,
-  DollarSign,
-  Megaphone,
-  Users,
-  ShieldCheck,
-  BarChart3,
-  ClipboardList,
-  Search,
-  Scale,
-  MessageSquare,
-  Palette,
-  Cpu,
   Globe,
   ClipboardCheck,
-  Sparkles,
   Stethoscope,
 } from "lucide-react";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
 
 export const metadata = {
-  title: "ARCH・外付け事務局（事務代行・BPO） | 合同会社ARCH",
+  title: "事務代行・BPO支援｜訪問歯科の書類・業務・DX を、医院の外側で回す",
   description:
-    "資料作成・ホームページ制作・カルテ/レセプトBPOなど、必要な業務を必要な分だけ。13体のエージェント活用で他社より圧倒的に早く・安く提供する、スポット型外付け事務局。",
+    "訪問歯科の書類作成・郵送業務・業務フロー改善・記録アプリ・シフト管理など、医院の事務と業務改善を外部事務長として代行。必要な業務を、必要な分だけスポットでご利用いただけます。",
 };
 
 /* ================================================================
-   ARCH・外付け事務局 — editorial v2
-   CLAUDE.md 4.5: CORE 3 (#04 事務局長 / #05 経理 / #07 人事) を arch-gold で視覚的に強調
+   事務代行・BPO支援
+   訪問歯科に必要な事務・業務改善を、医院の外側で実務代行。
+   DX・業務改善支援はこのページの 03 機能として内包。
    ================================================================ */
 
 const PROBLEMS = [
   {
-    title: "書類地獄で、診療時間が溶けていく。",
+    title: "書類業務が、診療時間を削っている。",
     body:
-      "カルテ、報告書、同意書、請求書、レセプト。診療の合間に院長が深夜までPCに向かう毎日。本来注ぐべき「患者さん」への時間が、書類に奪われている。",
+      "カルテ、報告書、同意書、請求書、レセプト補助。診療の合間に院長が深夜までPCに向かう毎日。本来注ぐべき「患者さん」への時間が、書類に奪われている。",
   },
   {
-    title: "労務の悩みを、誰に相談すればいい？",
+    title: "事務フローが、属人化している。",
     body:
-      "採用、契約、面談記録、就業規則の更新。専門知識が必要なのに、院内に詳しい人がいない。社労士へ丸投げするには細かすぎる相談が多い。",
+      "誰がどの書類をどう作るかが、担当者の頭の中だけにある。退職や休職が起きた途端、医院が止まってしまう。",
   },
   {
-    title: "経理の数字が、手遅れで出てくる。",
+    title: "記録・シフト・連絡が、紙とFAXで重い。",
     body:
-      "月次決算、資金繰り、税理士との連携。数字が固まる頃には来月の運転資金。経営判断に必要なリアルタイムKPIは、いつも手に入らない。",
+      "訪問記録、シフト、施設との連絡。紙とFAXで動いているため、スタッフが移動中に確認できず、現場が常に遅れる。",
   },
 ];
 
-type Agent = {
-  id: number;
-  name: string;
-  role: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-  core: boolean;
-};
-
-const AGENTS: Agent[] = [
-  { id: 1, name: "統括ディレクター", role: "全案件の進行管理と優先順位付け", icon: Briefcase, core: false },
-  { id: 2, name: "ウェブマスター", role: "HP・コード・デプロイの全工程管理", icon: Cpu, core: false },
-  { id: 3, name: "マーケター", role: "SEO・コラム企画・アクセス解析", icon: BarChart3, core: false },
-  { id: 4, name: "事務局長", role: "書類・請求・保険算定・レセプト補助", icon: FileText, core: true },
-  { id: 5, name: "経理・資金繰り担当", role: "月次決算・CF・税理士連携", icon: DollarSign, core: true },
-  { id: 6, name: "営業アシスタント", role: "提案書・営業資料作成代行", icon: Megaphone, core: false },
-  { id: 7, name: "人事・労務", role: "採用・就業規則・面談記録管理", icon: Users, core: true },
-  { id: 8, name: "コンプライアンス監査", role: "個人情報・法令遵守・リスク", icon: ShieldCheck, core: false },
-  { id: 9, name: "現場オペレーション", role: "訪問スケジュール・動線・備品", icon: ClipboardList, core: false },
-  { id: 10, name: "リサーチャー", role: "制度改正・施設ニーズ・競合", icon: Search, core: false },
-  { id: 11, name: "契約・法務", role: "契約書・覚書・同意書管理", icon: Scale, core: false },
-  { id: 12, name: "カスタマーサポート", role: "施設・家族からの問い合わせ", icon: MessageSquare, core: false },
-  { id: 13, name: "デザインディレクター", role: "パンフ・バナー・ブランド統一", icon: Palette, core: false },
-];
-
-const CORE_DETAILS = [
+const FEATURES = [
   {
-    num: "04",
-    title: "事務局長",
-    lead: "書類・請求・レセプト補助・行政対応",
+    num: "01",
+    kicker: "BPO — 書類・請求・レセプト",
+    title: "書類業務を、",
+    highlight: "医院の外側で回す。",
     body:
-      "元・広域医療法人歯科事務局長の知見をフルに注入。日々発生する書類業務・請求・保険算定・レセプト補助・行政対応を、医院の外側に「もう一つの事務局」として構えます。先生が書類に向かう時間を、ゼロに近づけることが目標です。",
+      "訪問歯科特有の書類（訪問報告書、施設提出書類、同意書、ご家族向け説明資料、請求書類）を成果物単位で代行。元・歯科事務局長の知見をフルに使い、医院内に新しい人を雇わずに事務量を吸収します。",
     bullets: [
-      "日次 / 月次の書類ワークフロー設計",
-      "保険算定・レセプト補助（歯科特化）",
-      "行政・保険者への対応窓口代行",
+      "訪問報告書・施設提出書類の作成代行",
+      "同意書・ご家族向け説明資料",
+      "請求書類・レセプト補助",
     ],
   },
   {
-    num: "05",
-    title: "経理・資金繰り担当",
-    lead: "月次決算・キャッシュフロー・税理士連携",
+    num: "02",
+    kicker: "BPO — 郵送・業務フロー",
+    title: "郵送と業務フローを、",
+    highlight: "まるごと外注する。",
     body:
-      "月次決算を月初5営業日までに締め、KPIとキャッシュの「見える化」で経営判断を加速。税理士との橋渡しも担うため、医院側は「数字が読める院長」にならなくても、意思決定のスピードが落ちません。",
+      "施設や患者家族への郵送業務、毎月発生する事務フロー、ルーチン業務の整理。一度組み立てれば医院側でも回せる手順書を添えてお返しします。",
     bullets: [
-      "月次決算を月初5営業日までにクローズ",
-      "キャッシュフロー予測・資金繰り表の作成",
-      "税理士・社労士との連携窓口",
+      "郵送業務の代行（封入・宛名・発送）",
+      "毎月の事務ルーチンの整理",
+      "手順書・チェックリストの納品",
     ],
   },
   {
-    num: "07",
-    title: "人事・労務",
-    lead: "採用・就業規則・面談記録",
+    num: "03",
+    kicker: "DX — 記録・シフト・業務効率化",
+    title: "現場の業務を、",
+    highlight: "デジタルで軽くする。",
     body:
-      "採用活動・就業規則・面談記録・給与計算補助まで、医院の「人に関わる全て」を一括引き受け。歯科衛生士・歯科助手・訪問コーディネーターなど、歯科特有の職種構成に合わせて設計します。",
+      "訪問歯科記録アプリ、シフト管理、施設との連絡フロー。紙とFAXで重くなっている業務を、現場が使い続けられる範囲のデジタル化で軽くします。新しいツールを増やすのではなく、いまのワークフローに馴染ませることを優先します。",
     bullets: [
-      "求人原稿作成 / 媒体選定 / 応募者管理",
-      "就業規則・雇用契約書のメンテナンス",
-      "スタッフ面談記録のフォーマット運用",
+      "訪問歯科記録アプリ（ARCH 独自）",
+      "シフト管理・スタッフ動線の可視化",
+      "業務デジタル化・実務効率改善",
     ],
   },
 ];
@@ -126,7 +93,7 @@ const IMPACTS = [
     label: "経営判断する時間",
     metric: "5d",
     unit: "/ monthly close",
-    body: "月次決算を月初5営業日で締め、施策の意思決定スピードが劇的に上がります。",
+    body: "月次決算を月初5営業日で締め、施策の意思決定スピードが上がります。",
   },
   {
     num: "03",
@@ -144,7 +111,7 @@ const PRICING = [
     title: "施設・ご家族向け資料作成",
     icon: FileText,
     body:
-      "営業資料・ご家族向け説明資料・パンフレットなどを成果物単位でご依頼いただけます。エージェント活用により、納期は他社より圧倒的に早くお届けします。",
+      "営業資料・ご家族向け説明資料・パンフレットなどを成果物単位でご依頼いただけます。納期は他社より圧倒的に早くお届けします。",
     price: "5",
     priceUnit: "万円〜",
     priceNote: "/ 件",
@@ -155,7 +122,7 @@ const PRICING = [
     title: "ホームページ制作・改修",
     icon: Globe,
     body:
-      "医院・クリニックの公式サイトの新規構築、および既存サイトの改修。エージェント活用で、他社より圧倒的に安く、そして早く仕上げます。",
+      "医院・クリニックの公式サイトの新規構築、および既存サイトの改修。他社より圧倒的に安く、そして早く仕上げます。",
     price: "15",
     priceUnit: "万円〜",
     priceNote: "/ 一式（税別）",
@@ -179,37 +146,36 @@ export default function BpoServicePage() {
   return (
     <article className="bg-arch-cream">
       {/* ──────────────────────────────────────────
-          HERO — editorial cover, deep forest
+          HERO
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
-          topRight="EXTERNAL BACK OFFICE — 05 / 外付け事務局"
+          topRight="BACK OFFICE — 03 / 事務代行・BPO"
           bottomLeft="SERVICE"
-          bottomRight="05 / 05"
+          bottomRight="03 / 03"
           theme="dark"
         />
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <SectionTag
             category="BACK OFFICE"
-            number="05"
-            label="ARCH・外付け事務局"
+            number="03"
+            label="事務代行・BPO支援"
             theme="dark"
           />
 
           <div className="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
             <div className="md:col-span-8">
               <h1 className="display-jp text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl text-arch-cream leading-[1.1]">
-                先生を<span className="text-arch-gold">事務から解放</span>し、
+                事務作業を、
                 <br />
-                医院に最強の外部エンジンを。
+                医院の<span className="text-arch-gold">外側</span>に。
               </h1>
-              <p className="mono-micro text-arch-sage/70 mt-6">（事務代行・BPO）</p>
             </div>
             <div className="md:col-span-4">
               <div className="border-l-2 border-arch-gold pl-5">
                 <p className="mono-label text-arch-gold mb-3">CORE MESSAGE</p>
                 <p className="text-base md:text-lg text-arch-sage leading-loose">
-                  必要なエージェントを、
+                  必要な業務を、
                   <br />
                   必要な分だけ、スポットで。
                 </p>
@@ -219,14 +185,14 @@ export default function BpoServicePage() {
 
           <div className="mt-14 md:mt-20 grid md:grid-cols-12 gap-8 items-end border-t border-arch-rule-dark pt-8">
             <p className="md:col-span-8 text-sm md:text-base text-arch-sage/90 leading-loose max-w-2xl">
-              資料作成・ホームページ制作・カルテやレセプトのBPOまで。月額定期契約や定期ミーティングを前提としない「スポット型BPO」として、医院のご予算に合わせて柔軟にご利用いただけます。13体のエージェントが裏側で稼働し、ARCH統括ディレクターの指揮で連動します。
+              書類作成、郵送業務、事務フロー整理、業務DX。訪問歯科に必要な事務と業務改善を、外部事務長として実務代行します。月額定期契約や定期ミーティングを前提としない「スポット型BPO」として、医院のご予算に合わせて柔軟にご利用いただけます。DX・業務改善支援は本サービスの中核機能として内包しています。
             </p>
             <div className="md:col-span-4 flex md:justify-end">
               <Link
                 href="/#contact"
                 className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
               >
-                無料オンライン相談を予約する
+                無料相談を予約する
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -235,7 +201,7 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          PROBLEM — 先生の時間、どこに溶けていますか？
+          PROBLEM
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-cream py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -270,147 +236,67 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          THE 13 AGENTS — grid with CORE 3 gold-accented
+          SOLUTION — 3 機能（事務代行 / 郵送・フロー / DX）
       ────────────────────────────────────────── */}
       <section className="bg-arch-cream-raised py-20 md:py-28 border-t border-arch-rule">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 mb-16 md:mb-20">
           <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="THE 13 AGENTS" number="03" label="13体のエージェント構成" />
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">13 ROLES</p>
+            <SectionTag category="SOLUTION" number="03" label="事務代行・BPO支援の 3 機能" />
+            <p className="mono-micro text-arch-ink-muted hidden sm:block">03 FUNCTIONS</p>
           </div>
 
           <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-6 max-w-3xl leading-[1.2]">
-            医院の裏で、
+            助言ではなく、
             <br />
-            <span className="text-arch-forest">13体のエージェント</span>が動き続ける。
-          </h2>
-          <p className="text-base text-arch-ink-soft leading-loose max-w-3xl mb-12 md:mb-16">
-            ARCH・外付け事務局は、単なる「人の派遣」ではありません。役割ごとに特化した13体のエージェントが、ARCH統括ディレクターの指揮のもと連動します。医院のご予算と業務内容に合わせて、必要なエージェントをスポットで組み合わせてご活用いただける設計です。
-          </p>
-
-          {/* Agent grid — 13 cards, CORE 3 in gold */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-arch-rule">
-            {AGENTS.map((a) => {
-              const Icon = a.icon;
-              return (
-                <div
-                  key={a.id}
-                  className={`relative border-b border-r border-arch-rule py-7 md:py-8 px-6 md:px-7 ${
-                    a.core ? "bg-arch-cream" : ""
-                  }`}
-                >
-                  {a.core && (
-                    <span className="absolute top-0 left-0 bg-arch-gold text-arch-ink mono-micro px-2 py-0.5 tracking-[0.25em]">
-                      CORE
-                    </span>
-                  )}
-                  <div className="flex items-start gap-4 pt-2">
-                    <div
-                      className={`w-10 h-10 flex items-center justify-center shrink-0 border ${
-                        a.core
-                          ? "border-arch-gold text-arch-forest bg-arch-cream-raised"
-                          : "border-arch-rule text-arch-moss bg-transparent"
-                      }`}
-                    >
-                      <Icon size={18} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p
-                        className={`mono-label tabular-nums mb-1 ${
-                          a.core ? "text-arch-gold" : "text-arch-moss"
-                        }`}
-                      >
-                        #{String(a.id).padStart(2, "0")}
-                      </p>
-                      <h3
-                        className={`display-jp text-base md:text-lg leading-snug mb-2 ${
-                          a.core ? "text-arch-forest" : "text-arch-ink"
-                        }`}
-                      >
-                        {a.name}
-                      </h3>
-                      <p className="text-xs md:text-sm text-arch-ink-soft leading-relaxed">
-                        {a.role}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────
-          CORE 3 SPOTLIGHT — 特に強力な 3 体の詳細
-          CLAUDE.md 4.5: CORE 3 を視覚的に強調（ゴールドアクセント）
-      ────────────────────────────────────────── */}
-      <section className="bg-arch-cream border-t border-arch-rule">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-20 md:pt-28 pb-16 md:pb-20">
-          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="CORE TRIO" number="04" label="特に強力なのは、この3体" />
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">03 CORE AGENTS</p>
-          </div>
-
-          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-6 max-w-3xl leading-[1.2]">
-            「事務局長」「経理」「人事」の
-            <br />
-            <span className="text-arch-gold">3体がCORE</span>として常時稼働。
+            <span className="text-arch-forest">医院の事務を、実務で巻き取る。</span>
           </h2>
           <p className="text-base text-arch-ink-soft leading-loose max-w-2xl">
-            医院経営の骨格を成す、書類・数字・人。この3領域を ARCH の CORE
-            エージェントが引き受けることで、院長は診療と経営判断だけに集中できます。
+            書類・郵送・業務フロー・DX。訪問歯科に必要な実務だけを、医院の外側で回します。
           </p>
         </div>
 
-        {CORE_DETAILS.map((c, idx) => (
+        {FEATURES.map((f, idx) => (
           <div
-            key={c.num}
-            className={`${idx % 2 === 0 ? "bg-arch-cream-raised" : "bg-arch-cream"} border-t border-arch-rule py-16 md:py-24`}
+            key={f.num}
+            className={`${idx % 2 === 0 ? "bg-arch-cream" : "bg-arch-cream-raised"} border-t border-arch-rule py-16 md:py-24`}
+            id={f.num === "03" ? "dx" : undefined}
           >
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
               <div className="grid md:grid-cols-12 gap-8 md:gap-14 items-start">
-                {/* Left — CORE label + body */}
-                <div className="md:col-span-7">
-                  <p className="mono-label text-arch-gold mb-4">
-                    CORE — #{c.num} / {c.lead}
-                  </p>
+                <div className={`md:col-span-7 ${idx === 1 ? "md:order-2" : ""}`}>
+                  <p className="mono-label text-arch-moss mb-4">{f.kicker}</p>
                   <div className="flex items-baseline gap-4 mb-6">
-                    <span className="display-jp text-6xl md:text-7xl text-arch-gold/60 tabular-nums leading-none">
-                      {c.num}
+                    <span className="display-jp text-6xl md:text-7xl text-arch-forest/30 tabular-nums leading-none">
+                      {f.num}
                     </span>
                     <div className="h-px flex-1 bg-arch-rule mt-auto mb-3"></div>
                   </div>
                   <h3 className="display-jp text-2xl md:text-3xl text-arch-ink leading-snug mb-6">
-                    {c.title}
+                    {f.title}
+                    <br />
+                    <span className="text-arch-forest">{f.highlight}</span>
                   </h3>
                   <p className="text-sm md:text-base text-arch-ink-soft leading-loose mb-8">
-                    {c.body}
+                    {f.body}
                   </p>
                   <ul className="space-y-3 border-t border-arch-rule pt-6">
-                    {c.bullets.map((b) => (
+                    {f.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 bg-arch-gold mt-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 bg-arch-moss mt-2 shrink-0"></span>
                         <span className="text-sm text-arch-ink font-medium">{b}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Right — CORE badge card */}
-                <div className="md:col-span-5">
-                  <div className="border border-arch-gold p-8 md:p-10 bg-arch-cream-raised relative">
-                    <span className="absolute -top-px -left-px bg-arch-gold text-arch-ink mono-micro px-2.5 py-1 tracking-[0.25em]">
-                      CORE AGENT
-                    </span>
-                    <p className="mono-micro text-arch-ink-muted mt-4 mb-3">AGENT ID</p>
-                    <p className="display-jp text-6xl md:text-7xl text-arch-forest leading-none tabular-nums">
-                      #{c.num}
+                <div className={`md:col-span-5 ${idx === 1 ? "md:order-1" : ""}`}>
+                  <div className="border border-arch-rule-dark/20 p-8 md:p-10 bg-arch-cream-raised">
+                    <p className="mono-micro text-arch-moss mb-4">KEY IDEA / {f.num}</p>
+                    <p className="display-jp text-2xl md:text-3xl text-arch-ink leading-snug">
+                      {f.title}
+                      <br />
+                      <span className="text-arch-forest">{f.highlight}</span>
                     </p>
-                    <p className="mono-label text-arch-moss mt-4">{c.title}</p>
-                    <div className="border-t border-arch-rule mt-6 pt-6">
-                      <p className="text-xs text-arch-ink-soft leading-loose">{c.lead}</p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -420,25 +306,25 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          IMPACT — 導入医院が手に入れる 3つの時間
+          IMPACT — 3つの時間
       ────────────────────────────────────────── */}
       <section className="bg-arch-forest text-arch-cream py-20 md:py-28 border-t border-arch-rule-dark relative overflow-hidden">
         <CornerMarkers
           topRight="IMPACT — 3 TIMES"
           bottomLeft="BPO RESULTS"
-          bottomRight="05 / 05"
+          bottomRight="03 / 03"
           theme="dark"
         />
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between border-b border-arch-rule-dark pb-4 mb-12 md:mb-16">
-            <SectionTag category="IMPACT" number="05" label="導入効果" theme="dark" />
+            <SectionTag category="IMPACT" number="04" label="導入効果" theme="dark" />
             <p className="mono-micro text-arch-sage/60 hidden sm:block">03 OUTCOMES</p>
           </div>
 
           <h2 className="display-jp text-3xl md:text-4xl lg:text-5xl text-arch-cream mb-14 md:mb-20 max-w-4xl leading-[1.2]">
             導入医院が手に入れる、
             <br />
-            <span className="text-arch-gold">3つの"時間"。</span>
+            <span className="text-arch-gold">3つの&ldquo;時間&rdquo;。</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-0 border-t border-arch-rule-dark">
@@ -447,9 +333,7 @@ export default function BpoServicePage() {
                 key={item.num}
                 className={`border-b border-arch-rule-dark md:border-b-0 ${i < IMPACTS.length - 1 ? "md:border-r" : ""} py-10 md:py-12 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
               >
-                <p className="mono-label text-arch-gold mb-6 tabular-nums">
-                  TIME — {item.num}
-                </p>
+                <p className="mono-label text-arch-gold mb-6 tabular-nums">TIME — {item.num}</p>
                 <p className="display-jp text-5xl md:text-6xl lg:text-7xl text-arch-cream leading-none tabular-nums mb-3">
                   {item.metric}
                 </p>
@@ -470,7 +354,7 @@ export default function BpoServicePage() {
       <section id="pricing" className="bg-arch-cream py-20 md:py-28 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="PRICING" number="06" label="スポット型BPO 料金体系" />
+            <SectionTag category="PRICING" number="05" label="スポット型BPO 料金体系" />
             <p className="mono-micro text-arch-ink-muted hidden sm:block">SPOT / CONTINUOUS</p>
           </div>
 
@@ -480,10 +364,9 @@ export default function BpoServicePage() {
             <span className="text-arch-forest">成果物ベースの料金体系。</span>
           </h2>
           <p className="text-base text-arch-ink-soft leading-loose max-w-3xl mb-12 md:mb-16">
-            成果物に対してご費用をいただくため、費用対効果が明確です。エージェント活用により、他社より圧倒的に早く・圧倒的に安くご提供できます。
+            成果物に対してご費用をいただくため、費用対効果が明確です。月額固定の縛りなく、医院のご予算に合わせてスポットでご利用いただけます。
           </p>
 
-          {/* Budget range banner */}
           <div className="border border-arch-rule-dark/30 p-8 md:p-10 bg-arch-cream-raised mb-12 md:mb-16">
             <div className="grid md:grid-cols-12 gap-8 items-center">
               <div className="md:col-span-4">
@@ -498,14 +381,13 @@ export default function BpoServicePage() {
                 <p className="mono-micro text-arch-ink-muted mb-3">目安予算</p>
                 <p className="text-sm md:text-base text-arch-ink-soft leading-loose">
                   ご予算に合わせて、
-                  <strong className="text-arch-ink">複数のエージェントを組み合わせて</strong>
+                  <strong className="text-arch-ink">複数の業務を組み合わせて</strong>
                   ご活用いただけます。まずはお気軽にご相談ください。
                 </p>
               </div>
             </div>
           </div>
 
-          {/* 3 pricing cards */}
           <div className="grid md:grid-cols-3 gap-0 border-t border-l border-arch-rule">
             {PRICING.map((p) => {
               const Icon = p.icon;
@@ -536,9 +418,7 @@ export default function BpoServicePage() {
                   <h3 className="display-jp text-xl md:text-2xl text-arch-ink mb-4 leading-snug">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-arch-ink-soft leading-loose mb-8 flex-1">
-                    {p.body}
-                  </p>
+                  <p className="text-sm text-arch-ink-soft leading-loose mb-8 flex-1">{p.body}</p>
                   <div className="border-t border-arch-rule pt-5">
                     <p className="mono-micro text-arch-ink-muted mb-2">料金</p>
                     {p.text ? (
@@ -574,7 +454,7 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          FULL STACK — 訪問歯科プロデューサー導線
+          FULL STACK — 訪問歯科運営コンサルティングへの導線
       ────────────────────────────────────────── */}
       <section className="bg-arch-cream-raised py-20 md:py-24 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -586,18 +466,16 @@ export default function BpoServicePage() {
                 </div>
               </div>
               <div className="md:col-span-7">
-                <p className="mono-label text-arch-moss mb-3">FOR FULL-STACK ENGAGEMENT</p>
+                <p className="mono-label text-arch-moss mb-3">FOR ONGOING ENGAGEMENT</p>
                 <h3 className="display-jp text-xl md:text-2xl text-arch-ink mb-4 leading-snug">
-                  13体を横断的・継続的に
+                  運営全体を、
                   <br className="hidden md:block" />
-                  活用したい方へ
+                  継続的に支援してほしい方へ
                 </h3>
                 <p className="text-sm md:text-base text-arch-ink-soft leading-loose">
-                  事業全体に深く入り込み、経営視点で13体のエージェントを統合運用したい場合は、
-                  <strong className="text-arch-ink">
-                    「訪問歯科プロデューサー」（経営コンサルティング）
-                  </strong>
-                  をご検討ください。月額契約で、ARCHが経営パートナーとして常時伴走します。
+                  事務代行に加え、運営改善・レセプト精度・経営判断まで継続的に伴走してほしい場合は、
+                  <strong className="text-arch-ink">訪問歯科運営コンサルティング</strong>
+                  をご検討ください。月額契約で、外部事務長として現場と経営に伴走します。
                 </p>
               </div>
               <div className="md:col-span-3 flex md:justify-end">
@@ -605,36 +483,10 @@ export default function BpoServicePage() {
                   href="/services/consulting"
                   className="inline-flex items-center gap-3 bg-arch-forest text-arch-cream px-6 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-ink transition-colors w-full md:w-auto justify-center"
                 >
-                  プロデューサーを見る
+                  運営コンサルを見る
                   <ArrowRight size={16} />
                 </Link>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────
-          COMING SOON — AI 発注システム teaser
-      ────────────────────────────────────────── */}
-      <section className="bg-arch-ink text-arch-cream py-20 md:py-24 border-t border-arch-rule-dark relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="grid md:grid-cols-12 gap-8 items-start">
-            <div className="md:col-span-2">
-              <div className="w-14 h-14 border border-arch-gold text-arch-gold flex items-center justify-center">
-                <Sparkles size={24} />
-              </div>
-            </div>
-            <div className="md:col-span-10">
-              <span className="inline-block mono-micro text-arch-gold border border-arch-gold/40 px-3 py-1 mb-5 tracking-[0.25em]">
-                COMING SOON
-              </span>
-              <h3 className="display-jp text-2xl md:text-3xl text-arch-cream mb-5 leading-snug max-w-3xl">
-                AIエージェント発注システム（開発中）
-              </h3>
-              <p className="text-sm md:text-base text-arch-sage/90 leading-loose max-w-3xl">
-                「資料作成」ボタンを押すと、必要な資料の種類をヒアリング。ARCHの各エージェントがどの業務を、何日で、いくらで対応するかを自動見積りし、そのままワンクリックで発注できる——そんなBPO体験を準備中です。リリース時にはご案内いたします。
-              </p>
             </div>
           </div>
         </div>
