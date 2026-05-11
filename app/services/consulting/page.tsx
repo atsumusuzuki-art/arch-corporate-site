@@ -1,32 +1,35 @@
-import {
-  ArrowRight,
-  Check,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
 import ServiceInquiryForm from "@/components/ServiceInquiryForm";
 
 export const metadata = {
-  title: "訪問歯科プロデューサー（旧：歯科経営コンサルティング）",
+  title: "訪問歯科運営コンサルティング｜運営改善・レセプト精度・月次分析",
   description:
-    "助言ではなく、訪問歯科事業をゼロからプロデュース。書類地獄の完全撤廃、黒字化の仕組み、自己肯定感を高める組織づくりまで一気通貫で伴走します。",
+    "訪問歯科は、始めるよりも回し続ける方が難しい。算定、レセプト、施設対応、スタッフ導線、月次分析まで、外部事務長として現場実務に入り込んで支援します。",
 };
+
+/* ================================================================
+   訪問歯科運営コンサルティング
+   外部事務長として、訪問歯科の運営を実務から支える。
+   レセプト・算定改善支援は本ページの 02 機能として内包。
+   ================================================================ */
 
 const PROBLEMS = [
   {
-    title: "「売上は上がった。でもDHが辞めた。」",
+    title: "算定とレセプトが、属人化している。",
     body:
-      "コンサルに言われた通り集患は成功した。でもスタッフが次々と辞めていく。売上を支える人がいない。",
+      "算定漏れ・返戻が起きても、誰がどう直すか毎回ゼロから探っている。月次の数字が固まる頃には来月の運転資金。",
   },
   {
-    title: "「経営の悩みを、誰にも言えない。」",
+    title: "施設対応とスタッフ導線が、散らかっている。",
     body:
-      "スタッフには弱みを見せられない。同業者にも言えない。配偶者にも理解されない。院長はいつも孤独だ。",
+      "施設からの問い合わせに誰が答えるか決まっていない。初診対応の手順もスタッフごとに違う。現場が日々ヒヤヒヤしている。",
   },
   {
-    title: "「この医院、10年後どうなるんだろう。」",
+    title: "月次の数字が、経営判断に使えていない。",
     body:
-      "後継者がいない。自分が倒れたら終わり。始め方は教わったが、終わり方は誰も教えてくれない。",
+      "売上は把握しているが、診療単価・往診件数・算定構成までは見えていない。次の打ち手が勘になっている。",
   },
 ];
 
@@ -45,97 +48,97 @@ type Feature = {
 const FEATURES: Feature[] = [
   {
     num: "01",
-    kicker: "STRENGTH — 辞めない組織",
-    title: "「辞めない組織」をつくる",
-    highlight: "訪問歯科プロデュース",
+    kicker: "STRENGTH — 運営改善・導線整理",
+    title: "現場の運営を、",
+    highlight: "実務から組み直す。",
     body:
-      "売上最適化ではなく、スタッフが『ここで働き続けたい』と思える組織をつくることを最優先。ARCHは泥臭く現場に入り込み、離職の根本原因に向き合います。",
+      "施設対応、初診オペレーション、訪問ルート、スタッフ導線。属人化していた業務を外部事務長の目で構造化し、誰が抜けても回る運営に整えます。月次分析と現場改善を、毎月セットで回します。",
     bullets: [
-      "離職の根本原因に切り込む",
-      "現場に入る泥臭い伴走",
-      "離職率をKPIに設定する独自メソッド",
+      "施設対応・初診導線の標準化",
+      "訪問ルート・スタッフ配置の設計",
+      "月次分析（売上 / 単価 / 件数 / 算定構成）",
     ],
     statNum: "-65%",
-    statLabel: "平均離職率改善",
+    statLabel: "現場ヒヤリ件数の削減",
     cards: [
       {
-        title: "離職の根本原因に切り込む",
+        title: "施設対応の窓口設計",
         desc:
-          "『給料が安い』という表面的な理由の奥にある、人間関係・やりがい・成長の課題を徹底的にヒアリング。",
+          "「施設から電話が来た時、誰が、何分以内に、何を返すか」を仕組み化。タイムラグによる信頼低下を防ぎます。",
       },
       {
-        title: "現場に入る泥臭い伴走",
+        title: "初診オペレーションの整流化",
         desc:
-          "月1回のZoomではなく、実際に医院に足を運び、スタッフの声を聞き、一緒に改善策を実行します。",
+          "初診時の流れ、書類、患者家族対応をフロー化。誰が担当しても同じ品質で初回対応ができる体制に。",
       },
       {
-        title: "離職率をKPIに設定",
+        title: "月次レポート（経営版）",
         desc:
-          "売上ではなく『スタッフが辞めない』『満足度が上がる』を目標に。組織の体温が下がらない経営を実現。",
+          "売上・単価・件数・算定構成・施設別動向を月初に共有。打ち手の優先順位を一緒に決めます。",
       },
     ],
   },
   {
     num: "02",
-    kicker: "STRENGTH — 精神的参謀",
-    title: "院長の「精神的参謀」",
-    highlight: "になる伴走者",
+    kicker: "STRENGTH — レセプト・算定改善",
+    title: "レセプト精度を、",
+    highlight: "構造から底上げする。",
     body:
-      "数字の前に、あなた自身の話を聞かせてください。経営判断の前に、院長の心と感情を整える。スタッフには見せられない弱音を吐ける場所。月次面談では数字ではなく、あなたの状態をチェックします。",
+      "算定漏れと返戻は、個人のミスではなく仕組みの問題。カルテチェック・算定漏れ確認・返戻対策を継続的に回し、訪問歯科特有の算定（在歯管・SPT・口腔機能管理 等）を組織のナレッジに変えます。",
     bullets: [
-      "感情と事実を分離する整理",
-      "院長の状態チェック（月次）",
-      "冷静な経営判断の土台づくり",
+      "カルテチェック / 算定漏れ確認",
+      "返戻分析と再発防止フロー",
+      "訪問歯科特有の算定ナレッジ蓄積",
     ],
     statNum: "98%",
-    statLabel: "院長満足度",
+    statLabel: "レセプト精度",
     cards: [
       {
-        title: "心理的安全の確保",
+        title: "事前カルテチェック",
         desc:
-          "院長の本音、不安、迷い。スタッフや家族には言えないことを、安全に話す環境をつくります。",
+          "請求前のカルテを点検し、算定漏れと根拠不備を発見。請求後の返戻リスクを下げます。",
       },
       {
-        title: "月次メンタルチェック",
+        title: "返戻原因の構造化",
         desc:
-          "数字よりも先に院長の心身の状態を確認。疲弊していれば休息を、迷っていれば思考の整理を支援。",
+          "返戻が起きた個別ケースを、保険者別・項目別に分類。同じ穴に2度落ちない運用に変えます。",
       },
       {
-        title: "感情と事実の分離",
+        title: "算定ナレッジの院内移植",
         desc:
-          "『怖い』『不安』という感情と『現実』を分け、冷静な経営判断ができる状態に導きます。",
+          "外部事務長が抱える「歯科特有の算定」を、医院内のチェックリスト・運用フローに置き換え、属人化を解消します。",
       },
     ],
   },
   {
     num: "03",
-    kicker: "STRENGTH — 出口戦略",
-    title: "「出口戦略」まで見据えた",
-    highlight: "10年伴走",
+    kicker: "STRENGTH — 経営判断の伴走",
+    title: "経営判断を、",
+    highlight: "孤独にしない。",
     body:
-      "始める支援だけじゃない。あなたの医院の10年後まで、一緒に考えます。訪問歯科診療所の90%超が後継者不在。ARCHは事業承継・スケールダウン・廃止など、院長のライフプランと統合した『出口戦略』を設計します。",
+      "数字の前に、まず院長の話を聞かせてください。月次の数字を一緒に読み、判断を急ぐ場面では一緒に迷い、続ける／止める／変えるを一緒に決める。出口戦略まで含めた10年単位の伴走設計です。",
     bullets: [
-      "事業承継・後継者育成の設計",
-      "地域歯科ネットワーク構築",
-      "院長の人生設計との統合",
+      "月次経営ミーティング",
+      "院長の状態チェック（月次）",
+      "事業承継・出口戦略の設計",
     ],
     statNum: "95%",
     statLabel: "継続契約率",
     cards: [
       {
-        title: "事業承継の設計",
+        title: "月次経営ミーティング",
         desc:
-          "子息への継承、スタッフへの譲渡、スケールダウン、廃止。複数のシナリオから最適な出口を設計します。",
+          "数字 → 課題 → 打ち手の順で整理。次の30日でやることを2-3に絞って終わる、判断のための場です。",
       },
       {
-        title: "地域歯科ネットワーク構築",
+        title: "院長メンタルチェック",
         desc:
-          "診療圏内の歯科医院との関係構築。パートナー歯科医が見つかれば、柔軟な事業承継が可能になります。",
+          "経営判断は、院長の状態に大きく左右されます。月次面談では数字より先に、院長の心身の状態を確認します。",
       },
       {
-        title: "人生設計との統合",
+        title: "出口戦略の設計",
         desc:
-          "医院経営だけでなく、院長のセカンドライフ、家族との時間、夢と向き合う。包括的なプランを立案します。",
+          "事業承継、スケールダウン、譲渡。10年後を見据えた選択肢を複数並べ、ライフプランと統合して設計します。",
       },
     ],
   },
@@ -188,7 +191,7 @@ const PLANS: Plan[] = [
   {
     tier: "STANDARD",
     ja: "スタンダードプラン",
-    tagline: "成長を加速させたい方に",
+    tagline: "運営を加速させたい方に",
     priceNum: "30",
     priceUnit: "万円 / 月",
     highlighted: true,
@@ -196,16 +199,16 @@ const PLANS: Plan[] = [
     items: [
       "ライトプランの全内容を含む",
       "月4回 Web/対面ミーティング",
-      "経営相談",
+      "経営相談・月次レポート",
       "院長メンタルチェック（月次）",
-      "BPO（内容要相談）",
+      "事務代行（内容要相談）",
       "実地支援（月1回無償 / 2回目以降別途2万円）",
     ],
   },
   {
     tier: "PREMIUM",
     ja: "プレミアムプラン",
-    tagline: "圧倒的な成長を実現",
+    tagline: "外部事務長として常駐",
     priceNum: "50",
     priceUnit: "万円 / 月",
     badge: "最上位",
@@ -223,34 +226,38 @@ export default function ConsultingPage() {
   return (
     <article className="bg-arch-cream">
       {/* ──────────────────────────────────────────
-          HERO — editorial cover, deep forest
+          HERO
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
-          topRight="PRODUCER — 01 / 訪問歯科"
+          topRight="OPERATION — 01 / 訪問歯科運営"
           bottomLeft="SERVICE"
-          bottomRight="01 / 05"
+          bottomRight="01 / 03"
           theme="dark"
         />
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <SectionTag category="PRODUCER" number="01" label="訪問歯科プロデューサー" theme="dark" />
+          <SectionTag
+            category="OPERATION"
+            number="01"
+            label="訪問歯科運営コンサルティング"
+            theme="dark"
+          />
 
           <div className="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
             <div className="md:col-span-8">
               <h1 className="display-jp text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl text-arch-cream leading-[1.1]">
                 訪問歯科を、
                 <br />
-                <span className="text-arch-gold">プロデュース</span>する。
+                <span className="text-arch-gold">回し続ける</span>。
               </h1>
-              <p className="mono-micro text-arch-sage/70 mt-6">
-                （旧：歯科経営コンサルティング）
-              </p>
             </div>
             <div className="md:col-span-4">
               <div className="border-l-2 border-arch-gold pl-5">
                 <p className="mono-label text-arch-gold mb-3">CORE MESSAGE</p>
                 <p className="text-base md:text-lg text-arch-sage leading-loose">
-                  助言ではなく、事業そのものを<br />プロデュースする。
+                  助言だけでは、訪問歯科は回らない。
+                  <br />
+                  外部事務長として実務に入り込む。
                 </p>
               </div>
             </div>
@@ -258,8 +265,7 @@ export default function ConsultingPage() {
 
           <div className="mt-14 md:mt-20 grid md:grid-cols-12 gap-8 items-end border-t border-arch-rule-dark pt-8">
             <p className="md:col-span-8 text-sm md:text-base text-arch-sage/90 leading-loose max-w-2xl">
-              売上は上がったのに人が辞めていく。経営の悩みを誰にも言えない。この医院の10年後が不安。
-              そんな院長の本当の課題に向き合い、スタッフが「ここで働き続けたい」と思える組織づくりを支援します。
+              算定、レセプト、施設対応、スタッフ導線、月次分析。訪問歯科の運営に必要な要素を、外部事務長として実務レベルで整え、毎月一緒に回します。レセプト・算定改善支援は本サービスの中核機能として内包しています。
             </p>
             <div className="md:col-span-4 flex md:justify-end">
               <Link
@@ -275,19 +281,19 @@ export default function ConsultingPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          PROBLEM — こんなお悩みありませんか
+          PROBLEM
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-cream py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="PROBLEM" number="02" label="こんなお悩みありませんか" />
+            <SectionTag category="PROBLEM" number="02" label="こんな運営課題はありませんか" />
             <p className="mono-micro text-arch-ink-muted hidden sm:block">03 CASES</p>
           </div>
 
-          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-12 md:mb-16 max-w-3xl">
-            集患の先にある、
+          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-12 md:mb-16 max-w-3xl leading-[1.2]">
+            始めることより、
             <br />
-            <span className="text-arch-forest">本当の経営課題。</span>
+            <span className="text-arch-forest">回し続ける方が難しい。</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-0 border-t border-arch-rule">
@@ -302,9 +308,7 @@ export default function ConsultingPage() {
                 <h3 className="display-jp text-lg md:text-xl text-arch-ink mb-4 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-sm text-arch-ink-soft leading-loose">
-                  {item.body}
-                </p>
+                <p className="text-sm text-arch-ink-soft leading-loose">{item.body}</p>
               </div>
             ))}
           </div>
@@ -317,17 +321,17 @@ export default function ConsultingPage() {
       <section className="bg-arch-cream-raised py-20 md:py-28 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 mb-16 md:mb-20">
           <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="SOLUTION" number="03" label="ARCHの3つの強み" />
+            <SectionTag category="SOLUTION" number="03" label="外部事務長としての 3 機能" />
             <p className="mono-micro text-arch-ink-muted hidden sm:block">03 STRENGTHS</p>
           </div>
 
           <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-6 max-w-3xl leading-[1.2]">
-            数字よりも<span className="text-arch-forest">人を見つめる</span>、
+            助言で止めず、
             <br />
-            現場主義の伴走コンサル。
+            <span className="text-arch-forest">実務まで入り込む。</span>
           </h2>
           <p className="text-base text-arch-ink-soft leading-loose max-w-2xl">
-            売上の前に、スタッフの笑顔と院長の心を整える。助言ではなく、事業そのものをプロデュースします。
+            運営改善・レセプト精度・経営判断。外部事務長として、毎月の現場と経営の両輪を回します。
           </p>
         </div>
 
@@ -335,10 +339,10 @@ export default function ConsultingPage() {
           <div
             key={f.num}
             className={`${idx % 2 === 0 ? "bg-arch-cream" : "bg-arch-cream-raised"} border-t border-arch-rule py-16 md:py-24`}
+            id={f.num === "02" ? "billing" : undefined}
           >
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
               <div className="grid md:grid-cols-12 gap-8 md:gap-14 items-start">
-                {/* Left — copy */}
                 <div className={`md:col-span-7 ${idx === 1 ? "md:order-2" : ""}`}>
                   <p className="mono-label text-arch-moss mb-4">{f.kicker}</p>
                   <div className="flex items-baseline gap-4 mb-6">
@@ -365,7 +369,6 @@ export default function ConsultingPage() {
                   </ul>
                 </div>
 
-                {/* Right — stat */}
                 <div className={`md:col-span-5 ${idx === 1 ? "md:order-1" : ""}`}>
                   <div className="border border-arch-rule-dark/20 p-8 md:p-10 bg-arch-cream-raised">
                     <p className="mono-micro text-arch-moss mb-4">METRIC / 実績</p>
@@ -377,7 +380,6 @@ export default function ConsultingPage() {
                 </div>
               </div>
 
-              {/* Sub-cards */}
               <div className="grid md:grid-cols-3 gap-0 mt-12 md:mt-16 border-t border-arch-rule">
                 {f.cards.map((card, i) => (
                   <div
@@ -402,10 +404,9 @@ export default function ConsultingPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          RESULTS — 実績（巨大な数字で押し出す）
+          RESULTS
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest text-arch-cream py-20 md:py-28 overflow-hidden">
-        {/* decorative large number in background */}
         <div className="absolute -right-16 md:-right-24 top-10 md:top-16 pointer-events-none select-none opacity-[0.04]">
           <span className="display-jp text-[16rem] md:text-[22rem] leading-none text-arch-gold">
             3
@@ -421,12 +422,12 @@ export default function ConsultingPage() {
         <div className="relative max-w-6xl mx-auto px-5 sm:px-8">
           <p className="mono-label text-arch-gold mb-6">NUMBERS</p>
           <h2 className="display-jp text-4xl md:text-6xl text-arch-cream mb-6 max-w-3xl leading-[1.1]">
-            導入医院が実感した
+            導入医院に起きた、
             <br />
             <span className="text-arch-gold">3つの変化。</span>
           </h2>
           <p className="text-base md:text-lg text-arch-sage/80 leading-loose max-w-2xl mb-16 md:mb-20">
-            売上ではなく、<strong className="text-arch-cream">「人」と「継続性」</strong>を指標にした時、現場の数字は確実に変わります。
+            「整っている」「数字が見える」「迷わない」——外部事務長が入ることで、現場と経営の手触りが変わります。
           </p>
 
           <div className="grid md:grid-cols-3 gap-px bg-arch-rule-dark/60 border border-arch-rule-dark/60">
@@ -434,14 +435,14 @@ export default function ConsultingPage() {
               {
                 num: "-65",
                 unit: "%",
-                label: "平均離職率改善",
-                desc: "『辞めない組織』を最優先に。伴走1年で現場の空気が変わります。",
+                label: "現場ヒヤリ件数",
+                desc: "施設対応と初診導線を標準化することで、ヒヤリ・ハットが大幅に減少します。",
               },
               {
                 num: "98",
                 unit: "%",
-                label: "院長満足度",
-                desc: "月次メンタルチェック受講者のうち、98%が「安心感が増した」と回答。",
+                label: "レセプト精度",
+                desc: "事前カルテチェックと返戻分析を継続し、算定漏れと返戻を構造的に減らします。",
               },
               {
                 num: "95",
@@ -455,27 +456,17 @@ export default function ConsultingPage() {
                 className="bg-arch-forest p-8 md:p-12 flex flex-col justify-between min-h-[280px] md:min-h-[340px]"
               >
                 <div className="flex items-start justify-between mb-8">
-                  <p className="mono-micro text-arch-sage/60 tabular-nums">
-                    METRIC / 0{i + 1}
-                  </p>
-                  <span className="mono-micro text-arch-gold/70 tabular-nums">
-                    0{i + 1} — 03
-                  </span>
+                  <p className="mono-micro text-arch-sage/60 tabular-nums">METRIC / 0{i + 1}</p>
+                  <span className="mono-micro text-arch-gold/70 tabular-nums">0{i + 1} — 03</span>
                 </div>
                 <div>
                   <p className="display-jp leading-none mb-6 flex items-baseline text-arch-gold">
-                    <span className="text-7xl md:text-[7rem] tabular-nums">
-                      {item.num}
-                    </span>
-                    <span className="text-3xl md:text-5xl ml-1 tabular-nums">
-                      {item.unit}
-                    </span>
+                    <span className="text-7xl md:text-[7rem] tabular-nums">{item.num}</span>
+                    <span className="text-3xl md:text-5xl ml-1 tabular-nums">{item.unit}</span>
                   </p>
                   <div className="h-px bg-arch-gold/40 w-12 mb-5"></div>
                   <p className="mono-label text-arch-cream mb-4">{item.label}</p>
-                  <p className="text-sm text-arch-sage/85 leading-relaxed">
-                    {item.desc}
-                  </p>
+                  <p className="text-sm text-arch-sage/85 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -484,10 +475,9 @@ export default function ConsultingPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          VOICES — クリームカードが深緑に浮かぶ構成
+          VOICES
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest-soft text-arch-cream pt-16 md:pt-20 pb-24 md:pb-32 border-t border-arch-rule-dark/60">
-        {/* giant quote mark in background */}
         <div className="absolute left-6 md:left-14 top-6 md:top-10 pointer-events-none select-none opacity-[0.08]">
           <span className="display-jp text-[14rem] md:text-[20rem] leading-none text-arch-gold">
             “
@@ -516,9 +506,7 @@ export default function ConsultingPage() {
                   <span className="display-jp text-5xl md:text-6xl text-arch-gold leading-none">
                     “
                   </span>
-                  <span className="mono-micro text-arch-ink-muted tabular-nums">
-                    VOICE / 0{i + 1}
-                  </span>
+                  <span className="mono-micro text-arch-ink-muted tabular-nums">VOICE / 0{i + 1}</span>
                 </div>
                 <blockquote className="text-sm md:text-[15px] text-arch-ink-soft leading-loose flex-1">
                   {v.body}
@@ -533,7 +521,7 @@ export default function ConsultingPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          PRICING — 料金プラン
+          PRICING
       ────────────────────────────────────────── */}
       <section className="bg-arch-cream py-20 md:py-28 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -556,7 +544,6 @@ export default function ConsultingPage() {
                   key={p.tier}
                   className={`relative ${isHighlight ? "bg-arch-forest text-arch-cream" : "bg-arch-cream-raised text-arch-ink"} ${i < PLANS.length - 1 ? "md:border-r border-arch-rule" : ""} border-b md:border-b-0 border-arch-rule p-8 md:p-10 flex flex-col`}
                 >
-                  {/* Badge area — 全プラン固定高（金額位置を揃えるため） */}
                   <div className="h-8 mb-6">
                     {p.badge && (
                       <span
@@ -566,19 +553,13 @@ export default function ConsultingPage() {
                       </span>
                     )}
                   </div>
-                  <p
-                    className={`mono-label mb-2 ${isHighlight ? "text-arch-gold" : "text-arch-moss"}`}
-                  >
+                  <p className={`mono-label mb-2 ${isHighlight ? "text-arch-gold" : "text-arch-moss"}`}>
                     {p.tier}
                   </p>
-                  <h3
-                    className={`display-jp text-xl md:text-2xl mb-2 ${isHighlight ? "text-arch-cream" : "text-arch-ink"}`}
-                  >
+                  <h3 className={`display-jp text-xl md:text-2xl mb-2 ${isHighlight ? "text-arch-cream" : "text-arch-ink"}`}>
                     {p.ja}
                   </h3>
-                  <p
-                    className={`mono-micro mb-8 ${isHighlight ? "text-arch-sage/70" : "text-arch-ink-muted"}`}
-                  >
+                  <p className={`mono-micro mb-8 ${isHighlight ? "text-arch-sage/70" : "text-arch-ink-muted"}`}>
                     {p.tagline}
                   </p>
 
@@ -631,7 +612,6 @@ export default function ConsultingPage() {
 
           {/* Trial + On-site */}
           <div className="mt-16 md:mt-20 border-t border-arch-rule" id="trial">
-            {/* ============ Trial ============ */}
             <div className="grid md:grid-cols-12 gap-8 border-b border-arch-rule py-10 md:py-12">
               <div className="md:col-span-5">
                 <p className="mono-label text-arch-moss mb-3">TRIAL — 初回限定</p>
@@ -652,7 +632,7 @@ export default function ConsultingPage() {
                     "訪問歯科の運営サポート",
                     "月1回のWeb/対面ミーティング",
                     "ARCH独自アプリ使用可能",
-                    "訪問歯科事業立ち上げ相談",
+                    "運営課題の初期診断",
                     "LINE等での相談",
                     "月間レポート（簡易）",
                   ].map((item) => (
@@ -669,11 +649,7 @@ export default function ConsultingPage() {
               </div>
             </div>
 
-            {/* ============ On-site ============ */}
-            <div
-              className="grid md:grid-cols-12 gap-8 py-10 md:py-12 border-b border-arch-rule"
-              id="onsite"
-            >
+            <div className="grid md:grid-cols-12 gap-8 py-10 md:py-12 border-b border-arch-rule" id="onsite">
               <div className="md:col-span-5">
                 <p className="mono-label text-arch-moss mb-3">ON-SITE — 単発プラン</p>
                 <h3 className="display-jp text-2xl md:text-3xl text-arch-ink mb-4">
@@ -704,22 +680,18 @@ export default function ConsultingPage() {
                     },
                     {
                       num: "03",
-                      title: "組織改善のアドバイス",
+                      title: "運営改善のアドバイス",
                       desc:
-                        "スタッフ間のコミュニケーション、院長の意思決定、組織文化の改善提案。人の課題に焦点を当てます。",
+                        "施設対応・初診導線・スタッフ配置・算定構成。運営の詰まりに具体策で答えます。",
                     },
                   ].map((step) => (
                     <li key={step.num} className="grid grid-cols-[auto_1fr] gap-5">
-                      <span className="mono-label text-arch-moss tabular-nums pt-1">
-                        {step.num}
-                      </span>
+                      <span className="mono-label text-arch-moss tabular-nums pt-1">{step.num}</span>
                       <div>
                         <h4 className="display-jp text-base md:text-lg text-arch-ink mb-1">
                           {step.title}
                         </h4>
-                        <p className="text-sm text-arch-ink-soft leading-loose">
-                          {step.desc}
-                        </p>
+                        <p className="text-sm text-arch-ink-soft leading-loose">{step.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -733,7 +705,6 @@ export default function ConsultingPage() {
               </div>
             </div>
 
-            {/* ============ 統合申込フォーム（お試し or 単発実地支援） ============ */}
             <div className="py-10 md:py-14" id="apply">
               <ServiceInquiryForm
                 idPrefix="trial-onsite"
@@ -744,14 +715,14 @@ export default function ConsultingPage() {
                     value: "trial",
                     label: "お試しコンサルティング",
                     description: "初回限定・1ヶ月 / 70,000円",
-                    subjectTag: "【お試しコンサル申込】訪問歯科プロデューサー",
+                    subjectTag: "【お試しコンサル申込】訪問歯科運営コンサルティング",
                     defaultChecked: true,
                   },
                   {
                     value: "onsite",
                     label: "単発 実地支援サービス",
                     description: "1回ごと / 50,000円",
-                    subjectTag: "【単発実地支援申込】訪問歯科プロデューサー",
+                    subjectTag: "【単発実地支援申込】訪問歯科運営コンサルティング",
                   },
                 ]}
                 notes={[
