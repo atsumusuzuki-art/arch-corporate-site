@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Menu, X, Send } from "lucide-react";
+import { NEWS, formatNewsDate } from "@/lib/news";
 import { SectionTag } from "@/components/CornerMarkers";
 
 /* ================================================================
@@ -421,70 +422,11 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-          ⑤ ARCH NOTE — 厳選コラム
+          ⑤ CEO MESSAGE — 代表メッセージ
           ============================================================ */}
-      <section
-        id="note"
-        className="py-20 md:py-32 bg-arch-cream-raised border-t border-arch-rule"
-      >
+      <section id="company" className="py-20 md:py-32 bg-arch-cream-raised border-t border-arch-rule">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="ARCH NOTE" number="05" label="現場メモ" />
-
-          <div className="mt-6 mb-12 md:mb-16 flex items-end justify-between gap-6 flex-wrap">
-            <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
-              現場から見える、
-              <br />
-              <span className="text-arch-forest">訪問歯科のリアル。</span>
-            </h2>
-            <Link
-              href="/columns"
-              className="mono-label text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-2"
-            >
-              すべて読む <ArrowRight size={12} />
-            </Link>
-          </div>
-
-          <div className="border-t border-arch-rule">
-            {NOTES.map((col) => (
-              <Link
-                key={col.href}
-                href={col.href}
-                className="group grid grid-cols-12 gap-4 md:gap-8 py-6 md:py-8 border-b border-arch-rule hover:bg-arch-cream transition-colors -mx-3 px-3"
-              >
-                <div className="col-span-2 md:col-span-1">
-                  <span className="mono-micro text-arch-ink-muted">{col.num}</span>
-                </div>
-                <div className="col-span-10 md:col-span-2">
-                  <span className="mono-label text-arch-moss">{col.cat}</span>
-                </div>
-                <div className="col-span-12 md:col-span-8">
-                  <h3 className="text-base md:text-lg font-bold leading-relaxed text-arch-ink group-hover:text-arch-forest transition-colors">
-                    {col.title}
-                  </h3>
-                </div>
-                <div className="hidden md:flex col-span-1 items-start justify-end">
-                  <ArrowRight
-                    size={16}
-                    className="text-arch-ink-muted group-hover:text-arch-forest group-hover:translate-x-1 transition-all"
-                  />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
-          <span className="mono-micro text-arch-moss/60">NOTE</span>
-          <span className="mono-micro text-arch-moss/60">05 / 07</span>
-        </div>
-      </section>
-
-      {/* ============================================================
-          ⑥ CEO MESSAGE — 代表メッセージ
-          ============================================================ */}
-      <section id="company" className="py-20 md:py-32 bg-arch-cream">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="MESSAGE" number="06" label="代表メッセージ" />
+          <SectionTag category="MESSAGE" number="05" label="代表メッセージ" />
 
           <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-16 md:mb-20 max-w-3xl">
             現場を知っているから、
@@ -541,7 +483,117 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">MESSAGE</span>
+          <span className="mono-micro text-arch-moss/60">05 / 07</span>
+        </div>
+      </section>
+
+      {/* ============================================================
+          ⑥ ARCH NOTE — 厳選コラム
+          ============================================================ */}
+      <section id="note" className="py-20 md:py-32 bg-arch-cream border-t border-arch-rule">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+          <SectionTag category="ARCH NOTE" number="06" label="現場メモ" />
+
+          <div className="mt-6 mb-8 md:mb-10 flex items-end justify-between gap-6 flex-wrap">
+            <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
+              現場から見える、
+              <br />
+              <span className="text-arch-forest">訪問歯科のリアル。</span>
+            </h2>
+            <Link
+              href="/columns"
+              className="mono-label text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-2"
+            >
+              すべて読む <ArrowRight size={12} />
+            </Link>
+          </div>
+
+          <p className="text-base text-arch-ink-soft leading-loose max-w-2xl mb-12 md:mb-16">
+            訪問歯科の現場で起きる課題、施設連携、算定、採用、運営改善について、実務目線でまとめた記録です。
+          </p>
+
+          <div className="border-t border-arch-rule">
+            {NOTES.map((col) => (
+              <Link
+                key={col.href}
+                href={col.href}
+                className="group grid grid-cols-12 gap-4 md:gap-8 py-6 md:py-8 border-b border-arch-rule hover:bg-arch-cream-raised transition-colors -mx-3 px-3"
+              >
+                <div className="col-span-2 md:col-span-1">
+                  <span className="mono-micro text-arch-ink-muted">{col.num}</span>
+                </div>
+                <div className="col-span-10 md:col-span-2">
+                  <span className="mono-label text-arch-moss">{col.cat}</span>
+                </div>
+                <div className="col-span-12 md:col-span-8">
+                  <h3 className="text-base md:text-lg font-bold leading-relaxed text-arch-ink group-hover:text-arch-forest transition-colors">
+                    {col.title}
+                  </h3>
+                </div>
+                <div className="hidden md:flex col-span-1 items-start justify-end">
+                  <ArrowRight
+                    size={16}
+                    className="text-arch-ink-muted group-hover:text-arch-forest group-hover:translate-x-1 transition-all"
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
+          <span className="mono-micro text-arch-moss/60">NOTE</span>
           <span className="mono-micro text-arch-moss/60">06 / 07</span>
+        </div>
+      </section>
+
+      {/* ============================================================
+          NEWS — コンパクトお知らせ帯（番号セクション外）
+          ============================================================ */}
+      <section id="news" className="py-12 md:py-16 bg-arch-cream-raised border-t border-arch-rule">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+          <div className="flex items-baseline justify-between border-b border-arch-rule pb-3 mb-4">
+            <p className="mono-label text-arch-moss">NEWS — お知らせ</p>
+            <Link
+              href="/news"
+              className="mono-micro text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-1.5"
+            >
+              一覧 <ArrowRight size={11} />
+            </Link>
+          </div>
+
+          {NEWS.length === 0 ? (
+            <p className="text-sm text-arch-ink-muted py-3">現在お知らせはありません。</p>
+          ) : (
+            <ul>
+              {NEWS.slice(0, 3).map((n, i) => {
+                const isExternal = n.external ?? /^https?:\/\//.test(n.href);
+                return (
+                  <li key={`${n.date}-${i}`} className="border-b border-arch-rule last:border-b-0">
+                    <Link
+                      href={n.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="group flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 py-3.5 md:py-4 hover:bg-arch-cream transition-colors -mx-2 px-2"
+                    >
+                      <time
+                        dateTime={n.date}
+                        className="mono-label text-arch-ink-muted shrink-0 sm:w-24 tabular-nums text-xs"
+                      >
+                        {formatNewsDate(n.date)}
+                      </time>
+                      <span className="mono-micro text-arch-moss shrink-0 sm:w-20">
+                        {n.category}
+                      </span>
+                      <span className="flex-1 text-sm text-arch-ink group-hover:text-arch-forest transition-colors">
+                        {n.title}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
       </section>
 
@@ -557,13 +609,13 @@ export default function Home() {
           <SectionTag category="CONTACT" number="07" label="お問い合わせ" theme="dark" />
 
           <h2 className="display-jp text-arch-cream text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.18] mt-6 mb-8">
-            訪問歯科を、
+            まずは、
             <br />
-            <span className="text-arch-gold">&ldquo;続けられる仕組み&rdquo;</span>へ。
+            <span className="text-arch-gold">訪問歯科の状況</span>をお聞かせください。
           </h2>
           <p className="text-arch-sage text-base md:text-lg leading-loose max-w-2xl mb-14 md:mb-20">
-            オンラインでの無料相談を受け付けています。
-            貴院の状況に合わせて、必要な支援だけをご提案します。
+            レセプト、施設連携、スタッフ導線、事務負担、売上改善。
+            どこから整えるべきか、医院の状況に合わせて一緒に整理します。
           </p>
 
           <div className="max-w-2xl">
