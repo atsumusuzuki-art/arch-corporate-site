@@ -3,11 +3,9 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const OTHER_SERVICES = [
-  { num: "01", href: "/services/consulting", new: "訪問歯科プロデューサー", old: "（旧：歯科経営コンサルティング）" },
-  { num: "02", href: "/services/sales", new: "ARCH大学 営業学部", old: "（旧：医療介護特化型 営業支援）" },
-  { num: "03", href: "/services/senior-home", new: "ARCH 介護・暮らしの選択相談所", old: "（旧：老人ホーム紹介業）" },
-  { num: "04", href: "/services/dental-matching", new: "訪問歯科・品質診断エンジン", old: "（旧：施設向け歯科評価ツール）" },
-  { num: "05", href: "/bpo-service", new: "ARCH・外付け事務局", old: "— 事務代行・BPO" },
+  { num: "01", href: "/services/consulting", title: "訪問歯科運営コンサルティング", desc: "運営改善・レセプト精度・月次分析" },
+  { num: "02", href: "/services/sales", title: "施設連携・営業支援", desc: "施設対応導線・初診オペレーション・営業設計" },
+  { num: "03", href: "/bpo-service", title: "事務代行・BPO支援", desc: "書類・郵送・事務フロー・業務DX" },
 ];
 
 export default function BpoServiceLayout({
@@ -85,7 +83,7 @@ export default function BpoServiceLayout({
       <section className="bg-arch-cream-raised py-20 md:py-24 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between mb-10 md:mb-12 border-b border-arch-rule pb-4">
-            <p className="mono-label text-arch-moss">SERVICES — 全5事業</p>
+            <p className="mono-label text-arch-moss">SERVICES — 訪問歯科の外部事務長</p>
             <p className="mono-micro text-arch-ink-muted hidden sm:block">RELATED</p>
           </div>
           <h2 className="display-jp text-2xl md:text-3xl text-arch-ink mb-10 md:mb-12">
@@ -104,9 +102,9 @@ export default function BpoServiceLayout({
                   </span>
                   <div>
                     <p className="display-jp text-base md:text-xl text-arch-ink group-hover:text-arch-forest transition-colors">
-                      {s.new}
+                      {s.title}
                     </p>
-                    <p className="mono-micro text-arch-ink-muted mt-1">{s.old}</p>
+                    <p className="mono-micro text-arch-ink-muted mt-1">{s.desc}</p>
                   </div>
                   <ArrowRight
                     size={18}
