@@ -57,7 +57,7 @@ const SERVICES = [
   {
     num: "02",
     title: "レセプト・算定改善支援",
-    href: "/services/consulting",
+    href: "/services/consulting#billing",
     items: ["算定漏れ確認", "カルテチェック", "返戻対策", "精度改善"],
   },
   {
@@ -77,7 +77,7 @@ const SERVICES = [
   {
     num: "05",
     title: "DX・業務改善支援",
-    href: "/bpo-service",
+    href: "/bpo-service#dx",
     items: ["訪問歯科記録アプリ", "シフト管理", "業務デジタル化", "実務効率改善"],
   },
 ];

@@ -6,13 +6,13 @@ import { ArrowRight, Check, AlertTriangle, MessageSquare, ShieldCheck, Sparkles 
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
 
 /* ================================================================
-   訪問歯科・品質診断エンジン — editorial v2
-   （旧：介護施設向け 訪問歯科マッチング／施設向け歯科評価ツール）
+   施設の歯科対応 簡易診断ツール
+   （施設連携・営業支援の補助ツール）
 
    - 5段階のLikert尺度で、現在ご契約中／検討中の訪問歯科医院を
-     施設側の立場から「品質診断」します。
-   - ARCHセンサー・ロジックに基づき、合計スコアに応じて
-     3段階の判定と具体的な次アクションを提示します。
+     施設側の立場から簡易診断します。
+   - 6項目の平均スコアに応じて3段階の判定と次アクションを提示します。
+     閾値（LOW < 2.5 / MID 2.5–3.9 / HIGH ≥ 4.0）はサイト全体で固定。
    ================================================================ */
 
 type Question = {
@@ -137,13 +137,18 @@ export default function DentalMatchingClient() {
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
-          topRight="DIAGNOSTIC — 04 / 品質診断"
-          bottomLeft="SERVICE"
-          bottomRight="04 / 05"
+          topRight="TOOL — 補助ツール"
+          bottomLeft="FACILITY"
+          bottomRight="施設連携・営業支援の補助ツール"
           theme="dark"
         />
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <SectionTag category="DIAGNOSTIC" number="04" label="訪問歯科・品質診断エンジン" theme="dark" />
+          <SectionTag
+            category="TOOL"
+            number="—"
+            label="施設の歯科対応 簡易診断"
+            theme="dark"
+          />
 
           <div className="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
             <div className="md:col-span-8">
@@ -153,14 +158,16 @@ export default function DentalMatchingClient() {
                 本当に<span className="text-arch-gold">施設の味方</span>？
               </h1>
               <p className="mono-micro text-arch-sage/70 mt-6">
-                （旧：施設向け歯科評価ツール）
+                ※ 施設連携・営業支援の補助ツール（無料）
               </p>
             </div>
             <div className="md:col-span-4">
               <div className="border-l-2 border-arch-gold pl-5">
-                <p className="mono-label text-arch-gold mb-3">CORE MESSAGE</p>
+                <p className="mono-label text-arch-gold mb-3">ABOUT</p>
                 <p className="text-base md:text-lg text-arch-sage leading-loose">
-                  6項目×5段階で、<br />今の訪問歯科を"診断"する。
+                  6項目×5段階で、
+                  <br />
+                  今の訪問歯科を診断する。
                 </p>
               </div>
             </div>
@@ -168,7 +175,7 @@ export default function DentalMatchingClient() {
 
           <div className="mt-14 md:mt-20 grid md:grid-cols-12 gap-8 items-end border-t border-arch-rule-dark pt-8">
             <p className="md:col-span-8 text-sm md:text-base text-arch-sage/90 leading-loose max-w-2xl">
-              6つの指標を5段階で答えるだけ。元 医療グループ歯科事務局長・鈴木集の現場知見をロジックに落とし込んだ「ARCHセンサー」が、あなたの施設が現在ご契約中の訪問歯科医院の"品質"を診断します。
+              対応スピード・報告書の質・接遇マナー・現場連携・コンプライアンス・継続性の6項目を5段階で答えるだけ。元・歯科事務局長の現場知見を反映した簡易診断ツールで、施設の歯科対応の現状を可視化します。
             </p>
             <div className="md:col-span-4 flex md:justify-end">
               <a
@@ -321,7 +328,7 @@ export default function DentalMatchingClient() {
               }`}
             >
               <Sparkles size={20} />
-              ARCHセンサーで診断する
+              診断する
             </button>
             {!canSubmit && (
               <p className="mono-micro text-arch-ink-muted mt-4">
@@ -342,7 +349,7 @@ export default function DentalMatchingClient() {
         >
           <div className="max-w-4xl mx-auto px-5 sm:px-8">
             <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12">
-              <SectionTag category="RESULT" number="04" label="ARCHセンサー 診断結果" />
+              <SectionTag category="RESULT" number="04" label="診断結果" />
               <p className="mono-micro text-arch-ink-muted tabular-nums">
                 {totalScore} / {maxScore} (AVG {averageScore.toFixed(1)})
               </p>
@@ -364,12 +371,12 @@ export default function DentalMatchingClient() {
                 </div>
                 <p className="text-sm md:text-base text-arch-ink-soft leading-loose mb-8">
                   このままご契約を続けると、入居者様のQOLと施設スタッフの負担、そして施設全体の信頼にリスクを及ぼす可能性があります。ARCHが
-                  <strong className="text-arch-danger">円滑な切り替えをプロデュース</strong>
+                  <strong className="text-arch-danger">円滑な切り替えを支援</strong>
                   します。既存契約の解約調整、次の歯科医院の選定、現場への説明まで、すべて伴走します。
                 </p>
                 <div className="bg-arch-cream border border-arch-danger/30 p-6 mb-6">
                   <p className="mono-label text-arch-danger mb-4">
-                    切り替えプロデュース・パッケージ
+                    切り替え支援パッケージ
                   </p>
                   <ul className="space-y-3">
                     {[
@@ -457,7 +464,7 @@ export default function DentalMatchingClient() {
                       "月1回の定例ミーティングで報告書・KPIを相互確認",
                       "担当DHの変更時は必ず引継ぎミーティングを実施",
                       "\"無言のサービス期待\" を避け、感謝と要望を言語化する",
-                      "年1回、本診断エンジンで再診断して品質をモニタリング",
+                      "年1回、本ツールで再診断して品質をモニタリング",
                     ].map((t) => (
                       <li key={t} className="flex items-start gap-3">
                         <Check className="text-arch-forest shrink-0 mt-1" size={15} />
@@ -487,25 +494,25 @@ export default function DentalMatchingClient() {
       )}
 
       {/* ──────────────────────────────────────────
-          LOGIC — ARCHセンサー・ロジックの根拠
+          LOGIC — 判定の根拠
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest text-arch-cream py-20 md:py-28 overflow-hidden">
         <div className="absolute top-6 left-6 md:top-8 md:left-10 pointer-events-none">
-          <span className="mono-label text-arch-sage/70">LOGIC — 05 / ARCHセンサー</span>
+          <span className="mono-label text-arch-sage/70">LOGIC — 判定の根拠</span>
         </div>
         <div className="absolute top-6 right-6 md:top-8 md:right-10 pointer-events-none text-right">
           <span className="mono-micro text-arch-sage/60">3-TIER FRAMEWORK</span>
         </div>
 
         <div className="relative max-w-6xl mx-auto px-5 sm:px-8">
-          <p className="mono-label text-arch-gold mb-6">ABOUT THE LOGIC</p>
+          <p className="mono-label text-arch-gold mb-6">ABOUT THE METHOD</p>
           <h2 className="display-jp text-4xl md:text-6xl text-arch-cream mb-6 max-w-3xl leading-[1.1]">
-            「ARCHセンサー・
+            判定の
             <br />
-            <span className="text-arch-gold">ロジック」</span>とは。
+            <span className="text-arch-gold">考え方。</span>
           </h2>
           <p className="text-base md:text-lg text-arch-sage/80 leading-loose max-w-2xl mb-16 md:mb-20">
-            広域医療法人にて歯科事務局として経営再建を主導してきた代表・鈴木集の現場知見を、<strong className="text-arch-cream">定量評価に落とし込んだ独自の評価ロジック</strong>です。
+            広域医療法人にて歯科事務局として経営再建を主導してきた代表・鈴木集の現場知見を、6項目×5段階の簡易ロジックに落とし込んだものです。
           </p>
 
           <div className="grid md:grid-cols-3 gap-px bg-arch-rule-dark/60 border border-arch-rule-dark/60">
