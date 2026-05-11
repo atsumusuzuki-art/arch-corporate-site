@@ -437,7 +437,7 @@ export default function Home() {
               <span className="text-arch-forest">訪問歯科のリアル。</span>
             </h2>
             <Link
-              href="/columns/broker-trap"
+              href="/columns"
               className="mono-label text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-2"
             >
               すべて読む <ArrowRight size={12} />
