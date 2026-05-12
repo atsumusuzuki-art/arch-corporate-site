@@ -194,50 +194,74 @@ export default function Home() {
       {/* ============================================================
           ① HERO — first view
           ============================================================ */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-52 md:pb-36 bg-arch-cream">
-        <div className="absolute top-24 md:top-32 right-5 sm:right-8 md:right-10 text-right">
+      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-44 md:pb-32 bg-arch-cream">
+        <div className="absolute top-24 md:top-32 right-5 sm:right-8 md:right-10 text-right z-10">
           <span className="mono-micro text-arch-moss/60">ARCH · 訪問歯科の外部事務長</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <p className="mono-label text-arch-moss mb-8 md:mb-10">
-            Homecare Dentistry / External Office Director
-          </p>
+          <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+            <div className="md:col-span-7">
+              <p className="mono-label text-arch-moss mb-8 md:mb-10">
+                Homecare Dentistry / External Office Director
+              </p>
 
-          {/* メインコピー */}
-          <h1 className="display-jp text-arch-ink text-[clamp(2.5rem,8vw,6rem)] leading-[1.12] mb-10 md:mb-14">
-            訪問歯科を、
-            <br />
-            <span className="text-arch-forest">&ldquo;続けられる事業&rdquo;</span>へ。
-          </h1>
+              {/* メインコピー */}
+              <h1 className="display-jp text-arch-ink text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.12] mb-10 md:mb-12">
+                訪問歯科を、
+                <br />
+                <span className="text-arch-forest">&ldquo;続けられる事業&rdquo;</span>へ。
+              </h1>
 
-          {/* サブコピー */}
-          <p className="text-base sm:text-lg md:text-xl text-arch-ink-soft leading-loose max-w-2xl mb-12 md:mb-14">
-            営業、施設連携、算定、事務、スタッフ導線、DX。
-            <br className="hidden sm:block" />
-            訪問歯科は、始めるよりも、回し続ける方が難しい。
-            <br className="hidden sm:block" />
-            ARCHは、訪問歯科の外部事務長として、現場と経営の両面から医院を支えます。
-          </p>
+              {/* サブコピー */}
+              <p className="text-base sm:text-lg text-arch-ink-soft leading-loose max-w-2xl mb-10 md:mb-12">
+                営業、施設連携、算定、事務、スタッフ導線、DX。
+                <br className="hidden sm:block" />
+                訪問歯科は、始めるよりも、回し続ける方が難しい。
+                <br className="hidden sm:block" />
+                ARCHは、訪問歯科の外部事務長として、現場と経営の両面から医院を支えます。
+              </p>
 
-          {/* CTAボタン */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="#contact"
-              className="bg-arch-forest text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-forest-soft transition-colors inline-flex items-center justify-center gap-3"
-            >
-              無料相談はこちら <ArrowRight size={16} />
-            </a>
-            <a
-              href="#service"
-              className="border border-arch-forest text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-forest hover:text-arch-cream transition-colors inline-flex items-center justify-center gap-3"
-            >
-              サービスを見る
-            </a>
+              {/* CTAボタン */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#contact"
+                  className="bg-arch-forest text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-forest-soft transition-colors inline-flex items-center justify-center gap-3"
+                >
+                  無料相談はこちら <ArrowRight size={16} />
+                </a>
+                <a
+                  href="#service"
+                  className="border border-arch-forest text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-forest hover:text-arch-cream transition-colors inline-flex items-center justify-center gap-3"
+                >
+                  サービスを見る
+                </a>
+              </div>
+            </div>
+
+            {/* ヒーロー画像 */}
+            <div className="md:col-span-5 mt-2 md:mt-0">
+              <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden border border-arch-rule-dark/30">
+                <Image
+                  src="/images/image01.png"
+                  alt="ARCH オフィスのデスク。ロゴ入りのカード、ノートPC、コーヒー、都市の窓"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-arch-forest/[0.06]" />
+                <div className="absolute bottom-3 left-3">
+                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/40 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
+                    ARCH · OFFICE
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-20 md:mt-28 flex justify-between">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
           <span className="mono-micro text-arch-moss/60">HOME</span>
           <span className="mono-micro text-arch-moss/60">01 / 07</span>
         </div>
@@ -302,14 +326,34 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="CASES" number="03" label="支援実績" />
 
-          <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-3">
-            現場で、
-            <br />
-            <span className="text-arch-forest">&ldquo;回る仕組み&rdquo;</span>を作る。
-          </h2>
-          <p className="mono-micro text-arch-ink-muted mb-16 md:mb-20">
-            ※ 医院名は匿名化しています
-          </p>
+          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-12 items-end mb-12 md:mb-16">
+            <div className="md:col-span-7">
+              <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mb-3">
+                現場で、
+                <br />
+                <span className="text-arch-forest">&ldquo;回る仕組み&rdquo;</span>を作る。
+              </h2>
+              <p className="mono-micro text-arch-ink-muted">
+                ※ 医院名は匿名化しています
+              </p>
+            </div>
+            <div className="md:col-span-5">
+              <div className="relative aspect-[16/10] overflow-hidden border border-arch-rule-dark/30">
+                <Image
+                  src="/images/image02.png"
+                  alt="訪問スケジュールに付箋とメモ、月次グラフをノートPCに表示しながら確認している手元"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
+                <div className="absolute bottom-3 left-3">
+                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/40 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
+                    ON THE GROUND
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="space-y-px bg-arch-rule">
             {CASES.map((c) => (
@@ -361,11 +405,32 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="SERVICE" number="04" label="サービス" theme="dark" />
 
-          <h2 className="display-jp text-arch-cream text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-16 md:mb-20 max-w-3xl">
-            訪問歯科運営を、
-            <br />
-            <span className="text-arch-gold">実務から支える。</span>
-          </h2>
+          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-12 items-end mb-14 md:mb-20">
+            <div className="md:col-span-7">
+              <h2 className="display-jp text-arch-cream text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
+                訪問歯科運営を、
+                <br />
+                <span className="text-arch-gold">実務から支える。</span>
+              </h2>
+            </div>
+            <div className="md:col-span-5">
+              <div className="relative aspect-[16/10] overflow-hidden border border-arch-rule-dark">
+                <Image
+                  src="/images/image04.png"
+                  alt="ARCH のノート、月次業務レポート、訪問スケジュール表が整然と並ぶデスク"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-arch-forest/10" />
+                <div className="absolute bottom-3 left-3">
+                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/50 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
+                    OPERATING DESK
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="border-t border-arch-rule-dark">
             {SERVICES.map((s) => (
@@ -428,11 +493,31 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="MESSAGE" number="05" label="代表メッセージ" />
 
-          <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-16 md:mb-20 max-w-3xl">
-            現場を知っているから、
-            <br />
-            <span className="text-arch-forest">実務まで入れる。</span>
-          </h2>
+          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-14 items-end mb-14 md:mb-20">
+            <div className="md:col-span-7">
+              <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
+                現場を知っているから、
+                <br />
+                <span className="text-arch-forest">実務まで入れる。</span>
+              </h2>
+            </div>
+            <div className="md:col-span-5">
+              <div className="relative aspect-[4/5] sm:aspect-[3/4] md:aspect-[3/4] overflow-hidden border border-arch-rule-dark/30 max-w-[280px] md:max-w-none">
+                <Image
+                  src="/images/image03.png"
+                  alt="医院の廊下で資料を確認している ARCH 代表"
+                  fill
+                  sizes="(max-width: 768px) 60vw, 30vw"
+                  className="object-cover"
+                />
+                <div className="absolute bottom-3 left-3">
+                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/50 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
+                    IN THE FIELD
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
             <div className="md:col-span-4">
@@ -494,23 +579,42 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="ARCH NOTE" number="06" label="現場メモ" />
 
-          <div className="mt-6 mb-8 md:mb-10 flex items-end justify-between gap-6 flex-wrap">
-            <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
-              現場から見える、
-              <br />
-              <span className="text-arch-forest">訪問歯科のリアル。</span>
-            </h2>
-            <Link
-              href="/columns"
-              className="mono-label text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-2"
-            >
-              すべて読む <ArrowRight size={12} />
-            </Link>
+          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-12 items-end mb-8 md:mb-10">
+            <div className="md:col-span-7">
+              <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
+                現場から見える、
+                <br />
+                <span className="text-arch-forest">訪問歯科のリアル。</span>
+              </h2>
+              <p className="text-base text-arch-ink-soft leading-loose max-w-2xl mt-8">
+                訪問歯科の現場で起きる課題、施設連携、算定、採用、運営改善について、実務目線でまとめた記録です。
+              </p>
+            </div>
+            <div className="md:col-span-5">
+              <div className="relative aspect-[16/11] overflow-hidden border border-arch-rule-dark/30">
+                <Image
+                  src="/images/image06.png"
+                  alt="付箋・地図・ノート・スケジュール表が机に広がる、現場メモの作業風景"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
+                <div className="absolute bottom-3 left-3">
+                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/50 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
+                    FIELD NOTES
+                  </span>
+                </div>
+              </div>
+              <div className="mt-3 flex justify-end">
+                <Link
+                  href="/columns"
+                  className="mono-label text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-2"
+                >
+                  すべて読む <ArrowRight size={12} />
+                </Link>
+              </div>
+            </div>
           </div>
-
-          <p className="text-base text-arch-ink-soft leading-loose max-w-2xl mb-12 md:mb-16">
-            訪問歯科の現場で起きる課題、施設連携、算定、採用、運営改善について、実務目線でまとめた記録です。
-          </p>
 
           <div className="border-t border-arch-rule">
             {NOTES.map((col) => (
@@ -600,12 +704,24 @@ export default function Home() {
       {/* ============================================================
           ⑦ FINAL CTA + CONTACT
           ============================================================ */}
-      <section id="contact" className="relative py-20 md:py-36 bg-arch-forest text-arch-cream">
-        <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10">
+      <section id="contact" className="relative py-20 md:py-36 bg-arch-forest text-arch-cream overflow-hidden">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/image05.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/85 via-arch-forest/80 to-arch-ink/90"></div>
+        </div>
+
+        <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
           <span className="mono-micro text-arch-sage/60">07 — CONTACT</span>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="CONTACT" number="07" label="お問い合わせ" theme="dark" />
 
           <h2 className="display-jp text-arch-cream text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.18] mt-6 mb-8">
@@ -658,7 +774,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-20 md:mt-28 flex justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-20 md:mt-28 flex justify-between">
           <span className="mono-micro text-arch-sage/60">CONTACT</span>
           <span className="mono-micro text-arch-sage/60">07 / 07</span>
         </div>
