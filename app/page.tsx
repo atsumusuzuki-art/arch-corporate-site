@@ -201,16 +201,17 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
-            <div className="md:col-span-7">
+            <div className="md:col-span-8">
               <p className="mono-label text-arch-moss mb-8 md:mb-10">
                 Homecare Dentistry / External Office Director
               </p>
 
-              {/* メインコピー */}
-              <h1 className="display-jp text-arch-ink text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.12] mb-10 md:mb-12">
-                訪問歯科を、
-                <br />
-                <span className="text-arch-forest font-black">&ldquo;続けられる事業&rdquo;</span>へ。
+              {/* メインコピー — 2行を厳守 */}
+              <h1 className="display-jp text-arch-ink text-[clamp(1.875rem,5.5vw,4.5rem)] leading-[1.15] tracking-tight mb-10 md:mb-12">
+                <span className="block whitespace-nowrap">訪問歯科を、</span>
+                <span className="block whitespace-nowrap">
+                  <span className="text-arch-forest font-black">&ldquo;続けられる事業&rdquo;</span>へ。
+                </span>
               </h1>
 
               {/* サブコピー */}
@@ -240,7 +241,7 @@ export default function Home() {
             </div>
 
             {/* ヒーロー画像（空気感として） */}
-            <div className="md:col-span-5 mt-2 md:mt-0">
+            <div className="md:col-span-4 mt-2 md:mt-0">
               <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden border border-arch-rule-dark/20">
                 <Image
                   src="/images/image01.png"
