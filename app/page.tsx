@@ -210,7 +210,7 @@ export default function Home() {
               <h1 className="display-jp text-arch-ink text-[clamp(2.5rem,7vw,5.5rem)] leading-[1.12] mb-10 md:mb-12">
                 訪問歯科を、
                 <br />
-                <span className="text-arch-forest">&ldquo;続けられる事業&rdquo;</span>へ。
+                <span className="text-arch-forest font-black">&ldquo;続けられる事業&rdquo;</span>へ。
               </h1>
 
               {/* サブコピー */}
@@ -275,7 +275,7 @@ export default function Home() {
           <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-10 md:mb-12">
             &ldquo;助言だけ&rdquo;では、
             <br />
-            訪問歯科は<span className="text-arch-forest">回らない。</span>
+            訪問歯科は<span className="text-arch-forest font-black">回らない。</span>
           </h2>
 
           <div className="max-w-3xl text-base md:text-lg text-arch-ink-soft leading-loose mb-16 md:mb-20">
@@ -290,19 +290,19 @@ export default function Home() {
           </div>
 
           {/* 5 特徴 */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-0 border-t border-l border-arch-rule">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-0 border-t border-l border-arch-rule">
             {STRENGTHS.map((s, i) => (
               <div
                 key={s.label}
-                className="border-b border-r border-arch-rule py-8 md:py-10 px-5 md:px-6"
+                className="border-b border-r border-arch-rule py-5 sm:py-7 md:py-10 px-3 sm:px-4 md:px-6"
               >
-                <p className="mono-label text-arch-moss mb-4 tabular-nums">
+                <p className="mono-label text-arch-moss mb-2 md:mb-4 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="display-jp text-arch-ink text-lg md:text-xl mb-3 leading-snug">
+                <h3 className="display-jp text-arch-ink text-sm sm:text-base md:text-xl mb-2 md:mb-3 leading-snug">
                   {s.label}
                 </h3>
-                <p className="text-sm text-arch-ink-soft leading-loose">{s.body}</p>
+                <p className="text-xs sm:text-sm text-arch-ink-soft leading-relaxed md:leading-loose">{s.body}</p>
               </div>
             ))}
           </div>
@@ -325,9 +325,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-50 grayscale-[30%]"
+            className="object-cover object-right opacity-70 grayscale-[20%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/80 to-arch-cream/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/70 to-arch-cream/10" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
@@ -336,7 +336,7 @@ export default function Home() {
           <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-3 max-w-3xl">
             現場で、
             <br />
-            <span className="text-arch-forest">&ldquo;回る仕組み&rdquo;</span>を作る。
+            <span className="text-arch-forest font-black">&ldquo;回る仕組み&rdquo;</span>を作る。
           </h2>
           <p className="mono-micro text-arch-ink-muted mb-12 md:mb-16">
             ※ 医院名は匿名化しています
@@ -344,26 +344,26 @@ export default function Home() {
 
           <div className="space-y-px bg-arch-rule">
             {CASES.map((c) => (
-              <article key={c.num} className="bg-arch-cream-raised py-10 md:py-14 px-6 md:px-12">
-                <div className="grid md:grid-cols-12 gap-6 md:gap-10">
+              <article key={c.num} className="bg-arch-cream-raised py-6 sm:py-8 md:py-14 px-4 sm:px-6 md:px-12">
+                <div className="grid md:grid-cols-12 gap-4 md:gap-10">
                   <div className="md:col-span-3">
-                    <p className="mono-label text-arch-moss mb-3 tabular-nums">CASE — {c.num}</p>
-                    <h3 className="display-jp text-arch-ink text-xl md:text-2xl leading-snug">
+                    <p className="mono-label text-arch-moss mb-2 md:mb-3 tabular-nums">CASE — {c.num}</p>
+                    <h3 className="display-jp text-arch-ink text-base sm:text-lg md:text-2xl leading-snug">
                       {c.title}
                     </h3>
                   </div>
-                  <dl className="md:col-span-9 grid sm:grid-cols-3 gap-6 md:gap-8">
+                  <dl className="md:col-span-9 grid sm:grid-cols-3 gap-3 sm:gap-5 md:gap-8">
                     <div>
-                      <dt className="mono-micro text-arch-ink-muted mb-2">課題</dt>
-                      <dd className="text-sm text-arch-ink leading-loose">{c.problem}</dd>
+                      <dt className="mono-micro text-arch-ink-muted mb-1 md:mb-2">課題</dt>
+                      <dd className="text-xs sm:text-sm text-arch-ink leading-relaxed md:leading-loose">{c.problem}</dd>
                     </div>
                     <div>
-                      <dt className="mono-micro text-arch-ink-muted mb-2">支援内容</dt>
-                      <dd className="text-sm text-arch-ink leading-loose">{c.action}</dd>
+                      <dt className="mono-micro text-arch-ink-muted mb-1 md:mb-2">支援内容</dt>
+                      <dd className="text-xs sm:text-sm text-arch-ink leading-relaxed md:leading-loose">{c.action}</dd>
                     </div>
                     <div>
-                      <dt className="mono-micro text-arch-gold mb-2">結果</dt>
-                      <dd className="text-sm text-arch-forest font-bold leading-loose">{c.result}</dd>
+                      <dt className="mono-micro text-arch-gold mb-1 md:mb-2">結果</dt>
+                      <dd className="text-xs sm:text-sm text-arch-forest font-bold leading-relaxed md:leading-loose">{c.result}</dd>
                     </div>
                   </dl>
                 </div>
@@ -392,9 +392,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-50 grayscale-[40%]"
+            className="object-cover object-right opacity-70 grayscale-[30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-forest via-arch-forest/80 to-arch-forest/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-forest via-arch-forest/70 to-arch-forest/10" />
         </div>
 
         <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
@@ -415,26 +415,30 @@ export default function Home() {
               <Link
                 key={s.num}
                 href={s.href}
-                className="group relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-14 border-b border-arch-rule-dark transition-colors hover:bg-arch-gold/[0.06]"
+                className="group relative grid grid-cols-12 gap-3 md:gap-8 py-6 sm:py-8 md:py-14 border-b border-arch-rule-dark transition-colors hover:bg-arch-gold/[0.06]"
               >
-                <div className="col-span-2 md:col-span-2 flex items-start pl-0 md:pl-2">
-                  <span className="display-jp leading-none tabular-nums text-[2.75rem] sm:text-[3.5rem] md:text-[5rem] text-arch-gold/50 group-hover:text-arch-gold transition-colors">
+                <div className="col-span-2 flex items-start pl-0 md:pl-2">
+                  <span className="display-jp leading-none tabular-nums text-[2rem] sm:text-[2.75rem] md:text-[5rem] text-arch-gold/50 group-hover:text-arch-gold transition-colors">
                     {s.num}
                   </span>
                 </div>
 
                 <div className="col-span-10 md:col-span-6">
-                  <h3 className="font-display font-black leading-[1.15] text-2xl sm:text-3xl md:text-[2.5rem] text-arch-cream group-hover:text-arch-gold transition-colors">
+                  <h3 className="font-display font-black leading-[1.15] text-lg sm:text-2xl md:text-[2.5rem] text-arch-cream group-hover:text-arch-gold transition-colors">
                     {s.title}
                   </h3>
+                  {/* モバイル：items を 1 行 inline、PC：右カラムに縦並び */}
+                  <p className="md:hidden mt-2 text-xs text-arch-sage/70 leading-relaxed">
+                    {s.items.join(" / ")}
+                  </p>
                   {s.note && (
-                    <p className="mono-micro text-arch-sage/60 mt-4 tracking-wider">
+                    <p className="mono-micro text-arch-sage/60 mt-3 md:mt-4 tracking-wider text-[10px] md:text-xs">
                       {s.note}
                     </p>
                   )}
                 </div>
 
-                <ul className="col-span-12 md:col-span-3 md:pt-6 text-arch-sage/80 text-sm leading-loose space-y-1.5">
+                <ul className="hidden md:flex md:col-span-3 md:pt-6 text-arch-sage/80 text-sm leading-loose flex-col space-y-1.5">
                   {s.items.map((it) => (
                     <li key={it} className="flex items-baseline gap-2">
                       <span className="text-arch-gold/60">·</span>
@@ -478,9 +482,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-45 grayscale-[40%]"
+            className="object-cover object-right opacity-65 grayscale-[30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream-raised via-arch-cream-raised/80 to-arch-cream-raised/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream-raised via-arch-cream-raised/70 to-arch-cream-raised/15" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
@@ -559,9 +563,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-50 grayscale-[30%]"
+            className="object-cover object-right opacity-70 grayscale-[20%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/80 to-arch-cream/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/70 to-arch-cream/15" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
@@ -682,9 +686,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover opacity-75 grayscale-[15%]"
+            className="object-cover opacity-85 grayscale-[10%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/65 via-arch-forest/55 to-arch-ink/75"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/55 via-arch-forest/45 to-arch-ink/65"></div>
         </div>
 
         <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
