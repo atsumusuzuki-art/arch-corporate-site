@@ -28,7 +28,7 @@ export default function ColumnLayout({
       <section className="bg-green-800 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
-            訪問歯科の状況を、まずはお聞かせください
+            医院の状況を、まずはお聞かせください
           </h2>
           <p className="text-green-100 font-medium mb-8 max-w-2xl mx-auto">
             運営、レセプト、施設連携、事務、DX。どこから整えるべきか、医院の状況に合わせて一緒に整理します。

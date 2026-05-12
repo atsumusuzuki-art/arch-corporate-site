@@ -707,10 +707,10 @@ export default function Home() {
           <h2 className="display-jp text-arch-cream text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.18] mt-6 mb-8">
             まずは、
             <br />
-            <span className="text-arch-gold">訪問歯科の状況</span>をお聞かせください。
+            <span className="text-arch-gold">医院の状況</span>をお聞かせください。
           </h2>
           <p className="text-arch-sage text-base md:text-lg leading-loose max-w-2xl mb-14 md:mb-20">
-            レセプト、施設連携、スタッフ導線、事務負担、売上改善。
+            外来、訪問歯科、分院、レセプト、施設連携、スタッフ導線、事務負担。
             どこから整えるべきか、医院の状況に合わせて一緒に整理します。
           </p>
 

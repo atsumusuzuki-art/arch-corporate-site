@@ -57,7 +57,7 @@ export default function ServicesLayout({
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
           <p className="mono-label text-arch-gold mb-6">状況を整理する</p>
           <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
-            まずは、訪問歯科の状況を
+            まずは、医院の状況を
             <br />
             お聞かせください。
           </h2>
