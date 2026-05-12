@@ -61,13 +61,13 @@ export const NEWS: NewsItem[] = [
   {
     date: "2026-04-10",
     category: "リリース",
-    title: "新サービス「ARCH・外付け事務局（BPO）」を新設しました",
+    title: "事務代行・BPO支援を新設しました",
     href: "/bpo-service",
   },
   {
     date: "2026-04-10",
     category: "リリース",
-    title: "「訪問歯科・品質診断エンジン」を公開しました",
+    title: "施設の歯科対応 簡易診断ツールを公開しました",
     href: "/services/dental-matching",
   },
   {

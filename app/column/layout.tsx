@@ -28,16 +28,16 @@ export default function ColumnLayout({
       <section className="bg-green-800 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
-            訪問歯科のことなら、ARCHにご相談ください
+            訪問歯科の状況を、まずはお聞かせください
           </h2>
           <p className="text-green-100 font-medium mb-8 max-w-2xl mx-auto">
-            立ち上げ・営業・算定・運営改善まで、訪問歯科のあらゆる課題をワンストップで解決。まずは無料相談から。
+            運営、レセプト、施設連携、事務、DX。どこから整えるべきか、医院の状況に合わせて一緒に整理します。
           </p>
           <Link
             href="/#contact"
             className="inline-flex items-center gap-2 bg-white text-green-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-green-50 transition-all shadow-lg"
           >
-            無料相談を予約する
+            現場の状況を相談する
           </Link>
         </div>
       </section>

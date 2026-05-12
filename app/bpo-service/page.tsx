@@ -192,7 +192,7 @@ export default function BpoServicePage() {
                 href="/#contact"
                 className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
               >
-                無料相談を予約する
+                現場の状況を相談する
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -454,7 +454,7 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          FULL STACK — 訪問歯科運営コンサルティングへの導線
+          FULL STACK — 訪問歯科運営支援への導線
       ────────────────────────────────────────── */}
       <section className="bg-arch-cream-raised py-20 md:py-24 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -474,7 +474,7 @@ export default function BpoServicePage() {
                 </h3>
                 <p className="text-sm md:text-base text-arch-ink-soft leading-loose">
                   事務代行に加え、運営改善・レセプト精度・経営判断まで継続的に伴走してほしい場合は、
-                  <strong className="text-arch-ink">訪問歯科運営コンサルティング</strong>
+                  <strong className="text-arch-ink">訪問歯科運営支援</strong>
                   をご検討ください。月額契約で、外部事務長として現場と経営に伴走します。
                 </p>
               </div>
@@ -483,7 +483,7 @@ export default function BpoServicePage() {
                   href="/services/consulting"
                   className="inline-flex items-center gap-3 bg-arch-forest text-arch-cream px-6 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-ink transition-colors w-full md:w-auto justify-center"
                 >
-                  運営コンサルを見る
+                  運営支援を見る
                   <ArrowRight size={16} />
                 </Link>
               </div>

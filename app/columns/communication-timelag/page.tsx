@@ -103,7 +103,7 @@ export default function CommunicationTimelagPage() {
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">
-              【無料オンライン相談のご案内】
+              【現場のご相談を受け付けています】
             </p>
             <p className="text-gray-600 mb-0">
               連絡調整の設計を見直す第一歩として、ARCHへのご相談をお待ちしています。CCに1人加える仕組みから、施設との関係再構築まで具体的にご提案します。

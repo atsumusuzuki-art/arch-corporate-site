@@ -68,7 +68,7 @@ export default function ProfitTrapPage() {
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">
-              【無料オンライン相談のご案内】
+              【現場のご相談を受け付けています】
             </p>
             <p className="text-gray-600 mb-0">
               単価の限界を見据えた上で、どうやって確実に利益を残すのか。精緻な経費計算から最適なKPIの設計まで、ARCHが黒字化のロードマップを引きます。

@@ -88,7 +88,7 @@ export default function TurnoverStrategyPage() {
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">
-              【無料オンライン相談のご案内】
+              【現場のご相談を受け付けています】
             </p>
             <p className="text-gray-600 mb-0">
               属人化を排除し、誰が来ても回る強固な組織づくり。マニュアル化からアプリによる業務の標準化まで、次世代の歯科医院経営をサポートします。

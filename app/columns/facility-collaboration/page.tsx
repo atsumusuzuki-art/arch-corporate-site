@@ -125,7 +125,7 @@ export default function FacilityCollaborationPage() {
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">
-              【無料オンライン相談のご案内】
+              【現場のご相談を受け付けています】
             </p>
             <p className="text-gray-600 mb-0">
               自院だけで体制構築が難しい場合は、外部パートナーの活用も選択肢の一つです。ARCHでは訪問歯科コーディネーターの育成から施設連携ツールの設計まで、現場に即した支援を行っています。

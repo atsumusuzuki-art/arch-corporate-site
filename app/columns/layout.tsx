@@ -67,27 +67,27 @@ export default function ColumnsLayout({
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest text-arch-cream py-24 md:py-32 overflow-hidden border-t border-arch-rule-dark">
         <div className="absolute top-6 left-6 md:top-8 md:left-10 pointer-events-none">
-          <span className="mono-label text-arch-sage/70">CONTACT — 無料オンライン相談</span>
+          <span className="mono-label text-arch-sage/70">CONTACT — 現場の状況をお聞かせください</span>
         </div>
         <div className="absolute top-6 right-6 md:top-8 md:right-10 pointer-events-none text-right">
           <span className="mono-micro text-arch-sage/60">NEXT STEP</span>
         </div>
 
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
-          <p className="mono-label text-arch-gold mb-6">無料オンライン相談</p>
+          <p className="mono-label text-arch-gold mb-6">状況を整理する</p>
           <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
             訪問歯科を、
             <br />
             <span className="text-arch-gold">続けられる仕組み</span>へ。
           </h2>
           <p className="text-base md:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10">
-            運営・レセプト・施設連携・事務・DX。現場の課題をそのまま聞かせてください。外部事務長として、実務まで入り込んでご提案します。
+            運営、レセプト、施設連携、事務、DX。現場の状況をそのまま聞かせてください。外部事務長として、実務まで入り込んで一緒に整理します。
           </p>
           <Link
             href="/#contact"
             className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
           >
-            無料相談を予約する
+            現場の状況を相談する
             <ArrowRight size={18} />
           </Link>
         </div>

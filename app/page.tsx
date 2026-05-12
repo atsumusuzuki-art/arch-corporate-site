@@ -51,7 +51,7 @@ const CASES = [
 const SERVICES = [
   {
     num: "01",
-    title: "訪問歯科運営コンサルティング",
+    title: "訪問歯科運営支援",
     href: "/services/consulting",
     items: ["月次分析", "運営改善", "導線整理", "施設対応", "経営支援"],
   },
@@ -153,7 +153,7 @@ export default function Home() {
                 href="#contact"
                 className="bg-arch-cream text-arch-forest px-5 py-2.5 rounded-[2px] mono-label !text-arch-forest hover:bg-arch-gold transition-colors"
               >
-                無料相談
+                相談する
               </a>
             </div>
 
@@ -185,7 +185,7 @@ export default function Home() {
               onClick={() => setIsMenuOpen(false)}
               className="block bg-arch-cream text-arch-forest px-6 py-3.5 rounded-[2px] mono-label !text-arch-forest text-center"
             >
-              無料相談はこちら
+              現場の状況を相談する
             </a>
           </div>
         )}
@@ -215,11 +215,11 @@ export default function Home() {
 
               {/* サブコピー */}
               <p className="text-base sm:text-lg text-arch-ink-soft leading-loose max-w-2xl mb-10 md:mb-12">
-                営業、施設連携、算定、事務、スタッフ導線、DX。
+                始めるより、回し続ける方が難しい。
                 <br className="hidden sm:block" />
-                訪問歯科は、始めるよりも、回し続ける方が難しい。
+                レセプト、施設、スタッフ、導線——訪問歯科は、現場が崩れると止まる。
                 <br className="hidden sm:block" />
-                ARCHは、訪問歯科の外部事務長として、現場と経営の両面から医院を支えます。
+                ARCHは、訪問歯科の外部事務長として、現場実務まで入り込みながら支援します。
               </p>
 
               {/* CTAボタン */}
@@ -228,7 +228,7 @@ export default function Home() {
                   href="#contact"
                   className="bg-arch-forest text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-forest-soft transition-colors inline-flex items-center justify-center gap-3"
                 >
-                  無料相談はこちら <ArrowRight size={16} />
+                  現場の状況を相談する <ArrowRight size={16} />
                 </a>
                 <a
                   href="#service"
@@ -742,7 +742,7 @@ export default function Home() {
                   type="submit"
                   className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center gap-3"
                 >
-                  <Send size={16} /> 無料相談はこちら
+                  <Send size={16} /> この内容で相談する
                 </button>
               </div>
             </form>

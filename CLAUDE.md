@@ -59,7 +59,7 @@ ARCH のブランドは **「訪問歯科の外部事務長」** に集約しま
 
 | No. | サービス名 | URL | 役割 |
 |---|---|---|---|
-| 01 | **訪問歯科運営コンサルティング** | `/services/consulting` | 月次分析・運営改善・導線整理・施設対応・経営支援（メインページ） |
+| 01 | **訪問歯科運営支援** | `/services/consulting` | 月次分析・運営改善・導線整理・施設対応・経営支援（メインページ） |
 | 02 | **レセプト・算定改善支援** | `/services/consulting#billing` | 算定漏れ確認・カルテチェック・返戻対策・精度改善（運営コンサル内 02 機能） |
 | 03 | **施設連携・営業支援** | `/services/sales` | 施設対応・営業導線・初診導線・トラブル防止（メインページ） |
 | 04 | **事務代行・BPO支援** | `/bpo-service` | 書類作成・郵送業務・業務整理・事務フロー改善（メインページ） |
@@ -73,14 +73,14 @@ ARCH のブランドは **「訪問歯科の外部事務長」** に集約しま
 
 ### 2.3 各サービスの中核メッセージ
 
-#### 01. 訪問歯科運営コンサルティング（`/services/consulting`）
+#### 01. 訪問歯科運営支援（`/services/consulting`）
 - **中核メッセージ**：助言だけでは、訪問歯科は回らない。外部事務長として実務に入り込む。
 - HERO コピー：「訪問歯科を、回し続ける。」
 - 3 機能：① 運営改善・導線整理 / ② レセプト・算定改善 / ③ 経営判断の伴走
 - **料金（維持）**：Light 10万 / Standard 30万 / Premium 50万 + 初回限定お試し 7万 / 単発実地支援 5万（すべて税別・別途初期費用 10万円）
 
 #### 02. レセプト・算定改善支援（`/services/consulting#billing`）
-- 訪問歯科運営コンサルティング内の 02 機能として内包
+- 訪問歯科運営支援内の 02 機能として内包
 - 算定漏れ確認・カルテチェック・返戻対策・訪問歯科特有の算定ナレッジ蓄積
 - 単独ページは持たない（`/services/consulting` の 02 セクションへアンカー遷移）
 
@@ -204,8 +204,8 @@ export const NEWS: NewsItem[] = [
 
 ### 5.5 依頼例とエージェントの反応
 
-**例1：** 「News に『訪問歯科運営コンサルティング』のページを更新したって入れて」
-→ date: 今日 / category: "更新" / title: 「『訪問歯科運営コンサルティング』ページを更新しました」 / href: "/services/consulting"
+**例1：** 「News に『訪問歯科運営支援』のページを更新したって入れて」
+→ date: 今日 / category: "更新" / title: 「訪問歯科運営支援ページを更新しました」 / href: "/services/consulting"
 
 **例2：** 「日経メディカルに記事が載ったから News に追加。URL は https://...」
 → date: 今日（またはユーザー指定日） / category: "プレス" / title: 「日経メディカルに掲載されました」 / href: URL
@@ -254,7 +254,7 @@ app/
 │   └── page.tsx            # 事務代行・BPO支援
 ├── services/
 │   ├── layout.tsx          # サービスページ共通レイアウト
-│   ├── consulting/page.tsx # 訪問歯科運営コンサルティング（#billing アンカーあり）
+│   ├── consulting/page.tsx # 訪問歯科運営支援（#billing アンカーあり）
 │   ├── sales/page.tsx      # 施設連携・営業支援（dental-matching 案内を内包）
 │   └── dental-matching/
 │       ├── page.tsx                  # Server wrapper（metadata のみ）
@@ -332,7 +332,7 @@ b261f7f feat(notes): ARCH NOTE インデックス新設 + columns レイアウ�
 7ba3266 refactor: dental-matching を補助ツール表現に格下げ＋トップの SERVICES href にアンカー追加
 6bae408 refactor(bpo): 事務代行・BPO支援に改題＋13体エージェント表現を完全撤廃＋DX統合
 8488fa4 refactor(sales): 施設連携・営業支援に改題＋訪問歯科特化＋品質診断ツール内包
-c45b71c refactor(consulting): 訪問歯科運営コンサルティングに改題＋外部事務長コンセプトで全面書き直し
+c45b71c refactor(consulting): 訪問歯科運営支援に改題＋外部事務長コンセプトで全面書き直し
 1f91642 refactor: senior-home 削除 + 関連サービスを新 3 ページ構成に整理
 61dacd4 feat: トップページを「訪問歯科の外部事務長」コンセプトに全面改修
 ```

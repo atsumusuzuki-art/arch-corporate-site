@@ -116,7 +116,7 @@ export default function SnsDxRecruitmentPage() {
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">
-              【無料オンライン相談のご案内】
+              【現場のご相談を受け付けています】
             </p>
             <p className="text-gray-600 mb-0">
               SNS採用コンサルからWEBアプリ導入まで、採用×DXの両輪を一気通貫でご提案します。まずはお気軽にご相談ください。

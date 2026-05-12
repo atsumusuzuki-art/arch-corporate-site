@@ -231,12 +231,12 @@ export default function DentalMatchingClient() {
       </section>
 
       {/* ──────────────────────────────────────────
-          DIAGNOSTIC ENGINE — 6項目 × 5段階
+          診断ツール — 6項目 × 5段階
       ────────────────────────────────────────── */}
       <section id="diagnostic" className="bg-arch-cream-raised py-20 md:py-28 border-t border-arch-rule">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="ENGINE" number="03" label="診断エンジン" />
+            <SectionTag category="TOOL" number="03" label="診断ツール" />
             <p className="mono-micro text-arch-ink-muted hidden sm:block">6 × 5 LIKERT</p>
           </div>
 

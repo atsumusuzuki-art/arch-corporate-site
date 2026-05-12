@@ -112,7 +112,7 @@ export default function WaitingRoomVisualPage() {
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">
-              【無料オンライン相談のご案内】
+              【現場のご相談を受け付けています】
             </p>
             <p className="text-gray-600 mb-0">
               視覚情報の再構築をお考えの際は、ARCHまでご相談ください。エリア分析からサイネージ制作、掲示物のテンプレート設計まで、医院のブランドに合わせてトータルで支援いたします。

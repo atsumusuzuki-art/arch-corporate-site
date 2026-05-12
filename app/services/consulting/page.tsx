@@ -4,13 +4,13 @@ import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
 import ServiceInquiryForm from "@/components/ServiceInquiryForm";
 
 export const metadata = {
-  title: "訪問歯科運営コンサルティング｜運営改善・レセプト精度・月次分析",
+  title: "訪問歯科運営支援｜運営改善・レセプト精度・月次分析",
   description:
     "訪問歯科は、始めるよりも回し続ける方が難しい。算定、レセプト、施設対応、スタッフ導線、月次分析まで、外部事務長として現場実務に入り込んで支援します。",
 };
 
 /* ================================================================
-   訪問歯科運営コンサルティング
+   訪問歯科運営支援
    外部事務長として、訪問歯科の運営を実務から支える。
    レセプト・算定改善支援は本ページの 02 機能として内包。
    ================================================================ */
@@ -239,7 +239,7 @@ export default function ConsultingPage() {
           <SectionTag
             category="OPERATION"
             number="01"
-            label="訪問歯科運営コンサルティング"
+            label="訪問歯科運営支援"
             theme="dark"
           />
 
@@ -272,7 +272,7 @@ export default function ConsultingPage() {
                 href="/#contact"
                 className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
               >
-                無料相談を予約する
+                現場の状況を相談する
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -715,14 +715,14 @@ export default function ConsultingPage() {
                     value: "trial",
                     label: "お試しコンサルティング",
                     description: "初回限定・1ヶ月 / 70,000円",
-                    subjectTag: "【お試しコンサル申込】訪問歯科運営コンサルティング",
+                    subjectTag: "【お試しコンサル申込】訪問歯科運営支援",
                     defaultChecked: true,
                   },
                   {
                     value: "onsite",
                     label: "単発 実地支援サービス",
                     description: "1回ごと / 50,000円",
-                    subjectTag: "【単発実地支援申込】訪問歯科運営コンサルティング",
+                    subjectTag: "【単発実地支援申込】訪問歯科運営支援",
                   },
                 ]}
                 notes={[

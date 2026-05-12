@@ -199,7 +199,7 @@ export default function SalesPage() {
                 href="/#contact"
                 className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
               >
-                無料相談を予約する
+                現場の状況を相談する
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -329,8 +329,7 @@ export default function SalesPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          TOOL — 施設の歯科品質を診断する補助ツール
-          (旧：訪問歯科・品質診断エンジンの紹介)
+          TOOL — 施設の歯科対応 簡易診断（補助ツール）
       ────────────────────────────────────────── */}
       <section className="bg-arch-cream py-20 md:py-28 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -363,7 +362,7 @@ export default function SalesPage() {
 
             <div className="md:col-span-5">
               <div className="border border-arch-rule-dark/20 bg-arch-cream-raised p-8 md:p-10">
-                <p className="mono-micro text-arch-moss mb-4">6 ITEMS / DIAGNOSTIC</p>
+                <p className="mono-micro text-arch-moss mb-4">6 ITEMS / 確認項目</p>
                 <ul className="space-y-3">
                   {[
                     "対応スピード",

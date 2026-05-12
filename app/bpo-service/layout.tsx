@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const OTHER_SERVICES = [
-  { num: "01", href: "/services/consulting", title: "訪問歯科運営コンサルティング", desc: "運営改善・レセプト精度・月次分析" },
+  { num: "01", href: "/services/consulting", title: "訪問歯科運営支援", desc: "運営改善・レセプト精度・月次分析" },
   { num: "02", href: "/services/sales", title: "施設連携・営業支援", desc: "施設対応導線・初診オペレーション・営業設計" },
   { num: "03", href: "/bpo-service", title: "事務代行・BPO支援", desc: "書類・郵送・事務フロー・業務DX" },
 ];
@@ -47,27 +47,27 @@ export default function BpoServiceLayout({
       ────────────────────────────────────────── */}
       <section className="relative bg-arch-forest text-arch-cream py-24 md:py-32 overflow-hidden">
         <div className="absolute top-6 left-6 md:top-8 md:left-10 pointer-events-none">
-          <span className="mono-label text-arch-sage/70">CONTACT — 無料オンライン相談</span>
+          <span className="mono-label text-arch-sage/70">CONTACT — 現場の状況をお聞かせください</span>
         </div>
         <div className="absolute top-6 right-6 md:top-8 md:right-10 pointer-events-none text-right">
           <span className="mono-micro text-arch-sage/60">NEXT STEP</span>
         </div>
 
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
-          <p className="mono-label text-arch-gold mb-6">無料オンライン相談</p>
+          <p className="mono-label text-arch-gold mb-6">状況を整理する</p>
           <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
             まずは、現場の業務を
             <br />
             そのまま聞かせてください。
           </h2>
           <p className="text-base md:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10">
-            現在の業務フローをヒアリングし、どのエージェントがどの業務を巻き取れるかを具体的にご提案します。無理な営業は一切行いません。
+            現在の業務フロー、書類、郵送、レセプト、シフトまわり。どこを外側で巻き取れるか、医院の状況に合わせて一緒に整理します。営業は一切行いません。
           </p>
           <Link
             href="/#contact"
             className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
           >
-            無料オンライン相談を予約する
+            現場の状況を相談する
             <ArrowRight size={18} />
           </Link>
         </div>
