@@ -454,7 +454,7 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          FULL STACK — 訪問歯科運営支援への導線
+          FULL STACK — 歯科医院運営支援への導線
       ────────────────────────────────────────── */}
       <section className="bg-arch-cream-raised py-20 md:py-24 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -474,7 +474,7 @@ export default function BpoServicePage() {
                 </h3>
                 <p className="text-sm md:text-base text-arch-ink-soft leading-loose">
                   事務代行に加え、運営改善・レセプト精度・経営判断まで継続的に伴走してほしい場合は、
-                  <strong className="text-arch-ink">訪問歯科運営支援</strong>
+                  <strong className="text-arch-ink">歯科医院運営支援</strong>
                   をご検討ください。月額契約で、外部事務長として現場と経営に伴走します。
                 </p>
               </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const OTHER_SERVICES = [
-  { num: "01", href: "/services/consulting", title: "訪問歯科運営支援", desc: "運営改善・レセプト精度・月次分析" },
+  { num: "01", href: "/services/consulting", title: "歯科医院運営支援", desc: "運営改善・レセプト精度・月次分析" },
   { num: "02", href: "/services/sales", title: "施設連携・営業支援", desc: "施設対応導線・初診オペレーション・営業設計" },
   { num: "03", href: "/bpo-service", title: "事務代行・BPO支援", desc: "書類・郵送・事務フロー・業務DX" },
 ];
@@ -85,7 +85,7 @@ export default function ServicesLayout({
       <section className="bg-arch-cream-raised py-20 md:py-24 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between mb-10 md:mb-12 border-b border-arch-rule pb-4">
-            <p className="mono-label text-arch-moss">SERVICES — 訪問歯科の外部事務長</p>
+            <p className="mono-label text-arch-moss">SERVICES — 歯科医院の外部事務長</p>
             <p className="mono-micro text-arch-ink-muted hidden sm:block">RELATED</p>
           </div>
           <h2 className="display-jp text-2xl md:text-3xl text-arch-ink mb-10 md:mb-12">

@@ -9,16 +9,16 @@ import { SectionTag } from "@/components/CornerMarkers";
 
 /* ================================================================
    合同会社ARCH — Corporate Site v4
-   コンセプト：訪問歯科の外部事務長
+   コンセプト：歯科医院の外部事務長
    (2026-05-11 — 全面改修)
    ================================================================ */
 
 /* 5 つの特徴（②ARCHについて） */
 const STRENGTHS = [
-  { label: "訪問歯科特化", body: "訪問診療に必要な業務だけを深く扱う。" },
+  { label: "医院運営に密着", body: "外来・訪問・分院まで、実務を一緒に整理する。" },
+  { label: "訪問歯科の現場経験", body: "立ち上げ・黒字化の現場知見を医院運営に活かす。" },
   { label: "現場実務まで対応", body: "助言で止めず、医院の実務まで入り込む。" },
   { label: "レセプト精度改善", body: "算定漏れ・返戻を構造から減らす。" },
-  { label: "施設連携支援", body: "施設対応導線と初診オペレーションを設計する。" },
   { label: "DX・業務改善", body: "記録・シフト・連絡をデジタルで軽くする。" },
 ];
 
@@ -45,15 +45,22 @@ const CASES = [
     action: "札幌特有の複数施設巡回型を踏まえたシフト構成を設計。",
     result: "問い合わせ対応スピード改善、現場確認効率向上。",
   },
+  {
+    num: "04",
+    title: "分院立ち上げ支援",
+    problem: "分院展開に伴い、機材導入、現場導線、ディーラー対応など、開業準備全体の整理が必要だった。",
+    action: "歯科ディーラー、パノラマメーカー、ユニット動作確認、現場導線整理、オペレーション確認に立ち会い、実務面をサポート。",
+    result: "開業準備をスムーズに進行し、現場運営開始前の混乱を最小限に抑えた。",
+  },
 ];
 
 /* 5 つのサービス（④サービス一覧） */
 const SERVICES = [
   {
     num: "01",
-    title: "訪問歯科運営支援",
+    title: "歯科医院運営支援",
     href: "/services/consulting",
-    items: ["月次分析", "運営改善", "導線整理", "施設対応", "経営支援"],
+    items: ["訪問歯科", "外来", "分院展開", "スタッフ導線", "現場改善"],
   },
   {
     num: "02",
@@ -135,7 +142,7 @@ export default function Home() {
               />
               <span className="hidden sm:block">
                 <span className="display-jp text-arch-cream text-base leading-none block">合同会社ARCH</span>
-                <span className="mono-micro text-arch-sage/70 tracking-[0.18em] mt-1 block">訪問歯科の外部事務長</span>
+                <span className="mono-micro text-arch-sage/70 tracking-[0.18em] mt-1 block">歯科医院の外部事務長</span>
               </span>
             </Link>
 
@@ -196,31 +203,31 @@ export default function Home() {
           ============================================================ */}
       <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-44 md:pb-32 bg-arch-cream">
         <div className="absolute top-24 md:top-32 right-5 sm:right-8 md:right-10 text-right z-10">
-          <span className="mono-micro text-arch-moss/60">ARCH · 訪問歯科の外部事務長</span>
+          <span className="mono-micro text-arch-moss/60">ARCH · 歯科医院の外部事務長</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
             <div className="md:col-span-8">
               <p className="mono-label text-arch-moss mb-8 md:mb-10">
-                Homecare Dentistry / External Office Director
+                Dental Clinic Operations / External Office Director
               </p>
 
               {/* メインコピー — 2行を厳守 */}
-              <h1 className="display-jp text-arch-ink text-[clamp(1.875rem,5.5vw,4.5rem)] leading-[1.15] tracking-tight mb-10 md:mb-12">
-                <span className="block whitespace-nowrap">訪問歯科を、</span>
+              <h1 className="display-jp text-arch-ink text-[clamp(1.875rem,5vw,4rem)] leading-[1.15] tracking-tight mb-10 md:mb-12">
+                <span className="block whitespace-nowrap">歯科医院を、</span>
                 <span className="block whitespace-nowrap">
-                  <span className="text-arch-forest font-black">&ldquo;続けられる事業&rdquo;</span>へ。
+                  <span className="text-arch-forest font-black">&ldquo;回り続ける組織&rdquo;</span>へ。
                 </span>
               </h1>
 
               {/* サブコピー */}
               <p className="text-base sm:text-lg text-arch-ink-soft leading-loose max-w-2xl mb-10 md:mb-12">
-                始めるより、回し続ける方が難しい。
+                訪問歯科、外来、分院展開、スタッフ導線、レセプト、現場オペレーション。
                 <br className="hidden sm:block" />
-                レセプト、施設、スタッフ、導線——訪問歯科は、現場が崩れると止まる。
+                歯科医院は、院長一人で抱え始めると、現場が止まりやすくなります。
                 <br className="hidden sm:block" />
-                ARCHは、訪問歯科の外部事務長として、現場実務まで入り込みながら支援します。
+                ARCHは、歯科医院の外部事務長として、現場実務まで入り込みながら、医院運営を支えます。
               </p>
 
               {/* CTAボタン */}
@@ -276,17 +283,16 @@ export default function Home() {
           <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-10 md:mb-12">
             &ldquo;助言だけ&rdquo;では、
             <br />
-            訪問歯科は<span className="text-arch-forest font-black">回らない。</span>
+            医院は<span className="text-arch-forest font-black">回らない。</span>
           </h2>
 
           <div className="max-w-3xl text-base md:text-lg text-arch-ink-soft leading-loose mb-16 md:mb-20">
             <p className="mb-6">
-              訪問歯科では、算定、レセプト、施設対応、スタッフ配置、診療導線、営業、患者家族対応、
-              すべてが同時に動いています。
+              外来、訪問歯科、分院、レセプト、算定、施設対応、スタッフ配置、診療導線、患者家族対応。
+              歯科医院では、これらすべてが同時に動いています。とくに訪問歯科を伸ばすフェーズや分院展開の時期は、院長一人で抱え始めると現場がすぐに止まります。
             </p>
             <p>
-              ARCHは、単なるコンサルティングではなく、医院の外部事務長として、
-              実務レベルまで入り込みながら支援します。
+              ARCHは、単なるコンサルティングではなく、歯科医院の外部事務長として、実務レベルまで入り込みながら医院運営を支えます。
             </p>
           </div>
 
@@ -517,15 +523,14 @@ export default function Home() {
             <div className="md:col-span-8">
               <div className="space-y-6 text-base md:text-lg text-arch-ink-soft leading-loose mb-10">
                 <p>
-                  訪問歯科は、始めることよりも、続けることの方が難しい。
+                  歯科医院は、院長一人で抱え始めると、現場が止まりやすくなります。
                 </p>
                 <p>
-                  施設との関係、スタッフ配置、算定、事務、患者家族対応。
-                  どれか一つ崩れるだけで、現場はすぐに回らなくなります。
+                  外来、訪問歯科、分院、施設連携、スタッフ配置、レセプト、患者家族対応。
+                  どれか一つ崩れるだけで、医院全体が動かなくなります。
                 </p>
                 <p className="text-arch-ink font-bold">
-                  ARCHは、単なるアドバイスではなく、医院の外部事務長として、
-                  実務に入り込みながら支援しています。
+                  ARCHは、単なるアドバイスではなく、歯科医院の外部事務長として、訪問歯科で培った現場経験を医院運営全体に活かしながら、実務に入り込んで支援しています。
                 </p>
               </div>
 
@@ -771,7 +776,7 @@ export default function Home() {
               />
               <p className="text-arch-cream font-bold text-base mb-2">合同会社ARCH（アーチ）</p>
               <p className="mono-micro text-arch-sage/70 mb-5 tracking-[0.18em]">
-                訪問歯科の外部事務長
+                歯科医院の外部事務長
               </p>
               <div className="space-y-1 text-sm">
                 <p>Mail: atsumu.suzuki@arch-yh.com</p>

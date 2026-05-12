@@ -53,7 +53,7 @@ export default function ColumnsLayout({
             />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className="display-jp text-arch-cream text-sm">合同会社ARCH</span>
-              <span className="mono-micro text-arch-sage/70 tracking-[0.18em]">訪問歯科の外部事務長</span>
+              <span className="mono-micro text-arch-sage/70 tracking-[0.18em]">歯科医院の外部事務長</span>
             </span>
           </Link>
         </div>
@@ -76,12 +76,12 @@ export default function ColumnsLayout({
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
           <p className="mono-label text-arch-gold mb-6">状況を整理する</p>
           <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
-            訪問歯科を、
+            歯科医院を、
             <br />
-            <span className="text-arch-gold">続けられる仕組み</span>へ。
+            <span className="text-arch-gold">回り続ける組織</span>へ。
           </h2>
           <p className="text-base md:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10">
-            運営、レセプト、施設連携、事務、DX。現場の状況をそのまま聞かせてください。外部事務長として、実務まで入り込んで一緒に整理します。
+            外来、訪問歯科、分院、レセプト、施設連携、事務、DX。現場の状況をそのまま聞かせてください。歯科医院の外部事務長として、訪問歯科で培った現場経験を医院運営に活かしながら、実務まで入り込んで一緒に整理します。
           </p>
           <Link
             href="/#contact"
@@ -149,7 +149,7 @@ export default function ColumnsLayout({
             <div>
               <p className="mono-label text-arch-sage">ARCH / 合同会社</p>
               <p className="mono-micro text-arch-sage/60 mt-1 tracking-[0.18em]">
-                訪問歯科の外部事務長
+                歯科医院の外部事務長
               </p>
             </div>
           </div>
