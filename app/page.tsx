@@ -66,7 +66,7 @@ const SERVICES = [
     title: "施設連携・営業支援",
     href: "/services/sales",
     items: ["施設対応", "営業導線", "初診導線", "トラブル防止"],
-    note: "施設の歯科品質を6項目で診断する補助ツールあり",
+    note: "施設連携状況の確認ツールも必要に応じて活用",
     noteHref: "/services/dental-matching",
   },
   {
@@ -742,7 +742,7 @@ export default function Home() {
                   type="submit"
                   className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center gap-3"
                 >
-                  <Send size={16} /> 無料相談を送信する
+                  <Send size={16} /> 無料相談はこちら
                 </button>
               </div>
             </form>
