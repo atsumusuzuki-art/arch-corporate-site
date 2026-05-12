@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "「スタッフの退職」に怯える院長へ。離職防止よりも優先すべき、たった一つの経営戦略 | ARCH コラム",
+  title: "「あの人が辞めたら終わる」状態から、抜け出せていますか？ | ARCH NOTE",
   description:
-    "スタッフが辞めることに怯えない経営へ。属人化を排除し、誰が来ても回る強固な組織の作り方を解説します。",
+    "離職を防ぐ前に、整えるべきは医院側の仕組み。属人化を解消し、誰が来ても回る組織の作り方を、現場の外部事務長視点で整理します。",
 };
 
 export default function TurnoverStrategyPage() {
@@ -13,18 +13,16 @@ export default function TurnoverStrategyPage() {
         {/* Category & Date */}
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">
-            経営戦略
+            現場運営
           </span>
           <time className="text-xs text-gray-400 font-medium">2026.04.02</time>
         </div>
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-10 tracking-tight">
-          「スタッフの退職」に怯える院長へ。
+          「あの人が辞めたら終わる」
           <br className="hidden md:block" />
-          離職防止よりも優先すべき、
-          <br className="hidden md:block" />
-          たった一つの経営戦略
+          状態から、抜け出せていますか？
         </h1>
 
         {/* Lead */}

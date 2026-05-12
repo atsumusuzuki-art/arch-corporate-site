@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "現場がドブに捨てている「見えない利益」。患者だけを診る歯医者は淘汰される | ARCH コラム",
+  title: "現場が見落としている「見えない利益」 | ARCH NOTE",
   description:
-    "患者様だけを見て仕事をしている医院は、莫大な見えない利益を失っています。施設スタッフやケアマネとの信用利益の築き方を解説。",
+    "患者対応だけでは、医院は伸びない。施設スタッフ・ケアマネとの信用が「見えない利益」になる構造を、現場の外部事務長視点で整理します。",
 };
 
 export default function InvisibleProfitPage() {
@@ -13,18 +13,16 @@ export default function InvisibleProfitPage() {
         {/* Category & Date */}
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">
-            営業戦略
+            経営改善
           </span>
           <time className="text-xs text-gray-400 font-medium">2026.04.02</time>
         </div>
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-10 tracking-tight">
-          現場がドブに捨てている
+          現場が見落としている
           <br className="hidden md:block" />
-          「見えない利益」。
-          <br className="hidden md:block" />
-          患者だけを診る歯医者は淘汰される
+          「見えない利益」
         </h1>
 
         {/* Lead */}

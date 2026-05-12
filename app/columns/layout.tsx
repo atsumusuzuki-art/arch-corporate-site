@@ -9,19 +9,19 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 /* 全ノートのナビゲーション用リスト（page.tsx と同期） */
 const ALL_NOTES = [
-  { slug: "waiting-room-visual", category: "院内マーケティング", title: "その待合室、患者さんに「何も伝わっていない」かもしれない" },
-  { slug: "sns-dx-recruitment", category: "採用・DX", title: "「ハローワークに出しておけば来る」時代は終わった" },
-  { slug: "communication-timelag", category: "施設連携", title: "「返信は夕方になります」——その一言が信頼を削っている" },
-  { slug: "facility-collaboration", category: "施設連携", title: "施設が本当に求めているのは「治療の腕」ではない" },
-  { slug: "broker-trap", category: "業界の闇", title: "「施設を紹介しますよ」の甘い罠。悪質ブローカーの正体" },
-  { slug: "turnover-strategy", category: "経営戦略", title: "「スタッフの退職」に怯える院長へ" },
-  { slug: "staff-role", category: "組織マネジメント", title: "優秀なスタッフが辞めない医院の秘密「係活動」マネジメント" },
-  { slug: "invisible-profit", category: "営業戦略", title: "現場がドブに捨てている「見えない利益」" },
-  { slug: "profit-trap", category: "経営改善", title: "一生懸命訪問しているのに「黒字化」しない医院" },
-  { slug: "document-hell", category: "業務改善", title: "訪問歯科が陥る「書類地獄」" },
-  { slug: "facility-needs", category: "施設の本音", title: "介護施設における「口腔ケアの序列」" },
-  { slug: "communication", category: "現場コミュニケーション", title: "介護現場で嫌われる衛生士の共通点" },
-  { slug: "sales-trap", category: "営業の落とし穴", title: "院長自らの飛び込み営業の落とし穴" },
+  { slug: "waiting-room-visual", category: "現場運営", title: "その待合室、患者さんに「何も伝わっていない」かもしれない" },
+  { slug: "sns-dx-recruitment", category: "実務改善・DX", title: "「ハローワークに出しておけば来る」時代は終わった" },
+  { slug: "communication-timelag", category: "訪問歯科", title: "「返信は夕方になります」——その一言が信頼を削っている" },
+  { slug: "facility-collaboration", category: "訪問歯科", title: "施設が本当に求めているのは「治療の腕」ではない" },
+  { slug: "broker-trap", category: "経営改善", title: "「紹介しますよ」に依存した医院が崩れる理由" },
+  { slug: "turnover-strategy", category: "現場運営", title: "「あの人が辞めたら終わる」状態から抜け出せていますか？" },
+  { slug: "staff-role", category: "現場運営", title: "優秀なスタッフが辞めない医院の秘密「係活動」マネジメント" },
+  { slug: "invisible-profit", category: "経営改善", title: "現場が見落としている「見えない利益」" },
+  { slug: "profit-trap", category: "経営改善", title: "忙しいのに利益が残らない医院。現場が見落としている罠" },
+  { slug: "document-hell", category: "実務改善・DX", title: "歯科医院が陥る「書類地獄」" },
+  { slug: "facility-needs", category: "訪問歯科", title: "介護施設における「口腔ケアの序列」" },
+  { slug: "communication", category: "訪問歯科", title: "介護現場で嫌われる衛生士の共通点" },
+  { slug: "sales-trap", category: "訪問歯科", title: "院長自らの飛び込み営業の落とし穴" },
 ];
 
 export default function ColumnsLayout({

@@ -95,20 +95,20 @@ const NOTES = [
   {
     href: "/columns/facility-collaboration",
     num: "01",
-    cat: "施設連携",
+    cat: "訪問歯科",
     title: "施設が本当に求めているのは「治療の腕」ではない。",
   },
   {
     href: "/columns/communication-timelag",
     num: "02",
-    cat: "現場運営",
+    cat: "訪問歯科",
     title: "返信は夕方になります——施設の信頼を削るタイムラグ。",
   },
   {
     href: "/columns/turnover-strategy",
     num: "03",
-    cat: "経営戦略",
-    title: "「スタッフの退職」に怯える院長へ。離職防止より優先すべきこと。",
+    cat: "現場運営",
+    title: "「あの人が辞めたら終わる」状態から、抜け出せていますか？",
   },
 ];
 

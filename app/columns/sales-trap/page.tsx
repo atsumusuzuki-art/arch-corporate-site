@@ -13,7 +13,7 @@ export default function SalesTrapPage() {
         {/* Category & Date */}
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">
-            営業の落とし穴
+            訪問歯科
           </span>
           <time className="text-xs text-gray-400 font-medium">2026.03.31</time>
         </div>

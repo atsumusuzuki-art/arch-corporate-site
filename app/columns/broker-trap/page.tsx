@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "「施設を紹介しますよ」の甘い罠。コンサルを自称する悪質ブローカーの正体 | ARCH コラム",
+  title: "「紹介しますよ」に依存した医院が崩れる理由 | ARCH NOTE",
   description:
-    "売上の20〜40％を永久に吸い取る悪質ブローカーの実態。紹介に依存しない、自立した訪問歯科経営の作り方を解説します。",
+    "紹介頼みの経営は崩れやすい。売上の 20〜40％を吸い取るブローカー依存から抜け出し、自院で関係資産を積み上げる方法を、現場の外部事務長視点で整理します。",
 };
 
 export default function BrokerTrapPage() {
@@ -13,18 +13,16 @@ export default function BrokerTrapPage() {
         {/* Category & Date */}
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">
-            業界の闇
+            経営改善
           </span>
           <time className="text-xs text-gray-400 font-medium">2026.04.02</time>
         </div>
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-10 tracking-tight">
-          「施設を紹介しますよ」の甘い罠。
+          「紹介しますよ」に
           <br className="hidden md:block" />
-          コンサルを自称する
-          <br className="hidden md:block" />
-          悪質ブローカーの正体
+          依存した医院が崩れる理由
         </h1>
 
         {/* Lead */}

@@ -13,7 +13,7 @@ export default function StaffRolePage() {
         {/* Category & Date */}
         <div className="flex items-center gap-3 mb-6">
           <span className="text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">
-            組織マネジメント
+            現場運営
           </span>
           <time className="text-xs text-gray-400 font-medium">2026.04.02</time>
         </div>

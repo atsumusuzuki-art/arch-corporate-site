@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "一生懸命訪問しているのに「黒字化」しない医院。院長が見落としている罠 | ARCH コラム",
+  title: "忙しいのに利益が残らない医院。現場が見落としている罠 | ARCH NOTE",
   description:
-    "毎日訪問に回っているのに利益が残らない。その原因はKPIの不在と経費計算の甘さにあります。黒字化のロードマップを解説。",
+    "忙しいのに利益が残らない。その原因はKPIの不在と経費計算の甘さにあります。歯科医院の外部事務長が、現場の罠を整理します。",
 };
 
 export default function ProfitTrapPage() {
@@ -20,11 +20,9 @@ export default function ProfitTrapPage() {
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-10 tracking-tight">
-          一生懸命訪問しているのに
+          忙しいのに利益が残らない医院。
           <br className="hidden md:block" />
-          「黒字化」しない医院。
-          <br className="hidden md:block" />
-          院長が見落としている罠
+          現場が見落としている罠
         </h1>
 
         {/* Lead */}
