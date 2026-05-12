@@ -239,18 +239,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* ヒーロー画像 */}
+            {/* ヒーロー画像（空気感として） */}
             <div className="md:col-span-5 mt-2 md:mt-0">
-              <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden border border-arch-rule-dark/30">
+              <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden border border-arch-rule-dark/20">
                 <Image
                   src="/images/image01.png"
                   alt="ARCH オフィスのデスク。ロゴ入りのカード、ノートPC、コーヒー、都市の窓"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover"
+                  className="object-cover opacity-90 grayscale-[25%]"
                 />
-                <div className="absolute inset-0 bg-arch-forest/[0.06]" />
+                <div className="absolute inset-0 bg-arch-forest/[0.04]" />
               </div>
             </div>
           </div>
@@ -317,33 +317,30 @@ export default function Home() {
       {/* ============================================================
           ③ CASES — 実績セクション
           ============================================================ */}
-      <section id="cases" className="py-20 md:py-32 bg-arch-cream">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+      <section id="cases" className="relative py-20 md:py-32 bg-arch-cream overflow-hidden">
+        {/* 背景画像（薄く敷く） */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/image02.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-right opacity-[0.08] grayscale-[40%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/95 to-arch-cream/70" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="CASES" number="03" label="支援実績" />
 
-          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-12 items-end mb-12 md:mb-16">
-            <div className="md:col-span-7">
-              <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mb-3">
-                現場で、
-                <br />
-                <span className="text-arch-forest">&ldquo;回る仕組み&rdquo;</span>を作る。
-              </h2>
-              <p className="mono-micro text-arch-ink-muted">
-                ※ 医院名は匿名化しています
-              </p>
-            </div>
-            <div className="md:col-span-5">
-              <div className="relative aspect-[16/10] overflow-hidden border border-arch-rule-dark/30">
-                <Image
-                  src="/images/image02.png"
-                  alt="訪問スケジュールに付箋とメモ、月次グラフをノートPCに表示しながら確認している手元"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-3 max-w-3xl">
+            現場で、
+            <br />
+            <span className="text-arch-forest">&ldquo;回る仕組み&rdquo;</span>を作る。
+          </h2>
+          <p className="mono-micro text-arch-ink-muted mb-12 md:mb-16">
+            ※ 医院名は匿名化しています
+          </p>
 
           <div className="space-y-px bg-arch-rule">
             {CASES.map((c) => (
@@ -375,7 +372,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">CASES</span>
           <span className="mono-micro text-arch-moss/60">03 / 07</span>
         </div>
@@ -386,36 +383,32 @@ export default function Home() {
           ============================================================ */}
       <section
         id="service"
-        className="relative py-20 md:py-32 bg-arch-forest text-arch-cream"
+        className="relative py-20 md:py-32 bg-arch-forest text-arch-cream overflow-hidden"
       >
-        <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10">
+        {/* 背景画像（薄く敷く） */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/image04.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-right opacity-[0.10] grayscale-[60%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-forest via-arch-forest/95 to-arch-forest/70" />
+        </div>
+
+        <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
           <span className="mono-micro text-arch-sage/60">04 — SERVICE</span>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="SERVICE" number="04" label="サービス" theme="dark" />
 
-          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-12 items-end mb-14 md:mb-20">
-            <div className="md:col-span-7">
-              <h2 className="display-jp text-arch-cream text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
-                訪問歯科運営を、
-                <br />
-                <span className="text-arch-gold">実務から支える。</span>
-              </h2>
-            </div>
-            <div className="md:col-span-5">
-              <div className="relative aspect-[16/10] overflow-hidden border border-arch-rule-dark">
-                <Image
-                  src="/images/image04.png"
-                  alt="ARCH のノート、月次業務レポート、訪問スケジュール表が整然と並ぶデスク"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-arch-forest/10" />
-              </div>
-            </div>
-          </div>
+          <h2 className="display-jp text-arch-cream text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-14 md:mb-20 max-w-3xl">
+            訪問歯科運営を、
+            <br />
+            <span className="text-arch-gold">実務から支える。</span>
+          </h2>
 
           <div className="border-t border-arch-rule-dark">
             {SERVICES.map((s) => (
@@ -465,7 +458,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
           <span className="mono-micro text-arch-sage/60">SERVICE</span>
           <span className="mono-micro text-arch-sage/60">04 / 07</span>
         </div>
@@ -474,30 +467,30 @@ export default function Home() {
       {/* ============================================================
           ⑤ CEO MESSAGE — 代表メッセージ
           ============================================================ */}
-      <section id="company" className="py-20 md:py-32 bg-arch-cream-raised border-t border-arch-rule">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+      <section
+        id="company"
+        className="relative py-20 md:py-32 bg-arch-cream-raised border-t border-arch-rule overflow-hidden"
+      >
+        {/* 背景画像（薄く敷く） */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/image03.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-right opacity-[0.07] grayscale-[60%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream-raised via-arch-cream-raised/95 to-arch-cream-raised/75" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="MESSAGE" number="05" label="代表メッセージ" />
 
-          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-14 items-end mb-14 md:mb-20">
-            <div className="md:col-span-7">
-              <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
-                現場を知っているから、
-                <br />
-                <span className="text-arch-forest">実務まで入れる。</span>
-              </h2>
-            </div>
-            <div className="md:col-span-5">
-              <div className="relative aspect-[4/5] sm:aspect-[3/4] md:aspect-[3/4] overflow-hidden border border-arch-rule-dark/30 max-w-[280px] md:max-w-none">
-                <Image
-                  src="/images/image03.png"
-                  alt="医院の廊下で資料を確認している ARCH 代表"
-                  fill
-                  sizes="(max-width: 768px) 60vw, 30vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-14 md:mb-20 max-w-3xl">
+            現場を知っているから、
+            <br />
+            <span className="text-arch-forest">実務まで入れる。</span>
+          </h2>
 
           <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
             <div className="md:col-span-4">
@@ -546,7 +539,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">MESSAGE</span>
           <span className="mono-micro text-arch-moss/60">05 / 07</span>
         </div>
@@ -555,40 +548,42 @@ export default function Home() {
       {/* ============================================================
           ⑥ ARCH NOTE — 厳選コラム
           ============================================================ */}
-      <section id="note" className="py-20 md:py-32 bg-arch-cream border-t border-arch-rule">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+      <section
+        id="note"
+        className="relative py-20 md:py-32 bg-arch-cream border-t border-arch-rule overflow-hidden"
+      >
+        {/* 背景画像（断片的に） */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/image06.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-left-top opacity-[0.10] grayscale-[50%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-arch-cream/85 via-arch-cream/95 to-arch-cream" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="ARCH NOTE" number="06" label="現場メモ" />
 
-          <div className="mt-6 grid md:grid-cols-12 gap-8 md:gap-12 items-end mb-8 md:mb-10">
-            <div className="md:col-span-7">
+          <div className="mt-6 mb-10 md:mb-14 flex items-end justify-between gap-6 flex-wrap">
+            <div className="max-w-3xl">
               <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
                 現場から見える、
                 <br />
                 <span className="text-arch-forest">訪問歯科のリアル。</span>
               </h2>
-              <p className="text-base text-arch-ink-soft leading-loose max-w-2xl mt-8">
+              <p className="text-base text-arch-ink-soft leading-loose mt-8 max-w-2xl">
                 訪問歯科の現場で起きる課題、施設連携、算定、採用、運営改善について、実務目線でまとめた記録です。
               </p>
             </div>
-            <div className="md:col-span-5">
-              <div className="relative aspect-[16/11] overflow-hidden border border-arch-rule-dark/30">
-                <Image
-                  src="/images/image06.png"
-                  alt="付箋・地図・ノート・スケジュール表が机に広がる、現場メモの作業風景"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="mt-3 flex justify-end">
-                <Link
-                  href="/columns"
-                  className="mono-label text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-2"
-                >
-                  すべて読む <ArrowRight size={12} />
-                </Link>
-              </div>
-            </div>
+            <Link
+              href="/columns"
+              className="mono-label text-arch-forest hover:text-arch-forest-soft inline-flex items-center gap-2"
+            >
+              すべて読む <ArrowRight size={12} />
+            </Link>
           </div>
 
           <div className="border-t border-arch-rule">
@@ -620,7 +615,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">NOTE</span>
           <span className="mono-micro text-arch-moss/60">06 / 07</span>
         </div>
@@ -680,16 +675,16 @@ export default function Home() {
           ⑦ FINAL CTA + CONTACT
           ============================================================ */}
       <section id="contact" className="relative py-20 md:py-36 bg-arch-forest text-arch-cream overflow-hidden">
-        {/* Background image with overlay */}
+        {/* Background image with overlay (静かな夜の空気感として) */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/image05.png"
             alt=""
             fill
             sizes="100vw"
-            className="object-cover opacity-40"
+            className="object-cover opacity-25 grayscale-[30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/85 via-arch-forest/80 to-arch-ink/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/95 via-arch-forest/92 to-arch-ink/95"></div>
         </div>
 
         <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
