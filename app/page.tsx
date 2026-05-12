@@ -325,9 +325,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-30 grayscale-[40%]"
+            className="object-cover object-right opacity-50 grayscale-[30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/85 to-arch-cream/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/80 to-arch-cream/20" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
@@ -392,9 +392,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-30 grayscale-[50%]"
+            className="object-cover object-right opacity-50 grayscale-[40%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-forest via-arch-forest/85 to-arch-forest/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-forest via-arch-forest/80 to-arch-forest/20" />
         </div>
 
         <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
@@ -478,9 +478,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-25 grayscale-[50%]"
+            className="object-cover object-right opacity-45 grayscale-[40%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream-raised via-arch-cream-raised/85 to-arch-cream-raised/45" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream-raised via-arch-cream-raised/80 to-arch-cream-raised/25" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
@@ -559,9 +559,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-right opacity-30 grayscale-[40%]"
+            className="object-cover object-right opacity-50 grayscale-[30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/85 to-arch-cream/45" />
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/80 to-arch-cream/25" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
@@ -682,9 +682,9 @@ export default function Home() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover opacity-55 grayscale-[20%]"
+            className="object-cover opacity-75 grayscale-[15%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/80 via-arch-forest/75 to-arch-ink/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/65 via-arch-forest/55 to-arch-ink/75"></div>
         </div>
 
         <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
