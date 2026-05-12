@@ -251,11 +251,6 @@ export default function Home() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-arch-forest/[0.06]" />
-                <div className="absolute bottom-3 left-3">
-                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/40 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
-                    ARCH · OFFICE
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -346,11 +341,6 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="object-cover"
                 />
-                <div className="absolute bottom-3 left-3">
-                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/40 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
-                    ON THE GROUND
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -423,11 +413,6 @@ export default function Home() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-arch-forest/10" />
-                <div className="absolute bottom-3 left-3">
-                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/50 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
-                    OPERATING DESK
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -510,11 +495,6 @@ export default function Home() {
                   sizes="(max-width: 768px) 60vw, 30vw"
                   className="object-cover"
                 />
-                <div className="absolute bottom-3 left-3">
-                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/50 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
-                    IN THE FIELD
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -599,11 +579,6 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="object-cover"
                 />
-                <div className="absolute bottom-3 left-3">
-                  <span className="mono-micro text-arch-cream/90 bg-arch-ink/50 backdrop-blur-sm px-2 py-1 tracking-[0.2em]">
-                    FIELD NOTES
-                  </span>
-                </div>
               </div>
               <div className="mt-3 flex justify-end">
                 <Link
