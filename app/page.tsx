@@ -774,7 +774,6 @@ export default function Home() {
                 訪問歯科の外部事務長
               </p>
               <div className="space-y-1 text-sm">
-                <p>TEL: 090-7247-3013</p>
                 <p>Mail: atsumu.suzuki@arch-yh.com</p>
               </div>
             </div>
