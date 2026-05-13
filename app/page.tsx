@@ -307,74 +307,73 @@ export default function Home() {
       </nav>
 
       {/* ============================================================
-          ① HERO — first view
+          ① HERO — first view（image00 を背景に、左暗部にテキスト重ね）
           ============================================================ */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-44 md:pb-32 bg-arch-cream">
-        <div className="absolute top-24 md:top-32 right-5 sm:right-8 md:right-10 text-right z-10">
-          <span className="mono-micro text-arch-moss/60">ARCH · 歯科医院の外部事務長</span>
+      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-44 md:pb-32 bg-arch-ink text-arch-cream overflow-hidden">
+        {/* 背景画像：image00 をフルブリードで、右寄せ object-position */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/image00.png"
+            alt="シフト表・訪問スケジュール・PC を確認している打合せ風景"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right md:object-center"
+          />
+          {/* 左から右へ：濃い黒 → 透明 のグラデーション（PC: 左半分を読みやすく、右の実務感は見せる） */}
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-ink via-arch-ink/85 to-arch-ink/30 md:via-arch-ink/65 md:to-arch-ink/0" />
+          {/* スマホでは上下からの追加暗部で可読性確保 */}
+          <div className="absolute inset-0 bg-gradient-to-b from-arch-ink/40 via-transparent to-arch-ink/40 md:hidden" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
-            <div className="md:col-span-8">
-              <p className="mono-label text-arch-moss mb-8 md:mb-10">
-                Dental Clinic Operations / External Office Director
-              </p>
+        <div className="absolute top-24 md:top-32 right-5 sm:right-8 md:right-10 text-right z-10">
+          <span className="mono-micro text-arch-sage/50">ARCH · 歯科医院の外部事務長</span>
+        </div>
 
-              {/* メインコピー — 2行を厳守 */}
-              <h1 className="display-jp text-arch-ink text-[clamp(1.875rem,5vw,4rem)] leading-[1.15] tracking-tight mb-10 md:mb-12">
-                <span className="block whitespace-nowrap">歯科医院を、</span>
-                <span className="block whitespace-nowrap">
-                  <span className="text-arch-forest font-black">&ldquo;回り続ける組織&rdquo;</span>へ。
-                </span>
-              </h1>
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+          <div className="max-w-2xl md:max-w-[44rem]">
+            <p className="mono-label text-arch-gold mb-8 md:mb-10">
+              Dental Clinic Operations / External Office Director
+            </p>
 
-              {/* サブコピー */}
-              <p className="text-base sm:text-lg text-arch-ink-soft leading-loose max-w-2xl mb-10 md:mb-12">
-                訪問歯科、外来、分院展開、スタッフ導線、レセプト、現場オペレーション。
-                <br className="hidden sm:block" />
-                歯科医院は、院長一人で抱え始めると、現場が止まりやすくなります。
-                <br className="hidden sm:block" />
-                ARCHは、歯科医院の外部事務長として、現場実務まで入り込みながら、医院運営を支えます。
-              </p>
+            {/* メインコピー — 2行を厳守 */}
+            <h1 className="display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.75rem)] leading-[1.18] tracking-tight mb-10 md:mb-12">
+              <span className="block whitespace-nowrap">歯科医院を、</span>
+              <span className="block whitespace-nowrap">
+                <span className="text-arch-gold font-black">&ldquo;回り続ける組織&rdquo;</span>へ。
+              </span>
+            </h1>
 
-              {/* CTAボタン */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="#contact"
-                  className="bg-arch-forest text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-forest-soft transition-colors inline-flex items-center justify-center gap-3"
-                >
-                  現場の状況を相談する <ArrowRight size={16} />
-                </a>
-                <a
-                  href="#service"
-                  className="border border-arch-forest text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-forest hover:text-arch-cream transition-colors inline-flex items-center justify-center gap-3"
-                >
-                  サービスを見る
-                </a>
-              </div>
-            </div>
+            {/* サブコピー */}
+            <p className="text-base sm:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10 md:mb-12 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+              訪問歯科、外来、分院展開、スタッフ導線、レセプト、現場オペレーション。
+              <br className="hidden sm:block" />
+              歯科医院は、院長一人で抱え始めると、現場が止まりやすくなります。
+              <br className="hidden sm:block" />
+              ARCHは、歯科医院の外部事務長として、現場実務まで入り込みながら、医院運営を支えます。
+            </p>
 
-            {/* ヒーロー画像（空気感として） */}
-            <div className="md:col-span-4 mt-2 md:mt-0">
-              <div className="relative aspect-[4/3] md:aspect-[3/4] overflow-hidden border border-arch-rule-dark/20">
-                <Image
-                  src="/images/image01.png"
-                  alt="ARCH オフィスのデスク。ロゴ入りのカード、ノートPC、コーヒー、都市の窓"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover opacity-90 grayscale-[25%]"
-                />
-                <div className="absolute inset-0 bg-arch-forest/[0.04]" />
-              </div>
+            {/* CTAボタン */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="#contact"
+                className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center justify-center gap-3"
+              >
+                現場の状況を相談する <ArrowRight size={16} />
+              </a>
+              <a
+                href="#service"
+                className="border border-arch-cream text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-cream hover:text-arch-forest transition-colors inline-flex items-center justify-center gap-3"
+              >
+                サービスを見る
+              </a>
             </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
-          <span className="mono-micro text-arch-moss/60">HOME</span>
-          <span className="mono-micro text-arch-moss/60">01 / 07</span>
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
+          <span className="mono-micro text-arch-sage/50">HOME</span>
+          <span className="mono-micro text-arch-sage/50">01 / 07</span>
         </div>
       </section>
 
