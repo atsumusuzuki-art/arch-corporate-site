@@ -57,7 +57,8 @@ const CASES = [
 /* 5 ブロック構成（④サービス → 院長が抱える問題別の構成） */
 type Block = {
   num: "01" | "02" | "03" | "04" | "05";
-  title: string;
+  /** タイトル行（行ごとに array。確実に nowrap で行を固定するため） */
+  title: string[];
   symptoms: string[];
   actions: string[];
   cases?: string[];
@@ -68,7 +69,7 @@ type Block = {
 const BLOCKS: Block[] = [
   {
     num: "01",
-    title: "現場運営が、属人化している。",
+    title: ["現場運営が、", "属人化している。"],
     symptoms: [
       "院長しか状況を把握していない",
       "スタッフ配置が毎回ギリギリ",
@@ -92,7 +93,7 @@ const BLOCKS: Block[] = [
   },
   {
     num: "02",
-    title: "レセプト・算定に、不安がある。",
+    title: ["レセプト・算定に、不安がある。"],
     symptoms: [
       "算定漏れが不安",
       "レセ前確認が属人化している",
@@ -114,7 +115,7 @@ const BLOCKS: Block[] = [
   },
   {
     num: "03",
-    title: "訪問歯科を、伸ばしたい。",
+    title: ["訪問歯科を、", "伸ばしたい。"],
     symptoms: [
       "施設対応が整理されていない",
       "訪問導線が崩れている",
@@ -140,7 +141,7 @@ const BLOCKS: Block[] = [
   },
   {
     num: "04",
-    title: "分院展開や、成長フェーズへ進みたい。",
+    title: ["分院展開や、成長フェーズへ", "進みたい。"],
     symptoms: [
       "開業準備が整理できない",
       "ディーラー対応が煩雑",
@@ -162,7 +163,7 @@ const BLOCKS: Block[] = [
   },
   {
     num: "05",
-    title: "院長が、全部抱えている。",
+    title: ["院長が、", "全部抱えている。"],
     symptoms: [
       "相談相手がいない",
       "採用に困っている",
@@ -518,10 +519,9 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="WHERE WE WORK" number="04" label="ARCHが入る場所" theme="dark" />
 
-          <h2 className="display-jp text-arch-cream text-[clamp(1.875rem,5vw,4rem)] leading-[1.18] mt-6 mb-6 max-w-3xl">
-            院長が一人で抱え始めた時、
-            <br />
-            <span className="text-arch-gold font-black">ARCHが入る場所。</span>
+          <h2 className="display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.5rem)] leading-[1.2] tracking-tight mt-6 mb-6">
+            <span className="block whitespace-nowrap">院長が一人で抱え始めた時、</span>
+            <span className="block whitespace-nowrap text-arch-gold font-black">ARCHが入る場所。</span>
           </h2>
           <p className="text-sm md:text-base text-arch-sage/85 leading-loose max-w-3xl mb-14 md:mb-20">
             歯科医院は、訪問歯科、外来、スタッフ、レセプト、施設連携、分院展開など、成長とともに現場が複雑になります。ARCHは、歯科医院の外部事務長として、現場実務へ入り込みながら、医院運営を整理・支援します。
@@ -538,8 +538,12 @@ export default function Home() {
                   <p className="display-jp leading-none tabular-nums text-[2rem] sm:text-[2.5rem] md:text-[4rem] text-arch-gold/40 mb-3 md:mb-6">
                     {b.num}
                   </p>
-                  <h3 className="display-jp font-black leading-[1.2] text-xl sm:text-2xl md:text-[2rem] text-arch-cream">
-                    {b.title}
+                  <h3 className="display-jp font-black leading-[1.2] text-xl sm:text-2xl md:text-[1.75rem] tracking-tight text-arch-cream">
+                    {b.title.map((line) => (
+                      <span key={line} className="block whitespace-nowrap">
+                        {line}
+                      </span>
+                    ))}
                   </h3>
                   {b.cases && b.cases.length > 0 && (
                     <div className="mt-5 md:mt-8 border-t border-arch-rule-dark/60 pt-4">
