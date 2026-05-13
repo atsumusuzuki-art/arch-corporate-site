@@ -54,40 +54,147 @@ const CASES = [
   },
 ];
 
-/* 5 つのサービス（④サービス一覧） */
-const SERVICES = [
+/* 5 ブロック構成（④サービス → 院長が抱える問題別の構成） */
+type Block = {
+  num: "01" | "02" | "03" | "04" | "05";
+  title: string;
+  symptoms: string[];
+  actions: string[];
+  cases?: string[];
+  notes?: { slug: string; title: string }[];
+  href?: string;
+};
+
+const BLOCKS: Block[] = [
   {
     num: "01",
-    title: "歯科医院運営支援",
+    title: "現場運営が、属人化している。",
+    symptoms: [
+      "院長しか状況を把握していない",
+      "スタッフ配置が毎回ギリギリ",
+      "誰がどこにいるか分からない",
+      "情報共有が崩れている",
+      "訪問導線が属人的になっている",
+    ],
+    actions: [
+      "シフト設計",
+      "導線整理",
+      "定期ミーティング",
+      "現場オペレーション改善",
+      "訪問導線整理",
+    ],
+    cases: ["スタッフ導線・シフト最適化（CASE 03）"],
+    notes: [
+      { slug: "turnover-strategy", title: "「あの人が辞めたら終わる」状態から、抜け出せていますか？" },
+      { slug: "staff-role", title: "優秀なスタッフが辞めない医院の秘密「係活動」マネジメント" },
+    ],
     href: "/services/consulting",
-    items: ["訪問歯科", "外来", "分院展開", "スタッフ導線", "現場改善"],
   },
   {
     num: "02",
-    title: "レセプト・算定改善支援",
+    title: "レセプト・算定に、不安がある。",
+    symptoms: [
+      "算定漏れが不安",
+      "レセ前確認が属人化している",
+      "コメント整理が追いつかない",
+      "改定対応まで手が回らない",
+    ],
+    actions: [
+      "カルテチェック(一部レセコン対応)",
+      "レセプトチェック(一部レセコン対応)",
+      "算定改善提案",
+      "報酬改定レポート作成",
+      "月次分析",
+    ],
+    cases: ["月商700万規模の訪問歯科運営支援(CASE 01)", "月平均点数 +300点改善"],
+    notes: [
+      { slug: "profit-trap", title: "忙しいのに利益が残らない医院。現場が見落としている罠" },
+    ],
     href: "/services/consulting#billing",
-    items: ["算定漏れ確認", "カルテチェック", "返戻対策", "精度改善"],
   },
   {
     num: "03",
-    title: "施設連携・営業支援",
+    title: "訪問歯科を、伸ばしたい。",
+    symptoms: [
+      "施設対応が整理されていない",
+      "訪問導線が崩れている",
+      "営業が属人的",
+      "同意書運用が止まりやすい",
+      "現場スタッフ負担が偏っている",
+    ],
+    actions: [
+      "施設連携支援",
+      "営業導線整理",
+      "同意書発送業務",
+      "訪問歯科現場補助",
+      "訪問歯科記録アプリ提供",
+      "訪問歯科算定支援",
+    ],
+    cases: ["訪問歯科部門の6ヶ月黒字化(CASE 02)"],
+    notes: [
+      { slug: "facility-collaboration", title: "施設が本当に求めているのは「治療の腕」ではない。" },
+      { slug: "communication-timelag", title: "返信は夕方になります——施設の信頼を削るタイムラグ。" },
+      { slug: "broker-trap", title: "「紹介しますよ」に依存した医院が崩れる理由" },
+    ],
     href: "/services/sales",
-    items: ["施設対応", "営業導線", "初診導線", "トラブル防止"],
-    note: "施設連携状況の確認ツールも必要に応じて活用",
-    noteHref: "/services/dental-matching",
   },
   {
     num: "04",
-    title: "事務代行・BPO支援",
-    href: "/bpo-service",
-    items: ["書類作成", "郵送業務", "業務整理", "事務フロー改善"],
+    title: "分院展開や、成長フェーズへ進みたい。",
+    symptoms: [
+      "開業準備が整理できない",
+      "ディーラー対応が煩雑",
+      "機材確認まで手が回らない",
+      "現場導線が決まらない",
+      "院長が全判断を抱えている",
+    ],
+    actions: [
+      "分院立ち上げサポート",
+      "ディーラー調整",
+      "パノラマ確認",
+      "ユニット動作確認",
+      "現場立会い",
+      "オペレーション整理",
+    ],
+    cases: ["分院立ち上げ支援(CASE 04)"],
+    notes: [],
+    href: "/services/consulting",
   },
   {
     num: "05",
-    title: "DX・業務改善支援",
-    href: "/bpo-service#dx",
-    items: ["訪問歯科記録アプリ", "シフト管理", "業務デジタル化", "実務効率改善"],
+    title: "院長が、全部抱えている。",
+    symptoms: [
+      "相談相手がいない",
+      "採用に困っている",
+      "細かい実務が止まる",
+      "院長しか判断できない",
+      "デザインや制作も後回しになる",
+    ],
+    actions: [
+      "採用支援",
+      "HP制作・改修",
+      "契約書等の帳票作成",
+      "ロゴ制作",
+      "医院ブランディング",
+      "デジタルサイネージ制作",
+      "定期相談 / ミーティング",
+    ],
+    cases: ["採用定着率 11名中9名 / 14名中12名"],
+    notes: [
+      { slug: "sns-dx-recruitment", title: "「ハローワークに出しておけば来る」時代は終わった。" },
+      { slug: "document-hell", title: "歯科医院が陥る「書類地獄」" },
+    ],
+    href: "/bpo-service",
   },
+];
+
+/* Footer リンク用：サービス分類リスト（旧 SERVICES の置き換え） */
+const SERVICE_FOOTER_LINKS = [
+  { title: "歯科医院運営支援", href: "/services/consulting" },
+  { title: "レセプト・算定改善支援", href: "/services/consulting#billing" },
+  { title: "施設連携・営業支援", href: "/services/sales" },
+  { title: "事務代行・BPO支援", href: "/bpo-service" },
+  { title: "DX・業務改善支援", href: "/bpo-service#dx" },
 ];
 
 /* 厳選コラム3本（⑤ARCH NOTE） */
@@ -409,63 +516,95 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="SERVICE" number="04" label="サービス" theme="dark" />
+          <SectionTag category="WHERE WE WORK" number="04" label="ARCHが入る場所" theme="dark" />
 
-          <h2 className="display-jp text-arch-cream text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-14 md:mb-20 max-w-3xl">
-            訪問歯科運営を、
+          <h2 className="display-jp text-arch-cream text-[clamp(1.875rem,5vw,4rem)] leading-[1.18] mt-6 mb-6 max-w-3xl">
+            院長が一人で抱え始めた時、
             <br />
-            <span className="text-arch-gold">実務から支える。</span>
+            <span className="text-arch-gold font-black">ARCHが入る場所。</span>
           </h2>
+          <p className="text-sm md:text-base text-arch-sage/85 leading-loose max-w-3xl mb-14 md:mb-20">
+            歯科医院は、訪問歯科、外来、スタッフ、レセプト、施設連携、分院展開など、成長とともに現場が複雑になります。ARCHは、歯科医院の外部事務長として、現場実務へ入り込みながら、医院運営を整理・支援します。
+          </p>
 
           <div className="border-t border-arch-rule-dark">
-            {SERVICES.map((s) => (
-              <Link
-                key={s.num}
-                href={s.href}
-                className="group relative grid grid-cols-12 gap-3 md:gap-8 py-6 sm:py-8 md:py-14 border-b border-arch-rule-dark transition-colors hover:bg-arch-gold/[0.06]"
+            {BLOCKS.map((b) => (
+              <article
+                key={b.num}
+                className="grid grid-cols-12 gap-3 md:gap-8 py-8 sm:py-10 md:py-16 border-b border-arch-rule-dark"
               >
-                <div className="col-span-2 flex items-start pl-0 md:pl-2">
-                  <span className="display-jp leading-none tabular-nums text-[2rem] sm:text-[2.75rem] md:text-[5rem] text-arch-gold/50 group-hover:text-arch-gold transition-colors">
-                    {s.num}
-                  </span>
-                </div>
-
-                <div className="col-span-10 md:col-span-6">
-                  <h3 className="font-display font-black leading-[1.15] text-lg sm:text-2xl md:text-[2.5rem] text-arch-cream group-hover:text-arch-gold transition-colors">
-                    {s.title}
-                  </h3>
-                  {/* モバイル：items を 1 行 inline、PC：右カラムに縦並び */}
-                  <p className="md:hidden mt-2 text-xs text-arch-sage/70 leading-relaxed">
-                    {s.items.join(" / ")}
+                {/* 左：番号 + 見出し */}
+                <div className="col-span-12 md:col-span-5 md:pr-6 mb-4 md:mb-0">
+                  <p className="display-jp leading-none tabular-nums text-[2rem] sm:text-[2.5rem] md:text-[4rem] text-arch-gold/40 mb-3 md:mb-6">
+                    {b.num}
                   </p>
-                  {s.note && (
-                    <p className="mono-micro text-arch-sage/60 mt-3 md:mt-4 tracking-wider text-[10px] md:text-xs">
-                      {s.note}
-                    </p>
+                  <h3 className="display-jp font-black leading-[1.2] text-xl sm:text-2xl md:text-[2rem] text-arch-cream">
+                    {b.title}
+                  </h3>
+                  {b.cases && b.cases.length > 0 && (
+                    <div className="mt-5 md:mt-8 border-t border-arch-rule-dark/60 pt-4">
+                      <p className="mono-micro text-arch-gold/80 mb-2">関連実績</p>
+                      <ul className="text-xs md:text-[13px] text-arch-sage/80 leading-relaxed space-y-1">
+                        {b.cases.map((c) => (
+                          <li key={c} className="flex items-baseline gap-2">
+                            <span className="text-arch-gold/60">·</span>
+                            <span>{c}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {b.notes && b.notes.length > 0 && (
+                    <div className="mt-4 border-t border-arch-rule-dark/40 pt-4">
+                      <p className="mono-micro text-arch-sage/60 mb-2">関連メモ</p>
+                      <ul className="space-y-1.5">
+                        {b.notes.map((n) => (
+                          <li key={n.slug}>
+                            <Link
+                              href={`/columns/${n.slug}`}
+                              className="text-xs md:text-[13px] text-arch-sage/70 hover:text-arch-gold transition-colors leading-relaxed inline-flex items-baseline gap-1.5"
+                            >
+                              <span className="text-arch-gold/50">→</span>
+                              <span className="truncate">{n.title}</span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </div>
 
-                <ul className="hidden md:flex md:col-span-3 md:pt-6 text-arch-sage/80 text-sm leading-loose flex-col space-y-1.5">
-                  {s.items.map((it) => (
-                    <li key={it} className="flex items-baseline gap-2">
-                      <span className="text-arch-gold/60">·</span>
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="hidden md:flex col-span-1 items-end justify-end pb-2">
-                  <ArrowRight
-                    size={22}
-                    className="text-arch-gold group-hover:translate-x-2 transition-transform"
-                  />
+                {/* 右：よくある状態 + ARCHが行うこと */}
+                <div className="col-span-12 md:col-span-7 grid sm:grid-cols-2 gap-6 md:gap-10">
+                  <div>
+                    <p className="mono-micro text-arch-sage/60 mb-3 md:mb-4">よくある状態</p>
+                    <ul className="space-y-2 text-sm text-arch-sage/85 leading-relaxed">
+                      {b.symptoms.map((s) => (
+                        <li key={s} className="flex items-baseline gap-2">
+                          <span className="text-arch-sage/40 shrink-0">·</span>
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="mono-micro text-arch-gold mb-3 md:mb-4">ARCHが行うこと</p>
+                    <ul className="space-y-2 text-sm text-arch-cream leading-relaxed">
+                      {b.actions.map((a) => (
+                        <li key={a} className="flex items-baseline gap-2">
+                          <span className="text-arch-gold/70 shrink-0">·</span>
+                          <span>{a}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
 
           <p className="mono-micro text-arch-sage/50 mt-10 max-w-2xl leading-loose">
-            ※ 業務内容や規模に応じて、必要なサービスだけを必要な分だけ組み合わせてご利用いただけます。
+            ※ サービスを切り売りするのではなく、医院の状況に合わせて必要な実務を組み合わせます。まずは現場の状況をお聞かせください。
           </p>
         </div>
 
@@ -787,8 +926,8 @@ export default function Home() {
               <div>
                 <h4 className="mono-label text-arch-cream mb-5">Service</h4>
                 <ul className="space-y-3 text-sm">
-                  {SERVICES.map((s) => (
-                    <li key={s.num}>
+                  {SERVICE_FOOTER_LINKS.map((s) => (
+                    <li key={s.href}>
                       <Link
                         href={s.href}
                         className="hover:text-arch-cream transition-colors"
