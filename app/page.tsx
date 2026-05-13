@@ -320,10 +320,10 @@ export default function Home() {
             sizes="100vw"
             className="object-cover object-right md:object-center"
           />
-          {/* 左から右へ：濃い黒 → 透明 のグラデーション（PC: 左半分を読みやすく、右の実務感は見せる） */}
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-ink via-arch-ink/85 to-arch-ink/30 md:via-arch-ink/65 md:to-arch-ink/0" />
-          {/* スマホでは上下からの追加暗部で可読性確保 */}
-          <div className="absolute inset-0 bg-gradient-to-b from-arch-ink/40 via-transparent to-arch-ink/40 md:hidden" />
+          {/* 左から右へ：左半分にやや暗いカバー、右は画像がしっかり見える */}
+          <div className="absolute inset-0 bg-gradient-to-r from-arch-ink/90 via-arch-ink/55 to-arch-ink/0 md:from-arch-ink/85 md:via-arch-ink/25 md:to-arch-ink/0" />
+          {/* スマホでは上下に控えめな追加暗部 */}
+          <div className="absolute inset-0 bg-gradient-to-b from-arch-ink/25 via-transparent to-arch-ink/25 md:hidden" />
         </div>
 
         <div className="absolute top-24 md:top-32 right-5 sm:right-8 md:right-10 text-right z-10">
