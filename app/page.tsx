@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Menu, X, Send } from "lucide-react";
@@ -230,6 +230,32 @@ export default function Home() {
     { href: "#note", label: "Note" },
   ];
 
+  /* スクロール連動の静かなフェードイン
+     - .reveal クラスの要素が画面に入ったら .is-visible を付与
+     - 一度表示したら observer 解除（繰り返さない）
+     - prefers-reduced-motion 対応は CSS 側で */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-arch-cream text-arch-ink selection:bg-arch-forest selection:text-arch-cream scroll-smooth">
 
@@ -312,14 +338,16 @@ export default function Home() {
       <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-44 md:pb-32 bg-arch-ink text-arch-cream overflow-hidden">
         {/* 背景画像：image00 をフルブリードで、右寄せ object-position */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/image00.png"
-            alt="シフト表・訪問スケジュール・PC を確認している打合せ風景"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-right md:object-center"
-          />
+          <div className="absolute inset-0 hero-image-fade">
+            <Image
+              src="/images/image00.png"
+              alt="シフト表・訪問スケジュール・PC を確認している打合せ風景"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-right md:object-center"
+            />
+          </div>
           {/* 左から右へ：左半分にやや暗いカバー、右は画像がしっかり見える */}
           <div className="absolute inset-0 bg-gradient-to-r from-arch-ink/90 via-arch-ink/55 to-arch-ink/0 md:from-arch-ink/85 md:via-arch-ink/25 md:to-arch-ink/0" />
           {/* スマホでは上下に控えめな追加暗部 */}
@@ -332,12 +360,12 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <div className="max-w-2xl md:max-w-[44rem]">
-            <p className="mono-label text-arch-gold mb-8 md:mb-10">
+            <p className="mono-label text-arch-gold mb-8 md:mb-10 hero-fade hero-fade-1">
               Dental Clinic Operations / External Office Director
             </p>
 
             {/* メインコピー — 2行を厳守 */}
-            <h1 className="display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.75rem)] leading-[1.18] tracking-tight mb-10 md:mb-12">
+            <h1 className="display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.75rem)] leading-[1.18] tracking-tight mb-10 md:mb-12 hero-fade hero-fade-2">
               <span className="block whitespace-nowrap">歯科医院を、</span>
               <span className="block whitespace-nowrap">
                 <span className="text-arch-gold font-black">&ldquo;回り続ける組織&rdquo;</span>へ。
@@ -345,7 +373,7 @@ export default function Home() {
             </h1>
 
             {/* サブコピー */}
-            <p className="text-base sm:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10 md:mb-12 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+            <p className="text-base sm:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10 md:mb-12 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] hero-fade hero-fade-3">
               訪問歯科、外来、分院展開、スタッフ導線、レセプト、現場オペレーション。
               <br className="hidden sm:block" />
               歯科医院は、院長一人で抱え始めると、現場が止まりやすくなります。
@@ -354,16 +382,16 @@ export default function Home() {
             </p>
 
             {/* CTAボタン */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 hero-fade hero-fade-4">
               <a
                 href="#contact"
-                className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center justify-center gap-3"
+                className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center justify-center gap-3 lift-on-hover"
               >
                 現場の状況を相談する <ArrowRight size={16} />
               </a>
               <a
                 href="#service"
-                className="border border-arch-cream text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-cream hover:text-arch-forest transition-colors inline-flex items-center justify-center gap-3"
+                className="border border-arch-cream text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-cream hover:text-arch-forest transition-colors inline-flex items-center justify-center gap-3 lift-on-hover"
               >
                 サービスを見る
               </a>
@@ -387,13 +415,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="ABOUT" number="02" label="ARCHについて" />
 
-          <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-10 md:mb-12">
+          <h2 className="reveal display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-10 md:mb-12">
             &ldquo;助言だけ&rdquo;では、
             <br />
             医院は<span className="text-arch-forest font-black">回らない。</span>
           </h2>
 
-          <div className="max-w-3xl text-base md:text-lg text-arch-ink-soft leading-loose mb-16 md:mb-20">
+          <div className="reveal reveal-delay-1 max-w-3xl text-base md:text-lg text-arch-ink-soft leading-loose mb-16 md:mb-20">
             <p className="mb-6">
               外来、訪問歯科、分院、レセプト、算定、施設対応、スタッフ配置、診療導線、患者家族対応。
               歯科医院では、これらすべてが同時に動いています。とくに訪問歯科を伸ばすフェーズや分院展開の時期は、院長一人で抱え始めると現場がすぐに止まります。
@@ -408,7 +436,7 @@ export default function Home() {
             {STRENGTHS.map((s, i) => (
               <div
                 key={s.label}
-                className="border-b border-r border-arch-rule py-5 sm:py-7 md:py-10 px-3 sm:px-4 md:px-6"
+                className={`reveal reveal-delay-${Math.min(i + 1, 5)} border-b border-r border-arch-rule py-5 sm:py-7 md:py-10 px-3 sm:px-4 md:px-6`}
               >
                 <p className="mono-label text-arch-moss mb-2 md:mb-4 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
@@ -447,18 +475,18 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="CASES" number="03" label="支援実績" />
 
-          <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-3 max-w-3xl">
+          <h2 className="reveal display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-3 max-w-3xl">
             現場で、
             <br />
             <span className="text-arch-forest font-black">&ldquo;回る仕組み&rdquo;</span>を作る。
           </h2>
-          <p className="mono-micro text-arch-ink-muted mb-12 md:mb-16">
+          <p className="reveal reveal-delay-1 mono-micro text-arch-ink-muted mb-12 md:mb-16">
             ※ 医院名は匿名化しています
           </p>
 
           <div className="space-y-px bg-arch-rule">
-            {CASES.map((c) => (
-              <article key={c.num} className="bg-arch-cream-raised py-6 sm:py-8 md:py-14 px-4 sm:px-6 md:px-12">
+            {CASES.map((c, idx) => (
+              <article key={c.num} className={`reveal reveal-delay-${Math.min(idx + 1, 5)} bg-arch-cream-raised py-6 sm:py-8 md:py-14 px-4 sm:px-6 md:px-12`}>
                 <div className="grid md:grid-cols-12 gap-4 md:gap-10">
                   <div className="md:col-span-3">
                     <p className="mono-label text-arch-moss mb-2 md:mb-3 tabular-nums">CASE — {c.num}</p>
@@ -518,19 +546,19 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="WHERE WE WORK" number="04" label="ARCHが入る場所" theme="dark" />
 
-          <h2 className="display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.5rem)] leading-[1.2] tracking-tight mt-6 mb-6">
+          <h2 className="reveal display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.5rem)] leading-[1.2] tracking-tight mt-6 mb-6">
             <span className="block whitespace-nowrap">院長が一人で抱え始めた時、</span>
             <span className="block whitespace-nowrap text-arch-gold font-black">ARCHが入る場所。</span>
           </h2>
-          <p className="text-sm md:text-base text-arch-sage/85 leading-loose max-w-3xl mb-14 md:mb-20">
+          <p className="reveal reveal-delay-1 text-sm md:text-base text-arch-sage/85 leading-loose max-w-3xl mb-14 md:mb-20">
             歯科医院は、訪問歯科、外来、スタッフ、レセプト、施設連携、分院展開など、成長とともに現場が複雑になります。ARCHは、歯科医院の外部事務長として、現場実務へ入り込みながら、医院運営を整理・支援します。
           </p>
 
           <div className="border-t border-arch-rule-dark">
-            {BLOCKS.map((b) => (
+            {BLOCKS.map((b, idx) => (
               <article
                 key={b.num}
-                className="grid grid-cols-12 gap-3 md:gap-8 py-8 sm:py-10 md:py-16 border-b border-arch-rule-dark"
+                className={`reveal reveal-delay-${Math.min(idx + 1, 5)} grid grid-cols-12 gap-3 md:gap-8 py-8 sm:py-10 md:py-16 border-b border-arch-rule-dark`}
               >
                 {/* 左：番号 + 見出し */}
                 <div className="col-span-12 md:col-span-5 md:pr-6 mb-4 md:mb-0">
@@ -639,13 +667,13 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="MESSAGE" number="05" label="代表メッセージ" />
 
-          <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-14 md:mb-20 max-w-3xl">
+          <h2 className="reveal display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-14 md:mb-20 max-w-3xl">
             現場を知っているから、
             <br />
             <span className="text-arch-forest">実務まで入れる。</span>
           </h2>
 
-          <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
+          <div className="reveal reveal-delay-1 grid md:grid-cols-12 gap-10 md:gap-16 items-start">
             <div className="md:col-span-4">
               <div className="aspect-[3/4] max-w-[240px] md:max-w-none bg-arch-forest overflow-hidden">
                 <Image
@@ -720,7 +748,7 @@ export default function Home() {
           <SectionTag category="ARCH NOTE" number="06" label="現場メモ" />
 
           <div className="mt-6 mb-10 md:mb-14 flex items-end justify-between gap-6 flex-wrap">
-            <div className="max-w-3xl">
+            <div className="reveal max-w-3xl">
               <h2 className="display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18]">
                 現場から見える、
                 <br />
@@ -739,11 +767,11 @@ export default function Home() {
           </div>
 
           <div className="border-t border-arch-rule">
-            {NOTES.map((col) => (
+            {NOTES.map((col, idx) => (
               <Link
                 key={col.href}
                 href={col.href}
-                className="group grid grid-cols-12 gap-4 md:gap-8 py-6 md:py-8 border-b border-arch-rule hover:bg-arch-cream-raised transition-colors -mx-3 px-3"
+                className={`reveal reveal-delay-${Math.min(idx + 1, 5)} group grid grid-cols-12 gap-4 md:gap-8 py-6 md:py-8 border-b border-arch-rule hover:bg-arch-cream-raised transition-colors -mx-3 px-3`}
               >
                 <div className="col-span-2 md:col-span-1">
                   <span className="mono-micro text-arch-ink-muted">{col.num}</span>
@@ -846,17 +874,17 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
           <SectionTag category="CONTACT" number="07" label="お問い合わせ" theme="dark" />
 
-          <h2 className="display-jp text-arch-cream text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.18] mt-6 mb-8">
+          <h2 className="reveal display-jp text-arch-cream text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.18] mt-6 mb-8">
             まずは、
             <br />
             <span className="text-arch-gold">医院の状況</span>をお聞かせください。
           </h2>
-          <p className="text-arch-sage text-base md:text-lg leading-loose max-w-2xl mb-14 md:mb-20">
+          <p className="reveal reveal-delay-1 text-arch-sage text-base md:text-lg leading-loose max-w-2xl mb-14 md:mb-20">
             外来、訪問歯科、分院、レセプト、施設連携、スタッフ導線、事務負担。
             どこから整えるべきか、医院の状況に合わせて一緒に整理します。
           </p>
 
-          <div className="max-w-2xl">
+          <div className="reveal reveal-delay-2 max-w-2xl">
             <form
               action="https://formsubmit.co/50ee2f45d5bdcbfa397c1f5135d41780"
               method="POST"
