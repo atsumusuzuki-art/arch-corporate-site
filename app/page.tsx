@@ -893,7 +893,7 @@ export default function Home() {
             >
               <input type="hidden" name="_subject" value="ARCHホームページからのお問い合わせ" />
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://www.arch-yh.com/" />
+              <input type="hidden" name="_next" value="https://www.arch-yh.com/thanks" />
 
               <FormField id="name" label="お名前" required placeholder="山田 太郎" />
               <FormField id="organization" label="医院名" placeholder="○○歯科クリニック" />

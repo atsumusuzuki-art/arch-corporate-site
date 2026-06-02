@@ -122,6 +122,20 @@ export default function FacilityCollaborationPage() {
             「診療スキル以上に、連絡調整の負担軽減を求めている」——これが施設側の偽らざる本音です。この本音に応えられる体制を、今日から設計し始めてみてください。
           </p>
 
+          {/* 関連サービス内部リンク */}
+          <div className="not-prose bg-arch-cream-raised border border-arch-rule p-6 md:p-7 my-10">
+            <p className="mono-label text-arch-moss mb-3">RELATED — 関連支援</p>
+            <p className="text-sm text-arch-ink-soft leading-loose mb-4">
+              施設に「治療の腕」以上に伝えるべき価値があります。訪問歯科をこれから始める医院も、既に契約している医院も、施設連携の導線設計から一緒に整理します。
+            </p>
+            <a
+              href="/services/visit-dental-startup"
+              className="inline-flex items-center gap-2 text-sm font-bold text-arch-forest hover:text-arch-forest-soft"
+            >
+              → 訪問歯科立ち上げ支援を見る
+            </a>
+          </div>
+
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">

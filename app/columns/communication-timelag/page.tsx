@@ -100,6 +100,20 @@ export default function CommunicationTimelagPage() {
             「忙しいから仕方ない」——その言い訳が通用するのは、歯科医院の内部だけです。施設の時間軸に合わせた連絡体制を持つ医院だけが、長期的に選ばれ続けます。
           </p>
 
+          {/* 関連サービス内部リンク */}
+          <div className="not-prose bg-arch-cream-raised border border-arch-rule p-6 md:p-7 my-10">
+            <p className="mono-label text-arch-moss mb-3">RELATED — 関連支援</p>
+            <p className="text-sm text-arch-ink-soft leading-loose mb-4">
+              施設からの一報を取りこぼさない窓口設計と、レスポンス基準を医院に持ち込むことが信頼の積み上げに直結します。施設連携の導線をゼロから整える支援も行っています。
+            </p>
+            <a
+              href="/services/facility-growth"
+              className="inline-flex items-center gap-2 text-sm font-bold text-arch-forest hover:text-arch-forest-soft"
+            >
+              → 施設連携・利用者増加支援を見る
+            </a>
+          </div>
+
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">

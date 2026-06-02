@@ -83,6 +83,20 @@ export default function TurnoverStrategyPage() {
             人が辞めることに怯えない。そして、縁あって働いてくれる期間は、全力で彼らの自己肯定感を高める。その強靭で温かい医院経営の第一歩は、業務のシステム化から始まります。
           </p>
 
+          {/* 関連サービス内部リンク */}
+          <div className="not-prose bg-arch-cream-raised border border-arch-rule p-6 md:p-7 my-10">
+            <p className="mono-label text-arch-moss mb-3">RELATED — 関連支援</p>
+            <p className="text-sm text-arch-ink-soft leading-loose mb-4">
+              スタッフ離職に怯える状態から抜け出すには、属人化の解消と、誰が代わっても回る運営の仕組みづくりが必要です。ARCH は外部事務長として、現場運営の整理を一緒に進めます。
+            </p>
+            <a
+              href="/services/external-manager"
+              className="inline-flex items-center gap-2 text-sm font-bold text-arch-forest hover:text-arch-forest-soft"
+            >
+              → 歯科医院の外部事務長とは
+            </a>
+          </div>
+
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">

@@ -86,6 +86,20 @@ export default function BrokerTrapPage() {
             甘い罠に引っかかり、利益と誇りを失う前に、まずは本当の専門家にご相談ください。
           </p>
 
+          {/* 関連サービス内部リンク */}
+          <div className="not-prose bg-arch-cream-raised border border-arch-rule p-6 md:p-7 my-10">
+            <p className="mono-label text-arch-moss mb-3">RELATED — 関連支援</p>
+            <p className="text-sm text-arch-ink-soft leading-loose mb-4">
+              ブローカー依存から抜け出すには、施設内に「自院で歯科に繋がる導線」を作ることが不可欠です。営業ではなく、施設職員・ケアマネ・家族との情報共有を設計します。
+            </p>
+            <a
+              href="/services/facility-growth"
+              className="inline-flex items-center gap-2 text-sm font-bold text-arch-forest hover:text-arch-forest-soft"
+            >
+              → 施設連携・利用者増加支援を見る
+            </a>
+          </div>
+
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">

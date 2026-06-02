@@ -63,6 +63,20 @@ export default function ProfitTrapPage() {
             基準なき訪問と、どんぶり勘定の経費。これらが「忙しいのに儲からない」の正体です。
           </p>
 
+          {/* 関連サービス内部リンク */}
+          <div className="not-prose bg-arch-cream-raised border border-arch-rule p-6 md:p-7 my-10">
+            <p className="mono-label text-arch-moss mb-3">RELATED — 関連支援</p>
+            <p className="text-sm text-arch-ink-soft leading-loose mb-4">
+              「忙しいのに利益が残らない」状態を抜けるには、算定構成・経費・KPI を構造から見直す必要があります。レセプト精度の改善・施設基準の整理も含めて、ARCH が一緒に整理します。
+            </p>
+            <a
+              href="/services/fee-standards"
+              className="inline-flex items-center gap-2 text-sm font-bold text-arch-forest hover:text-arch-forest-soft"
+            >
+              → 算定・施設基準支援を見る
+            </a>
+          </div>
+
           {/* CTA Block */}
           <div className="not-prose bg-gray-50 rounded-2xl p-8 my-12 border border-gray-200">
             <p className="text-lg font-bold text-gray-900 mb-3">
