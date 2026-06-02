@@ -1,6 +1,27 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import Breadcrumb from "@/components/Breadcrumb";
+import FaqSection from "@/components/FaqSection";
+
+const FAQS = [
+  {
+    q: "分院長採用前でも相談できますか？",
+    a: "可能です。むしろ採用前から相談いただく方が、求人原稿の設計・採用導線の整備・分院長と本院院長の関係性の整理まで一緒に進められるため、開業後の運営が安定しやすくなります。",
+  },
+  {
+    q: "物件選定段階でも対応可能ですか？",
+    a: "対応可能です。物件選定の段階から、想定患者数・必要機材・予算感・運用フローを並行して整理することで、内装や機器選定の精度が上がります。",
+  },
+  {
+    q: "HPや看板も相談できますか？",
+    a: "はい。開業告知用の HP、LP、院内資料、求人媒体、看板業者との調整まで横断的に支援します。各業者との細かい調整を ARCH 側で巻き取り、院長は本院診療と最終決裁に集中できる体制をつくります。",
+  },
+  {
+    q: "開業までどのくらい前から相談すべきですか？",
+    a: "理想は開業の 6〜12 ヶ月前です。物件選定・機器発注・採用・HP制作・看板など、リードタイムが長い領域が複数あるため、早めにご相談いただくほうが余裕を持って進められます。",
+  },
+];
 
 export const metadata = {
   title: "歯科医院 分院立ち上げ支援｜物件・機器・採用・HPまで横断的に｜ARCH",
@@ -60,6 +81,13 @@ const RELATED = [
 export default function BranchStartupPage() {
   return (
     <article className="bg-arch-cream">
+      <Breadcrumb
+        items={[
+          { label: "HOME", href: "/" },
+          { label: "サービス", href: "/services/consulting" },
+          { label: "分院立ち上げ支援" },
+        ]}
+      />
       {/* HERO */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
@@ -204,6 +232,9 @@ export default function BranchStartupPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FaqSection number="05" items={FAQS} />
 
       {/* RELATED */}
       <section className="bg-arch-cream-raised py-16 md:py-20 border-t border-arch-rule">

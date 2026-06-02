@@ -62,12 +62,12 @@ export default function ServicesLayout({
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
           <p className="mono-label text-arch-gold mb-6">無料相談</p>
           <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
-            医院の課題を、
+            まずは、
             <br />
-            まずは一度お聞かせください。
+            現在の状況をお聞かせください。
           </h2>
           <p className="text-base md:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10">
-            訪問歯科、分院展開、算定、採用、HP改善など、医院ごとに必要な支援は異なります。現在の状況を伺った上で、最適な関わり方をご提案します。
+            医院ごとに課題は異なります。訪問歯科、施設連携、分院展開、算定、採用など、現在の状況を伺った上で最適な支援方法をご提案します。
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link

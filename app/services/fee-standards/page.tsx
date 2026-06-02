@@ -1,6 +1,27 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import Breadcrumb from "@/components/Breadcrumb";
+import FaqSection from "@/components/FaqSection";
+
+const FAQS = [
+  {
+    q: "施設基準の届出だけでも相談できますか？",
+    a: "はい。新たに取得したい施設基準の要件確認・届出書類の準備・チェックリストの作成など、必要な部分のみ切り出してご相談いただけます。最終的な届出と判断は医療機関側で行っていただきます。",
+  },
+  {
+    q: "診療報酬改定対応も可能ですか？",
+    a: "可能です。改定の概要から、自院に必要な対応の絞り込み、レセコン設定変更依頼、スタッフ向け説明資料の作成までを整理します。改定情報を読み込む工数を医院側から外側に移すイメージです。",
+  },
+  {
+    q: "レセコン会社とのやり取りも相談できますか？",
+    a: "はい。レセコン業者との打合せに同席し、設定変更依頼の取りまとめ、業者からの回答整理を行います。医院側の窓口負担を減らすことができます。",
+  },
+  {
+    q: "算定漏れチェックは可能ですか？",
+    a: "可能です。カルテと請求のサンプル突合により、算定漏れの可能性がある項目を整理します。ただし、最終的な算定判断と請求責任は医療機関に帰属します。ARCH は確認支援を行う立場です。",
+  },
+];
 
 export const metadata = {
   title: "歯科 算定・施設基準支援｜届出・診療報酬改定・レセコン整理｜ARCH",
@@ -59,6 +80,13 @@ const RELATED = [
 export default function FeeStandardsPage() {
   return (
     <article className="bg-arch-cream">
+      <Breadcrumb
+        items={[
+          { label: "HOME", href: "/" },
+          { label: "サービス", href: "/services/consulting" },
+          { label: "算定・施設基準支援" },
+        ]}
+      />
       {/* HERO */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
@@ -215,6 +243,9 @@ export default function FeeStandardsPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FaqSection number="05" items={FAQS} />
 
       {/* RELATED */}
       <section className="bg-arch-cream-raised py-16 md:py-20 border-t border-arch-rule">

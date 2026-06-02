@@ -1,6 +1,31 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import Breadcrumb from "@/components/Breadcrumb";
+import FaqSection from "@/components/FaqSection";
+
+const FAQS = [
+  {
+    q: "訪問歯科未経験でも相談できますか？",
+    a: "問題ありません。むしろ、これから訪問歯科を始めたい医院からのご相談が中心です。立ち上げ計画、必要書類、スタッフ体制、算定、施設連携まで、立ち上げに必要なすべての領域を一緒に整理します。",
+  },
+  {
+    q: "施設とのつながりがなくても大丈夫ですか？",
+    a: "はい。地域の高齢者施設・介護施設の状況整理、施設向け案内資料の整備、初回アプローチの設計から一緒に進めます。営業代行ではなく、医院側で施設連携を続けられる体制を残すことを重視しています。",
+  },
+  {
+    q: "どのくらいの期間で立ち上げできますか？",
+    a: "医院の状況によって異なりますが、概ね3〜6ヶ月で運用開始まで進められる医院が多いです。準備すべき書類、施設対応、スタッフ体制の現状を伺ったうえで、無理のないスケジュールをご提案します。",
+  },
+  {
+    q: "スタッフが少なくても始められますか？",
+    a: "可能です。歯科医師1名+歯科衛生士1〜2名の体制から訪問歯科を始める医院もあります。スタッフ数に応じた訪問回数・施設数・運用フローを設計します。",
+  },
+  {
+    q: "オンライン相談は可能ですか？",
+    a: "はい。初回相談はオンラインで対応しています。地方の医院からのご相談も多く、ZoomやGoogle Meetでの打合せに対応可能です。立ち上げ後の継続支援もオンライン中心で進められます。",
+  },
+];
 
 export const metadata = {
   title: "訪問歯科立ち上げ支援｜歯科医院の外部事務長として現場導入まで伴走",
@@ -62,6 +87,13 @@ const RELATED = [
 export default function VisitDentalStartupPage() {
   return (
     <article className="bg-arch-cream">
+      <Breadcrumb
+        items={[
+          { label: "HOME", href: "/" },
+          { label: "サービス", href: "/services/consulting" },
+          { label: "訪問歯科立ち上げ支援" },
+        ]}
+      />
       {/* HERO */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
@@ -206,6 +238,9 @@ export default function VisitDentalStartupPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FaqSection number="05" items={FAQS} />
 
       {/* RELATED */}
       <section className="bg-arch-cream-raised py-16 md:py-20 border-t border-arch-rule">

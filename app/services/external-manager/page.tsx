@@ -1,6 +1,31 @@
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import Breadcrumb from "@/components/Breadcrumb";
+import FaqSection from "@/components/FaqSection";
+
+const FAQS = [
+  {
+    q: "一般的なコンサルとの違いは何ですか？",
+    a: "戦略提案や資料納品で終わらず、医院側で実行できる状態まで一緒に手を動かします。施設対応、業者調整、書類整備、スタッフへの説明資料作成など、現場の実務に入り込みます。",
+  },
+  {
+    q: "どんな医院が利用していますか？",
+    a: "院長＋スタッフ10名前後の規模で、訪問歯科を伸ばしたい医院、分院展開を考え始めた医院、院長が実務を一人で抱えている医院が中心です。大型法人向けの経営コンサルではなく、専属事務長を雇うほどではないが運営整理が必要な医院に適しています。",
+  },
+  {
+    q: "月何回相談できますか？",
+    a: "プランによって異なります。顧問プランは月1回オンライン+チャット、外部事務長ライトは月1回訪問+定例会+チャット、外部事務長は週1回ペースで月4回の打合せ(対面・オンライン併用可)が含まれます。",
+  },
+  {
+    q: "訪問歯科以外も相談できますか？",
+    a: "可能です。外来運営、分院展開、レセプト・算定、採用、施設連携、HP・LP改善、補助金、DXなど、医院運営全体を横断的に支援します。訪問歯科は特に強い領域として残しつつ、医院全体を見る立場です。",
+  },
+  {
+    q: "地方でも依頼できますか？",
+    a: "オンライン中心の支援であれば全国対応可能です。訪問同行や現場立会いが必要な場合は、別途交通費を申し受けることがあります。まずはオンラインでの初回相談からご利用ください。",
+  },
+];
 
 export const metadata = {
   title: "歯科医院の外部事務長とは｜院長の相談役・運営整理役・現場と経営のつなぎ役",
@@ -101,6 +126,13 @@ const RELATED = [
 export default function ExternalManagerPage() {
   return (
     <article className="bg-arch-cream">
+      <Breadcrumb
+        items={[
+          { label: "HOME", href: "/" },
+          { label: "サービス", href: "/services/consulting" },
+          { label: "歯科医院の外部事務長とは" },
+        ]}
+      />
       {/* HERO */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
@@ -310,8 +342,11 @@ export default function ExternalManagerPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <FaqSection number="06" items={FAQS} />
+
       {/* RELATED — 内部リンクカード */}
-      <section className="bg-arch-cream py-16 md:py-20 border-t border-arch-rule">
+      <section className="bg-arch-cream-raised py-16 md:py-20 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-10 md:mb-12">
             <p className="mono-label text-arch-moss">RELATED — 関連ページ</p>

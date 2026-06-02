@@ -424,11 +424,16 @@ export default function ConsultingPage() {
 
                 <div className={`md:col-span-5 ${idx === 1 ? "md:order-1" : ""}`}>
                   <div className="border border-arch-rule-dark/20 p-8 md:p-10 bg-arch-cream-raised">
-                    <p className="mono-micro text-arch-moss mb-4">METRIC / 実績</p>
+                    <p className="mono-micro text-arch-moss mb-4">METRIC / 支援先実績の一例</p>
                     <p className="display-jp text-6xl md:text-7xl text-arch-forest leading-none tabular-nums">
                       {f.statNum}
                     </p>
                     <p className="mono-label text-arch-ink-muted mt-4">{f.statLabel}</p>
+                    <p className="mono-micro text-arch-ink-muted mt-3 leading-relaxed">
+                      ※ 一部の支援先における改善事例。
+                      <br />
+                      すべての医院で同様の結果を保証するものではありません。
+                    </p>
                   </div>
                 </div>
               </div>
@@ -479,8 +484,11 @@ export default function ConsultingPage() {
             <br />
             <span className="text-arch-gold">3つの変化。</span>
           </h2>
-          <p className="text-base md:text-lg text-arch-sage/80 leading-loose max-w-2xl mb-16 md:mb-20">
+          <p className="text-base md:text-lg text-arch-sage/80 leading-loose max-w-2xl mb-3">
             「整っている」「数字が見える」「迷わない」——外部事務長が入ることで、現場と経営の手触りが変わります。
+          </p>
+          <p className="mono-micro text-arch-sage/60 mb-16 md:mb-20 leading-relaxed">
+            ※ 以下の数値はすべて支援先実績の一例です。すべての医院で同様の結果を保証するものではありません。
           </p>
 
           <div className="grid md:grid-cols-3 gap-px bg-arch-rule-dark/60 border border-arch-rule-dark/60">

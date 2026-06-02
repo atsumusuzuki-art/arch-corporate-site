@@ -899,16 +899,51 @@ export default function Home() {
               <FormField id="organization" label="医院名" placeholder="○○歯科クリニック" />
               <FormField id="email" label="メールアドレス" type="email" required placeholder="info@example.com" />
 
+              {/* ご相談内容セレクト */}
+              <div>
+                <label htmlFor="topic" className="mono-label text-arch-sage mb-3 block">
+                  ご相談内容 <span className="text-arch-gold">*</span>
+                </label>
+                <div className="relative">
+                  <select
+                    id="topic"
+                    name="topic"
+                    required
+                    defaultValue=""
+                    className="w-full appearance-none px-0 py-3 pr-8 bg-transparent border-0 border-b border-arch-rule-dark text-arch-cream focus:outline-none focus:border-arch-cream text-base transition-colors cursor-pointer [&>option]:bg-arch-forest [&>option]:text-arch-cream"
+                  >
+                    <option value="" disabled className="text-arch-sage/50">
+                      選択してください
+                    </option>
+                    <option value="訪問歯科立ち上げ支援">訪問歯科立ち上げ支援</option>
+                    <option value="施設連携・利用者増加支援">施設連携・利用者増加支援</option>
+                    <option value="分院立ち上げ支援">分院立ち上げ支援</option>
+                    <option value="算定・施設基準支援">算定・施設基準支援</option>
+                    <option value="採用支援">採用支援</option>
+                    <option value="HP・LP改善支援">HP・LP改善支援</option>
+                    <option value="外部事務長について相談したい">外部事務長について相談したい</option>
+                    <option value="その他">その他</option>
+                  </select>
+                  {/* カスタム矢印（appearance-none で消えたネイティブ矢印の代替） */}
+                  <span
+                    className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-arch-sage/70"
+                    aria-hidden="true"
+                  >
+                    ▾
+                  </span>
+                </div>
+              </div>
+
               <div>
                 <label htmlFor="message" className="mono-label text-arch-sage mb-3 block">
-                  ご相談内容 <span className="text-arch-gold">*</span>
+                  詳細 <span className="text-arch-gold">*</span>
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
                   rows={5}
-                  placeholder="ご相談内容をお書きください"
+                  placeholder="現在の医院の状況や具体的なご相談内容をお書きください"
                   className="w-full px-0 py-3 bg-transparent border-0 border-b border-arch-rule-dark text-arch-cream placeholder-arch-sage/50 focus:outline-none focus:border-arch-cream text-base resize-none transition-colors"
                 />
               </div>

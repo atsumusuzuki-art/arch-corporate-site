@@ -1,6 +1,27 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import Breadcrumb from "@/components/Breadcrumb";
+import FaqSection from "@/components/FaqSection";
+
+const FAQS = [
+  {
+    q: "施設はあるのに患者が増えません。何が原因でしょうか？",
+    a: "施設職員に歯科介入の必要性が伝わっていない、無料検診から定期診療への流れがない、家族説明の導線がない、多職種連携が弱い、急患対応だけになっている、というケースが大半です。営業力ではなく、医院側に「歯科に繋がる導線」が無いことが原因のことが多いです。",
+  },
+  {
+    q: "ST・看護師・ケアマネとの連携方法が分かりません",
+    a: "施設ごとに「誰が・いつ・どう繋ぐか」の窓口を設計するところから始めます。月次の施設職員ミーティングに同席し、口腔状態・摂食嚥下・服薬管理の情報共有フローを医院側に作ります。",
+  },
+  {
+    q: "無料検診の導線作りも相談できますか？",
+    a: "はい。無料口腔チェック → 結果共有 → 家族説明 → 同意 → 定期管理という流れを、医院の状況に合わせて設計します。家族向け案内資料・同意書テンプレートの整備も含めて支援可能です。",
+  },
+  {
+    q: "対応エリアはありますか？",
+    a: "オンライン中心の支援であれば全国対応可能です。訪問同行や施設職員ミーティングへの同席など、現場対応が必要な場合は、別途交通費を申し受けることがあります。",
+  },
+];
 
 export const metadata = {
   title: "施設連携・利用者増加支援｜施設はあるのに患者が増えない医院へ｜ARCH",
@@ -60,6 +81,13 @@ const RELATED = [
 export default function FacilityGrowthPage() {
   return (
     <article className="bg-arch-cream">
+      <Breadcrumb
+        items={[
+          { label: "HOME", href: "/" },
+          { label: "サービス", href: "/services/consulting" },
+          { label: "施設連携・利用者増加支援" },
+        ]}
+      />
       {/* HERO */}
       <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
         <CornerMarkers
@@ -208,6 +236,9 @@ export default function FacilityGrowthPage() {
           </p>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FaqSection number="05" items={FAQS} />
 
       {/* RELATED */}
       <section className="bg-arch-cream-raised py-16 md:py-20 border-t border-arch-rule">
