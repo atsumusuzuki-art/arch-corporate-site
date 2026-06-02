@@ -170,12 +170,14 @@ type Plan = {
   priceUnit: string;
   /** 帯ラベル（プラン全体の性格を1行で） */
   headline: string;
+  /** こんな医院向け（4項目） */
+  target: string[];
+  /** 主な内容 */
   items: string[];
-  desc: string;
   notes: string[];
   highlighted?: boolean;
   badge?: string;
-  /** 上位プラン用：右上の追加バッジ */
+  /** 上位プラン用：価格横の追加バッジ */
   accent?: string;
 };
 
@@ -187,13 +189,17 @@ const PLANS: Plan[] = [
     priceNum: "50,000",
     priceUnit: "円〜 / 月（税別）",
     headline: "相談役として活用する",
+    target: [
+      "訪問歯科をこれから始めたい",
+      "まずは相談できる相手が欲しい",
+      "院外の意見を取り入れたい",
+      "必要な時だけ相談したい",
+    ],
     items: [
       "チャット相談",
       "月1回オンライン相談",
       "算定・施設基準・補助金・採用・訪問歯科に関する相談",
-      "方向性の壁打ち",
     ],
-    desc: "まずは気軽に相談できる顧問契約。医院運営や訪問歯科の判断に迷った時、外部の相談役として活用いただけます。",
     notes: [
       "書類作成、申請代行、訪問同行、HP制作などの実作業は含みません。",
     ],
@@ -205,14 +211,19 @@ const PLANS: Plan[] = [
     priceNum: "100,000",
     priceUnit: "円〜 / 月（税別）",
     headline: "月1回訪問 + 定例会で運営を整理",
+    target: [
+      "訪問歯科を伸ばしたい",
+      "月1回伴走してほしい",
+      "採用や算定も相談したい",
+      "院内だけでは解決できない課題がある",
+    ],
     items: [
       "月1回訪問",
       "定例会参加",
       "チャット相談",
-      "訪問歯科・算定・施設基準・採用・補助金等の相談",
-      "簡易的な資料作成・パンフレット素案・求人原稿・HP修正案などのAI活用支援",
+      "採用・補助金・施設基準・訪問歯科支援",
+      "AI活用による資料作成支援",
     ],
-    desc: "月1回の訪問を中心に、医院運営の課題整理と改善提案を行うプラン。院長の相談相手として、現場に近い立場から支援します。",
     notes: [
       "制作物はAI等を活用した簡易支援です。制作会社レベルの品質保証や大規模制作は別途見積となります。",
     ],
@@ -226,20 +237,23 @@ const PLANS: Plan[] = [
     priceNum: "300,000",
     priceUnit: "円〜 / 月（税別）",
     headline: "週1回ペースで伴走する院長の右腕",
-    accent: "院長の右腕 / 月4回打合せ",
-    items: [
-      "週1回ペースでの伴走支援（月4回打合せ・対面/オンライン併用可）",
-      "経営会議・幹部会への参加",
-      "訪問歯科事業の立ち上げ支援",
-      "分院展開支援",
-      "施設連携・ケアマネ連携・地域ケア会議対応",
-      "採用支援",
-      "補助金申請支援",
-      "施設基準・算定・レセコン・ディーラー等の連携支援",
-      "HP・LP・パンフレット等の改善支援",
-      "必要に応じた各種プロジェクト推進",
+    accent: "毎週相談できる",
+    target: [
+      "分院展開を予定している",
+      "訪問歯科事業を本格的に立ち上げたい",
+      "幹部育成や組織化を進めたい",
+      "院長が経営に集中できる体制を作りたい",
     ],
-    desc: "院長の右腕として医院運営に深く関与するプランです。訪問歯科の立ち上げ、分院展開、採用、施設連携、経営課題の整理など、医院の成長に必要な実務と意思決定を継続的に支援します。単なるアドバイスではなく、週1回ペースで伴走しながら課題解決を進めます。",
+    items: [
+      "週1回ペースで伴走（月4回打合せ）",
+      "経営会議・幹部会参加",
+      "訪問歯科立上げ支援",
+      "分院展開支援",
+      "採用支援",
+      "施設連携・ケアマネ連携",
+      "補助金支援",
+      "各種プロジェクト推進",
+    ],
     notes: [
       "月4回までの打合せを含みます（対面・オンライン併用可）。",
       "業務範囲、訪問回数、契約期間により個別に調整します。",
@@ -247,6 +261,18 @@ const PLANS: Plan[] = [
     ],
     badge: "上位プラン",
   },
+];
+
+/* これまでの主な支援内容（料金表下） */
+const SUPPORT_AREAS = [
+  "訪問歯科立ち上げ支援",
+  "分院立ち上げ支援",
+  "施設連携構築支援",
+  "採用支援",
+  "補助金活用支援",
+  "算定・施設基準支援",
+  "HP・LP改善支援",
+  "歯科ディーラー・レセコン業者との調整支援",
 ];
 
 export default function ConsultingPage() {
@@ -579,16 +605,14 @@ export default function ConsultingPage() {
                       : isTop
                       ? "bg-arch-cream-raised text-arch-ink border-t-4 border-arch-gold"
                       : "bg-arch-cream-raised text-arch-ink"
-                  } ${i < PLANS.length - 1 ? "md:border-r border-arch-rule" : ""} border-b md:border-b-0 border-arch-rule p-7 md:p-9 flex flex-col`}
+                  } ${i < PLANS.length - 1 ? "md:border-r border-arch-rule" : ""} border-b md:border-b-0 border-arch-rule p-7 md:p-8 flex flex-col`}
                 >
                   {/* バッジ */}
-                  <div className="h-8 mb-5 flex items-center gap-2">
+                  <div className="h-7 mb-4 flex items-center gap-2">
                     {p.badge && (
                       <span
                         className={`inline-block mono-micro px-3 py-1 ${
-                          isHighlight
-                            ? "bg-arch-gold text-arch-ink"
-                            : isTop
+                          isHighlight || isTop
                             ? "bg-arch-gold text-arch-ink"
                             : "bg-arch-ink text-arch-cream"
                         }`}
@@ -596,19 +620,10 @@ export default function ConsultingPage() {
                         {p.badge}
                       </span>
                     )}
-                    {p.accent && (
-                      <span className="mono-micro text-arch-gold tracking-wider">
-                        {p.accent}
-                      </span>
-                    )}
                   </div>
 
-                  {/* tier / 名前 */}
-                  <p
-                    className={`mono-label mb-2 ${
-                      isHighlight ? "text-arch-gold" : "text-arch-moss"
-                    }`}
-                  >
+                  {/* tier / 名前 / tagline */}
+                  <p className={`mono-label mb-2 ${isHighlight ? "text-arch-gold" : "text-arch-moss"}`}>
                     {p.tier}
                   </p>
                   <h3
@@ -619,35 +634,16 @@ export default function ConsultingPage() {
                     {p.ja}
                   </h3>
                   <p
-                    className={`mono-micro mb-6 leading-relaxed ${
+                    className={`mono-micro mb-5 leading-relaxed ${
                       isHighlight ? "text-arch-sage/80" : "text-arch-ink-muted"
                     }`}
                   >
                     {p.tagline}
                   </p>
 
-                  {/* 帯：性格を一言で */}
-                  <div
-                    className={`mb-6 px-4 py-3 ${
-                      isHighlight
-                        ? "bg-arch-forest-soft text-arch-cream border-l-2 border-arch-gold"
-                        : isTop
-                        ? "bg-arch-cream text-arch-ink border-l-2 border-arch-gold"
-                        : "bg-arch-cream text-arch-ink-soft border-l-2 border-arch-forest"
-                    }`}
-                  >
-                    <p
-                      className={`text-sm font-bold leading-snug ${
-                        isHighlight ? "text-arch-cream" : "text-arch-ink"
-                      }`}
-                    >
-                      {p.headline}
-                    </p>
-                  </div>
-
                   {/* 価格 */}
                   <div
-                    className={`pb-6 mb-6 border-b ${
+                    className={`pb-5 mb-5 border-b ${
                       isHighlight ? "border-arch-rule-dark" : "border-arch-rule"
                     }`}
                   >
@@ -660,14 +656,14 @@ export default function ConsultingPage() {
                     </p>
                     <p className="flex items-baseline gap-1.5">
                       <span
-                        className={`display-jp text-2xl ${
+                        className={`display-jp text-xl ${
                           isHighlight ? "text-arch-gold" : "text-arch-forest"
                         }`}
                       >
                         ¥
                       </span>
                       <span
-                        className={`display-jp text-[2.75rem] md:text-[3.25rem] leading-none tabular-nums ${
+                        className={`display-jp text-[2.5rem] md:text-[3rem] leading-none tabular-nums ${
                           isHighlight ? "text-arch-gold" : "text-arch-forest"
                         }`}
                       >
@@ -683,21 +679,78 @@ export default function ConsultingPage() {
                     </p>
                   </div>
 
-                  {/* 含まれる内容 */}
+                  {/* 30万プラン強調帯：「週1回ペースで伴走」を大字に */}
+                  {isTop && (
+                    <div className="mb-6 border-2 border-arch-gold bg-arch-cream p-4">
+                      <p className="mono-micro text-arch-gold mb-1 tracking-wider">{p.accent}</p>
+                      <p className="display-jp text-arch-ink text-lg md:text-xl leading-snug font-black">
+                        週1回ペースで伴走
+                      </p>
+                      <p className="mono-micro text-arch-ink-muted mt-1">月4回打合せ（対面・オンライン併用可）</p>
+                    </div>
+                  )}
+
+                  {/* 通常プラン用：性格を一言で */}
+                  {!isTop && (
+                    <div
+                      className={`mb-6 px-4 py-3 border-l-2 ${
+                        isHighlight
+                          ? "bg-arch-forest-soft text-arch-cream border-arch-gold"
+                          : "bg-arch-cream text-arch-ink-soft border-arch-forest"
+                      }`}
+                    >
+                      <p
+                        className={`text-sm font-bold leading-snug ${
+                          isHighlight ? "text-arch-cream" : "text-arch-ink"
+                        }`}
+                      >
+                        {p.headline}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* こんな医院向け */}
+                  <p
+                    className={`mono-micro mb-3 ${
+                      isHighlight ? "text-arch-gold" : isTop ? "text-arch-gold" : "text-arch-moss"
+                    }`}
+                  >
+                    こんな医院向け
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    {p.target.map((t) => (
+                      <li key={t} className="flex items-start gap-2.5">
+                        <span
+                          className={`shrink-0 mt-1.5 w-1 h-1 rounded-full ${
+                            isHighlight ? "bg-arch-gold" : isTop ? "bg-arch-gold" : "bg-arch-moss"
+                          }`}
+                        />
+                        <span
+                          className={`text-[13px] leading-relaxed ${
+                            isHighlight ? "text-arch-cream" : "text-arch-ink"
+                          }`}
+                        >
+                          {t}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* 主な内容 */}
                   <p
                     className={`mono-micro mb-3 ${
                       isHighlight ? "text-arch-sage/70" : "text-arch-ink-muted"
                     }`}
                   >
-                    含まれる内容
+                    主な内容
                   </p>
-                  <ul className="space-y-2.5 mb-6 flex-1">
+                  <ul className="space-y-2 mb-6 flex-1">
                     {p.items.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
                         <Check
                           size={13}
                           className={`mt-1 shrink-0 ${
-                            isHighlight ? "text-arch-gold" : isTop ? "text-arch-gold" : "text-arch-moss"
+                            isHighlight || isTop ? "text-arch-gold" : "text-arch-moss"
                           }`}
                         />
                         <span
@@ -711,22 +764,13 @@ export default function ConsultingPage() {
                     ))}
                   </ul>
 
-                  {/* 説明 */}
-                  <div
-                    className={`text-[13px] leading-loose mb-5 pt-5 border-t ${
-                      isHighlight
-                        ? "border-arch-rule-dark text-arch-sage"
-                        : "border-arch-rule text-arch-ink-soft"
-                    }`}
-                  >
-                    {p.desc}
-                  </div>
-
                   {/* 注意書き */}
                   {p.notes.length > 0 && (
                     <ul
-                      className={`mono-micro space-y-1 mb-6 leading-relaxed ${
-                        isHighlight ? "text-arch-sage/60" : "text-arch-ink-muted"
+                      className={`mono-micro space-y-1 mb-6 leading-relaxed pt-4 border-t ${
+                        isHighlight
+                          ? "text-arch-sage/60 border-arch-rule-dark"
+                          : "text-arch-ink-muted border-arch-rule"
                       }`}
                     >
                       {p.notes.map((n) => (
@@ -753,11 +797,53 @@ export default function ConsultingPage() {
             })}
           </div>
 
-          <div className="mt-10 md:mt-12 border border-arch-rule-dark/20 bg-arch-cream-raised p-6 md:p-8">
-            <p className="text-sm md:text-base text-arch-ink-soft leading-loose">
-              上記は目安料金です。医院の規模、課題、訪問回数、支援範囲により個別にご提案します。
-              <strong className="text-arch-ink">まずは現在の課題をお聞かせください。</strong>
+          {/* これまでの主な支援内容 */}
+          <div className="mt-16 md:mt-20 border-t border-arch-rule pt-12 md:pt-16">
+            <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-8 md:mb-10">
+              <p className="mono-label text-arch-moss">SUPPORT — これまでの主な支援内容</p>
+              <p className="mono-micro text-arch-ink-muted hidden sm:block tabular-nums">
+                {String(SUPPORT_AREAS.length).padStart(2, "0")} AREAS
+              </p>
+            </div>
+            <h3 className="display-jp text-2xl md:text-3xl text-arch-ink mb-6 leading-snug">
+              単発のアドバイスではなく、
+              <br className="hidden sm:block" />
+              <span className="text-arch-forest">必要な支援を組み合わせて伴走</span>します。
+            </h3>
+            <p className="text-sm md:text-base text-arch-ink-soft leading-loose max-w-3xl mb-10">
+              これまでに ARCH が医院運営の中で実際に手を動かしてきた領域です。医院の状況に応じて必要な支援を組み合わせながら、外部事務長として継続的に伴走します。
             </p>
+
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-arch-rule">
+              {SUPPORT_AREAS.map((area, i) => (
+                <li
+                  key={area}
+                  className="border-b border-r border-arch-rule py-5 md:py-6 px-4 md:px-5 flex items-baseline gap-3"
+                >
+                  <span className="mono-micro text-arch-moss tabular-nums shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-sm text-arch-ink leading-snug font-medium">{area}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* 最下部メッセージ */}
+          <div className="mt-12 md:mt-16 border border-arch-rule-dark/20 bg-arch-cream-raised p-6 md:p-8">
+            <p className="text-base md:text-lg text-arch-ink font-bold leading-loose mb-2">
+              どのプランが適しているかわからない場合は、お気軽にご相談ください。
+            </p>
+            <p className="text-sm md:text-base text-arch-ink-soft leading-loose">
+              医院の規模、課題、訪問回数、支援範囲に応じて個別にご提案いたします。
+            </p>
+            <Link
+              href="/#contact"
+              className="mt-6 inline-flex items-center gap-3 bg-arch-forest text-arch-cream px-7 py-3.5 text-sm font-bold tracking-[0.15em] hover:bg-arch-ink transition-colors"
+            >
+              現場の状況を相談する
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
