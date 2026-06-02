@@ -1,7 +1,6 @@
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
-import ServiceInquiryForm from "@/components/ServiceInquiryForm";
 
 export const metadata = {
   title: "歯科医院運営支援｜運営改善・レセプト精度・月次分析",
@@ -163,62 +162,90 @@ const VOICES = [
 ];
 
 type Plan = {
-  tier: "LIGHT" | "STANDARD" | "PREMIUM";
+  tier: "ADVISOR" | "OFFICE LIGHT" | "OFFICE FULL";
   ja: string;
   tagline: string;
+  /** 月額価格（カンマ区切り、円単位の文字列） */
   priceNum: string;
   priceUnit: string;
+  /** 帯ラベル（プラン全体の性格を1行で） */
+  headline: string;
   items: string[];
+  desc: string;
+  notes: string[];
   highlighted?: boolean;
   badge?: string;
+  /** 上位プラン用：右上の追加バッジ */
+  accent?: string;
 };
 
 const PLANS: Plan[] = [
   {
-    tier: "LIGHT",
-    ja: "ライトプラン",
-    tagline: "まずは始めたい方に",
-    priceNum: "10",
-    priceUnit: "万円 / 月",
+    tier: "ADVISOR",
+    ja: "顧問プラン",
+    tagline: "まずは気軽に相談したい医院に",
+    priceNum: "50,000",
+    priceUnit: "円〜 / 月（税別）",
+    headline: "相談役として活用する",
     items: [
-      "訪問歯科の運営サポート",
-      "月1回 Web/対面ミーティング",
-      "ARCH独自アプリ使用可能",
-      "LINE等での相談",
-      "実地支援（別途3万円）",
+      "チャット相談",
+      "月1回オンライン相談",
+      "算定・施設基準・補助金・採用・訪問歯科に関する相談",
+      "方向性の壁打ち",
+    ],
+    desc: "まずは気軽に相談できる顧問契約。医院運営や訪問歯科の判断に迷った時、外部の相談役として活用いただけます。",
+    notes: [
+      "書類作成、申請代行、訪問同行、HP制作などの実作業は含みません。",
     ],
   },
   {
-    tier: "STANDARD",
-    ja: "スタンダードプラン",
-    tagline: "運営を加速させたい方に",
-    priceNum: "30",
-    priceUnit: "万円 / 月",
+    tier: "OFFICE LIGHT",
+    ja: "外部事務長ライト",
+    tagline: "現場に近い立場で課題整理したい医院に",
+    priceNum: "100,000",
+    priceUnit: "円〜 / 月（税別）",
+    headline: "月1回訪問 + 定例会で運営を整理",
+    items: [
+      "月1回訪問",
+      "定例会参加",
+      "チャット相談",
+      "訪問歯科・算定・施設基準・採用・補助金等の相談",
+      "簡易的な資料作成・パンフレット素案・求人原稿・HP修正案などのAI活用支援",
+    ],
+    desc: "月1回の訪問を中心に、医院運営の課題整理と改善提案を行うプラン。院長の相談相手として、現場に近い立場から支援します。",
+    notes: [
+      "制作物はAI等を活用した簡易支援です。制作会社レベルの品質保証や大規模制作は別途見積となります。",
+    ],
     highlighted: true,
-    badge: "一番人気",
-    items: [
-      "ライトプランの全内容を含む",
-      "月4回 Web/対面ミーティング",
-      "経営相談・月次レポート",
-      "院長メンタルチェック（月次）",
-      "事務代行（内容要相談）",
-      "実地支援（月1回無償 / 2回目以降別途2万円）",
-    ],
+    badge: "おすすめ",
   },
   {
-    tier: "PREMIUM",
-    ja: "プレミアムプラン",
-    tagline: "外部事務長として常駐",
-    priceNum: "50",
-    priceUnit: "万円 / 月",
-    badge: "最上位",
+    tier: "OFFICE FULL",
+    ja: "外部事務長",
+    tagline: "本気で医院を成長させたい法人・院長に",
+    priceNum: "300,000",
+    priceUnit: "円〜 / 月（税別）",
+    headline: "週1回ペースで伴走する院長の右腕",
+    accent: "院長の右腕 / 月4回打合せ",
     items: [
-      "スタンダードプランの全内容を含む",
-      "院長メンタルチェック（月次）",
-      "医院オリジナルWebアプリ開発",
-      "営業同行・代行",
-      "経営層との会合セッティング",
+      "週1回ペースでの伴走支援（月4回打合せ・対面/オンライン併用可）",
+      "経営会議・幹部会への参加",
+      "訪問歯科事業の立ち上げ支援",
+      "分院展開支援",
+      "施設連携・ケアマネ連携・地域ケア会議対応",
+      "採用支援",
+      "補助金申請支援",
+      "施設基準・算定・レセコン・ディーラー等の連携支援",
+      "HP・LP・パンフレット等の改善支援",
+      "必要に応じた各種プロジェクト推進",
     ],
+    desc: "院長の右腕として医院運営に深く関与するプランです。訪問歯科の立ち上げ、分院展開、採用、施設連携、経営課題の整理など、医院の成長に必要な実務と意思決定を継続的に支援します。単なるアドバイスではなく、週1回ペースで伴走しながら課題解決を進めます。",
+    notes: [
+      "月4回までの打合せを含みます（対面・オンライン併用可）。",
+      "業務範囲、訪問回数、契約期間により個別に調整します。",
+      "大型プロジェクトや専門業務については別途見積となる場合があります。",
+    ],
+    badge: "上位プラン",
   },
 ];
 
@@ -521,72 +548,162 @@ export default function ConsultingPage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          PRICING
+          PRICING — 3 プラン（関与度別）
       ────────────────────────────────────────── */}
       <section className="bg-arch-cream py-20 md:py-28 border-t border-arch-rule">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
             <SectionTag category="PRICING" number="05" label="料金プラン" />
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">03 PLANS + TRIAL</p>
+            <p className="mono-micro text-arch-ink-muted hidden sm:block">03 PLANS / 月額</p>
           </div>
 
-          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-12 md:mb-16 max-w-3xl">
-            月額継続の<span className="text-arch-forest">3プラン</span>と、
+          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-6 max-w-3xl leading-[1.2]">
+            関与度で選べる、
             <br />
-            初回限定のお試し。
+            <span className="text-arch-forest font-black">3つの月額プラン。</span>
           </h2>
+          <p className="text-base text-arch-ink-soft leading-loose max-w-2xl mb-12 md:mb-16">
+            細かい業務メニューごとの価格ではなく、「どこまで一緒に入り込むか」で 3 つに整理しています。気軽な相談から、週1回ペースで伴走する院長の右腕まで。
+          </p>
 
           <div className="grid md:grid-cols-3 gap-0 border border-arch-rule-dark/20">
             {PLANS.map((p, i) => {
               const isHighlight = p.highlighted;
+              const isTop = p.tier === "OFFICE FULL";
               return (
                 <div
                   key={p.tier}
-                  className={`relative ${isHighlight ? "bg-arch-forest text-arch-cream" : "bg-arch-cream-raised text-arch-ink"} ${i < PLANS.length - 1 ? "md:border-r border-arch-rule" : ""} border-b md:border-b-0 border-arch-rule p-8 md:p-10 flex flex-col`}
+                  className={`relative ${
+                    isHighlight
+                      ? "bg-arch-forest text-arch-cream"
+                      : isTop
+                      ? "bg-arch-cream-raised text-arch-ink border-t-4 border-arch-gold"
+                      : "bg-arch-cream-raised text-arch-ink"
+                  } ${i < PLANS.length - 1 ? "md:border-r border-arch-rule" : ""} border-b md:border-b-0 border-arch-rule p-7 md:p-9 flex flex-col`}
                 >
-                  <div className="h-8 mb-6">
+                  {/* バッジ */}
+                  <div className="h-8 mb-5 flex items-center gap-2">
                     {p.badge && (
                       <span
-                        className={`inline-block mono-micro px-3 py-1 ${isHighlight ? "bg-arch-gold text-arch-ink" : "bg-arch-ink text-arch-cream"}`}
+                        className={`inline-block mono-micro px-3 py-1 ${
+                          isHighlight
+                            ? "bg-arch-gold text-arch-ink"
+                            : isTop
+                            ? "bg-arch-gold text-arch-ink"
+                            : "bg-arch-ink text-arch-cream"
+                        }`}
                       >
                         {p.badge}
                       </span>
                     )}
+                    {p.accent && (
+                      <span className="mono-micro text-arch-gold tracking-wider">
+                        {p.accent}
+                      </span>
+                    )}
                   </div>
-                  <p className={`mono-label mb-2 ${isHighlight ? "text-arch-gold" : "text-arch-moss"}`}>
+
+                  {/* tier / 名前 */}
+                  <p
+                    className={`mono-label mb-2 ${
+                      isHighlight ? "text-arch-gold" : "text-arch-moss"
+                    }`}
+                  >
                     {p.tier}
                   </p>
-                  <h3 className={`display-jp text-xl md:text-2xl mb-2 ${isHighlight ? "text-arch-cream" : "text-arch-ink"}`}>
+                  <h3
+                    className={`display-jp text-xl md:text-2xl mb-2 ${
+                      isHighlight ? "text-arch-cream" : "text-arch-ink"
+                    }`}
+                  >
                     {p.ja}
                   </h3>
-                  <p className={`mono-micro mb-8 ${isHighlight ? "text-arch-sage/70" : "text-arch-ink-muted"}`}>
+                  <p
+                    className={`mono-micro mb-6 leading-relaxed ${
+                      isHighlight ? "text-arch-sage/80" : "text-arch-ink-muted"
+                    }`}
+                  >
                     {p.tagline}
                   </p>
 
+                  {/* 帯：性格を一言で */}
                   <div
-                    className={`flex items-baseline gap-2 pb-8 mb-8 border-b ${isHighlight ? "border-arch-rule-dark" : "border-arch-rule"}`}
+                    className={`mb-6 px-4 py-3 ${
+                      isHighlight
+                        ? "bg-arch-forest-soft text-arch-cream border-l-2 border-arch-gold"
+                        : isTop
+                        ? "bg-arch-cream text-arch-ink border-l-2 border-arch-gold"
+                        : "bg-arch-cream text-arch-ink-soft border-l-2 border-arch-forest"
+                    }`}
                   >
-                    <span
-                      className={`display-jp text-6xl md:text-7xl tabular-nums ${isHighlight ? "text-arch-gold" : "text-arch-forest"}`}
+                    <p
+                      className={`text-sm font-bold leading-snug ${
+                        isHighlight ? "text-arch-cream" : "text-arch-ink"
+                      }`}
                     >
-                      {p.priceNum}
-                    </span>
-                    <span
-                      className={`mono-label ${isHighlight ? "text-arch-sage/80" : "text-arch-ink-muted"}`}
-                    >
-                      {p.priceUnit}
-                    </span>
+                      {p.headline}
+                    </p>
                   </div>
 
-                  <ul className="space-y-3 flex-1">
+                  {/* 価格 */}
+                  <div
+                    className={`pb-6 mb-6 border-b ${
+                      isHighlight ? "border-arch-rule-dark" : "border-arch-rule"
+                    }`}
+                  >
+                    <p
+                      className={`mono-micro mb-1 ${
+                        isHighlight ? "text-arch-sage/60" : "text-arch-ink-muted"
+                      }`}
+                    >
+                      月額
+                    </p>
+                    <p className="flex items-baseline gap-1.5">
+                      <span
+                        className={`display-jp text-2xl ${
+                          isHighlight ? "text-arch-gold" : "text-arch-forest"
+                        }`}
+                      >
+                        ¥
+                      </span>
+                      <span
+                        className={`display-jp text-[2.75rem] md:text-[3.25rem] leading-none tabular-nums ${
+                          isHighlight ? "text-arch-gold" : "text-arch-forest"
+                        }`}
+                      >
+                        {p.priceNum}
+                      </span>
+                      <span
+                        className={`mono-micro ml-1 ${
+                          isHighlight ? "text-arch-sage/70" : "text-arch-ink-muted"
+                        }`}
+                      >
+                        {p.priceUnit}
+                      </span>
+                    </p>
+                  </div>
+
+                  {/* 含まれる内容 */}
+                  <p
+                    className={`mono-micro mb-3 ${
+                      isHighlight ? "text-arch-sage/70" : "text-arch-ink-muted"
+                    }`}
+                  >
+                    含まれる内容
+                  </p>
+                  <ul className="space-y-2.5 mb-6 flex-1">
                     {p.items.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
+                      <li key={item} className="flex items-start gap-2.5">
                         <Check
-                          size={14}
-                          className={`mt-1 shrink-0 ${isHighlight ? "text-arch-gold" : "text-arch-moss"}`}
+                          size={13}
+                          className={`mt-1 shrink-0 ${
+                            isHighlight ? "text-arch-gold" : isTop ? "text-arch-gold" : "text-arch-moss"
+                          }`}
                         />
                         <span
-                          className={`text-sm leading-relaxed ${isHighlight ? "text-arch-sage" : "text-arch-ink-soft"}`}
+                          className={`text-[13px] leading-relaxed ${
+                            isHighlight ? "text-arch-sage" : "text-arch-ink-soft"
+                          }`}
                         >
                           {item}
                         </span>
@@ -594,11 +711,41 @@ export default function ConsultingPage() {
                     ))}
                   </ul>
 
+                  {/* 説明 */}
+                  <div
+                    className={`text-[13px] leading-loose mb-5 pt-5 border-t ${
+                      isHighlight
+                        ? "border-arch-rule-dark text-arch-sage"
+                        : "border-arch-rule text-arch-ink-soft"
+                    }`}
+                  >
+                    {p.desc}
+                  </div>
+
+                  {/* 注意書き */}
+                  {p.notes.length > 0 && (
+                    <ul
+                      className={`mono-micro space-y-1 mb-6 leading-relaxed ${
+                        isHighlight ? "text-arch-sage/60" : "text-arch-ink-muted"
+                      }`}
+                    >
+                      {p.notes.map((n) => (
+                        <li key={n}>※ {n}</li>
+                      ))}
+                    </ul>
+                  )}
+
                   <Link
                     href="/#contact"
-                    className={`mt-10 inline-flex items-center justify-center gap-2 px-6 py-3.5 mono-label border ${isHighlight ? "bg-arch-gold text-arch-ink border-arch-gold hover:bg-arch-cream" : "border-arch-forest text-arch-forest hover:bg-arch-forest hover:text-arch-cream"} transition-colors`}
+                    className={`mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 mono-label border transition-colors ${
+                      isHighlight
+                        ? "bg-arch-gold text-arch-ink border-arch-gold hover:bg-arch-cream"
+                        : isTop
+                        ? "bg-arch-forest text-arch-cream border-arch-forest hover:bg-arch-ink hover:border-arch-ink"
+                        : "border-arch-forest text-arch-forest hover:bg-arch-forest hover:text-arch-cream"
+                    }`}
                   >
-                    お問い合わせ
+                    現場の状況を相談する
                     <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -606,134 +753,11 @@ export default function ConsultingPage() {
             })}
           </div>
 
-          <p className="mono-micro text-arch-ink-muted mt-6">
-            ※ 別途初期費用 100,000円（税別）がかかります。料金はすべて税別表示です。
-          </p>
-
-          {/* Trial + On-site */}
-          <div className="mt-16 md:mt-20 border-t border-arch-rule" id="trial">
-            <div className="grid md:grid-cols-12 gap-8 border-b border-arch-rule py-10 md:py-12">
-              <div className="md:col-span-5">
-                <p className="mono-label text-arch-moss mb-3">TRIAL — 初回限定</p>
-                <h3 className="display-jp text-2xl md:text-3xl text-arch-ink mb-4">
-                  お試しコンサルティング
-                </h3>
-                <p className="mono-micro text-arch-ink-muted mb-6">1ヶ月限定</p>
-                <div className="flex items-baseline gap-2">
-                  <span className="display-jp text-5xl md:text-6xl text-arch-forest tabular-nums">
-                    70,000
-                  </span>
-                  <span className="mono-label text-arch-ink-muted">円 / 月</span>
-                </div>
-              </div>
-              <div className="md:col-span-7">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 border-t border-arch-rule pt-6">
-                  {[
-                    "訪問歯科の運営サポート",
-                    "月1回のWeb/対面ミーティング",
-                    "ARCH独自アプリ使用可能",
-                    "運営課題の初期診断",
-                    "LINE等での相談",
-                    "月間レポート（簡易）",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <Check size={14} className="text-arch-moss mt-1 shrink-0" />
-                      <span className="text-sm text-arch-ink-soft">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mono-micro text-arch-ink-muted mt-6 space-y-1">
-                  <p>※ お試し期間終了後、本契約時は初期費用を無償とさせていただきます。</p>
-                  <p>※ 初回契約時のみご利用いただけます。</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-12 gap-8 py-10 md:py-12 border-b border-arch-rule" id="onsite">
-              <div className="md:col-span-5">
-                <p className="mono-label text-arch-moss mb-3">ON-SITE — 単発プラン</p>
-                <h3 className="display-jp text-2xl md:text-3xl text-arch-ink mb-4">
-                  単発 実地支援サービス
-                </h3>
-                <p className="mono-micro text-arch-ink-muted mb-6">1回ごとの実地支援</p>
-                <div className="flex items-baseline gap-2">
-                  <span className="display-jp text-5xl md:text-6xl text-arch-forest tabular-nums">
-                    50,000
-                  </span>
-                  <span className="mono-label text-arch-ink-muted">円 / 1回</span>
-                </div>
-              </div>
-              <div className="md:col-span-7">
-                <ul className="space-y-6 border-t border-arch-rule pt-6">
-                  {[
-                    {
-                      num: "01",
-                      title: "訪問診療の同行",
-                      desc:
-                        "実際の訪問診療に同行し、現場のオペレーション・患者対応・スタッフの動きを確認します。",
-                    },
-                    {
-                      num: "02",
-                      title: "改善レポートの作成",
-                      desc:
-                        "同行後1週間を目処に詳細レポートを提出。改善すべきポイントを具体的なアクション付きでまとめます。",
-                    },
-                    {
-                      num: "03",
-                      title: "運営改善のアドバイス",
-                      desc:
-                        "施設対応・初診導線・スタッフ配置・算定構成。運営の詰まりに具体策で答えます。",
-                    },
-                  ].map((step) => (
-                    <li key={step.num} className="grid grid-cols-[auto_1fr] gap-5">
-                      <span className="mono-label text-arch-moss tabular-nums pt-1">{step.num}</span>
-                      <div>
-                        <h4 className="display-jp text-base md:text-lg text-arch-ink mb-1">
-                          {step.title}
-                        </h4>
-                        <p className="text-sm text-arch-ink-soft leading-loose">{step.desc}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mono-micro text-arch-ink-muted mt-6 space-y-1">
-                  <p>※ 実地支援は単発でのご利用が可能です。料金は税別表示です。</p>
-                  <p>
-                    ※ 所在地が<strong className="text-arch-ink"> 東京都・神奈川県・埼玉県以外 </strong>の医院様は、別途交通費を申し受けます。
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="py-10 md:py-14" id="apply">
-              <ServiceInquiryForm
-                idPrefix="trial-onsite"
-                heading="お試しコンサル／単発 実地支援 申込フォーム"
-                description="ご希望の内容をお選びの上、必要事項をご入力ください。内容確認後、鈴木より折り返しご連絡いたします。"
-                types={[
-                  {
-                    value: "trial",
-                    label: "お試しコンサルティング",
-                    description: "初回限定・1ヶ月 / 70,000円",
-                    subjectTag: "【お試しコンサル申込】歯科医院運営支援",
-                    defaultChecked: true,
-                  },
-                  {
-                    value: "onsite",
-                    label: "単発 実地支援サービス",
-                    description: "1回ごと / 50,000円",
-                    subjectTag: "【単発実地支援申込】歯科医院運営支援",
-                  },
-                ]}
-                notes={[
-                  "【単発実地支援の場合】所在地が東京都・神奈川県・埼玉県以外の医院様は、別途交通費（実費）をご請求いたします。",
-                  "【お試しコンサルの場合】お試し期間終了後に本契約される場合は、初期費用を無償とさせていただきます（初回契約時のみご利用可）。",
-                  "実施日程は申込後にメール/LINEで調整いたします。",
-                  "料金はすべて税別表示です。",
-                ]}
-                submitLabel="この内容で申込む"
-              />
-            </div>
+          <div className="mt-10 md:mt-12 border border-arch-rule-dark/20 bg-arch-cream-raised p-6 md:p-8">
+            <p className="text-sm md:text-base text-arch-ink-soft leading-loose">
+              上記は目安料金です。医院の規模、課題、訪問回数、支援範囲により個別にご提案します。
+              <strong className="text-arch-ink">まずは現在の課題をお聞かせください。</strong>
+            </p>
           </div>
         </div>
       </section>
