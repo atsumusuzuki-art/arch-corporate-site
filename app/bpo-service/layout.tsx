@@ -54,22 +54,30 @@ export default function BpoServiceLayout({
         </div>
 
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
-          <p className="mono-label text-arch-gold mb-6">状況を整理する</p>
+          <p className="mono-label text-arch-gold mb-6">無料相談</p>
           <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
-            まずは、現場の業務を
+            医院の課題を、
             <br />
-            そのまま聞かせてください。
+            まずは一度お聞かせください。
           </h2>
           <p className="text-base md:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10">
-            現在の業務フロー、書類、郵送、レセプト、シフトまわり。どこを外側で巻き取れるか、医院の状況に合わせて一緒に整理します。営業は一切行いません。
+            訪問歯科、分院展開、算定、採用、HP改善など、医院ごとに必要な支援は異なります。現在の状況を伺った上で、最適な関わり方をご提案します。
           </p>
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
-          >
-            現場の状況を相談する
-            <ArrowRight size={18} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
+            >
+              無料相談する
+              <ArrowRight size={18} />
+            </Link>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center gap-3 border border-arch-cream text-arch-cream px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-cream hover:text-arch-forest transition-colors"
+            >
+              お問い合わせ
+            </Link>
+          </div>
         </div>
 
         <div className="absolute bottom-6 left-6 md:bottom-8 md:left-10 pointer-events-none">

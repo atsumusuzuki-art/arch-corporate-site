@@ -3,9 +3,9 @@ import Link from "next/link";
 import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
 
 export const metadata = {
-  title: "歯科医院運営支援｜運営改善・レセプト精度・月次分析",
+  title: "歯科医院の外部事務長｜訪問歯科・分院展開・算定支援｜ARCH",
   description:
-    "訪問歯科は、始めるよりも回し続ける方が難しい。算定、レセプト、施設対応、スタッフ導線、月次分析まで、外部事務長として現場実務に入り込んで支援します。",
+    "ARCHは歯科医院の外部事務長として、訪問歯科立ち上げ、施設連携、分院展開、算定・施設基準、採用、HP改善まで横断的に支援します。関与度で選べる月額3プラン。",
 };
 
 /* ================================================================
@@ -845,6 +845,69 @@ export default function ConsultingPage() {
               <ArrowRight size={16} />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────
+          RELATED — 課題別の詳細ページ
+      ────────────────────────────────────────── */}
+      <section className="bg-arch-cream-raised py-20 md:py-24 border-t border-arch-rule">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-10 md:mb-12">
+            <SectionTag category="MORE" number="06" label="課題別の詳しいページ" />
+            <p className="mono-micro text-arch-ink-muted hidden sm:block">05 PAGES</p>
+          </div>
+
+          <h2 className="display-jp text-2xl md:text-3xl text-arch-ink mb-10 md:mb-12 max-w-3xl leading-snug">
+            こんな状況でお悩みなら、
+            <br />
+            <span className="text-arch-forest font-black">こちらのページもどうぞ。</span>
+          </h2>
+
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-arch-rule">
+            {[
+              {
+                href: "/services/external-manager",
+                title: "歯科医院の外部事務長とは",
+                desc: "ARCHが取り組む役割・一般的なコンサルとの違い",
+              },
+              {
+                href: "/services/visit-dental-startup",
+                title: "訪問歯科立ち上げ支援",
+                desc: "施設連携・必要書類・スタッフ体制から現場導入まで",
+              },
+              {
+                href: "/services/facility-growth",
+                title: "施設連携・利用者増加支援",
+                desc: "施設はあるのに患者が増えない医院向け",
+              },
+              {
+                href: "/services/branch-startup",
+                title: "分院立ち上げ支援",
+                desc: "物件・機器・採用・HPまで横断的に",
+              },
+              {
+                href: "/services/fee-standards",
+                title: "算定・施設基準支援",
+                desc: "施設基準の届出・診療報酬改定・レセコン整理",
+              },
+            ].map((r) => (
+              <li key={r.href} className="border-b border-r border-arch-rule">
+                <Link
+                  href={r.href}
+                  className="group block py-6 md:py-7 px-5 md:px-6 h-full hover:bg-arch-cream transition-colors"
+                >
+                  <p className="display-jp text-base md:text-lg text-arch-ink group-hover:text-arch-forest transition-colors mb-2">
+                    {r.title}
+                  </p>
+                  <p className="text-xs md:text-sm text-arch-ink-soft leading-relaxed">{r.desc}</p>
+                  <p className="mono-micro text-arch-moss mt-3 inline-flex items-center gap-1.5">
+                    詳しく見る <ArrowRight size={11} />
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </article>

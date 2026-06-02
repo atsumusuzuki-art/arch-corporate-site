@@ -189,13 +189,14 @@ const BLOCKS: Block[] = [
   },
 ];
 
-/* Footer リンク用：サービス分類リスト（旧 SERVICES の置き換え） */
+/* Footer リンク用：課題別ページ・コンセプト・料金 */
 const SERVICE_FOOTER_LINKS = [
-  { title: "歯科医院運営支援", href: "/services/consulting" },
-  { title: "レセプト・算定改善支援", href: "/services/consulting#billing" },
-  { title: "施設連携・営業支援", href: "/services/sales" },
-  { title: "事務代行・BPO支援", href: "/bpo-service" },
-  { title: "DX・業務改善支援", href: "/bpo-service#dx" },
+  { title: "外部事務長とは", href: "/services/external-manager" },
+  { title: "訪問歯科立ち上げ支援", href: "/services/visit-dental-startup" },
+  { title: "施設連携・利用者増加", href: "/services/facility-growth" },
+  { title: "分院立ち上げ支援", href: "/services/branch-startup" },
+  { title: "算定・施設基準支援", href: "/services/fee-standards" },
+  { title: "料金プラン", href: "/services/consulting" },
 ];
 
 /* 厳選コラム3本（⑤ARCH NOTE） */

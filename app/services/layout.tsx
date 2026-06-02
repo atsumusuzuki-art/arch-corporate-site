@@ -3,9 +3,14 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const OTHER_SERVICES = [
-  { num: "01", href: "/services/consulting", title: "歯科医院運営支援", desc: "運営改善・レセプト精度・月次分析" },
-  { num: "02", href: "/services/sales", title: "施設連携・営業支援", desc: "施設対応導線・初診オペレーション・営業設計" },
-  { num: "03", href: "/bpo-service", title: "事務代行・BPO支援", desc: "書類・郵送・事務フロー・業務DX" },
+  { num: "01", href: "/services/external-manager", title: "歯科医院の外部事務長とは", desc: "ARCHが取り組む役割と一般的なコンサルとの違い" },
+  { num: "02", href: "/services/visit-dental-startup", title: "訪問歯科立ち上げ支援", desc: "施設連携・必要書類・スタッフ体制から現場導入まで" },
+  { num: "03", href: "/services/facility-growth", title: "施設連携・利用者増加支援", desc: "施設はあるのに患者が増えない医院向け" },
+  { num: "04", href: "/services/branch-startup", title: "分院立ち上げ支援", desc: "物件・機器・採用・HPまで横断的に" },
+  { num: "05", href: "/services/fee-standards", title: "算定・施設基準支援", desc: "施設基準の届出・診療報酬改定・レセコン整理" },
+  { num: "06", href: "/services/consulting", title: "料金プラン（月額3プラン）", desc: "顧問・外部事務長ライト・外部事務長" },
+  { num: "07", href: "/services/sales", title: "施設連携・営業支援", desc: "施設対応導線・初診オペレーション" },
+  { num: "08", href: "/bpo-service", title: "事務代行・BPO支援", desc: "書類・郵送・HP制作・業務DX" },
 ];
 
 export default function ServicesLayout({
@@ -55,22 +60,30 @@ export default function ServicesLayout({
         </div>
 
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
-          <p className="mono-label text-arch-gold mb-6">状況を整理する</p>
+          <p className="mono-label text-arch-gold mb-6">無料相談</p>
           <h2 className="display-jp text-3xl sm:text-4xl md:text-5xl text-arch-cream mb-6 leading-[1.25]">
-            まずは、医院の状況を
+            医院の課題を、
             <br />
-            お聞かせください。
+            まずは一度お聞かせください。
           </h2>
           <p className="text-base md:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10">
-            レセプト、施設連携、スタッフ導線、事務負担。どこから整えるべきか、医院の状況に合わせて一緒に整理します。営業は一切行いません。
+            訪問歯科、分院展開、算定、採用、HP改善など、医院ごとに必要な支援は異なります。現在の状況を伺った上で、最適な関わり方をご提案します。
           </p>
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
-          >
-            現場の状況を相談する
-            <ArrowRight size={18} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
+            >
+              無料相談する
+              <ArrowRight size={18} />
+            </Link>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center gap-3 border border-arch-cream text-arch-cream px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-cream hover:text-arch-forest transition-colors"
+            >
+              お問い合わせ
+            </Link>
+          </div>
         </div>
 
         {/* bottom mono rule */}
