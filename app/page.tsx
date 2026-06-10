@@ -199,6 +199,25 @@ const SERVICE_FOOTER_LINKS = [
   { title: "料金プラン", href: "/services/consulting" },
 ];
 
+/* お客様の声（VOICES） */
+const VOICES = [
+  {
+    body:
+      "LINEの返信が異常に早く、困った時にはすぐに助けてくれます。昨今webで済ます業者が多い中でARCHさんは会いにきてくれるので本当に信頼がおける。訪問歯科のコンサルはもちろん、最近は医院モニター用の広告動画の作成もお願いしました。何でもやってくれるのでついつい色んなことを任せてしまいます。",
+    author: "東京都世田谷区 歯科医院",
+  },
+  {
+    body:
+      "採用の相談や新規入職したスタッフ（歯科医師・歯科衛生士・事務）の初期研修も担当してくれています。歯科医師より歯科のことを分かっているので安心して任せています。他のコンサルと違って、課題を指摘して終わるのではなく一緒に伴走して解決に導いてくれるので本当に助かっています。",
+    author: "北海道札幌市 歯科医院",
+  },
+  {
+    body:
+      "遠方なのでたまにしかお会いしませんが、いつも電話やLINEで連絡してくれます。報酬改定など私はあまり詳しくないですが、ARCHさんが弊院に合ったポイントを丁寧に説明してくれるので助かっています。医療や介護関係に顔が広く、経営層の紹介もしてくれます。",
+    author: "地方 歯科医院 院長",
+  },
+];
+
 /* 厳選コラム3本（⑤ARCH NOTE） */
 const NOTES = [
   {
@@ -374,12 +393,17 @@ export default function Home() {
             </h1>
 
             {/* サブコピー */}
-            <p className="text-base sm:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-10 md:mb-12 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] hero-fade hero-fade-3">
+            <p className="text-base sm:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-8 md:mb-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] hero-fade hero-fade-3">
               訪問歯科、外来、分院展開、スタッフ導線、レセプト、現場オペレーション。
               <br className="hidden sm:block" />
               歯科医院は、院長一人で抱え始めると、現場が止まりやすくなります。
               <br className="hidden sm:block" />
               ARCHは、歯科医院の外部事務長として、現場実務まで入り込みながら、医院運営を支えます。
+            </p>
+
+            {/* 鈴木経歴ミニ帯（信頼帯） */}
+            <p className="mono-label text-arch-sage mb-10 md:mb-12 pl-3 border-l border-arch-gold/40 leading-relaxed hero-fade hero-fade-3" style={{ animationDelay: "0.65s" }}>
+              元小学校教員 <span className="text-arch-gold">→</span> 広域医療法人 歯科事務局長 <span className="text-arch-gold">→</span> 訪問歯科を単独立ち上げ・6ヶ月で黒字化
             </p>
 
             {/* CTAボタン */}
@@ -388,7 +412,7 @@ export default function Home() {
                 href="#contact"
                 className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center justify-center gap-3 lift-on-hover"
               >
-                現場の状況を相談する <ArrowRight size={16} />
+                無料で相談する（30分・オンライン可） <ArrowRight size={16} />
               </a>
               <a
                 href="#service"
@@ -402,7 +426,22 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
           <span className="mono-micro text-arch-sage/50">HOME</span>
-          <span className="mono-micro text-arch-sage/50">01 / 07</span>
+          <span className="mono-micro text-arch-sage/50">01 / 08</span>
+        </div>
+      </section>
+
+      {/* ============================================================
+          価格不安除去ストリップ — HERO 直下の細い帯
+          ============================================================ */}
+      <section className="reveal bg-arch-cream-raised border-y border-arch-rule py-3 md:py-4">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+          <div className="flex items-center justify-center gap-4 md:gap-8 text-center">
+            <span className="mono-label text-arch-ink text-xs">月額5万円〜（顧問プラン）</span>
+            <span className="hidden md:block w-px h-3 bg-arch-rule-dark/30" aria-hidden="true" />
+            <span className="mono-label text-arch-ink text-xs">営業はしません</span>
+            <span className="hidden md:block w-px h-3 bg-arch-rule-dark/30" aria-hidden="true" />
+            <span className="mono-label text-arch-ink text-xs">初回30分無料相談</span>
+          </div>
         </div>
       </section>
 
@@ -453,7 +492,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">ABOUT</span>
-          <span className="mono-micro text-arch-moss/60">02 / 07</span>
+          <span className="mono-micro text-arch-moss/60">02 / 08</span>
         </div>
       </section>
 
@@ -517,7 +556,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">CASES</span>
-          <span className="mono-micro text-arch-moss/60">03 / 07</span>
+          <span className="mono-micro text-arch-moss/60">03 / 08</span>
         </div>
       </section>
 
@@ -636,13 +675,16 @@ export default function Home() {
           </div>
 
           <p className="mono-micro text-arch-sage/50 mt-10 max-w-2xl leading-loose">
+            ※ 上記すべてを一度に行うわけではありません。医院の状況に合わせて優先順位を一緒に決めます。
+          </p>
+          <p className="mono-micro text-arch-sage/50 mt-3 max-w-2xl leading-loose">
             ※ サービスを切り売りするのではなく、医院の状況に合わせて必要な実務を組み合わせます。まずは現場の状況をお聞かせください。
           </p>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
           <span className="mono-micro text-arch-sage/60">SERVICE</span>
-          <span className="mono-micro text-arch-sage/60">04 / 07</span>
+          <span className="mono-micro text-arch-sage/60">04 / 08</span>
         </div>
       </section>
 
@@ -722,7 +764,49 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">MESSAGE</span>
-          <span className="mono-micro text-arch-moss/60">05 / 07</span>
+          <span className="mono-micro text-arch-moss/60">05 / 08</span>
+        </div>
+      </section>
+
+      {/* ============================================================
+          VOICES — お客様の声（deep forest）
+          ============================================================ */}
+      <section
+        id="voices"
+        className="reveal relative py-20 md:py-28 bg-arch-forest-soft text-arch-cream border-t border-arch-rule-dark/60 overflow-hidden"
+      >
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+          <SectionTag category="VOICES" label="お客様の声" theme="dark" />
+
+          <h2 className="reveal display-jp text-arch-cream text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-14 md:mb-20 max-w-3xl">
+            取引先院長の、
+            <br />
+            <span className="text-arch-gold">リアルな声。</span>
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+            {VOICES.map((v, i) => (
+              <figure
+                key={i}
+                className={`reveal reveal-delay-${i + 1} bg-arch-cream text-arch-ink p-7 md:p-9 flex flex-col`}
+              >
+                <span className="display-jp text-5xl text-arch-gold leading-none mb-4">
+                  &ldquo;
+                </span>
+                <blockquote className="text-sm md:text-[15px] text-arch-ink-soft leading-loose flex-1">
+                  {v.body}
+                </blockquote>
+                <figcaption className="mono-label text-arch-moss border-t border-arch-rule pt-5 mt-6">
+                  — {v.author}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
+          <span className="mono-micro text-arch-sage/60">VOICES</span>
+          <span className="mono-micro text-arch-sage/60">05b / 08</span>
         </div>
       </section>
 
@@ -798,7 +882,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
           <span className="mono-micro text-arch-moss/60">NOTE</span>
-          <span className="mono-micro text-arch-moss/60">06 / 07</span>
+          <span className="mono-micro text-arch-moss/60">06 / 08</span>
         </div>
       </section>
 
@@ -853,7 +937,68 @@ export default function Home() {
       </section>
 
       {/* ============================================================
-          ⑦ FINAL CTA + CONTACT
+          FLOW — 相談の流れ
+          ============================================================ */}
+      <section
+        id="flow"
+        className="reveal relative py-20 md:py-28 bg-arch-cream-raised border-t border-arch-rule"
+      >
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
+          <SectionTag category="FLOW" number="07" label="相談の流れ" />
+
+          <h2 className="reveal display-jp text-arch-ink text-3xl md:text-4xl leading-[1.2] mt-6 mb-14 md:mb-20 max-w-3xl">
+            お問い合わせから、
+            <br />
+            <span className="text-arch-forest font-black">30分の無料相談まで。</span>
+          </h2>
+
+          <div className="grid md:grid-cols-4 gap-0 border-t border-l border-arch-rule">
+            {[
+              {
+                num: "01",
+                title: "フォーム送信",
+                body: "下記フォームから現在の状況をお聞かせください。",
+              },
+              {
+                num: "02",
+                title: "5 営業日以内に返信",
+                body: "鈴木より、メールで折り返しご連絡いたします。",
+              },
+              {
+                num: "03",
+                title: "30分オンライン無料相談",
+                body: "Zoom や Google Meet で、現在の課題を伺います。",
+              },
+              {
+                num: "04",
+                title: "必要に応じて提案",
+                body: "医院の状況に合わせて、最適な支援方法をご提案します。",
+              },
+            ].map((step, i) => (
+              <div
+                key={step.num}
+                className={`reveal reveal-delay-${i + 1} border-b border-r border-arch-rule py-7 md:py-10 px-5 md:px-6`}
+              >
+                <p className="mono-label text-arch-moss mb-3 md:mb-4 tabular-nums">
+                  STEP — {step.num}
+                </p>
+                <h3 className="display-jp text-arch-ink text-xl md:text-2xl mb-3 md:mb-4 leading-snug">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-arch-ink-soft leading-loose">{step.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
+          <span className="mono-micro text-arch-moss/60">FLOW</span>
+          <span className="mono-micro text-arch-moss/60">07 / 08</span>
+        </div>
+      </section>
+
+      {/* ============================================================
+          ⑧ FINAL CTA + CONTACT
           ============================================================ */}
       <section id="contact" className="relative py-20 md:py-36 bg-arch-forest text-arch-cream overflow-hidden">
         {/* Background image with overlay (静かな夜の空気感として) */}
@@ -869,20 +1014,23 @@ export default function Home() {
         </div>
 
         <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
-          <span className="mono-micro text-arch-sage/60">07 — CONTACT</span>
+          <span className="mono-micro text-arch-sage/60">08 — CONTACT</span>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="CONTACT" number="07" label="お問い合わせ" theme="dark" />
+          <SectionTag category="CONTACT" number="08" label="お問い合わせ" theme="dark" />
 
           <h2 className="reveal display-jp text-arch-cream text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.18] mt-6 mb-8">
             まずは、
             <br />
             <span className="text-arch-gold">医院の状況</span>をお聞かせください。
           </h2>
-          <p className="reveal reveal-delay-1 text-arch-sage text-base md:text-lg leading-loose max-w-2xl mb-14 md:mb-20">
+          <p className="reveal reveal-delay-1 text-arch-sage text-base md:text-lg leading-loose max-w-2xl mb-6 md:mb-8">
             外来、訪問歯科、分院、レセプト、施設連携、スタッフ導線、事務負担。
             どこから整えるべきか、医院の状況に合わせて一緒に整理します。
+          </p>
+          <p className="reveal reveal-delay-2 mono-micro text-arch-sage/70 leading-relaxed mb-8 md:mb-10">
+            ※ 初回相談は完全無料です。営業や強引な提案は一切いたしません。
           </p>
 
           <div className="reveal reveal-delay-2 max-w-2xl">
@@ -962,7 +1110,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-20 md:mt-28 flex justify-between">
           <span className="mono-micro text-arch-sage/60">CONTACT</span>
-          <span className="mono-micro text-arch-sage/60">07 / 07</span>
+          <span className="mono-micro text-arch-sage/60">08 / 08</span>
         </div>
       </section>
 

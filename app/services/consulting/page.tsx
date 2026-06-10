@@ -208,7 +208,7 @@ const PLANS: Plan[] = [
     tier: "OFFICE LIGHT",
     ja: "外部事務長ライト",
     tagline: "現場に近い立場で課題整理したい医院に",
-    priceNum: "100,000",
+    priceNum: "150,000",
     priceUnit: "円〜 / 月（税別）",
     headline: "月1回訪問 + 定例会で運営を整理",
     target: [
