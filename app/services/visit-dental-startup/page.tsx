@@ -134,7 +134,7 @@ export default function VisitDentalStartupPage() {
                 href="/#contact"
                 className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
               >
-                訪問歯科の立ち上げを相談する
+                無料相談する（30分・オンライン可）
                 <ArrowRight size={18} />
               </Link>
             </div>

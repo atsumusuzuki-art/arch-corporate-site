@@ -304,7 +304,7 @@ export default function Home() {
               onClick={() => setIsMenuOpen(false)}
               className="block bg-arch-cream text-arch-forest px-6 py-3.5 rounded-[2px] mono-label !text-arch-forest text-center"
             >
-              現場の状況を相談する
+              無料相談する（30分・オンライン可）
             </a>
           </div>
         )}
@@ -370,7 +370,7 @@ export default function Home() {
                 href="#contact"
                 className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center justify-center gap-3 lift-on-hover"
               >
-                無料で相談する（30分・オンライン可） <ArrowRight size={16} />
+                無料相談する（30分・オンライン可） <ArrowRight size={16} />
               </a>
               <a
                 href="#service"
@@ -757,7 +757,7 @@ export default function Home() {
                   type="submit"
                   className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center gap-3"
                 >
-                  <Send size={16} /> この内容で相談する
+                  <Send size={16} /> 無料相談を送信する
                 </button>
               </div>
             </form>

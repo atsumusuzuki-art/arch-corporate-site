@@ -325,7 +325,7 @@ export default function ConsultingPage() {
                 href="/#contact"
                 className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
               >
-                現場の状況を相談する
+                無料相談する（30分・オンライン可）
                 <ArrowRight size={18} />
               </Link>
             </div>
@@ -706,7 +706,7 @@ export default function ConsultingPage() {
                         : "border-arch-forest text-arch-forest hover:bg-arch-forest hover:text-arch-cream"
                     }`}
                   >
-                    現場の状況を相談する
+                    無料相談する（30分・オンライン可）
                     <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -758,7 +758,7 @@ export default function ConsultingPage() {
               href="/#contact"
               className="mt-6 inline-flex items-center gap-3 bg-arch-forest text-arch-cream px-7 py-3.5 text-sm font-bold tracking-[0.15em] hover:bg-arch-ink transition-colors"
             >
-              現場の状況を相談する
+              無料相談する（30分・オンライン可）
               <ArrowRight size={16} />
             </Link>
           </div>

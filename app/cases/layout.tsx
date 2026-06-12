@@ -62,14 +62,8 @@ export default function CasesLayout({ children }: { children: React.ReactNode })
               href="/#contact"
               className="inline-flex items-center justify-center gap-3 bg-arch-cream text-arch-forest px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold hover:text-arch-ink transition-colors"
             >
-              無料相談する
+              無料相談する（30分・オンライン可）
               <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center gap-3 border border-arch-cream text-arch-cream px-8 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-cream hover:text-arch-forest transition-colors"
-            >
-              お問い合わせ
             </Link>
           </div>
         </div>

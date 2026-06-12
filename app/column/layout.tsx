@@ -37,7 +37,7 @@ export default function ColumnLayout({
             href="/#contact"
             className="inline-flex items-center gap-2 bg-white text-green-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-green-50 transition-all shadow-lg"
           >
-            現場の状況を相談する
+            無料相談する（30分・オンライン可）
           </Link>
         </div>
       </section>
