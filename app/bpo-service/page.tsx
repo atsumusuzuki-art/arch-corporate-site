@@ -306,49 +306,6 @@ export default function BpoServicePage() {
       </section>
 
       {/* ──────────────────────────────────────────
-          IMPACT — 3つの時間
-      ────────────────────────────────────────── */}
-      <section className="bg-arch-forest text-arch-cream py-20 md:py-28 border-t border-arch-rule-dark relative overflow-hidden">
-        <CornerMarkers
-          topRight="IMPACT — 3 TIMES"
-          bottomLeft="BPO RESULTS"
-          bottomRight="03 / 03"
-          theme="dark"
-        />
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-baseline justify-between border-b border-arch-rule-dark pb-4 mb-12 md:mb-16">
-            <SectionTag category="IMPACT" number="04" label="導入効果" theme="dark" />
-            <p className="mono-micro text-arch-sage/60 hidden sm:block">03 OUTCOMES</p>
-          </div>
-
-          <h2 className="display-jp text-3xl md:text-4xl lg:text-5xl text-arch-cream mb-14 md:mb-20 max-w-4xl leading-[1.2]">
-            導入医院が手に入れる、
-            <br />
-            <span className="text-arch-gold">3つの&ldquo;時間&rdquo;。</span>
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-0 border-t border-arch-rule-dark">
-            {IMPACTS.map((item, i) => (
-              <div
-                key={item.num}
-                className={`border-b border-arch-rule-dark md:border-b-0 ${i < IMPACTS.length - 1 ? "md:border-r" : ""} py-10 md:py-12 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}
-              >
-                <p className="mono-label text-arch-gold mb-6 tabular-nums">TIME — {item.num}</p>
-                <p className="display-jp text-5xl md:text-6xl lg:text-7xl text-arch-cream leading-none tabular-nums mb-3">
-                  {item.metric}
-                </p>
-                <p className="mono-micro text-arch-sage/60 mb-6">{item.unit}</p>
-                <h3 className="display-jp text-lg md:text-xl text-arch-cream mb-4 leading-snug">
-                  {item.label}
-                </h3>
-                <p className="text-sm text-arch-sage/90 leading-loose">{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────
           PRICING — Spot BPO
       ────────────────────────────────────────── */}
       <section id="pricing" className="bg-arch-cream py-20 md:py-28 border-t border-arch-rule">

@@ -395,47 +395,30 @@ export default function ConsultingPage() {
             id={f.num === "02" ? "billing" : undefined}
           >
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
-              <div className="grid md:grid-cols-12 gap-8 md:gap-14 items-start">
-                <div className={`md:col-span-7 ${idx === 1 ? "md:order-2" : ""}`}>
-                  <p className="mono-label text-arch-moss mb-4">{f.kicker}</p>
-                  <div className="flex items-baseline gap-4 mb-6">
-                    <span className="display-jp text-6xl md:text-7xl text-arch-forest/30 tabular-nums leading-none">
-                      {f.num}
-                    </span>
-                    <div className="h-px flex-1 bg-arch-rule mt-auto mb-3"></div>
-                  </div>
-                  <h3 className="display-jp text-2xl md:text-3xl text-arch-ink leading-snug mb-6">
-                    {f.title}
-                    <br />
-                    <span className="text-arch-forest">{f.highlight}</span>
-                  </h3>
-                  <p className="text-sm md:text-base text-arch-ink-soft leading-loose mb-8">
-                    {f.body}
-                  </p>
-                  <ul className="space-y-3 border-t border-arch-rule pt-6">
-                    {f.bullets.map((t) => (
-                      <li key={t} className="flex items-start gap-3">
-                        <Check size={16} className="text-arch-moss mt-1 shrink-0" />
-                        <span className="text-sm text-arch-ink font-medium">{t}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="max-w-3xl">
+                <p className="mono-label text-arch-moss mb-4">{f.kicker}</p>
+                <div className="flex items-baseline gap-4 mb-6">
+                  <span className="display-jp text-6xl md:text-7xl text-arch-forest/30 tabular-nums leading-none">
+                    {f.num}
+                  </span>
+                  <div className="h-px flex-1 bg-arch-rule mt-auto mb-3"></div>
                 </div>
-
-                <div className={`md:col-span-5 ${idx === 1 ? "md:order-1" : ""}`}>
-                  <div className="border border-arch-rule-dark/20 p-8 md:p-10 bg-arch-cream-raised">
-                    <p className="mono-micro text-arch-moss mb-4">METRIC / 支援先実績の一例</p>
-                    <p className="display-jp text-6xl md:text-7xl text-arch-forest leading-none tabular-nums">
-                      {f.statNum}
-                    </p>
-                    <p className="mono-label text-arch-ink-muted mt-4">{f.statLabel}</p>
-                    <p className="mono-micro text-arch-ink-muted mt-3 leading-relaxed">
-                      ※ 一部の支援先における改善事例。
-                      <br />
-                      すべての医院で同様の結果を保証するものではありません。
-                    </p>
-                  </div>
-                </div>
+                <h3 className="display-jp text-2xl md:text-3xl text-arch-ink leading-snug mb-6">
+                  {f.title}
+                  <br />
+                  <span className="text-arch-forest">{f.highlight}</span>
+                </h3>
+                <p className="text-sm md:text-base text-arch-ink-soft leading-loose mb-8">
+                  {f.body}
+                </p>
+                <ul className="space-y-3 border-t border-arch-rule pt-6">
+                  {f.bullets.map((t) => (
+                    <li key={t} className="flex items-start gap-3">
+                      <Check size={16} className="text-arch-moss mt-1 shrink-0" />
+                      <span className="text-sm text-arch-ink font-medium">{t}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="grid md:grid-cols-3 gap-0 mt-12 md:mt-16 border-t border-arch-rule">
@@ -459,80 +442,6 @@ export default function ConsultingPage() {
             </div>
           </div>
         ))}
-      </section>
-
-      {/* ──────────────────────────────────────────
-          RESULTS
-      ────────────────────────────────────────── */}
-      <section className="relative bg-arch-forest text-arch-cream py-20 md:py-28 overflow-hidden">
-        <div className="absolute -right-16 md:-right-24 top-10 md:top-16 pointer-events-none select-none opacity-[0.04]">
-          <span className="display-jp text-[16rem] md:text-[22rem] leading-none text-arch-gold">
-            3
-          </span>
-        </div>
-        <div className="absolute top-6 left-6 md:top-8 md:left-10 pointer-events-none">
-          <span className="mono-label text-arch-sage/70">RESULTS — 04 / 実績</span>
-        </div>
-        <div className="absolute top-6 right-6 md:top-8 md:right-10 pointer-events-none text-right">
-          <span className="mono-micro text-arch-sage/60">IMPACT METRICS</span>
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-5 sm:px-8">
-          <p className="mono-label text-arch-gold mb-6">NUMBERS</p>
-          <h2 className="display-jp text-4xl md:text-6xl text-arch-cream mb-6 max-w-3xl leading-[1.1]">
-            導入医院に起きた、
-            <br />
-            <span className="text-arch-gold">3つの変化。</span>
-          </h2>
-          <p className="text-base md:text-lg text-arch-sage/80 leading-loose max-w-2xl mb-3">
-            「整っている」「数字が見える」「迷わない」——外部事務長が入ることで、現場と経営の手触りが変わります。
-          </p>
-          <p className="mono-micro text-arch-sage/60 mb-16 md:mb-20 leading-relaxed">
-            ※ 以下の数値はすべて支援先実績の一例です。すべての医院で同様の結果を保証するものではありません。
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-px bg-arch-rule-dark/60 border border-arch-rule-dark/60">
-            {[
-              {
-                num: "-65",
-                unit: "%",
-                label: "現場ヒヤリ件数",
-                desc: "施設対応と初診導線を標準化することで、ヒヤリ・ハットが大幅に減少します。",
-              },
-              {
-                num: "98",
-                unit: "%",
-                label: "レセプト精度",
-                desc: "事前カルテチェックと返戻分析を継続し、算定漏れと返戻を構造的に減らします。",
-              },
-              {
-                num: "95",
-                unit: "%",
-                label: "継続契約率",
-                desc: "短期ではなく10年単位の伴走設計。契約更新率に現れています。",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-arch-forest p-8 md:p-12 flex flex-col justify-between min-h-[280px] md:min-h-[340px]"
-              >
-                <div className="flex items-start justify-between mb-8">
-                  <p className="mono-micro text-arch-sage/60 tabular-nums">METRIC / 0{i + 1}</p>
-                  <span className="mono-micro text-arch-gold/70 tabular-nums">0{i + 1} — 03</span>
-                </div>
-                <div>
-                  <p className="display-jp leading-none mb-6 flex items-baseline text-arch-gold">
-                    <span className="text-7xl md:text-[7rem] tabular-nums">{item.num}</span>
-                    <span className="text-3xl md:text-5xl ml-1 tabular-nums">{item.unit}</span>
-                  </p>
-                  <div className="h-px bg-arch-gold/40 w-12 mb-5"></div>
-                  <p className="mono-label text-arch-cream mb-4">{item.label}</p>
-                  <p className="text-sm text-arch-sage/85 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ──────────────────────────────────────────
