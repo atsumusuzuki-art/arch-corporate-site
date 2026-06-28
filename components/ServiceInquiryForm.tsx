@@ -1,7 +1,7 @@
 /**
  * ServiceInquiryForm — サービス別 お申込みフォーム
  *
- * FormSubmit.co 経由で atsumu.suzuki@arch-yh.com に送信。
+ * FormSubmit.co 経由で hello@arch-yh.com に送信。
  * 必須5項目: 医院名・院長名・所在地・メール・電話
  *
  * 申込種別の選択に対応（`types` プロップ）:
@@ -76,7 +76,7 @@ export default function ServiceInquiryForm({
       )}
 
       <form
-        action="https://formsubmit.co/atsumu.suzuki@arch-yh.com"
+        action="https://formsubmit.co/hello@arch-yh.com"
         method="POST"
         className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5"
       >
@@ -213,7 +213,7 @@ export default function ServiceInquiryForm({
 
         <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-arch-rule mt-2">
           <p className="mono-micro text-arch-ink-muted">
-            送信内容は <span className="text-arch-forest">atsumu.suzuki@arch-yh.com</span> に届きます
+            送信内容は <span className="text-arch-forest">hello@arch-yh.com</span> に届きます
           </p>
           <button
             type="submit"

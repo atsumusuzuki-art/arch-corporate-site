@@ -788,7 +788,6 @@ export default function Home() {
                 歯科医院の外部事務長
               </p>
               <div className="space-y-1 text-sm">
-                <p>Mail: atsumu.suzuki@arch-yh.com</p>
               </div>
             </div>
 

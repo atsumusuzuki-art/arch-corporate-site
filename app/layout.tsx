@@ -125,7 +125,7 @@ const jsonLd = {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        email: "atsumu.suzuki@arch-yh.com",
+        email: "hello@arch-yh.com",
         contactType: "customer service",
         availableLanguage: "Japanese",
       },
