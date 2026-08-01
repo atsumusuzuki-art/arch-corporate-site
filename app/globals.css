@@ -1,34 +1,38 @@
 @import "tailwindcss";
 
-/* ============================================
-   ARCH Design System v2 — Tokens
-   ============================================ */
+/* ============================================================
+   ARCH デザイントークン
+   一画面一メッセージ／大きな文字／広い余白／静かな動き
+   ・グラデーション、大きな角丸、強い影、白100%背景は使わない
+   ============================================================ */
 
 :root {
-  /* Page canvas */
-  --background: #F3EDE0;          /* arch-cream (default body) */
-  --foreground: #0F1211;          /* arch-ink */
+  /* ページの地色 */
+  --background: #f3ede0; /* ARCH Cream */
+  --foreground: #0f1211; /* ARCH Ink */
 
-  /* ARCH palette */
-  --arch-cream: #F3EDE0;
-  --arch-cream-raised: #FAF6EC;
-  --arch-ink: #0F1211;
-  --arch-ink-soft: #3A3C3A;
-  --arch-ink-muted: #7A7C78;
-  --arch-forest: #0D3B2E;         /* deep forest — dominant brand */
-  --arch-forest-soft: #1E5A40;
-  --arch-moss: #3B7A5F;           /* label green */
-  --arch-sage: #9DBBA6;           /* on-dark caption */
-  --arch-gold: #B8944A;
-  --arch-rule: #D8CFBC;
-  --arch-rule-dark: #1C4A38;
+  /* ブランドカラー */
+  --arch-cream: #f3ede0;
+  --arch-cream-raised: #faf6ec;
+  --arch-ink: #0f1211;
+  --arch-ink-soft: #3a3c3a;
+  --arch-ink-muted: #686a67; /* 本文小さめの補足用。クリーム地で AA(4.5:1) を満たす濃さ */
+  --arch-forest: #0d3b2e;
+  --arch-forest-soft: #1e5a40;
+  --arch-moss: #2f6a51; /* クリーム地に置くラベル用の緑（AA 確保のため濃いめ） */
+  --arch-sage: #b9d0c1; /* 深緑地に置く補足文字（AA 確保のため明るめ） */
+  --arch-gold: #b8944a;
+  --arch-gold-on-dark: #c9a960; /* 深緑地に小さな文字を置くとき用（AA 確保） */
+  --arch-gold-deep: #7d6124;    /* クリーム地に小さな文字を置くとき用（AA 確保） */
+  --arch-rule: #d8cfbc;
+  --arch-rule-dark: #1c4a38;
+  --arch-danger: #8c2f2f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* ARCH brand colors — usable as bg-arch-*, text-arch-*, border-arch-* */
   --color-arch-cream: var(--arch-cream);
   --color-arch-cream-raised: var(--arch-cream-raised);
   --color-arch-ink: var(--arch-ink);
@@ -39,172 +43,160 @@
   --color-arch-moss: var(--arch-moss);
   --color-arch-sage: var(--arch-sage);
   --color-arch-gold: var(--arch-gold);
+  --color-arch-gold-on-dark: var(--arch-gold-on-dark);
+  --color-arch-gold-deep: var(--arch-gold-deep);
   --color-arch-rule: var(--arch-rule);
   --color-arch-rule-dark: var(--arch-rule-dark);
+  --color-arch-danger: var(--arch-danger);
 
-  /* Font families — loaded in layout.tsx as next/font */
-  --font-sans: var(--font-geist-sans);
+  /* 書体：日本語も英語も Noto Sans JP。等幅は小さな英字ラベルにだけ使う */
+  --font-sans: var(--font-noto-jp);
   --font-display: var(--font-noto-jp);
   --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* sticky ヘッダーに隠れないようアンカー位置を下げる */
+  scroll-padding-top: 5rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), "Noto Sans JP", Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-jp), "Noto Sans JP", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", sans-serif;
+  font-size: 1rem; /* 16px 以上 */
+  font-weight: 400;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* スマートフォンで横スクロールを発生させない */
+  overflow-x: hidden;
 }
 
-/* Utility: mono-label — category tag used at top of every section */
-.mono-label {
+/* 見出し用（700〜900） */
+.display-jp {
+  font-family: var(--font-noto-jp), "Noto Sans JP", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+/* 小さな英字ラベル（等幅を使うのはここだけ） */
+.mono-micro {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--arch-moss);
 }
 
-.mono-micro {
+.mono-label {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-/* Utility: display headline — massive Japanese titles */
-.display-jp {
-  font-family: var(--font-noto-jp), var(--font-geist-sans), "Noto Sans JP", sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-}
+/* ============================================================
+   動き — 画面に入ったとき 1 回だけ、静かに
+   フェード ＋ 下から 16px / 520ms / ease-out
+   ============================================================ */
 
-/* ============================================
-   Editorial motion — static high-end feel
-   静かで上品なフェードイン。CSS + Intersection Observer 連動。
-   ============================================ */
-
-/* HERO 用：ページ読込時にすぐフェードイン（IO 不要） */
-@keyframes arch-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-fade {
+.arch-reveal {
   opacity: 0;
-  animation: arch-fade-up 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-  will-change: opacity, transform;
-}
-.hero-fade-1 { animation-delay: 0.05s; }
-.hero-fade-2 { animation-delay: 0.25s; }
-.hero-fade-3 { animation-delay: 0.50s; }
-.hero-fade-4 { animation-delay: 0.75s; }
-
-/* HERO 背景画像用：ゆっくり浮かび上がる + ごくわずかなズームアウト */
-@keyframes arch-hero-image-in {
-  from {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.hero-image-fade {
-  opacity: 0;
-  animation: arch-hero-image-in 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s forwards;
-  will-change: opacity, transform;
-}
-
-/* スクロール連動：JS で .is-visible が付与される */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(16px);
   transition:
-    opacity 0.95s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.95s cubic-bezier(0.2, 0.7, 0.2, 1);
-  will-change: opacity, transform;
+    opacity 520ms ease-out,
+    transform 520ms ease-out;
 }
-.reveal.is-visible {
+
+.arch-reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
-}
-.reveal-delay-1 { transition-delay: 0.08s; }
-.reveal-delay-2 { transition-delay: 0.16s; }
-.reveal-delay-3 { transition-delay: 0.24s; }
-.reveal-delay-4 { transition-delay: 0.32s; }
-.reveal-delay-5 { transition-delay: 0.40s; }
-
-/* ホバー浮上：カード・リンクに使う控えめなリフト */
-.lift-on-hover {
-  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
-              box-shadow 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-@media (hover: hover) {
-  .lift-on-hover:hover {
-    transform: translateY(-2px);
-  }
+  transform: none;
 }
 
-/* Accessibility: respect reduced motion */
+/* 動きを減らす設定では一切動かさない */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+  .arch-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .hero-fade,
-  .hero-image-fade,
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-  }
 }
 
-/* Keyboard focus ring — applies to all interactive elements */
+/* キーボード操作のフォーカスを必ず見せる */
 *:focus-visible {
-  outline: 2px solid var(--arch-forest);
+  outline: 3px solid var(--arch-forest);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
-/* ── Column article prose styles ── */
+/* 深緑の面ではフォーカスリングをクリーム色に */
+.on-forest *:focus-visible {
+  outline-color: var(--arch-cream);
+}
+
+/* ============================================================
+   コラム本文
+   ============================================================ */
+
 .prose-custom {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.9;
   color: var(--arch-ink-soft);
 }
-.prose-custom p {
-  margin-bottom: 1.75rem;
+.prose-custom > * + * {
+  margin-top: 1.75rem;
 }
 .prose-custom h2 {
-  font-family: var(--font-noto-jp), var(--font-geist-sans), sans-serif;
-  font-size: 1.5rem;
+  font-family: var(--font-noto-jp), sans-serif;
+  font-size: clamp(1.25rem, 4vw, 1.625rem);
   font-weight: 900;
+  line-height: 1.5;
   color: var(--arch-ink);
-  margin-top: 3rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--arch-forest);
+  margin-top: 3.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--arch-rule);
   letter-spacing: -0.02em;
+}
+.prose-custom h3 {
+  font-family: var(--font-noto-jp), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--arch-ink);
+  margin-top: 2.5rem;
+}
+.prose-custom ul,
+.prose-custom ol {
+  padding-left: 1.5rem;
+}
+.prose-custom ul {
+  list-style: disc;
+}
+.prose-custom ol {
+  list-style: decimal;
+}
+.prose-custom li + li {
+  margin-top: 0.5rem;
 }
 .prose-custom blockquote {
   border-left: 3px solid var(--arch-forest);
-  padding: 0.5rem 1.5rem;
-  margin: 2rem 0;
-  font-style: normal;
-  color: var(--arch-ink-soft);
   background: var(--arch-cream-raised);
+  padding: 1rem 1.5rem;
+  color: var(--arch-ink-soft);
 }
 .prose-custom strong {
   color: var(--arch-ink);
@@ -214,4 +206,7 @@ body {
   color: var(--arch-forest);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+.prose-custom a:hover {
+  color: var(--arch-forest-soft);
 }

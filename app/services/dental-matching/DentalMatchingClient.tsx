@@ -203,10 +203,10 @@ export default function DentalMatchingClient() {
           <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-12 md:mb-16 max-w-3xl leading-[1.2]">
             その歯科医院、
             <br />
-            <span className="text-arch-forest">"惰性" で続けていませんか？</span>
+            <span className="text-arch-forest">&quot;惰性&quot; で続けていませんか？</span>
           </h2>
           <p className="text-base text-arch-ink-soft leading-loose max-w-3xl mb-12 md:mb-16">
-            「昔からお世話になっているから」「他を知らないから」という理由だけで、本来守るべき入居者様の口腔健康と、現場スタッフの負担が犠牲になっていませんか？ まずは"今"の状態を可視化するところから始めましょう。
+            「昔からお世話になっているから」「他を知らないから」という理由だけで、本来守るべき入居者様の口腔健康と、現場スタッフの負担が犠牲になっていませんか？ まずは&quot;今&quot;の状態を可視化するところから始めましょう。
           </p>
 
           <div className="grid md:grid-cols-3 gap-0 border-t border-arch-rule">

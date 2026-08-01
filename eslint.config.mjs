@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // macOS が外付けディスク上に作る付随ファイル（._page.tsx など）。
+    // 中身はバイナリのため、解析対象から外す。
+    "**/._*",
+    // 削除待ちの退避フォルダ。
+    "_to_delete/**",
   ]),
 ]);
 

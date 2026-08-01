@@ -1,378 +1,368 @@
-import { ArrowRight, Check } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import { ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
-import FaqSection from "@/components/FaqSection";
+import ContactForm from "@/components/ContactForm";
+import JsonLd from "@/components/JsonLd";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import { COLUMN_METAS, columnHref } from "@/lib/columns";
+import { SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 
-const FAQS = [
-  {
-    q: "一般的なコンサルとの違いは何ですか？",
-    a: "戦略提案や資料納品で終わらず、医院側で実行できる状態まで一緒に手を動かします。施設対応、業者調整、書類整備、スタッフへの説明資料作成など、現場の実務に入り込みます。",
-  },
-  {
-    q: "どんな医院が利用していますか？",
-    a: "院長＋スタッフ10名前後の規模で、訪問歯科を伸ばしたい医院、分院展開を考え始めた医院、院長が実務を一人で抱えている医院が中心です。大型法人向けの経営コンサルではなく、専属事務長を雇うほどではないが運営整理が必要な医院に適しています。",
-  },
-  {
-    q: "月何回相談できますか？",
-    a: "プランによって異なります。顧問プランは月1回オンライン+チャット、外部事務長ライトは月1回訪問+定例会+チャット、外部事務長は週1回ペースで月4回の打合せ(対面・オンライン併用可)が含まれます。",
-  },
-  {
-    q: "訪問歯科以外も相談できますか？",
-    a: "可能です。外来運営、分院展開、レセプト・算定、採用、施設連携、HP・LP改善、補助金、DXなど、医院運営全体を横断的に支援します。訪問歯科は特に強い領域として残しつつ、医院全体を見る立場です。",
-  },
-  {
-    q: "地方でも依頼できますか？",
-    a: "オンライン中心の支援であれば全国対応可能です。訪問同行や現場立会いが必要な場合は、別途交通費を申し受けることがあります。まずはオンラインでの初回相談からご利用ください。",
-  },
-];
+const PATH = "/services/external-manager";
 
-export const metadata = {
-  title: "歯科医院の外部事務長とは｜院長の相談役・運営整理役・現場と経営のつなぎ役",
+export const metadata: Metadata = {
+  title: "外部事務長｜院長の経営実務を整理し、医院が回り続ける体制をつくる",
   description:
-    "ARCHが取り組む「歯科医院の外部事務長」とは。単なる経営コンサルではなく、訪問歯科・分院・採用・算定・補助金まで横断的に医院運営を整理・伴走する役割です。",
+    "歯科医院の外部事務長として、院長が抱えている経営実務を整理します。関与の深さで3つのプラン（相談顧問／外部事務長／代表伴走）をご用意し、採用・業者対応・医院事務・既存の訪問歯科運営まで、定めた範囲で実務に入ります。",
+  alternates: { canonical: absoluteUrl(PATH) },
+  openGraph: {
+    type: "website",
+    url: absoluteUrl(PATH),
+    title: "外部事務長｜合同会社ARCH",
+    description:
+      "院長が抱えている経営実務を整理し、医院が回り続ける体制をつくる。関与の深さで選べる3つのプラン。",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "外部事務長｜合同会社ARCH" }],
+  },
 };
 
-/* ================================================================
-   歯科医院の外部事務長とは（コンセプトページ）
-   ================================================================ */
-
-const ROLES = [
+/**
+ * 料金プラン
+ * サービス項目の違いではなく「ARCHが入る深さ」で分けている。
+ * 15万円プランを中心に置き、ゴールドの小さな「おすすめ」表示を付ける。
+ */
+const PLANS = [
   {
-    title: "院長の相談役",
-    body:
-      "院長が抱えがちな運営課題や判断の迷いを、利害関係のない外部の立場で受け止める。",
+    id: "advisor",
+    name: "相談顧問",
+    depth: "相談を受ける",
+    price: "50,000",
+    priceNum: 50000,
+    priceNote: "月額（税別）",
+    terms: [] as string[],
+    body: "助言と優先順位の整理が中心です。実行は医院側で進めていただきます。",
+    items: ["チャット相談", "月1回のオンライン面談", "課題の優先順位の整理"],
+    recommended: false,
   },
   {
-    title: "医院運営の整理役",
+    id: "standard",
+    name: "外部事務長",
+    depth: "実務に入る",
+    price: "150,000",
+    priceNum: 150000,
+    priceNote: "月額（税別）",
+    terms: ["初期費用 100,000円（税別）", "最低契約期間 6か月"],
     body:
-      "属人化しがちな業務、決まっていないルール、回りきらないオペレーションを構造化する。",
+      "採用、業者対応、医院事務、既存の訪問歯科運営などを、あらかじめ定めた範囲で実際に引き受けます。",
+    items: [
+      "月2回の定例",
+      "月次レポート",
+      "チャットは原則48時間以内に返信",
+      "採用・業者対応・医院事務・既存の訪問歯科運営を、定めた範囲で支援",
+    ],
+    recommended: true,
   },
   {
-    title: "業者との橋渡し役",
-    body:
-      "歯科ディーラー、レセコン業者、HP制作、看板、社労士、税理士など、複数業者との調整を担う。",
-  },
-  {
-    title: "現場と経営のつなぎ役",
-    body:
-      "院長が描く方向性と現場スタッフが見ている景色のズレを、両側に立って整える。",
+    id: "partner",
+    name: "外部事務長（代表伴走）",
+    depth: "経営判断まで一緒に見る",
+    price: "300,000",
+    priceNum: 300000,
+    priceNote: "月額（税別）",
+    terms: ["面談頻度と支援範囲は、医院ごとに個別に設計します"],
+    body: "代表の鈴木集本人が深く関与し、課題の診断から実行の推進までご一緒します。",
+    items: [
+      "課題の診断と優先順位づけ",
+      "数字の確認",
+      "経営会議への参加",
+      "決めたことの実行推進",
+    ],
+    recommended: false,
   },
 ];
 
-const DIFFERENCES = [
+/* 外部事務長が引き受ける実務の範囲 */
+const SCOPE = [
   {
-    title: "提案だけで終わらない",
-    body:
-      "資料や戦略を出して終わりではなく、医院側で実行できる状態まで一緒に手を動かす。",
+    title: "院内の事務と書類",
+    body: "誰が何をいつ出すのかを決め、様式と保管場所をそろえます。院長の手元に残っている事務作業を引き取ります。",
   },
   {
-    title: "現場に入り込む",
-    body:
-      "院長の頭の中、スタッフの動き、書類の流れ、施設との関係を、現場で確認しながら整理する。",
+    title: "採用",
+    body: "求人を出す前に、任せる仕事の範囲と受け入れ後の流れを決めます。募集から入職後の定着までを見ます。",
   },
   {
-    title: "横断的に見る",
-    body:
-      "訪問歯科、外来、採用、HP、算定、補助金、分院。領域を限定せず、医院全体の運営を俯瞰する。",
+    title: "業者・ディーラー対応",
+    body: "見積もりの比較、導入時期の調整、立会いまで。院長が一人で判断していた部分に入ります。",
   },
   {
-    title: "規模に合わせて関与する",
-    body:
-      "大型法人向けの経営コンサルではなく、院長＋スタッフ10名規模の医院で実務まで入り込める距離感。",
+    title: "数字の確認",
+    body: "月次で数字を並べ、どこを見て判断するかを決めます。数字が出せていない場合は、出せる状態にするところから始めます。",
+  },
+  {
+    title: "既存の訪問診療の運営",
+    body: "すでに動いている訪問診療について、記録・報告・施設との連絡の流れを整理します。",
+  },
+  {
+    title: "分院展開の実務",
+    body: "分院を考え始めた段階での準備、現場での立会い、院内の導線の確認まで対応します。",
   },
 ];
 
-const SUPPORT_AREAS = [
-  "訪問歯科の立ち上げ・運営",
-  "外来運営の整理",
-  "分院展開の準備",
-  "採用・人事支援",
-  "算定・施設基準の整理",
-  "HP・LP・パンフレット改善",
-  "補助金申請支援",
-  "DX・記録アプリ・シフト管理",
-  "業者連携・ディーラー調整",
-];
-
-const RELATED = [
-  {
-    href: "/services/visit-dental-startup",
-    title: "訪問歯科立ち上げ支援",
-    desc: "施設連携・必要書類・スタッフ体制から、現場導入まで",
-  },
-  {
-    href: "/services/facility-growth",
-    title: "施設連携・利用者増加支援",
-    desc: "施設はあるのに患者が増えない医院向けの導線設計",
-  },
-  {
-    href: "/services/branch-startup",
-    title: "分院立ち上げ支援",
-    desc: "物件・機器・ディーラー・採用・HPまで横断的に",
-  },
-  {
-    href: "/services/fee-standards",
-    title: "算定・施設基準支援",
-    desc: "施設基準の届出・診療報酬改定・レセコン確認",
-  },
-  {
-    href: "/services/consulting",
-    title: "料金プラン",
-    desc: "関与度で選べる3つの月額プラン（顧問・ライト・外部事務長）",
-  },
-];
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${SITE_URL}${PATH}#service`,
+  name: "歯科医院の外部事務長",
+  description:
+    "歯科医院の外部事務長として、院長が抱えている経営実務を整理し、医院が回り続ける体制をつくるサービス。関与の深さで3つのプランがある。",
+  url: absoluteUrl(PATH),
+  provider: { "@id": `${SITE_URL}/#organization` },
+  areaServed: { "@type": "Country", name: "日本" },
+  audience: { "@type": "Audience", audienceType: "歯科医院" },
+  offers: PLANS.map((p) => ({
+    "@type": "Offer",
+    name: p.name,
+    price: p.priceNum,
+    priceCurrency: "JPY",
+    description: `${p.priceNote}・税別`,
+  })),
+};
 
 export default function ExternalManagerPage() {
+  const relatedColumns = COLUMN_METAS.filter(
+    (c) => c.service === "external-manager"
+  ).slice(0, 3);
+
   return (
-    <article className="bg-arch-cream">
-      <Breadcrumb
-        items={[
-          { label: "HOME", href: "/" },
-          { label: "サービス", href: "/services/consulting" },
-          { label: "歯科医院の外部事務長とは" },
-        ]}
+    <>
+      <JsonLd data={serviceJsonLd} />
+      <Breadcrumb items={[{ label: "ホーム", href: "/" }, { label: "外部事務長" }]} />
+
+      <PageHero
+        eyebrow="EXTERNAL MANAGER"
+        title={
+          <>
+            院長が抱えている経営実務を整理し、
+            <br className="hidden md:block" />
+            医院が回り続ける体制をつくる。
+          </>
+        }
+        lead="助言だけでは医院は回りません。外部事務長として、決めるところから実際に手を動かすところまで入ります。"
       />
-      {/* HERO */}
-      <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
-        <CornerMarkers
-          topRight="CONCEPT — 外部事務長"
-          bottomLeft="ABOUT"
-          bottomRight="歯科医院の外部事務長とは"
-          theme="dark"
-        />
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <SectionTag category="CONCEPT" number="—" label="歯科医院の外部事務長とは" theme="dark" />
 
-          <div className="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
-            <div className="md:col-span-8">
-              <h1 className="display-jp text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.5rem] text-arch-cream leading-[1.18] tracking-tight">
-                院長の頭の中にある<span className="text-arch-gold font-black">課題</span>を、
-                <br />
-                医院が動ける形に整理する。
-              </h1>
-            </div>
-            <div className="md:col-span-4">
-              <div className="border-l-2 border-arch-gold pl-5">
-                <p className="mono-label text-arch-gold mb-3">CORE MESSAGE</p>
-                <p className="text-base md:text-lg text-arch-sage leading-loose">
-                  単なるアドバイスではなく、
-                  <br />
-                  医院運営の整理役として伴走する。
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-14 md:mt-20 grid md:grid-cols-12 gap-8 items-end border-t border-arch-rule-dark pt-8">
-            <p className="md:col-span-8 text-sm md:text-base text-arch-sage/90 leading-loose max-w-2xl">
-              ARCH が取り組むのは「歯科医院の外部事務長」という役割です。経営コンサルでも、訪問歯科だけの専門家でもありません。院長が一人で抱えがちな運営課題を、外部の立場で整理し、現場まで入り込んで一緒に回す存在です。
+      {/* ────────────── 何をするのか ────────────── */}
+      <section aria-labelledby="scope-heading" className="bg-arch-cream">
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+          <Reveal>
+            <h2
+              id="scope-heading"
+              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
+            >
+              引き受ける実務
+            </h2>
+            <p className="mt-6 max-w-[720px] text-base leading-[1.9] text-arch-ink-soft">
+              どこまでを ARCH が担うかは、契約前に文書で決めます。
+              「何となく相談できる人」ではなく、担当が決まっている状態にすることが目的です。
             </p>
-            <div className="md:col-span-4 flex md:justify-end">
-              <Link
-                href="/#contact"
-                className="inline-flex items-center gap-3 bg-arch-cream text-arch-forest px-7 py-4 text-sm font-bold tracking-[0.15em] hover:bg-arch-gold transition-colors"
-              >
-                無料相談する（30分・オンライン可）
-                <ArrowRight size={18} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+          </Reveal>
 
-      {/* ROLES — 外部事務長の4つの役割 */}
-      <section className="bg-arch-cream py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="ROLES" number="02" label="外部事務長の役割" />
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">04 ROLES</p>
-          </div>
-
-          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-12 md:mb-16 max-w-3xl leading-[1.2]">
-            院長の隣で、
-            <br />
-            <span className="text-arch-forest font-black">医院運営を回す役割。</span>
-          </h2>
-
-          <div className="grid sm:grid-cols-2 gap-0 border-t border-l border-arch-rule">
-            {ROLES.map((r, i) => (
-              <div key={r.title} className="border-b border-r border-arch-rule py-8 md:py-10 px-5 md:px-7">
-                <p className="mono-label text-arch-moss mb-3 tabular-nums">
-                  ROLE — {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="display-jp text-lg md:text-xl text-arch-ink mb-3 leading-snug">
-                  {r.title}
-                </h3>
-                <p className="text-sm text-arch-ink-soft leading-loose">{r.body}</p>
-              </div>
+          <div className="mt-14 grid gap-x-10 gap-y-0 border-t border-arch-rule md:grid-cols-2">
+            {SCOPE.map((s, i) => (
+              <Reveal key={s.title} delay={Math.min(i, 3) * 60}>
+                <div className="border-b border-arch-rule py-8">
+                  <h3 className="display-jp text-lg text-arch-forest">{s.title}</h3>
+                  <p className="mt-3 max-w-[36rem] text-base leading-[1.9] text-arch-ink-soft">
+                    {s.body}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* DIFFERENCES — 一般的なコンサルとの違い */}
-      <section className="bg-arch-cream-raised py-20 md:py-28 border-t border-arch-rule">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="DIFFERENCE" number="03" label="一般的なコンサルとの違い" />
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">04 POINTS</p>
-          </div>
-
-          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-12 md:mb-16 max-w-3xl leading-[1.2]">
-            戦略提案ではなく、
-            <br />
-            <span className="text-arch-forest font-black">医院に残る仕組みづくり。</span>
-          </h2>
-
-          <div className="grid sm:grid-cols-2 gap-0 border-t border-l border-arch-rule">
-            {DIFFERENCES.map((d, i) => (
-              <div key={d.title} className="border-b border-r border-arch-rule py-8 md:py-10 px-5 md:px-7">
-                <p className="mono-label text-arch-moss mb-3 tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="display-jp text-lg md:text-xl text-arch-ink mb-3 leading-snug">
-                  {d.title}
-                </h3>
-                <p className="text-sm text-arch-ink-soft leading-loose">{d.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SUPPORT_AREAS — ARCHができること */}
-      <section className="bg-arch-cream py-20 md:py-28 border-t border-arch-rule">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="SCOPE" number="04" label="ARCHができること" />
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">
-              {String(SUPPORT_AREAS.length).padStart(2, "0")} AREAS
+      {/* ────────────── 料金 ────────────── */}
+      <section
+        id="plans"
+        aria-labelledby="plans-heading"
+        className="scroll-mt-20 border-t border-arch-rule bg-arch-cream-raised"
+      >
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+          <Reveal>
+            <h2
+              id="plans-heading"
+              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
+            >
+              料金
+            </h2>
+            <p className="mt-6 max-w-[720px] text-base leading-[1.9] text-arch-ink-soft">
+              プランの違いは、サービス項目ではなく<strong className="font-bold text-arch-ink">ARCHが入る深さ</strong>です。
+              助言を受け取りたいのか、実務を引き受けてほしいのか、経営判断まで一緒に見てほしいのかで選んでください。
             </p>
-          </div>
+          </Reveal>
 
-          <h2 className="display-jp text-3xl md:text-4xl text-arch-ink mb-6 max-w-3xl leading-[1.2]">
-            訪問・外来・分院・採用まで、
-            <br />
-            <span className="text-arch-forest font-black">医院運営を横断する。</span>
-          </h2>
-          <p className="text-base text-arch-ink-soft leading-loose max-w-3xl mb-12 md:mb-16">
-            領域を限定せず、医院の状況に応じて必要な実務を組み合わせます。下記は ARCH が実際に手を動かしてきた領域です。
-          </p>
-
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-arch-rule">
-            {SUPPORT_AREAS.map((area, i) => (
-              <li
-                key={area}
-                className="border-b border-r border-arch-rule py-5 md:py-6 px-4 md:px-6 flex items-baseline gap-3"
-              >
-                <span className="mono-micro text-arch-moss tabular-nums shrink-0">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-sm text-arch-ink leading-snug font-medium">{area}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* STORY — 代表ストーリー */}
-      <section className="bg-arch-cream-raised py-20 md:py-28 border-t border-arch-rule">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <SectionTag category="STORY" number="05" label="ARCHが外部事務長を始めた理由" />
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">BACKGROUND</p>
-          </div>
-
-          <div className="grid md:grid-cols-12 gap-10 md:gap-14 items-start">
-            <div className="md:col-span-7">
-              <h2 className="display-jp text-2xl md:text-3xl text-arch-ink mb-8 leading-[1.3]">
-                院長が、診療以外の課題を
-                <br />
-                <span className="text-arch-forest font-black">一人で抱え込みすぎている。</span>
-              </h2>
-              <div className="space-y-5 text-base text-arch-ink-soft leading-loose">
-                <p>
-                  ARCH 代表・鈴木はもともと小学校教員として、子どもたちが自分で動けるようになる仕組みづくりに取り組んでいました。人が動く仕組みや、現場との対話の重ね方は、教室で身につけた感覚です。
-                </p>
-                <p>
-                  その後、横浜の医療法人で歯科事務局長として経営再建に関わり、北海道の医療グループで訪問歯科事業を単独で立ち上げ・6ヶ月で黒字化。歯科医院の運営現場に深く入り込む中で、ある共通点に気づきました。
-                </p>
-                <p className="text-arch-ink font-bold">
-                  院長は、診療以外の課題を一人で抱え込みすぎている。
-                </p>
-                <p>
-                  施設連携、算定、採用、業者調整、HP、補助金、分院。どれも院長以外に判断できる人がいないため、診療の合間や夜間に処理することになります。結果、現場が止まりやすく、院長の時間も削られていきます。
-                </p>
-                <p>
-                  ARCH は、その「院長の頭の中で滞っているもの」を外から受け取り、医院が動ける形に整理する役割として外部事務長を始めました。提案だけで終わらず、現場に入り、業者とも話し、スタッフと一緒に手を動かす。それが、ARCH の考える外部事務長です。
-                </p>
-              </div>
-            </div>
-
-            <div className="md:col-span-5">
-              <div className="border border-arch-rule-dark/20 bg-arch-cream p-7 md:p-9">
-                <p className="mono-label text-arch-moss mb-5">BACKGROUND</p>
-                <ul className="space-y-5">
-                  <li>
-                    <p className="mono-micro text-arch-moss mb-1">01 / 公教育</p>
-                    <p className="text-sm text-arch-ink font-medium">元小学校教員</p>
-                    <p className="text-xs text-arch-ink-soft leading-relaxed mt-1">
-                      人が動く仕組みづくりを教室で実践
-                    </p>
-                  </li>
-                  <li>
-                    <p className="mono-micro text-arch-moss mb-1">02 / 医療経営</p>
-                    <p className="text-sm text-arch-ink font-medium">広域医療法人 歯科事務局長</p>
-                    <p className="text-xs text-arch-ink-soft leading-relaxed mt-1">
-                      経営再建を主導
-                    </p>
-                  </li>
-                  <li>
-                    <p className="mono-micro text-arch-moss mb-1">03 / 訪問歯科</p>
-                    <p className="text-sm text-arch-ink font-medium">医療グループで訪問歯科を単独立ち上げ</p>
-                    <p className="text-xs text-arch-ink-soft leading-relaxed mt-1">
-                      6ヶ月で黒字化を達成
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <FaqSection number="06" items={FAQS} />
-
-      {/* RELATED — 内部リンクカード */}
-      <section className="bg-arch-cream-raised py-16 md:py-20 border-t border-arch-rule">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-10 md:mb-12">
-            <p className="mono-label text-arch-moss">RELATED — 関連ページ</p>
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">FOR CLINICS</p>
-          </div>
-
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-arch-rule">
-            {RELATED.map((r) => (
-              <li key={r.href} className="border-b border-r border-arch-rule">
-                <Link
-                  href={r.href}
-                  className="group block py-6 md:py-7 px-5 md:px-6 h-full hover:bg-arch-cream-raised transition-colors"
+          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+            {PLANS.map((p) => (
+              <Reveal key={p.id}>
+                <div
+                  className={`flex h-full flex-col border bg-arch-cream p-8 ${
+                    p.recommended
+                      ? "border-arch-forest border-2"
+                      : "border-arch-rule"
+                  }`}
                 >
-                  <p className="display-jp text-base md:text-lg text-arch-ink group-hover:text-arch-forest transition-colors mb-2">
-                    {r.title}
+                  {p.recommended && (
+                    <p className="mb-4 self-start border border-arch-gold px-3 py-1 text-xs font-bold tracking-widest text-arch-gold-deep">
+                      おすすめ
+                    </p>
+                  )}
+                  <p className="text-sm tracking-wider text-arch-moss">{p.depth}</p>
+                  <h3 className="display-jp mt-2 text-2xl text-arch-forest">{p.name}</h3>
+
+                  {/* 狭い画面で金額が途中で折り返さないよう、単位を 1 行にまとめる */}
+                  <p className="mt-6">
+                    <span className="block text-sm text-arch-ink-soft">月額</span>
+                    <span className="mt-1 flex items-baseline gap-1 whitespace-nowrap">
+                      <span className="display-jp text-[2rem] tabular-nums text-arch-ink sm:text-4xl">
+                        {p.price}
+                      </span>
+                      <span className="text-sm text-arch-ink-soft sm:text-base">
+                        円（税別）
+                      </span>
+                    </span>
                   </p>
-                  <p className="text-xs md:text-sm text-arch-ink-soft leading-relaxed">{r.desc}</p>
-                  <p className="mono-micro text-arch-moss mt-3 inline-flex items-center gap-1.5">
-                    詳しく見る <ArrowRight size={11} />
+
+                  {p.terms.length > 0 && (
+                    <ul className="mt-4 space-y-1">
+                      {p.terms.map((t) => (
+                        <li key={t} className="text-sm leading-[1.8] text-arch-ink-soft">
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <p className="mt-6 border-t border-arch-rule pt-6 text-base leading-[1.9] text-arch-ink">
+                    {p.body}
                   </p>
+
+                  <ul className="mt-6 space-y-3">
+                    {p.items.map((it) => (
+                      <li
+                        key={it}
+                        className="flex gap-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft"
+                      >
+                        <span aria-hidden="true" className="text-arch-gold">
+                          —
+                        </span>
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <p className="mt-10 max-w-[720px] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
+            代表伴走プランには、初期費用と最低契約期間の設定はありません。
+            表示はすべて税別です。
+          </p>
+        </div>
+      </section>
+
+      {/* ────────────── 境界線 ────────────── */}
+      <section
+        aria-labelledby="boundary-heading"
+        className="border-t border-arch-rule bg-arch-cream"
+      >
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+          <Reveal>
+            <h2
+              id="boundary-heading"
+              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
+            >
+              訪問歯科は、どちらで対応するか
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            <Reveal>
+              <div className="h-full border border-arch-rule bg-arch-cream-raised p-8 md:p-10">
+                <p className="display-jp text-xl leading-[1.6] text-arch-forest">
+                  今ある訪問診療を良くする
+                </p>
+                <p className="mt-6 text-base leading-[1.9] text-arch-ink-soft">
+                  すでに訪問診療が動いている場合、その運営の整理は外部事務長の範囲で対応できます。
+                  記録、報告、施設との連絡、担当の決め方などが対象です。
+                </p>
+                <p className="mt-8 text-base font-bold text-arch-ink">
+                  → 外部事務長で対応可能
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <div className="h-full border-2 border-arch-forest bg-arch-cream-raised p-8 md:p-10">
+                <p className="display-jp text-xl leading-[1.6] text-arch-forest">
+                  まだない訪問歯科をゼロからつくる
+                </p>
+                <p className="mt-6 text-base leading-[1.9] text-arch-ink-soft">
+                  訪問歯科をこれから立ち上げる場合は、期間を区切った個別のプロジェクトになります。
+                  外部事務長の契約には自動的に含みません。
+                </p>
+                <p className="mt-8 text-base font-bold text-arch-ink">
+                  → 訪問歯科コンサルティングとして別途お見積もり
+                </p>
+                <Link
+                  href="/services/visit-dental-consulting"
+                  className="mt-8 inline-flex min-h-11 items-center gap-3 text-base font-bold text-arch-forest underline underline-offset-8"
+                >
+                  訪問歯科コンサルティングを見る
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────── 関連ページへの内部リンク ────────────── */}
+      <section
+        aria-labelledby="related-heading"
+        className="border-t border-arch-rule bg-arch-cream"
+      >
+        <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28 lg:px-10">
+          <h2 id="related-heading" className="display-jp text-xl text-arch-ink">
+            あわせて読む
+          </h2>
+          <ul className="mt-8 border-t border-arch-rule">
+            <li className="border-b border-arch-rule">
+              <Link
+                href="/cases/hachioji-external-manager"
+                className="block py-5 text-[0.95rem] leading-[1.8] text-arch-ink hover:text-arch-forest"
+              >
+                <span className="mr-3 text-sm text-arch-moss">支援実績</span>
+                東京都八王子市｜補助金申請・施設基準の取得・分院展開の支援
+              </Link>
+            </li>
+            {relatedColumns.map((c) => (
+              <li key={c.slug} className="border-b border-arch-rule">
+                <Link
+                  href={columnHref(c)}
+                  className="block py-5 text-[0.95rem] leading-[1.8] text-arch-ink hover:text-arch-forest"
+                >
+                  <span className="mr-3 text-sm text-arch-moss">コラム</span>
+                  {c.title}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
       </section>
-    </article>
+
+      <ContactForm idPrefix="external-manager" defaultTopic="外部事務長" />
+    </>
   );
 }

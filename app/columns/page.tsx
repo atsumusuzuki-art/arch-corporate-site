@@ -1,197 +1,100 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import CornerMarkers, { SectionTag } from "@/components/CornerMarkers";
+import Breadcrumb from "@/components/Breadcrumb";
+import ContactForm from "@/components/ContactForm";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import { COLUMN_METAS, columnHref } from "@/lib/columns";
+import { absoluteUrl, OG_IMAGE } from "@/lib/site";
 
-export const metadata = {
-  title: "ARCH NOTE — 訪問歯科の現場メモ｜合同会社ARCH",
+export const metadata: Metadata = {
+  title: "コラム｜歯科医院の運営と訪問歯科の現場から",
   description:
-    "訪問歯科の現場で起きていることを、外部事務長の視点で書き留めた現場メモ。営業、施設連携、レセプト、採用、組織、業務改善まで、現場運営に必要なリアルを共有します。",
+    "歯科医院の運営と訪問歯科の現場で実際に起きていることを、外部事務長の立場から書いています。書類、施設連携、採用、数字の見方など、院長が判断するときの材料になる記事をまとめました。",
+  alternates: { canonical: absoluteUrl("/columns") },
+  openGraph: {
+    type: "website",
+    url: absoluteUrl("/columns"),
+    title: "コラム｜歯科医院の運営と訪問歯科の現場から",
+    description:
+      "歯科医院の運営と訪問歯科の現場で実際に起きていることを、外部事務長の立場から書いています。",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "コラム｜合同会社ARCH" }],
+  },
 };
 
-/* ================================================================
-   ARCH NOTE — 訪問歯科の現場メモ
-   ＝ /columns 一覧ページ（旧 SEO 記事色を弱め、現場メモの空気感に）
-   ================================================================ */
+function fmt(date: string) {
+  const [y, m, d] = date.split("-");
+  return `${y}.${m}.${d}`;
+}
 
-type Note = {
-  slug: string;
-  category: string;
-  title: string;
-  // 公開日（あれば。なければ undefined）
-  date?: string;
-};
-
-/* 新しい順（執筆日不明分は推定の並び。後で実日付に差し替え可） */
-const NOTES: Note[] = [
-  {
-    slug: "waiting-room-visual",
-    category: "現場運営",
-    title: "その待合室、患者さんに「何も伝わっていない」かもしれない。モニターと掲示物を戦略資産に変える方法",
-    date: "2026-04-18",
-  },
-  {
-    slug: "sns-dx-recruitment",
-    category: "実務改善・DX",
-    title: "「ハローワークに出しておけば来る」時代は終わった。歯科医院の採用を変えるSNS×DX戦略",
-    date: "2026-04-18",
-  },
-  {
-    slug: "communication-timelag",
-    category: "訪問歯科",
-    title: "「返信は夕方になります」——その一言が、施設の信頼を静かに削っている",
-    date: "2026-04-18",
-  },
-  {
-    slug: "facility-collaboration",
-    category: "訪問歯科",
-    title: "施設が本当に求めているのは「治療の腕」ではない。訪問歯科の施設連携で選ばれる医院の条件",
-    date: "2026-04-18",
-  },
-  {
-    slug: "broker-trap",
-    category: "経営改善",
-    title: "「紹介しますよ」に依存した医院が崩れる理由",
-  },
-  {
-    slug: "turnover-strategy",
-    category: "現場運営",
-    title: "「あの人が辞めたら終わる」状態から、抜け出せていますか？",
-  },
-  {
-    slug: "staff-role",
-    category: "現場運営",
-    title: "優秀なスタッフが辞めない医院の秘密。元小学校教諭が教える「係活動」マネジメント",
-  },
-  {
-    slug: "invisible-profit",
-    category: "経営改善",
-    title: "現場が見落としている「見えない利益」",
-  },
-  {
-    slug: "profit-trap",
-    category: "経営改善",
-    title: "忙しいのに利益が残らない医院。現場が見落としている罠",
-  },
-  {
-    slug: "document-hell",
-    category: "実務改善・DX",
-    title: "歯科医院が陥る「書類地獄」。ご家族からのクレームを防ぐ唯一の解決策",
-  },
-  {
-    slug: "facility-needs",
-    category: "訪問歯科",
-    title: "介護施設における「口腔ケアの序列」。歯医者が現場で煙たがられる本当の理由",
-  },
-  {
-    slug: "communication",
-    category: "訪問歯科",
-    title: "介護現場で嫌われる衛生士の共通点。良かれと思った「その指導」、実は大迷惑です。",
-  },
-  {
-    slug: "sales-trap",
-    category: "訪問歯科",
-    title: "院長自らの飛び込み営業。そのパンフレット、実は「その他大勢」の束に埋もれています",
-  },
-];
-
-/* 日付フォーマット（YYYY-MM-DD → YYYY.MM.DD） */
-const fmt = (d?: string) => (d ? d.replace(/-/g, ".") : "—");
-
-export default function ArchNoteIndex() {
+export default function ColumnsIndex() {
   return (
-    <article className="bg-arch-cream">
-      {/* ──────────────────────────────────────────
-          HERO — editorial cover, deep forest
-      ────────────────────────────────────────── */}
-      <section className="relative bg-arch-forest text-arch-cream overflow-hidden pt-24 md:pt-32 pb-20 md:pb-28">
-        <CornerMarkers
-          topRight="ARCH NOTE — 現場メモ"
-          bottomLeft="ARCHIVE"
-          bottomRight={`${String(NOTES.length).padStart(2, "0")} NOTES`}
-          theme="dark"
-        />
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <SectionTag category="ARCH NOTE" number="—" label="訪問歯科の現場メモ" theme="dark" />
+    <>
+      <Breadcrumb items={[{ label: "ホーム", href: "/" }, { label: "コラム" }]} />
 
-          <div className="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
-            <div className="md:col-span-8">
-              <h1 className="display-jp text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl text-arch-cream leading-[1.1]">
-                現場から見える、
-                <br />
-                訪問歯科の<span className="text-arch-gold">リアル</span>。
-              </h1>
-            </div>
-            <div className="md:col-span-4">
-              <div className="border-l-2 border-arch-gold pl-5">
-                <p className="mono-label text-arch-gold mb-3">ABOUT</p>
-                <p className="text-base md:text-lg text-arch-sage leading-loose">
-                  外部事務長の視点で
-                  <br />
-                  書き留めた、運営の現場メモ。
-                </p>
-              </div>
-            </div>
-          </div>
+      <PageHero
+        eyebrow="COLUMN"
+        title="現場で起きたことを、そのまま書いています。"
+        lead="歯科医院の運営と訪問歯科の現場で、実際に相談を受けたこと・確認したことを書いています。一般論ではなく、院長が判断するときの材料になることを基準にしています。"
+      />
 
-          <div className="mt-14 md:mt-20 border-t border-arch-rule-dark pt-8">
-            <p className="text-sm md:text-base text-arch-sage/90 leading-loose max-w-2xl">
-              SEO 記事ではなく、医院の運営現場で実際に起きていることを、その都度書き留めた現場メモです。営業、施設連携、レセプト、採用、組織、業務改善——訪問歯科を回し続けるために必要なリアルを共有します。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────
-          NOTES — list
-      ────────────────────────────────────────── */}
-      <section className="bg-arch-cream py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-baseline justify-between border-b border-arch-rule pb-4 mb-12 md:mb-16">
-            <p className="mono-label text-arch-moss">NOTES — すべての現場メモ</p>
-            <p className="mono-micro text-arch-ink-muted hidden sm:block">
-              {String(NOTES.length).padStart(2, "0")} ENTRIES
-            </p>
-          </div>
-
+      <section className="bg-arch-cream">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-10 py-24 md:py-36">
           <ul className="border-t border-arch-rule">
-            {NOTES.map((n, i) => (
-              <li key={n.slug} className="border-b border-arch-rule">
+            {COLUMN_METAS.map((c, i) => (
+              <Reveal as="li" key={c.slug} delay={Math.min(i, 4) * 60}>
                 <Link
-                  href={`/columns/${n.slug}`}
-                  className="group grid grid-cols-12 gap-4 md:gap-8 py-7 md:py-8 hover:bg-arch-cream-raised transition-colors -mx-3 px-3"
+                  href={columnHref(c)}
+                  className="group grid gap-3 border-b border-arch-rule py-8 md:grid-cols-12 md:gap-8 md:py-10"
                 >
-                  <div className="col-span-2 md:col-span-1">
-                    <span className="mono-micro text-arch-ink-muted tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                  <div className="md:col-span-3">
+                    <p className="mono-micro text-arch-moss">{c.category}</p>
+                    <p className="mono-micro mt-2 text-arch-ink-muted tabular-nums">
+                      {fmt(c.published)}
+                    </p>
                   </div>
-                  <div className="col-span-10 md:col-span-2">
-                    <p className="mono-label text-arch-moss">{n.category}</p>
-                  </div>
-                  <div className="hidden md:block md:col-span-2">
-                    <p className="mono-micro text-arch-ink-muted tabular-nums">{fmt(n.date)}</p>
-                  </div>
-                  <div className="col-span-12 md:col-span-6">
-                    <h2 className="text-base md:text-lg font-bold leading-relaxed text-arch-ink group-hover:text-arch-forest transition-colors">
-                      {n.title}
+                  <div className="md:col-span-9">
+                    <h2 className="display-jp text-[1.125rem] leading-[1.6] text-arch-ink group-hover:text-arch-forest md:text-[1.375rem]">
+                      {c.title}
                     </h2>
-                  </div>
-                  <div className="hidden md:flex col-span-1 items-start justify-end pt-1">
-                    <ArrowRight
-                      size={16}
-                      className="text-arch-ink-muted group-hover:text-arch-forest group-hover:translate-x-1 transition-all"
-                    />
+                    <p className="mt-3 text-[0.95rem] leading-[1.9] text-arch-ink-soft">
+                      {c.conclusion}
+                    </p>
                   </div>
                 </Link>
-              </li>
+              </Reveal>
             ))}
           </ul>
 
-          <p className="mono-micro text-arch-ink-muted mt-10 leading-loose max-w-2xl">
-            ※ 現場で得られた手触りをそのまま書き留めたメモです。SEO の構造化記事ではなく、医院運営に役立つかどうかだけを基準にしています。
-          </p>
+          {/* 2 本柱への内部リンク */}
+          <div className="mt-16 grid gap-4 sm:grid-cols-2">
+            <Link
+              href="/services/external-manager"
+              className="border border-arch-rule bg-arch-cream-raised p-8 hover:border-arch-forest"
+            >
+              <p className="mono-micro text-arch-ink-muted">SERVICE</p>
+              <p className="display-jp mt-3 text-xl text-arch-forest">外部事務長</p>
+              <p className="mt-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft">
+                院長が抱えている経営実務を整理し、医院が回り続ける体制をつくる。
+              </p>
+            </Link>
+            <Link
+              href="/services/visit-dental-consulting"
+              className="border border-arch-rule bg-arch-cream-raised p-8 hover:border-arch-forest"
+            >
+              <p className="mono-micro text-arch-ink-muted">SERVICE</p>
+              <p className="display-jp mt-3 text-xl text-arch-forest">
+                訪問歯科コンサルティング
+              </p>
+              <p className="mt-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft">
+                訪問歯科を始めることではなく、回り続ける構造をつくる。
+              </p>
+            </Link>
+          </div>
         </div>
       </section>
-    </article>
+
+      <ContactForm idPrefix="columns" />
+    </>
   );
 }

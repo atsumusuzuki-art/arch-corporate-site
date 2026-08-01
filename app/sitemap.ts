@@ -1,153 +1,46 @@
 import type { MetadataRoute } from "next";
+import { COLUMN_METAS, columnHref } from "@/lib/columns";
+import { CASES } from "@/lib/cases";
+import { PAGE_DATES, absoluteUrl } from "@/lib/site";
 
-// TODO: 本番ドメインが決まったら差し替えてください
-const siteUrl = "https://arch-yh.com";
+/**
+ * サイトマップ
+ * ------------------------------------------------------------------
+ * ・canonical を設定しているページだけを載せる
+ * ・new Date() は使わない。lib/site.ts と各記事の実際の更新日を使う
+ * ・/thanks（noindex）と、転送元の旧 URL は載せない
+ */
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/news`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/bpo-service`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/services/consulting`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/services/external-manager`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteUrl}/services/visit-dental-startup`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/services/facility-growth`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/services/branch-startup`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/services/fee-standards`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/services/sales`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/services/dental-matching`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/columns`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/cases/visit-startup`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${siteUrl}/cases/facility-growth`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${siteUrl}/cases/branch-launch`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${siteUrl}/cases/fee-standards`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${siteUrl}/cases/profitability`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${siteUrl}/column/houmon-shika-hajimekata`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/column/houmon-shika-santei`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/column/houmon-shika-eigyo`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/columns/facility-collaboration`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/columns/communication-timelag`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/columns/sns-dx-recruitment`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/columns/waiting-room-visual`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-  ];
+  const main: MetadataRoute.Sitemap = [
+    { path: "/", priority: 1 },
+    { path: "/services/external-manager", priority: 0.9 },
+    { path: "/services/visit-dental-consulting", priority: 0.9 },
+    { path: "/cases", priority: 0.8 },
+    { path: "/columns", priority: 0.8 },
+    { path: "/company", priority: 0.6 },
+    { path: "/privacy", priority: 0.3 },
+  ].map((p) => ({
+    url: absoluteUrl(p.path),
+    lastModified: PAGE_DATES[p.path]?.modified,
+    changeFrequency: "monthly" as const,
+    priority: p.priority,
+  }));
+
+  const casePages: MetadataRoute.Sitemap = CASES.map((c) => ({
+    url: absoluteUrl(`/cases/${c.slug}`),
+    lastModified: PAGE_DATES[`/cases/${c.slug}`]?.modified,
+    changeFrequency: "yearly",
+    priority: 0.7,
+  }));
+
+  /* コラムは /columns と /column の両方を、記事データの basePath から生成する */
+  const columnPages: MetadataRoute.Sitemap = COLUMN_METAS.map((c) => ({
+    url: absoluteUrl(columnHref(c)),
+    lastModified: c.modified,
+    changeFrequency: "yearly",
+    priority: 0.6,
+  }));
+
+  return [...main, ...casePages, ...columnPages];
 }

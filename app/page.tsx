@@ -1,871 +1,306 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, Menu, X, Send } from "lucide-react";
-import { SectionTag } from "@/components/CornerMarkers";
+import Link from "next/link";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
+import JsonLd from "@/components/JsonLd";
+import Reveal from "@/components/Reveal";
+import { COLUMN_METAS, columnHref } from "@/lib/columns";
+import { BRAND, COMPANY, PILLARS, SITE_URL, absoluteUrl } from "@/lib/site";
 
-/* ================================================================
-   合同会社ARCH — Corporate Site v4
-   コンセプト：歯科医院の外部事務長
-   (2026-05-11 — 全面改修)
-   ================================================================ */
-
-/* 5 つの特徴（②ARCHについて） */
-const STRENGTHS = [
-  { label: "医院運営に密着", body: "外来・訪問・分院まで、実務を一緒に整理する。" },
-  { label: "訪問歯科の現場経験", body: "立ち上げ・黒字化の現場知見を医院運営に活かす。" },
-  { label: "現場実務まで対応", body: "助言で止めず、医院の実務まで入り込む。" },
-  { label: "レセプト精度改善", body: "算定漏れ・返戻を構造から減らす。" },
-  { label: "DX・業務改善", body: "記録・シフト・連絡をデジタルで軽くする。" },
-];
-
-/* 3 つの実績ケース（③実績） */
-const CASES = [
-  {
-    num: "01",
-    title: "月商700万円規模の訪問歯科運営支援",
-    problem: "レセプト前チェックや月次分析が属人的になっていた。",
-    action: "カルテチェック、算定漏れ確認、月次分析、営業戦略整理を継続支援。",
-    result: "レセプト精度向上、算定漏れ減少、数値の可視化を実現。",
-  },
-  {
-    num: "02",
-    title: "訪問歯科部門の6ヶ月黒字化支援",
-    problem: "施設導線と初診対応が整理されておらず、収益化できていなかった。",
-    action: "施設対応導線、初診オペレーション、訪問ルート、算定設計を整理。",
-    result: "訪問診療体制を安定化し、6ヶ月で黒字化。",
-  },
-  {
-    num: "03",
-    title: "スタッフ導線・シフト最適化支援",
-    problem: "急な問い合わせ時に、誰がどこにいるか分からない。",
-    action: "札幌特有の複数施設巡回型を踏まえたシフト構成を設計。",
-    result: "問い合わせ対応スピード改善、現場確認効率向上。",
-  },
-  {
-    num: "04",
-    title: "分院立ち上げ支援",
-    problem: "分院展開に伴い、機材導入、現場導線、ディーラー対応など、開業準備全体の整理が必要だった。",
-    action: "歯科ディーラー、パノラマメーカー、ユニット動作確認、現場導線整理、オペレーション確認に立ち会い、実務面をサポート。",
-    result: "開業準備をスムーズに進行し、現場運営開始前の混乱を最小限に抑えた。",
-  },
-];
-
-/* 5 ブロック構成（④サービス → 院長が抱える問題別の構成） */
-type Block = {
-  num: "01" | "02" | "03" | "04" | "05";
-  /** タイトル行（行ごとに array。確実に nowrap で行を固定するため） */
-  title: string[];
-  symptoms: string[];
-  actions: string[];
-  cases?: string[];
-  notes?: { slug: string; title: string }[];
-  href?: string;
+export const metadata: Metadata = {
+  title: "歯科医院の外部事務長／訪問歯科コンサルティング",
+  description:
+    "助言だけでは医院は回らない。合同会社ARCHは、歯科医院の外部事務長として院長が抱える経営実務を整理し、医院が回り続ける体制をつくります。訪問歯科の立ち上げと立て直しは、個別のコンサルティングとして支援します。",
+  alternates: { canonical: SITE_URL },
 };
 
-const BLOCKS: Block[] = [
+/* トップに載せる支援実績（数字は確認済みのものだけ） */
+const CASES = [
   {
-    num: "01",
-    title: ["現場運営が、", "属人化している。"],
-    symptoms: [
-      "院長しか状況を把握していない",
-      "スタッフ配置が毎回ギリギリ",
-      "誰がどこにいるか分からない",
-      "情報共有が崩れている",
-      "訪問導線が属人的になっている",
-    ],
-    actions: [
-      "シフト設計",
-      "導線整理",
-      "定期ミーティング",
-      "現場オペレーション改善",
-      "訪問導線整理",
-    ],
-    cases: ["スタッフ導線・シフト最適化（CASE 03）"],
-    notes: [
-      { slug: "turnover-strategy", title: "「あの人が辞めたら終わる」状態から、抜け出せていますか？" },
-      { slug: "staff-role", title: "優秀なスタッフが辞めない医院の秘密「係活動」マネジメント" },
-    ],
-    href: "/services/consulting",
+    href: "/cases/sapporo-visit-dental",
+    area: "北海道札幌市",
+    summary: "訪問歯科を中心とした医院運営",
+    facts: ["2024年1月開業", "2026年6月実績：医院全体で月商800万円"],
   },
   {
-    num: "02",
-    title: ["レセプト・算定に、不安がある。"],
-    symptoms: [
-      "算定漏れが不安",
-      "レセ前確認が属人化している",
-      "コメント整理が追いつかない",
-      "改定対応まで手が回らない",
-    ],
-    actions: [
-      "カルテチェック(一部レセコン対応)",
-      "レセプトチェック(一部レセコン対応)",
-      "算定改善提案",
-      "報酬改定レポート作成",
-      "月次分析",
-    ],
-    cases: ["月商700万規模の訪問歯科運営支援(CASE 01)", "月平均点数 +300点改善"],
-    notes: [
-      { slug: "profit-trap", title: "忙しいのに利益が残らない医院。現場が見落としている罠" },
-    ],
-    href: "/services/consulting#billing",
+    href: "/cases/setagaya-visit-dental",
+    area: "東京都世田谷区",
+    summary: "訪問歯科をゼロから立ち上げ",
+    facts: ["立ち上げ4か月", "施設1件・検診36名／うち15名が訪問歯科の利用を開始"],
   },
   {
-    num: "03",
-    title: ["訪問歯科を、", "伸ばしたい。"],
-    symptoms: [
-      "施設対応が整理されていない",
-      "訪問導線が崩れている",
-      "営業が属人的",
-      "同意書運用が止まりやすい",
-      "現場スタッフ負担が偏っている",
-    ],
-    actions: [
-      "施設連携支援",
-      "営業導線整理",
-      "同意書発送業務",
-      "訪問歯科現場補助",
-      "訪問歯科記録アプリ提供",
-      "訪問歯科算定支援",
-    ],
-    cases: ["訪問歯科部門の6ヶ月黒字化(CASE 02)"],
-    notes: [
-      { slug: "facility-collaboration", title: "施設が本当に求めているのは「治療の腕」ではない。" },
-      { slug: "communication-timelag", title: "返信は夕方になります——施設の信頼を削るタイムラグ。" },
-      { slug: "broker-trap", title: "「紹介しますよ」に依存した医院が崩れる理由" },
-    ],
-    href: "/services/sales",
-  },
-  {
-    num: "04",
-    title: ["分院展開や、成長フェーズへ", "進みたい。"],
-    symptoms: [
-      "開業準備が整理できない",
-      "ディーラー対応が煩雑",
-      "機材確認まで手が回らない",
-      "現場導線が決まらない",
-      "院長が全判断を抱えている",
-    ],
-    actions: [
-      "分院立ち上げサポート",
-      "ディーラー調整",
-      "パノラマ確認",
-      "ユニット動作確認",
-      "現場立会い",
-      "オペレーション整理",
-    ],
-    cases: ["分院立ち上げ支援(CASE 04)"],
-    notes: [],
-    href: "/services/consulting",
-  },
-  {
-    num: "05",
-    title: ["院長が、", "全部抱えている。"],
-    symptoms: [
-      "相談相手がいない",
-      "採用に困っている",
-      "細かい実務が止まる",
-      "院長しか判断できない",
-      "デザインや制作も後回しになる",
-    ],
-    actions: [
-      "採用支援",
-      "HP制作・改修",
-      "契約書等の帳票作成",
-      "ロゴ制作",
-      "医院ブランディング",
-      "デジタルサイネージ制作",
-      "定期相談 / ミーティング",
-    ],
-    cases: ["採用定着率 11名中9名 / 14名中12名"],
-    notes: [
-      { slug: "sns-dx-recruitment", title: "「ハローワークに出しておけば来る」時代は終わった。" },
-      { slug: "document-hell", title: "歯科医院が陥る「書類地獄」" },
-    ],
-    href: "/bpo-service",
+    href: "/cases/hachioji-external-manager",
+    area: "東京都八王子市",
+    summary: "外部事務長として院長の実務を引き受け",
+    facts: ["補助金申請", "施設基準の取得に向けた研修会／分院展開の支援"],
   },
 ];
 
-/* Footer リンク用：課題別ページ・コンセプト・料金 */
-const SERVICE_FOOTER_LINKS = [
-  { title: "外部事務長とは", href: "/services/external-manager" },
-  { title: "訪問歯科立ち上げ支援", href: "/services/visit-dental-startup" },
-  { title: "施設連携・利用者増加", href: "/services/facility-growth" },
-  { title: "分院立ち上げ支援", href: "/services/branch-startup" },
-  { title: "算定・施設基準支援", href: "/services/fee-standards" },
-  { title: "料金プラン", href: "/services/consulting" },
-];
-
+/* 2 本柱のサービスを構造化データにも出す（画面の表示内容と一致させる） */
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": PILLARS.map((p) => ({
+    "@type": "Service",
+    "@id": `${SITE_URL}${p.href}#service`,
+    name: p.label,
+    description: p.seoDescription,
+    url: absoluteUrl(p.href),
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: { "@type": "Country", name: "日本" },
+    audience: { "@type": "Audience", audienceType: "歯科医院" },
+  })),
+};
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#cases", label: "Cases" },
-    { href: "#service", label: "Service" },
-  ];
-
-  /* スクロール連動の静かなフェードイン
-     - .reveal クラスの要素が画面に入ったら .is-visible を付与
-     - 一度表示したら observer 解除（繰り返さない）
-     - prefers-reduced-motion 対応は CSS 側で */
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const latestColumns = COLUMN_METAS.slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-arch-cream text-arch-ink selection:bg-arch-forest selection:text-arch-cream scroll-smooth">
+    <>
+      <JsonLd data={servicesJsonLd} />
 
-      {/* ============================================================
-          NAVIGATION
-          ============================================================ */}
-      <nav className="fixed w-full bg-arch-forest/95 backdrop-blur-md z-50 border-b border-arch-rule-dark">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <div className="flex justify-between h-16 md:h-20 items-center">
-            <Link href="/" className="flex items-center gap-3" aria-label="合同会社ARCH">
-              <Image
-                src="/images/logo.jpg"
-                alt="合同会社ARCH"
-                width={160}
-                height={160}
-                className="h-10 md:h-11 w-auto"
-                priority
-              />
-              <span className="hidden sm:block">
-                <span className="display-jp text-arch-cream text-base leading-none block">合同会社ARCH</span>
-                <span className="mono-micro text-arch-sage/70 tracking-[0.18em] mt-1 block">歯科医院の外部事務長</span>
+      {/* ────────────── 1. ファーストビュー ────────────── */}
+      <section className="on-forest relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-arch-forest text-arch-cream">
+        {/* 実写撮影までの仮ヒーロー画像。差し替え時は同じ構図の画像を使う。 */}
+        <Image
+          src="/images/hero-ai-sample.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover object-[68%_center] md:object-center"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(9,42,33,0.96)_0%,rgba(9,42,33,0.82)_48%,rgba(9,42,33,0.36)_100%)] max-md:bg-[linear-gradient(90deg,rgba(9,42,33,0.94)_0%,rgba(9,42,33,0.78)_100%)]"
+        />
+
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-24 lg:px-10">
+          {/* h1 は 1 つのまま。span を block にして PC・スマホとも必ず 2 行にする */}
+          <h1 className="display-jp text-[clamp(1.75rem,8vw,5rem)] leading-[1.25] text-arch-cream">
+            {BRAND.headlineLines.map((line) => (
+              <span key={line} className="block">
+                {line}
               </span>
-            </Link>
-
-            <div className="hidden md:flex items-center gap-9">
-              {navLinks.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="mono-label text-arch-sage hover:text-arch-cream transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                className="bg-arch-cream text-arch-forest px-5 py-2.5 rounded-[2px] mono-label !text-arch-forest hover:bg-arch-gold transition-colors"
-              >
-                相談する
-              </a>
-            </div>
-
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-arch-cream p-2 -mr-2"
-              aria-label="メニュー"
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
-        </div>
-
-        {isMenuOpen && (
-          <div className="md:hidden bg-arch-forest border-t border-arch-rule-dark px-5 py-7 space-y-5">
-            {navLinks.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="block mono-label text-arch-sage hover:text-arch-cream"
-              >
-                {item.label}
-              </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setIsMenuOpen(false)}
-              className="block bg-arch-cream text-arch-forest px-6 py-3.5 rounded-[2px] mono-label !text-arch-forest text-center"
-            >
-              無料相談する（30分・オンライン可）
-            </a>
-          </div>
-        )}
-      </nav>
+          </h1>
 
-      {/* ============================================================
-          ① HERO — first view（image00 を背景に、左暗部にテキスト重ね）
-          ============================================================ */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 md:pt-44 md:pb-32 bg-arch-ink text-arch-cream overflow-hidden">
-        {/* 背景画像：image00 をフルブリードで、右寄せ object-position */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 hero-image-fade">
-            <Image
-              src="/images/image00.png"
-              alt="シフト表・訪問スケジュール・PC を確認している打合せ風景"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-right md:object-center"
-            />
-          </div>
-          {/* 左から右へ：左半分にやや暗いカバー、右は画像がしっかり見える */}
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-ink/90 via-arch-ink/55 to-arch-ink/0 md:from-arch-ink/85 md:via-arch-ink/25 md:to-arch-ink/0" />
-          {/* スマホでは上下に控えめな追加暗部 */}
-          <div className="absolute inset-0 bg-gradient-to-b from-arch-ink/25 via-transparent to-arch-ink/25 md:hidden" />
-        </div>
+          <p className="mt-10 max-w-[34rem] text-[clamp(1.0625rem,2.6vw,1.5rem)] leading-[1.9] text-arch-sage">
+            <span className="block">{BRAND.lead1}</span>
+            {/* スマートフォンだけ意味の切れ目で 2 行にする。PC は 1 行 */}
+            <span className="block md:inline">
+              {BRAND.lead2Lines[0]}
+              <span className="hidden md:inline">、</span>
+            </span>
+            <span className="block md:inline">{BRAND.lead2Lines[1]}</span>
+          </p>
 
-        <div className="absolute top-24 md:top-32 right-5 sm:right-8 md:right-10 text-right z-10">
-          <span className="mono-micro text-arch-sage/50">ARCH · 歯科医院の外部事務長</span>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <div className="max-w-2xl md:max-w-[44rem]">
-            <p className="mono-label text-arch-gold mb-8 md:mb-10 hero-fade hero-fade-1">
-              Dental Clinic Operations / External Office Director
-            </p>
-
-            {/* メインコピー — 2行を厳守 */}
-            <h1 className="display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.75rem)] leading-[1.18] tracking-tight mb-10 md:mb-12 hero-fade hero-fade-2">
-              <span className="block whitespace-nowrap">歯科医院を、</span>
-              <span className="block whitespace-nowrap">
-                <span className="text-arch-gold font-black">&ldquo;回り続ける組織&rdquo;</span>へ。
-              </span>
-            </h1>
-
-            {/* サブコピー */}
-            <p className="text-base sm:text-lg text-arch-sage/90 leading-loose max-w-2xl mb-8 md:mb-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] hero-fade hero-fade-3">
-              訪問歯科、外来、分院展開、スタッフ導線、レセプト、現場オペレーション。
-              <br className="hidden sm:block" />
-              歯科医院は、院長一人で抱え始めると、現場が止まりやすくなります。
-              <br className="hidden sm:block" />
-              ARCHは、歯科医院の外部事務長として、現場実務まで入り込みながら、医院運営を支えます。
-            </p>
-
-            {/* 鈴木経歴ミニ帯（信頼帯） */}
-            <p className="mono-label text-arch-sage mb-10 md:mb-12 pl-3 border-l border-arch-gold/40 leading-relaxed hero-fade hero-fade-3" style={{ animationDelay: "0.65s" }}>
-              元小学校教員 <span className="text-arch-gold">→</span> 広域医療法人 歯科事務局長 <span className="text-arch-gold">→</span> 訪問歯科を単独立ち上げ・6ヶ月で黒字化
-            </p>
-
-            {/* CTAボタン */}
-            <div className="flex flex-col sm:flex-row gap-3 hero-fade hero-fade-4">
-              <a
-                href="#contact"
-                className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center justify-center gap-3 lift-on-hover"
-              >
-                無料相談する（30分・オンライン可） <ArrowRight size={16} />
-              </a>
-              <a
-                href="#service"
-                className="border border-arch-cream text-arch-cream px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-cream hover:text-arch-forest transition-colors inline-flex items-center justify-center gap-3 lift-on-hover"
-              >
-                サービスを見る
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
-          <span className="mono-micro text-arch-sage/50">HOME</span>
-          <span className="mono-micro text-arch-sage/50">01 / 04</span>
+          <a
+            href="#pillars"
+            className="mt-14 inline-flex min-h-14 items-center gap-4 border border-arch-cream px-8 text-base font-bold text-arch-cream transition-colors hover:bg-arch-cream hover:text-arch-forest"
+          >
+            ARCHの支援を見る
+            <ArrowDown size={18} aria-hidden="true" />
+          </a>
         </div>
       </section>
 
-      {/* ============================================================
-          価格不安除去ストリップ — HERO 直下の細い帯
-          ============================================================ */}
-      <section className="reveal bg-arch-cream-raised border-y border-arch-rule py-3 md:py-4">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <div className="flex items-center justify-center gap-4 md:gap-8 text-center">
-            <span className="mono-label text-arch-ink text-xs">月額5万円〜（顧問プラン）</span>
-            <span className="hidden md:block w-px h-3 bg-arch-rule-dark/30" aria-hidden="true" />
-            <span className="mono-label text-arch-ink text-xs">営業はしません</span>
-            <span className="hidden md:block w-px h-3 bg-arch-rule-dark/30" aria-hidden="true" />
-            <span className="mono-label text-arch-ink text-xs">初回30分無料相談</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-          ② ABOUT — ARCHについて
-          ============================================================ */}
-      <section
-        id="about"
-        className="relative py-20 md:py-32 bg-arch-cream-raised border-t border-arch-rule"
-      >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="ABOUT" number="02" label="ARCHについて" />
-
-          <h2 className="reveal display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-10 md:mb-12">
-            &ldquo;助言だけ&rdquo;では、
-            <br />
-            医院は<span className="text-arch-forest font-black">回らない。</span>
-          </h2>
-
-          <div className="reveal reveal-delay-1 max-w-3xl text-base md:text-lg text-arch-ink-soft leading-loose mb-16 md:mb-20">
-            <p className="mb-6">
-              外来、訪問歯科、分院、レセプト、算定、施設対応、スタッフ配置、診療導線、患者家族対応。
-              歯科医院では、これらすべてが同時に動いています。とくに訪問歯科を伸ばすフェーズや分院展開の時期は、院長一人で抱え始めると現場がすぐに止まります。
-            </p>
-            <p>
-              ARCHは、単なるコンサルティングではなく、歯科医院の外部事務長として、実務レベルまで入り込みながら医院運営を支えます。
-            </p>
-          </div>
-
-          {/* 5 特徴 */}
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-0 border-t border-l border-arch-rule">
-            {STRENGTHS.map((s, i) => (
-              <div
-                key={s.label}
-                className={`reveal reveal-delay-${Math.min(i + 1, 5)} border-b border-r border-arch-rule py-5 sm:py-7 md:py-10 px-3 sm:px-4 md:px-6`}
-              >
-                <p className="mono-label text-arch-moss mb-2 md:mb-4 tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="display-jp text-arch-ink text-sm sm:text-base md:text-xl mb-2 md:mb-3 leading-snug">
-                  {s.label}
-                </h3>
-                <p className="text-xs sm:text-sm text-arch-ink-soft leading-relaxed md:leading-loose">{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
-          <span className="mono-micro text-arch-moss/60">ABOUT</span>
-          <span className="mono-micro text-arch-moss/60">02 / 04</span>
-        </div>
-      </section>
-
-      {/* ============================================================
-          ③ CASES — 実績セクション
-          ============================================================ */}
-      <section id="cases" className="relative py-20 md:py-32 bg-arch-cream overflow-hidden">
-        {/* 背景画像（薄く敷く） */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Image
-            src="/images/image02.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-right opacity-70 grayscale-[20%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-cream via-arch-cream/70 to-arch-cream/10" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="CASES" number="03" label="支援実績" />
-
-          <h2 className="reveal display-jp text-arch-ink text-[clamp(2rem,5vw,4rem)] leading-[1.18] mt-6 mb-3 max-w-3xl">
-            現場で、
-            <br />
-            <span className="text-arch-forest font-black">&ldquo;回る仕組み&rdquo;</span>を作る。
-          </h2>
-          <p className="reveal reveal-delay-1 mono-micro text-arch-ink-muted mb-12 md:mb-16">
-            ※ 医院名は匿名化しています
-          </p>
-
-          <div className="space-y-px bg-arch-rule">
-            {CASES.map((c, idx) => (
-              <article key={c.num} className={`reveal reveal-delay-${Math.min(idx + 1, 5)} bg-arch-cream-raised py-6 sm:py-8 md:py-14 px-4 sm:px-6 md:px-12`}>
-                <div className="grid md:grid-cols-12 gap-4 md:gap-10">
-                  <div className="md:col-span-3">
-                    <p className="mono-label text-arch-moss mb-2 md:mb-3 tabular-nums">CASE — {c.num}</p>
-                    <h3 className="display-jp text-arch-ink text-base sm:text-lg md:text-2xl leading-snug">
-                      {c.title}
-                    </h3>
-                  </div>
-                  <dl className="md:col-span-9 grid sm:grid-cols-3 gap-3 sm:gap-5 md:gap-8">
-                    <div>
-                      <dt className="mono-micro text-arch-ink-muted mb-1 md:mb-2">課題</dt>
-                      <dd className="text-xs sm:text-sm text-arch-ink leading-relaxed md:leading-loose">{c.problem}</dd>
-                    </div>
-                    <div>
-                      <dt className="mono-micro text-arch-ink-muted mb-1 md:mb-2">支援内容</dt>
-                      <dd className="text-xs sm:text-sm text-arch-ink leading-relaxed md:leading-loose">{c.action}</dd>
-                    </div>
-                    <div>
-                      <dt className="mono-micro text-arch-gold mb-1 md:mb-2">結果</dt>
-                      <dd className="text-xs sm:text-sm text-arch-forest font-bold leading-relaxed md:leading-loose">{c.result}</dd>
-                    </div>
-                  </dl>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-20 flex justify-between">
-          <span className="mono-micro text-arch-moss/60">CASES</span>
-          <span className="mono-micro text-arch-moss/60">03 / 04</span>
-        </div>
-      </section>
-
-      {/* ============================================================
-          ④ SERVICES — サービス一覧（deep forest）
-          ============================================================ */}
-      <section
-        id="service"
-        className="relative py-20 md:py-32 bg-arch-forest text-arch-cream overflow-hidden"
-      >
-        {/* 背景画像（薄く敷く） */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Image
-            src="/images/image04.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-right opacity-70 grayscale-[30%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-arch-forest via-arch-forest/70 to-arch-forest/10" />
-        </div>
-
-        <div className="absolute top-8 md:top-10 right-5 sm:right-8 md:right-10 z-10">
-          <span className="mono-micro text-arch-sage/60">04 — SERVICE</span>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="WHERE WE WORK" number="04" label="ARCHが入る場所" theme="dark" />
-
-          <h2 className="reveal display-jp text-arch-cream text-[clamp(1.625rem,4.5vw,3.5rem)] leading-[1.2] tracking-tight mt-6 mb-6">
-            <span className="block whitespace-nowrap">院長が一人で抱え始めた時、</span>
-            <span className="block whitespace-nowrap text-arch-gold font-black">ARCHが入る場所。</span>
-          </h2>
-          <p className="reveal reveal-delay-1 text-sm md:text-base text-arch-sage/85 leading-loose max-w-3xl mb-14 md:mb-20">
-            歯科医院は、訪問歯科、外来、スタッフ、レセプト、施設連携、分院展開など、成長とともに現場が複雑になります。ARCHは、歯科医院の外部事務長として、現場実務へ入り込みながら、医院運営を整理・支援します。
-          </p>
-
-          <div className="border-t border-arch-rule-dark">
-            {BLOCKS.map((b, idx) => (
-              <article
-                key={b.num}
-                className={`reveal reveal-delay-${Math.min(idx + 1, 5)} grid grid-cols-12 gap-3 md:gap-8 py-8 sm:py-10 md:py-16 border-b border-arch-rule-dark`}
-              >
-                {/* 左：番号 + 見出し */}
-                <div className="col-span-12 md:col-span-5 md:pr-6 mb-4 md:mb-0">
-                  <p className="display-jp leading-none tabular-nums text-[2rem] sm:text-[2.5rem] md:text-[4rem] text-arch-gold/40 mb-3 md:mb-6">
-                    {b.num}
-                  </p>
-                  <h3 className="display-jp font-black leading-[1.2] text-xl sm:text-2xl md:text-[1.75rem] tracking-tight text-arch-cream">
-                    {b.title.map((line) => (
-                      <span key={line} className="block whitespace-nowrap">
-                        {line}
-                      </span>
-                    ))}
-                  </h3>
-                  {b.cases && b.cases.length > 0 && (
-                    <div className="mt-5 md:mt-8 border-t border-arch-rule-dark/60 pt-4">
-                      <p className="mono-micro text-arch-gold/80 mb-2">関連実績</p>
-                      <ul className="text-xs md:text-[13px] text-arch-sage/80 leading-relaxed space-y-1">
-                        {b.cases.map((c) => (
-                          <li key={c} className="flex items-baseline gap-2">
-                            <span className="text-arch-gold/60">·</span>
-                            <span>{c}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {b.notes && b.notes.length > 0 && (
-                    <div className="mt-4 border-t border-arch-rule-dark/40 pt-4">
-                      <p className="mono-micro text-arch-sage/60 mb-2">関連メモ</p>
-                      <ul className="space-y-1.5">
-                        {b.notes.map((n) => (
-                          <li key={n.slug}>
-                            <Link
-                              href={`/columns/${n.slug}`}
-                              className="text-xs md:text-[13px] text-arch-sage/70 hover:text-arch-gold transition-colors leading-relaxed inline-flex items-baseline gap-1.5"
-                            >
-                              <span className="text-arch-gold/50">→</span>
-                              <span className="truncate">{n.title}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-
-                {/* 右：よくある状態 + ARCHが行うこと */}
-                <div className="col-span-12 md:col-span-7 grid sm:grid-cols-2 gap-6 md:gap-10">
-                  <div>
-                    <p className="mono-micro text-arch-sage/60 mb-3 md:mb-4">よくある状態</p>
-                    <ul className="space-y-2 text-sm text-arch-sage/85 leading-relaxed">
-                      {b.symptoms.map((s) => (
-                        <li key={s} className="flex items-baseline gap-2">
-                          <span className="text-arch-sage/40 shrink-0">·</span>
-                          <span>{s}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="mono-micro text-arch-gold mb-3 md:mb-4">ARCHが行うこと</p>
-                    <ul className="space-y-2 text-sm text-arch-cream leading-relaxed">
-                      {b.actions.map((a) => (
-                        <li key={a} className="flex items-baseline gap-2">
-                          <span className="text-arch-gold/70 shrink-0">·</span>
-                          <span>{a}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <p className="mono-micro text-arch-sage/50 mt-10 max-w-2xl leading-loose">
-            ※ 上記すべてを一度に行うわけではありません。医院の状況に合わせて優先順位を一緒に決めます。
-          </p>
-          <p className="mono-micro text-arch-sage/50 mt-3 max-w-2xl leading-loose">
-            ※ サービスを切り売りするのではなく、医院の状況に合わせて必要な実務を組み合わせます。まずは現場の状況をお聞かせください。
-          </p>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-16 md:mt-24 flex justify-between">
-          <span className="mono-micro text-arch-sage/60">SERVICE</span>
-          <span className="mono-micro text-arch-sage/60">04 / 04</span>
-        </div>
-      </section>
-
-      {/* ============================================================
-          1行FLOW帯 — CONTACT直前
-          ============================================================ */}
-      <div className="reveal bg-arch-cream-raised border-t border-arch-rule py-6 md:py-8">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <p className="mono-micro text-arch-ink-muted text-center">
-            お問い合わせ → 5営業日以内にメール → 30分オンライン無料相談（Zoom / Google Meet）
-          </p>
-        </div>
-      </div>
-
-      {/* ============================================================
-          CONTACT
-          ============================================================ */}
-      <section id="contact" className="relative py-20 md:py-36 bg-arch-forest text-arch-cream overflow-hidden">
-        {/* Background image with overlay (静かな夜の空気感として) */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/image05.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-85 grayscale-[10%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-arch-forest/55 via-arch-forest/45 to-arch-ink/65"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <SectionTag category="CONTACT" number="" label="お問い合わせ" theme="dark" />
-
-          <h2 className="reveal display-jp text-arch-cream text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.18] mt-6 mb-8">
-            まずは、
-            <br />
-            <span className="text-arch-gold">医院の状況</span>をお聞かせください。
-          </h2>
-          <p className="reveal reveal-delay-1 text-arch-sage text-base md:text-lg leading-loose max-w-2xl mb-6 md:mb-8">
-            外来、訪問歯科、分院、レセプト、施設連携、スタッフ導線、事務負担。
-            どこから整えるべきか、医院の状況に合わせて一緒に整理します。
-          </p>
-          <p className="reveal reveal-delay-2 mono-micro text-arch-sage/70 leading-relaxed mb-8 md:mb-10">
-            ※ 初回相談は完全無料です。営業や強引な提案は一切いたしません。
-          </p>
-
-          <div className="reveal reveal-delay-2 max-w-2xl">
-            <form
-              action="https://formsubmit.co/50ee2f45d5bdcbfa397c1f5135d41780"
-              method="POST"
-              className="space-y-7"
-            >
-              <input type="hidden" name="_subject" value="ARCHホームページからのお問い合わせ" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://www.arch-yh.com/thanks" />
-
-              <FormField id="name" label="お名前" required placeholder="山田 太郎" />
-              <FormField id="organization" label="医院名" placeholder="○○歯科クリニック" />
-              <FormField id="email" label="メールアドレス" type="email" required placeholder="info@example.com" />
-
-              {/* ご相談内容セレクト */}
-              <div>
-                <label htmlFor="topic" className="mono-label text-arch-sage mb-3 block">
-                  ご相談内容 <span className="text-arch-gold">*</span>
-                </label>
-                <div className="relative">
-                  <select
-                    id="topic"
-                    name="topic"
-                    required
-                    defaultValue=""
-                    className="w-full appearance-none px-0 py-3 pr-8 bg-transparent border-0 border-b border-arch-rule-dark text-arch-cream focus:outline-none focus:border-arch-cream text-base transition-colors cursor-pointer [&>option]:bg-arch-forest [&>option]:text-arch-cream"
-                  >
-                    <option value="" disabled className="text-arch-sage/50">
-                      選択してください
-                    </option>
-                    <option value="訪問歯科立ち上げ支援">訪問歯科立ち上げ支援</option>
-                    <option value="施設連携・利用者増加支援">施設連携・利用者増加支援</option>
-                    <option value="分院立ち上げ支援">分院立ち上げ支援</option>
-                    <option value="算定・施設基準支援">算定・施設基準支援</option>
-                    <option value="採用支援">採用支援</option>
-                    <option value="HP・LP改善支援">HP・LP改善支援</option>
-                    <option value="外部事務長について相談したい">外部事務長について相談したい</option>
-                    <option value="その他">その他</option>
-                  </select>
-                  {/* カスタム矢印（appearance-none で消えたネイティブ矢印の代替） */}
-                  <span
-                    className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-arch-sage/70"
-                    aria-hidden="true"
-                  >
-                    ▾
-                  </span>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="mono-label text-arch-sage mb-3 block">
-                  詳細 <span className="text-arch-gold">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="現在の医院の状況や具体的なご相談内容をお書きください"
-                  className="w-full px-0 py-3 bg-transparent border-0 border-b border-arch-rule-dark text-arch-cream placeholder-arch-sage/50 focus:outline-none focus:border-arch-cream text-base resize-none transition-colors"
-                />
-              </div>
-
-              <div className="pt-4">
-                <button
-                  type="submit"
-                  className="bg-arch-cream text-arch-forest px-8 py-4 rounded-[2px] text-sm font-bold tracking-wider hover:bg-arch-gold transition-colors inline-flex items-center gap-3"
-                >
-                  <Send size={16} /> 無料相談を送信する
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-10 mt-20 md:mt-28 flex justify-between">
-          <span className="mono-micro text-arch-sage/60">CONTACT — お問い合わせ</span>
-        </div>
-      </section>
-
-      {/* ============================================================
-          FOOTER
-          ============================================================ */}
-      <footer className="bg-arch-ink text-arch-sage pt-16 md:pt-20 pb-10 border-t border-arch-rule-dark">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10">
-          <div className="grid md:grid-cols-12 gap-10 md:gap-12 mb-14">
-            <div className="md:col-span-5">
-              <Image
-                src="/images/logo.jpg"
-                alt="合同会社ARCH"
-                width={200}
-                height={200}
-                className="w-16 h-16 md:w-20 md:h-20 rounded-[8px] mb-6"
-              />
-              <p className="text-arch-cream font-bold text-base mb-2">合同会社ARCH（アーチ）</p>
-              <p className="mono-micro text-arch-sage/70 mb-5 tracking-[0.18em]">
-                歯科医院の外部事務長
-              </p>
-              <div className="space-y-1 text-sm">
-              </div>
-            </div>
-
-            <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
-              <div>
-                <h4 className="mono-label text-arch-cream mb-5">Service</h4>
-                <ul className="space-y-3 text-sm">
-                  {SERVICE_FOOTER_LINKS.map((s) => (
-                    <li key={s.href}>
-                      <Link
-                        href={s.href}
-                        className="hover:text-arch-cream transition-colors"
-                      >
-                        {s.title}
-                      </Link>
-                    </li>
+      {/* ────────────── 2. 二本柱 ────────────── */}
+      <section id="pillars" aria-label="ARCHの支援" className="scroll-mt-20">
+        {PILLARS.map((p, i) => (
+          <div
+            key={p.href}
+            className={`flex min-h-[80svh] items-center border-b border-arch-rule ${
+              i % 2 === 0 ? "bg-arch-cream" : "bg-arch-cream-raised"
+            }`}
+          >
+            <div className="mx-auto w-full max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+              <Reveal>
+                {/* h2 は 1 つのまま。スマートフォンでは意味の切れ目で改行し、
+                    PC では 1 行に戻す（語中での改行を起こさない） */}
+                <h2 className="display-jp text-[clamp(2rem,7vw,4rem)] leading-[1.25] text-arch-forest">
+                  {p.labelLines.map((line) => (
+                    <span key={line} className="block md:inline">
+                      {line}
+                    </span>
                   ))}
-                </ul>
-              </div>
-              <div>
-                <h4 className="mono-label text-arch-cream mb-5">About</h4>
-                <ul className="space-y-3 text-sm">
-                  <li><a href="#about" className="hover:text-arch-cream transition-colors">ARCHについて</a></li>
-                  <li><a href="#cases" className="hover:text-arch-cream transition-colors">支援実績</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="mono-label text-arch-cream mb-5">Contents</h4>
-                <ul className="space-y-3 text-sm">
-                  <li><Link href="/news" className="hover:text-arch-cream transition-colors">お知らせ</Link></li>
-                  <li><Link href="/columns" className="hover:text-arch-cream transition-colors">ARCH NOTE</Link></li>
-                  <li><a href="#contact" className="hover:text-arch-cream transition-colors">お問い合わせ</a></li>
-                </ul>
-              </div>
+                </h2>
+                <p className="mt-10 max-w-[38rem] text-[clamp(1.0625rem,2.6vw,1.5rem)] leading-[1.6] text-arch-ink">
+                  {p.body}
+                </p>
+                {"sub" in p && (
+                  <p className="mt-5 max-w-[38rem] text-[clamp(0.9375rem,1.9vw,1.125rem)] leading-[1.8] text-arch-ink-soft">
+                    {p.sub}
+                  </p>
+                )}
+                <Link
+                  href={p.href}
+                  className="mt-12 inline-flex min-h-14 items-center gap-4 bg-arch-forest px-8 text-base font-bold text-arch-cream transition-colors hover:bg-arch-forest-soft"
+                >
+                  {p.label}について
+                  <ArrowRight size={18} aria-hidden="true" />
+                </Link>
+              </Reveal>
             </div>
           </div>
+        ))}
+      </section>
 
-          <div className="border-t border-arch-rule-dark pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="mono-micro text-arch-sage/60">
-              © {new Date().getFullYear()} ARCH LLC · ALL RIGHTS RESERVED
+      {/* ────────────── 3. 支援実績 ────────────── */}
+      <section aria-labelledby="cases-heading" className="bg-arch-cream">
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+          <Reveal>
+            <h2
+              id="cases-heading"
+              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
+            >
+              支援実績
+            </h2>
+            <p className="mt-6 max-w-[38rem] text-base leading-[1.9] text-arch-ink-soft">
+              医院名は掲載していません。地域と、確認できた数字だけを載せています。
             </p>
-            <span className="mono-micro text-arch-sage/60">ARCH-YH.COM</span>
+          </Reveal>
+
+          <ul className="mt-14 border-t border-arch-rule">
+            {CASES.map((c, i) => (
+              <Reveal as="li" key={c.href} delay={i * 80}>
+                <Link
+                  href={c.href}
+                  className="group grid gap-4 border-b border-arch-rule py-10 md:grid-cols-12 md:gap-8"
+                >
+                  <div className="md:col-span-4">
+                    <p className="display-jp text-xl text-arch-forest">{c.area}</p>
+                    <p className="mt-2 text-[0.95rem] text-arch-ink-soft">{c.summary}</p>
+                  </div>
+                  <div className="md:col-span-7">
+                    <ul className="space-y-2">
+                      {c.facts.map((f) => (
+                        <li key={f} className="text-base leading-[1.9] text-arch-ink">
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="flex items-start md:col-span-1 md:justify-end">
+                    <span className="inline-flex items-center gap-2 text-[0.95rem] text-arch-forest group-hover:underline">
+                      詳細
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+
+          <Link
+            href="/cases"
+            className="mt-12 inline-flex min-h-14 items-center gap-4 border border-arch-forest px-8 text-base font-bold text-arch-forest transition-colors hover:bg-arch-forest hover:text-arch-cream"
+          >
+            支援実績をすべて見る
+            <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ────────────── 4. ARCHと代表者について ────────────── */}
+      <section
+        aria-labelledby="about-heading"
+        className="on-forest bg-arch-forest text-arch-cream"
+      >
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <h2
+                  id="about-heading"
+                  className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.35] text-arch-cream"
+                >
+                  現場を知っているから、
+                  <br />
+                  助言だけで終わらせない。
+                </h2>
+                <div className="mt-10 max-w-[38rem] space-y-7 text-base leading-[1.9] text-arch-sage md:text-[1.0625rem]">
+                  <p>
+                    小学校教員から、歯科医院の経営実務へ。医療法人の歯科事務局長として、院内運営、訪問歯科、施設連携、スタッフ、数字の管理に携わってきました。
+                  </p>
+                  <p>
+                    歯科医院では、院長が診療以外の仕事まで一人で抱えています。その仕事を整理し、医院が回り続けるところまで一緒に動くため、合同会社ARCHを設立しました。
+                  </p>
+                </div>
+                <Link
+                  href="/company"
+                  className="mt-12 inline-flex min-h-14 items-center gap-4 border border-arch-cream px-8 text-base font-bold text-arch-cream transition-colors hover:bg-arch-cream hover:text-arch-forest"
+                >
+                  会社概要と代表について
+                  <ArrowRight size={18} aria-hidden="true" />
+                </Link>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-5">
+              <Reveal delay={120}>
+                <Image
+                  src="/images/representative-atsumu-suzuki-2026.jpg"
+                  alt={`合同会社ARCH 代表 ${COMPANY.representative}`}
+                  width={1086}
+                  height={1448}
+                  sizes="(max-width: 1023px) 100vw, 40vw"
+                  className="w-full object-cover"
+                />
+                <p className="mt-5 text-[0.95rem] leading-[1.8] text-arch-sage">
+                  合同会社ARCH 代表 {COMPANY.representative}
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
-      </footer>
-    </div>
-  );
-}
+      </section>
 
-/* ================================================================
-   FormField helper
-   ================================================================ */
-function FormField({
-  id,
-  label,
-  type = "text",
-  required = false,
-  placeholder,
-}: {
-  id: string;
-  label: string;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-}) {
-  return (
-    <div>
-      <label htmlFor={id} className="mono-label text-arch-sage mb-3 block">
-        {label} {required && <span className="text-arch-gold">*</span>}
-      </label>
-      <input
-        id={id}
-        name={id}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-        className="w-full px-0 py-3 bg-transparent border-0 border-b border-arch-rule-dark text-arch-cream placeholder-arch-sage/50 focus:outline-none focus:border-arch-cream text-base transition-colors"
-      />
-    </div>
+      {/* ────────────── 5. 最新コラム ────────────── */}
+      <section aria-labelledby="columns-heading" className="bg-arch-cream">
+        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+          <Reveal>
+            <h2
+              id="columns-heading"
+              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
+            >
+              コラム
+            </h2>
+          </Reveal>
+
+          <ul className="mt-14 border-t border-arch-rule">
+            {latestColumns.map((c, i) => (
+              <Reveal as="li" key={c.slug} delay={i * 80}>
+                <Link
+                  href={columnHref(c)}
+                  className="group grid gap-3 border-b border-arch-rule py-8 md:grid-cols-12 md:gap-8"
+                >
+                  <div className="md:col-span-3">
+                    <p className="text-sm tracking-wider text-arch-moss">{c.category}</p>
+                    <p className="mono-micro mt-2 text-arch-ink-muted tabular-nums">
+                      {c.published.replace(/-/g, ".")}
+                    </p>
+                  </div>
+                  <h3 className="display-jp text-[1.125rem] leading-[1.6] text-arch-ink group-hover:text-arch-forest md:col-span-9 md:text-[1.375rem]">
+                    {c.title}
+                  </h3>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+
+          <Link
+            href="/columns"
+            className="mt-12 inline-flex min-h-14 items-center gap-4 border border-arch-forest px-8 text-base font-bold text-arch-forest transition-colors hover:bg-arch-forest hover:text-arch-cream"
+          >
+            コラムをすべて見る
+            <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ────────────── 6. 共通問い合わせフォーム ────────────── */}
+      <ContactForm idPrefix="top" />
+    </>
   );
 }

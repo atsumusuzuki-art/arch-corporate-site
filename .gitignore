@@ -22,6 +22,8 @@
 
 # misc
 .DS_Store
+# macOS が外付けSSD上に作る付随ファイル
+._*
 *.pem
 
 # debug
@@ -39,3 +41,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cowork 作業で一時的に生成したファイル（削除して問題ありません）
+_to_delete/
+_arch-*.tgz
