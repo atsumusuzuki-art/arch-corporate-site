@@ -16,8 +16,9 @@ export const COMPANY = {
   name: "合同会社ARCH",
   nameKana: "アーチ",
   nameEn: "ARCH LLC",
-  founded: "2025-02-10",
-  foundedLabel: "2025年2月10日",
+  founded: "2024-02-10",
+  /** 画面に出す表記。日付までは出さない（登記日は founded 側で持つ） */
+  foundedLabel: "2024年2月",
   representative: "鈴木 集",
   representativeEn: "Atsumu Suzuki",
   addressRegion: "神奈川県",
@@ -83,17 +84,77 @@ export const PILLARS = [
 ] as const;
 
 /**
- * ARCH が関わる地域
- * 「現在支援中」「契約実績」とは断定しない。支援実績と歯科医師ネットワークを含む。
+ * ARCHを30秒で
+ * ------------------------------------------------------------------
+ * トップの2番目に置く4項目。左から右へ「知る→考える→実行→広がる」の流れとして
+ * 1本の線でつなぎ、図解として読ませる。
  */
-export const AREAS = [
-  "北海道札幌市",
-  "宮城県仙台市",
-  "東京都八王子市・世田谷区",
-  "神奈川県横浜市・川崎市・相模原市・鎌倉市",
+export const THIRTY_SECONDS = [
+  {
+    no: "01",
+    title: "現場を知る",
+    body: "訪問歯科、施設連携、院内運営を自分で回してきた。",
+  },
+  {
+    no: "02",
+    title: "経営を考える",
+    body: "院長と同じ側に立って、優先順位を決める。",
+  },
+  {
+    no: "03",
+    title: "実行まで入る",
+    body: "決めるだけで終わらせず、現場に落とす。",
+  },
+  {
+    no: "04",
+    title: "紹介でつながる",
+    body: "広告ではなく、紹介と信頼で広がっている。",
+  },
 ] as const;
 
-export const AREAS_NOTE = "支援実績および歯科医師とのネットワークを含みます。";
+/**
+ * 代表のあゆみ（タイムライン）
+ * 年が確定しているものだけ year を入れる。推測で年を作らない。
+ * 「6か月で黒字化」は医療法人在籍時の経験であり、ARCHの支援実績ではない。
+ */
+export const TIMELINE = [
+  { year: "", label: "小学校教員" },
+  { year: "", label: "横浜市の広域医療法人で歯科事務局長" },
+  { year: "", label: "在籍時に訪問歯科を単独で立ち上げ、6か月で黒字化" },
+  { year: "2024年2月", label: "合同会社ARCH設立" },
+  { year: "2024年4月", label: "本格稼働" },
+  { year: "現在", label: "北海道・宮城・東京・神奈川の医院を支援" },
+] as const;
+
+/** 代表本人のことば */
+export const REPRESENTATIVE_QUOTE =
+  "院長が全部抱えなくても、医院はもっと強く回せる。";
+
+/**
+ * 支援エリア（トップの地図と一覧に使う）
+ * ここに載せるのは支援実績のある地域だけ。相談段階の地域は含めない。
+ */
+export const SUPPORT_AREAS = [
+  { pref: "北海道", cities: "札幌市" },
+  { pref: "宮城県", cities: "仙台市" },
+  { pref: "東京都", cities: "八王子市・世田谷区" },
+  { pref: "神奈川県", cities: "横浜市・川崎市・相模原市・鎌倉市" },
+] as const;
+
+/** 相談をいただいている範囲。支援実績とは枠を分けて表示する */
+export const CONSULTATION_AREA_NOTE =
+  "沖縄を含む全国各地からご相談をいただいています。";
+
+/** ARCHの考え方 */
+export const PHILOSOPHY = {
+  /** 1 文＝1 行。PC では各文が折り返さない文字サイズに調整している */
+  mainLines: [
+    "外部事務長は、院長の仕事を奪う人ではありません。",
+    "院長が本来やるべき仕事に戻るための役割です。",
+  ],
+  subLines: ["調べる時間を、考える時間へ。", "抱える経営から、任せられる経営へ。"],
+} as const;
+
 
 /**
  * 各ページの公開日・更新日
@@ -101,7 +162,7 @@ export const AREAS_NOTE = "支援実績および歯科医師とのネットワ�
  * new Date() を使わず、実際に更新した日付を手で入れること。
  */
 export const PAGE_DATES: Record<string, { published: string; modified: string }> = {
-  "/": { published: "2025-02-10", modified: "2026-08-01" },
+  "/": { published: "2024-02-10", modified: "2026-08-10" },
   "/services/external-manager": { published: "2026-05-11", modified: "2026-08-01" },
   "/services/visit-dental-consulting": { published: "2026-08-01", modified: "2026-08-01" },
   "/cases": { published: "2026-08-01", modified: "2026-08-01" },

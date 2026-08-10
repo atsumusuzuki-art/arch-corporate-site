@@ -17,6 +17,8 @@ import { SITE_URL } from "@/lib/site";
 type Props = {
   /** 同一ページ内で id が衝突しないようにする接頭辞 */
   idPrefix?: string;
+  /** 見出しの上に置く一言（トップページなど、営業色を弱めたい場所で使う） */
+  intro?: string;
   /** 相談種別の初期選択（ページごとに変える） */
   defaultTopic?: "外部事務長" | "訪問歯科コンサルティング" | "どちらに当てはまるか相談したい";
 };
@@ -56,6 +58,7 @@ function Optional() {
 
 export default function ContactForm({
   idPrefix = "contact",
+  intro,
   defaultTopic = "どちらに当てはまるか相談したい",
 }: Props) {
   const id = (name: string) => `${idPrefix}-${name}`;
@@ -66,6 +69,11 @@ export default function ContactForm({
         <div className="grid gap-12 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           {/* 左：見出しと流れ */}
           <div>
+            {intro && (
+              <p className="mb-6 max-w-[34rem] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
+                {intro}
+              </p>
+            )}
             {/* h2 は 1 つのまま。PC・スマホとも意味の切れ目で必ず 2 行にする */}
             <h2 className="display-jp text-[clamp(1.375rem,4.5vw,1.75rem)] leading-[1.45] text-arch-ink">
               {HEADING_LINES.map((line) => (

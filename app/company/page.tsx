@@ -5,12 +5,13 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import { AREAS, AREAS_NOTE, COMPANY, SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
+import SupportAreaList from "@/components/SupportAreaList";
+import { COMPANY, SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "会社概要｜合同会社ARCHと代表 鈴木 集について",
   description:
-    "合同会社ARCHの会社概要と代表紹介です。2025年2月10日設立、代表は鈴木 集。元小学校教員から歯科事務局長を経て、訪問歯科の立ち上げに携わり、合同会社ARCHを設立しました。",
+    "合同会社ARCHの会社概要と代表紹介です。2024年2月設立、代表は鈴木 集。元小学校教員から歯科事務局長を経て、訪問歯科の立ち上げに携わり、合同会社ARCHを設立しました。",
   alternates: { canonical: absoluteUrl("/company") },
   openGraph: {
     type: "website",
@@ -59,10 +60,10 @@ export default function CompanyPage() {
             <div className="lg:col-span-5">
               <Reveal>
                 <Image
-                  src="/images/representative-atsumu-suzuki-2026.jpg"
+                  src="/images/ceo.jpg"
                   alt={`合同会社ARCH 代表 ${COMPANY.representative}`}
-                  width={1086}
-                  height={1448}
+                  width={720}
+                  height={900}
                   sizes="(max-width: 1023px) 100vw, 40vw"
                   className="w-full object-cover"
                 />
@@ -159,21 +160,9 @@ export default function CompanyPage() {
               id="areas-heading"
               className="display-jp text-[clamp(1.5rem,4.5vw,2.25rem)] leading-[1.3] text-arch-ink"
             >
-              ARCHが関わる地域
+              支援エリア
             </h2>
-            <ul className="mt-10 border-t border-arch-rule">
-              {AREAS.map((a) => (
-                <li
-                  key={a}
-                  className="border-b border-arch-rule py-5 text-[1.0625rem] leading-[1.8] text-arch-ink"
-                >
-                  {a}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 text-[0.95rem] leading-[1.9] text-arch-ink-soft">
-              ※ {AREAS_NOTE}
-            </p>
+            <SupportAreaList />
             <p className="mt-10 text-base leading-[1.9] text-arch-ink-soft">
               実際にどのような支援をしているかは
               <Link

@@ -6,7 +6,8 @@ import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { CASES } from "@/lib/cases";
-import { AREAS, AREAS_NOTE, absoluteUrl, OG_IMAGE } from "@/lib/site";
+import SupportAreaList from "@/components/SupportAreaList";
+import { absoluteUrl, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "支援実績｜地域と、確認できた数字だけを載せています",
@@ -82,7 +83,7 @@ export default function CasesIndex() {
         </div>
       </section>
 
-      {/* ────────────── ARCHが関わる地域 ────────────── */}
+      {/* ────────────── 支援エリア ────────────── */}
       <section
         aria-labelledby="areas-heading"
         className="border-t border-arch-rule bg-arch-cream-raised"
@@ -93,21 +94,9 @@ export default function CasesIndex() {
               id="areas-heading"
               className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
             >
-              ARCHが関わる地域
+              支援エリア
             </h2>
-            <ul className="mt-12 border-t border-arch-rule">
-              {AREAS.map((a) => (
-                <li
-                  key={a}
-                  className="border-b border-arch-rule py-6 text-[clamp(1.0625rem,2.4vw,1.375rem)] leading-[1.8] text-arch-ink"
-                >
-                  {a}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 max-w-[720px] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
-              ※ {AREAS_NOTE}
-            </p>
+            <SupportAreaList />
           </Reveal>
         </div>
       </section>

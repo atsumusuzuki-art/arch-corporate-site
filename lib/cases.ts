@@ -22,6 +22,13 @@ export const HACHIOJI_COMMENT =
 
 export type CaseFact = { label: string; value: string };
 
+/** トップページで「課題 → ARCHの関与 → 結果」の3行に整理して見せるための要約 */
+export type CaseStory = {
+  problem: string;
+  action: string;
+  result: string;
+};
+
 export type CaseItem = {
   slug: string;
   /** 地域（医院名は載せない） */
@@ -38,6 +45,8 @@ export type CaseItem = {
   notes: string[];
   /** 関連するサービス */
   service: "external-manager" | "visit-dental-consulting";
+  /** トップページ用の3行要約。数字は facts と同じ確認済みのものだけを使う */
+  story: CaseStory;
 };
 
 export const CASES: CaseItem[] = [
@@ -66,6 +75,11 @@ export const CASES: CaseItem[] = [
       "この数字は医院・スタッフ・関係者それぞれの取り組みによるものです。ARCH単独の成果ではありません。",
     ],
     service: "visit-dental-consulting",
+    story: {
+      problem: "訪問歯科を軸に開業したが、運営の型がまだない。",
+      action: "医院運営と訪問体制を設計し、月次で数字を確認。",
+      result: "2026年6月時点で、医院全体の月商800万円。",
+    },
   },
   {
     slug: "setagaya-visit-dental",
@@ -93,6 +107,11 @@ export const CASES: CaseItem[] = [
       "1施設・4か月時点の数字です。地域や施設の状況によって結果は変わります。",
     ],
     service: "visit-dental-consulting",
+    story: {
+      problem: "訪問歯科はゼロ。何から決めればよいかが定まっていない。",
+      action: "訪問体制・施設への入口・書類・研修まで一式を設計。",
+      result: "4か月で施設1件、検診36名のうち15名が利用を開始。",
+    },
   },
   {
     slug: "hachioji-external-manager",
@@ -114,6 +133,11 @@ export const CASES: CaseItem[] = [
       "院長が一人で対応していた申請と事務作業を、範囲を決めて引き受けています。",
     ],
     service: "external-manager",
+    story: {
+      problem: "申請と事務を院長が一人で抱えていた。",
+      action: "外部事務長として、範囲を決めて実務を引き受け。",
+      result: "補助金申請、施設基準取得の研修会、分院展開まで継続支援。",
+    },
   },
 ];
 
