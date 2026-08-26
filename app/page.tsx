@@ -54,8 +54,24 @@ export default function Home() {
       <JsonLd data={servicesJsonLd} />
 
       {/* ══════════ 1. HERO（深緑 1／2） ══════════ */}
-      <section className="on-forest flex min-h-[100svh] flex-col justify-center bg-arch-forest text-arch-cream">
-        <div className="mx-auto w-full max-w-[1200px] px-6 py-24 lg:px-10">
+      {/* 背景は雰囲気を伝えるためのイメージ画像。内容の理解には不要なので alt は空にする。
+          画像の左側が暗いので object-left で固定し、文字が主に暗部に乗るようにしている。
+          その上に深緑の単色を 72% で重ねる（グラデーションは使わない）。
+          72% は、この画像で最も明るいピクセル（純白）の上でもクリーム文字が
+          4.5:1 以上になる値。画面幅が変わって文字が明るい側にかかっても
+          コントラストが不足しないようにしている。 */}
+      <section className="on-forest relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-arch-forest text-arch-cream">
+        <Image
+          src="/images/hero-clinic.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[60%_50%] md:object-left"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-arch-forest/72" />
+
+        <div className="relative mx-auto w-full max-w-[1200px] px-6 py-24 lg:px-10">
           {/* h1 は 1 つのまま。span を block にして PC・スマホとも必ず 2 行にする */}
           <h1 className="display-jp text-[clamp(1.75rem,8vw,5rem)] leading-[1.25] text-arch-cream">
             {BRAND.headlineLines.map((line) => (
@@ -85,7 +101,7 @@ export default function Home() {
             </a>
             <Link
               href="/company"
-              className="inline-flex min-h-14 items-center justify-center gap-4 border border-arch-cream px-8 text-base font-bold text-arch-cream transition-colors hover:bg-arch-cream hover:text-arch-forest"
+              className="inline-flex min-h-14 items-center justify-center gap-4 border border-arch-cream bg-arch-forest/80 px-8 text-base font-bold text-arch-cream transition-colors hover:bg-arch-cream hover:text-arch-forest"
             >
               ARCHについて
               <ArrowRight size={18} aria-hidden="true" />
