@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -110,6 +111,22 @@ export default function VisitDentalConsultingPage() {
         }
         lead="期間を区切った個別のプロジェクトとして、立ち上げ、または一度つくった体制の再設計をご一緒します。"
       />
+
+      {/* ────────────── イメージ帯 ──────────────
+          深緑のヒーローとクリームの本文のあいだに置く画像。
+          文字は乗せない。内容の理解には不要なので alt は空にして、
+          スクリーンリーダーには読み上げさせない。
+          画像は 966px 幅なので、これ以上大きく引き伸ばさないよう
+          sizes を実寸に合わせている。 */}
+      <div className="relative h-[220px] w-full overflow-hidden bg-arch-forest md:h-[380px] lg:h-[440px]">
+        <Image
+          src="/images/visit-dental-partnership.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
 
       {/* ────────────── 対象 ────────────── */}
       <section aria-labelledby="targets-heading" className="bg-arch-cream">
