@@ -12,7 +12,7 @@ import { SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 const PATH = "/services/visit-dental-consulting";
 
 export const metadata: Metadata = {
-  title: "訪問歯科コンサルティング｜立ち上げと、回り続ける構造づくり",
+  title: "訪問歯科コンサルティング｜訪問歯科を、回り続ける事業にする",
   description:
     "訪問歯科の新規立ち上げと、一度つくったが回っていない体制の再設計を、期間を区切った個別のプロジェクトとして支援します。施設連携の導線、訪問チーム、院内フロー、書類、スタッフ研修、稼働後の数字確認まで。",
   alternates: { canonical: absoluteUrl(PATH) },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: absoluteUrl(PATH),
     title: "訪問歯科コンサルティング｜合同会社ARCH",
     description:
-      "訪問歯科を始めることではなく、回り続ける構造をつくる。期間を区切った個別のプロジェクトとして支援します。",
+      "訪問歯科を、回り続ける事業にする。立ち上げも、一度つくった体制の再設計も、期間を区切った個別のプロジェクトとして支援します。",
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "訪問歯科コンサルティング｜合同会社ARCH" }],
   },
 };
@@ -103,12 +103,12 @@ export default function VisitDentalConsultingPage() {
         eyebrow="VISIT DENTAL"
         title={
           <>
-            訪問歯科を始めることではなく、
-            <br className="hidden md:block" />
-            回り続ける構造をつくる。
+            {/* PC・スマートフォンとも必ずこの 2 行にする */}
+            <span className="block">訪問歯科を、</span>
+            <span className="block">回り続ける事業にする。</span>
           </>
         }
-        lead="期間を区切った個別のプロジェクトとして、立ち上げ、または一度つくった体制の再設計をご一緒します。"
+        lead="立ち上げも、一度つくった体制の再設計も、期間を区切った個別のプロジェクトとしてご一緒します。"
         image={{
           src: "/images/visit-dental-partnership.jpg",
           // 握手が文字の下に隠れないよう、画像の下寄りを見せる

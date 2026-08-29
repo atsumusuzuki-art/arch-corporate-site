@@ -60,7 +60,9 @@ export default function PageHero({
             {eyebrow}
           </p>
         )}
-        <h1 className="display-jp mt-6 max-w-[20ch] text-[clamp(2rem,7vw,4rem)] leading-[1.25] text-arch-cream">
+        {/* スマートフォンの下限は 1.75rem。トップページの h1 と同じ値にして、
+            360px 幅でも 1 行 11 文字までが折り返さずに収まるようにしている。 */}
+        <h1 className="display-jp mt-6 max-w-[20ch] text-[clamp(1.75rem,7vw,4rem)] leading-[1.25] text-arch-cream">
           {title}
         </h1>
         {lead && (

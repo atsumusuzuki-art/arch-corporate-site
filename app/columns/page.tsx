@@ -87,7 +87,7 @@ export default function ColumnsIndex() {
                 訪問歯科コンサルティング
               </p>
               <p className="mt-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft">
-                訪問歯科を始めることではなく、回り続ける構造をつくる。
+                訪問歯科を、回り続ける事業にする。
               </p>
             </Link>
           </div>
