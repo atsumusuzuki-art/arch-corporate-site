@@ -1,7 +1,7 @@
 /**
  * ServiceInquiryForm — サービス別 お申込みフォーム
  *
- * FormSubmit.co 経由で hello@arch-yh.com に送信。
+ * FormSubmit.co 経由で受信用メールアドレスに送信。
  * 必須5項目: 医院名・院長名・所在地・メール・電話
  *
  * 申込種別の選択に対応（`types` プロップ）:
@@ -213,7 +213,7 @@ export default function ServiceInquiryForm({
 
         <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-arch-rule mt-2">
           <p className="mono-micro text-arch-ink-muted">
-            送信内容は <span className="text-arch-forest">hello@arch-yh.com</span> に届きます
+            原則2営業日以内に、担当よりメールでご連絡します
           </p>
           <button
             type="submit"

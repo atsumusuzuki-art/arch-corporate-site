@@ -96,10 +96,9 @@ const siteJsonLd = {
         addressLocality: COMPANY.addressLocality,
       },
       areaServed: { "@type": "Country", name: "日本" },
-      email: COMPANY.email,
       contactPoint: {
         "@type": "ContactPoint",
-        email: COMPANY.email,
+        url: `${SITE_URL}/#contact`,
         contactType: "customer support",
         availableLanguage: ["ja"],
       },

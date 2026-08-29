@@ -75,14 +75,14 @@ export default function SiteFooter() {
                 <dd>{COMPANY.areaServed}</dd>
               </div>
               <div>
-                <dt className="text-arch-ink-muted text-sm">メール</dt>
+                <dt className="text-arch-ink-muted text-sm">お問い合わせ</dt>
                 <dd>
-                  <a
-                    href={`mailto:${COMPANY.email}`}
+                  <Link
+                    href="/#contact"
                     className="underline underline-offset-4 hover:text-arch-forest"
                   >
-                    {COMPANY.email}
-                  </a>
+                    お問い合わせフォーム
+                  </Link>
                 </dd>
               </div>
             </dl>

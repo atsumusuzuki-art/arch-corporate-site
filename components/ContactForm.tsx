@@ -1,7 +1,10 @@
 /**
  * ContactForm — 全ページ共通の問い合わせフォーム
  * ------------------------------------------------------------------
- * ・送信先は既存の FormSubmit.co（hello@arch-yh.com）のまま。壊さない。
+ * ・送信先は既存の FormSubmit.co のまま。壊さない。
+ *   受信用アドレスは画面に出さない（迷惑メール対策）。ただし form の action には
+ *   まだアドレスが含まれるため、HTML を見れば読める。完全に隠すには
+ *   FormSubmit のランダムなエンドポイントへの差し替えが必要。
  * ・トップ / 外部事務長 / 訪問歯科 / 支援実績 / コラム / 会社概要 のすべてで
  *   このコンポーネントだけを使う（フォーム設定の分裂を解消するため）。
  * ・送信後は /thanks へ遷移し、そこで受付完了を表示する。
@@ -279,9 +282,9 @@ export default function ContactForm({
                 >
                   相談内容を送る
                 </button>
+                {/* 迷惑メール対策のため、受信用アドレスは画面に出さない */}
                 <p className="mt-4 text-sm text-arch-ink-muted">
-                  送信内容は {""}
-                  <span className="text-arch-ink-soft">hello@arch-yh.com</span> に届きます。
+                  原則2営業日以内に、担当よりメールでご連絡します。
                 </p>
               </div>
             </form>

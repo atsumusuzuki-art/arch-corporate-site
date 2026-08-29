@@ -63,7 +63,7 @@ export default function PrivacyPage() {
             <h2>3. お問い合わせフォームの送信について</h2>
             <p>
               当サイトのお問い合わせフォームは、外部サービス「FormSubmit」（https://formsubmit.co）を利用して、
-              入力内容を当社のメールアドレス（{COMPANY.email}）へ送信しています。
+              入力内容を当社の受信用メールアドレスへ送信しています。
               送信の過程で入力内容が同サービスを経由します。
             </p>
 
@@ -101,7 +101,7 @@ export default function PrivacyPage() {
             <h2>7. 開示・訂正・削除の請求</h2>
             <p>
               ご本人からの求めにより、当社が保有する個人情報の開示・訂正・利用停止・削除に応じます。
-              下記の連絡先までご連絡ください。
+              当サイトのお問い合わせフォームからご連絡ください。
             </p>
 
             <h2>8. 本ポリシーの変更</h2>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
               <br />
               所在地：{COMPANY.addressLabel}
               <br />
-              メール：{COMPANY.email}
+              <Link href="/#contact">お問い合わせフォーム</Link>
             </p>
             <p>
               制定日：2026年8月1日

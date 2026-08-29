@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ThanksTracker from "@/components/ThanksTracker";
-import { COMPANY } from "@/lib/site";
 
 /* 送信完了ページは検索結果に出す必要がないため noindex。
    sitemap にも載せない。 */
@@ -34,7 +33,7 @@ export default function ThanksPage() {
           <p className="mt-10 text-[1.0625rem] leading-[1.9] text-arch-sage">
             ご入力ありがとうございました。
             <br />
-            原則2営業日以内に、{COMPANY.email} よりご連絡します。
+            原則2営業日以内に、担当よりメールでご連絡します。
           </p>
         </div>
       </section>
@@ -63,13 +62,13 @@ export default function ThanksPage() {
 
           <p className="mt-10 text-base leading-[1.9] text-arch-ink-soft">
             数日経っても返信が届かない場合は、迷惑メールフォルダをご確認のうえ、
-            <a
-              href={`mailto:${COMPANY.email}`}
+            <Link
+              href="/#contact"
               className="underline underline-offset-4 hover:text-arch-forest"
             >
-              {COMPANY.email}
-            </a>
-            まで直接ご連絡ください。
+              お問い合わせフォーム
+            </Link>
+            からもう一度ご連絡ください。
           </p>
 
           <div className="mt-14 flex flex-col gap-4 sm:flex-row">

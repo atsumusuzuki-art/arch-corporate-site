@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   },
 };
 
-/* 会社情報（lib/site.ts の値と構造化データを一致させる） */
+/* 会社情報（lib/site.ts の値と構造化データを一致させる）
+   迷惑メール対策のため、受信用アドレスは載せず、問い合わせフォームへ誘導する。 */
 const PROFILE = [
   { label: "会社名", value: COMPANY.name },
   { label: "設立", value: COMPANY.foundedLabel },
@@ -30,7 +31,7 @@ const PROFILE = [
   { label: "所在地", value: COMPANY.addressLabel },
   { label: "対応地域", value: COMPANY.areaServed },
   { label: "事業内容", value: COMPANY.business },
-  { label: "メール", value: COMPANY.email },
+  { label: "お問い合わせ", value: "お問い合わせフォーム", href: "#contact" },
   { label: "公式サイト", value: SITE_URL },
 ];
 
@@ -131,13 +132,13 @@ export default function CompanyPage() {
                     {p.label}
                   </dt>
                   <dd className="text-[1.0625rem] leading-[1.8] text-arch-ink sm:col-span-8">
-                    {p.label === "メール" ? (
-                      <a
-                        href={`mailto:${p.value}`}
+                    {p.href ? (
+                      <Link
+                        href={p.href}
                         className="underline underline-offset-4 hover:text-arch-forest"
                       >
                         {p.value}
-                      </a>
+                      </Link>
                     ) : (
                       p.value
                     )}
