@@ -163,7 +163,7 @@ export const PHILOSOPHY = {
  */
 export const PAGE_DATES: Record<string, { published: string; modified: string }> = {
   "/": { published: "2024-02-10", modified: "2026-08-10" },
-  "/services/external-manager": { published: "2026-05-11", modified: "2026-08-01" },
+  "/services/external-manager": { published: "2026-05-11", modified: "2026-08-22" },
   "/services/visit-dental-consulting": { published: "2026-08-01", modified: "2026-08-01" },
   "/cases": { published: "2026-08-01", modified: "2026-08-01" },
   "/cases/sapporo-visit-dental": { published: "2026-08-01", modified: "2026-08-01" },

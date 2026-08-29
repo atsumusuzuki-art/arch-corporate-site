@@ -14,70 +14,59 @@ const PATH = "/services/external-manager";
 export const metadata: Metadata = {
   title: "外部事務長｜院長の経営実務を整理し、医院が回り続ける体制をつくる",
   description:
-    "歯科医院の外部事務長として、院長が抱えている経営実務を整理します。関与の深さで3つのプラン（相談顧問／外部事務長／代表伴走）をご用意し、採用・業者対応・医院事務・既存の訪問歯科運営まで、定めた範囲で実務に入ります。",
+    "歯科医院の外部事務長として、院長が抱えている経営実務を整理します。医院の自走をつくる運営伴走（月額15万円）と、重要な経営判断まで扱う経営伴走（月額30万円）の2プランです。いずれも最低契約期間は6か月で、初期費用は別途お見積もりします。",
   alternates: { canonical: absoluteUrl(PATH) },
   openGraph: {
     type: "website",
     url: absoluteUrl(PATH),
     title: "外部事務長｜合同会社ARCH",
     description:
-      "院長が抱えている経営実務を整理し、医院が回り続ける体制をつくる。関与の深さで選べる3つのプラン。",
+      "院長が抱えている経営実務を整理し、医院が回り続ける体制をつくる。運営伴走と経営伴走の2つのプラン。",
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "外部事務長｜合同会社ARCH" }],
   },
 };
 
 /**
  * 料金プラン
- * サービス項目の違いではなく「ARCHが入る深さ」で分けている。
- * 15万円プランを中心に置き、ゴールドの小さな「おすすめ」表示を付ける。
+ * ARCHフィロソフィー Ver.2.0 の二層構造に合わせ、
+ * 「医院を自走させる運営レイヤー」と「重要判断を扱う経営レイヤー」で分ける。
  */
 const PLANS = [
   {
-    id: "advisor",
-    name: "相談顧問",
-    depth: "相談を受ける",
-    price: "50,000",
-    priceNum: 50000,
-    priceNote: "月額（税別）",
-    terms: [] as string[],
-    body: "助言と優先順位の整理が中心です。実行は医院側で進めていただきます。",
-    items: ["チャット相談", "月1回のオンライン面談", "課題の優先順位の整理"],
-    recommended: false,
-  },
-  {
-    id: "standard",
-    name: "外部事務長",
-    depth: "実務に入る",
+    id: "operations",
+    name: "外部事務長｜運営伴走",
+    depth: "運営レイヤー｜医院が自走する仕組みをつくる",
     price: "150,000",
     priceNum: 150000,
     priceNote: "月額（税別）",
-    terms: ["初期費用 100,000円（税別）", "最低契約期間 6か月"],
+    terms: ["最低契約期間 6か月", "初期費用あり（支援範囲に応じて別途お見積もり）"],
     body:
-      "採用、業者対応、医院事務、既存の訪問歯科運営などを、あらかじめ定めた範囲で実際に引き受けます。",
+      "日々の運営課題を整理し、医院のスタッフだけで基本運営が回る状態をつくります。担当・手順・期限を明確にし、ARCHが抜けても止まらない仕組みへ変えていくプランです。",
     items: [
-      "月2回の定例",
-      "月次レポート",
-      "チャットは原則48時間以内に返信",
-      "採用・業者対応・医院事務・既存の訪問歯科運営を、定めた範囲で支援",
+      "現状の診断と、整える順番の決定",
+      "記録・請求・採用・施設連携など、対象業務の仕組み化",
+      "役割分担・手順書・確認方法の整備",
+      "定例会と進捗確認",
+      "6か月を一区切りとした引き継ぎと、自走できる状態の確認",
     ],
-    recommended: true,
   },
   {
-    id: "partner",
-    name: "外部事務長（代表伴走）",
-    depth: "経営判断まで一緒に見る",
+    id: "management",
+    name: "外部事務長｜経営伴走",
+    depth: "経営レイヤー｜院長の重要な判断まで一緒に担う",
     price: "300,000",
     priceNum: 300000,
     priceNote: "月額（税別）",
-    terms: ["面談頻度と支援範囲は、医院ごとに個別に設計します"],
-    body: "代表の鈴木集本人が深く関与し、課題の診断から実行の推進までご一緒します。",
+    terms: ["最低契約期間 6か月", "初期費用あり（支援範囲に応じて別途お見積もり）"],
+    body:
+      "運営の仕組み化に加え、院長が抱えている重要な経営判断まで一緒に扱います。作業量ではなく、判断の重さと関与する範囲に対して設計するプランです。",
     items: [
-      "課題の診断と優先順位づけ",
-      "数字の確認",
-      "経営会議への参加",
-      "決めたことの実行推進",
+      "運営伴走プランの支援内容",
+      "経営判断の相手役と、経営会議への参加",
+      "数字を経営判断に変える月次確認",
+      "制度改定・人の問題・組織課題への対応",
+      "分院・訪問・承継など、次の展開の経営設計（個別プロジェクトの実行は別途）",
     ],
-    recommended: false,
   },
 ];
 
@@ -115,7 +104,7 @@ const serviceJsonLd = {
   "@id": `${SITE_URL}${PATH}#service`,
   name: "歯科医院の外部事務長",
   description:
-    "歯科医院の外部事務長として、院長が抱えている経営実務を整理し、医院が回り続ける体制をつくるサービス。関与の深さで3つのプランがある。",
+    "歯科医院の外部事務長として、院長が抱えている経営実務を整理し、医院が回り続ける体制をつくるサービス。運営伴走と経営伴走の2つのプランがある。",
   url: absoluteUrl(PATH),
   provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "Country", name: "日本" },
@@ -125,7 +114,7 @@ const serviceJsonLd = {
     name: p.name,
     price: p.priceNum,
     priceCurrency: "JPY",
-    description: `${p.priceNote}・税別`,
+    description: `${p.body} ${p.priceNote}。最低契約期間6か月。初期費用は別途お見積もり。`,
   })),
 };
 
@@ -197,26 +186,15 @@ export default function ExternalManagerPage() {
               料金
             </h2>
             <p className="mt-6 max-w-[720px] text-base leading-[1.9] text-arch-ink-soft">
-              プランの違いは、サービス項目ではなく<strong className="font-bold text-arch-ink">ARCHが入る深さ</strong>です。
-              助言を受け取りたいのか、実務を引き受けてほしいのか、経営判断まで一緒に見てほしいのかで選んでください。
+              プランの違いは、作業量ではなく<strong className="font-bold text-arch-ink">ARCHが扱う判断の範囲</strong>です。
+              15万円は医院が自走する運営の仕組みをつくるプラン、30万円はその運営に加えて院長の重要な経営判断まで一緒に担うプランです。
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
             {PLANS.map((p) => (
               <Reveal key={p.id}>
-                <div
-                  className={`flex h-full flex-col border bg-arch-cream p-8 ${
-                    p.recommended
-                      ? "border-arch-forest border-2"
-                      : "border-arch-rule"
-                  }`}
-                >
-                  {p.recommended && (
-                    <p className="mb-4 self-start border border-arch-gold px-3 py-1 text-xs font-bold tracking-widest text-arch-gold-deep">
-                      おすすめ
-                    </p>
-                  )}
+                <div className="flex h-full flex-col border border-arch-rule bg-arch-cream p-8 md:p-10">
                   <p className="text-sm tracking-wider text-arch-moss">{p.depth}</p>
                   <h3 className="display-jp mt-2 text-2xl text-arch-forest">{p.name}</h3>
 
@@ -266,8 +244,8 @@ export default function ExternalManagerPage() {
           </div>
 
           <p className="mt-10 max-w-[720px] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
-            代表伴走プランには、初期費用と最低契約期間の設定はありません。
-            表示はすべて税別です。
+            両プランとも最低契約期間は6か月です。支援開始時に、現状把握・業務整理・設計にかかる初期費用を別途お見積もりします。
+            月額料金・初期費用はいずれも税別です。
           </p>
         </div>
       </section>
