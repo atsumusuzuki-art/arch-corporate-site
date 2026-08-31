@@ -157,11 +157,12 @@ export default function Home() {
             {/* 写真とことば */}
             <div className="lg:col-span-5">
               <Reveal>
+                {/* width / height は元画像の実寸。切り取らずに全体を見せる */}
                 <Image
                   src="/images/ceo.jpg"
                   alt={`合同会社ARCH 代表 ${COMPANY.representative}`}
-                  width={720}
-                  height={900}
+                  width={1086}
+                  height={1448}
                   sizes="(max-width: 1023px) 100vw, 40vw"
                   className="w-full object-cover"
                 />
