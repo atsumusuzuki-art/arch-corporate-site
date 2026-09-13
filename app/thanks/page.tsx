@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 const NEXT_STEPS = [
   "原則2営業日以内に、担当よりメールでご連絡します",
-  "日程を調整のうえ、30分のオンライン初回相談（無料）を行います",
-  "初回相談で、現在の業務とARCHが担う範囲を整理します",
+  "日程を調整のうえ、30分のオンライン初回適性相談（無料）を行います",
+  "初回適性相談で、医院の現状とARCHと組むべきかを整理します",
 ];
 
 export default function ThanksPage() {

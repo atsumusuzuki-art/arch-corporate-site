@@ -113,7 +113,7 @@ export default function ArticleLayout({
           </dl>
 
           {/* 結論を最初に置く */}
-          <div className="mt-10 border-l-4 border-arch-gold bg-arch-cream-raised px-6 py-6">
+          <div className="mt-10 border-l-2 border-arch-deep bg-arch-white px-6 py-6">
             <p className="text-sm text-arch-ink-muted">この記事の結論</p>
             <p className="mt-3 text-base leading-[1.9] text-arch-ink">{meta.conclusion}</p>
           </div>

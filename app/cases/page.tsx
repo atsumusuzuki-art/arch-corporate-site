@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { CASES } from "@/lib/cases";
 import SupportAreaList from "@/components/SupportAreaList";
+import CaseRow from "@/components/ui/CaseRow";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { CONTAINER, SECTION_Y } from "@/lib/ui";
 import { absoluteUrl, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -35,69 +36,35 @@ export default function CasesIndex() {
         lead="医院名は一切掲載していません。数字は確認できたものだけを書き、ARCH単独の成果としては扱いません。"
       />
 
-      <section aria-labelledby="cases-heading" className="bg-arch-cream">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+      <section aria-labelledby="cases-heading" className="bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
           <h2 id="cases-heading" className="sr-only">
             支援実績の一覧
           </h2>
+          <p className="max-w-[40rem] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
+            数字は医院・スタッフ・関係者それぞれの取り組みによるもので、ARCH単独の成果ではありません。
+            各ケースの詳細に、数字の読み方を載せています。
+          </p>
 
-          <ul className="border-t border-arch-rule">
+          <div className="mt-10 border-t border-arch-deep">
             {CASES.map((c, i) => (
-              <Reveal as="li" key={c.slug} delay={i * 80}>
-                <Link
-                  href={`/cases/${c.slug}`}
-                  className="group grid gap-5 border-b border-arch-rule py-10 md:grid-cols-12 md:gap-8 md:py-14"
-                >
-                  <div className="md:col-span-4">
-                    <p className="display-jp text-[clamp(1.25rem,3vw,1.75rem)] text-arch-forest">
-                      {c.area}
-                    </p>
-                    <p className="mt-2 text-[0.95rem] leading-[1.8] text-arch-ink-soft">
-                      {c.summary}
-                    </p>
-                  </div>
-
-                  <div className="md:col-span-7">
-                    <dl className="space-y-2">
-                      {c.facts.map((f) => (
-                        <div key={f.label} className="flex flex-wrap gap-x-4">
-                          <dt className="min-w-[9rem] text-[0.95rem] text-arch-ink-muted">
-                            {f.label}
-                          </dt>
-                          <dd className="text-base text-arch-ink">{f.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-
-                  <div className="flex items-start md:col-span-1 md:justify-end">
-                    <span className="inline-flex items-center gap-2 text-[0.95rem] text-arch-forest group-hover:underline">
-                      詳細
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </span>
-                  </div>
-                </Link>
+              <Reveal key={c.slug} delay={i * 60}>
+                <CaseRow item={c} index={i} headingLevel="h3" />
               </Reveal>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
-      {/* ────────────── 支援エリア ────────────── */}
-      <section
-        aria-labelledby="areas-heading"
-        className="border-t border-arch-rule bg-arch-cream-raised"
-      >
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
-          <Reveal>
-            <h2
-              id="areas-heading"
-              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
-            >
-              支援エリア
-            </h2>
-            <SupportAreaList />
-          </Reveal>
+      {/* ────────────── 支援地域 ────────────── */}
+      <section aria-labelledby="areas-heading" className="border-t border-arch-line bg-arch-paper">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <div className="max-w-[44rem]">
+            <Reveal>
+              <SectionHeader label="AREAS" id="areas-heading" title="支援地域" />
+              <SupportAreaList />
+            </Reveal>
+          </div>
         </div>
       </section>
 

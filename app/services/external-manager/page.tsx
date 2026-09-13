@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { COLUMN_METAS, columnHref } from "@/lib/columns";
-import { SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
+import BrandPhoto from "@/components/ui/BrandPhoto";
+import Cta, { CONSULT_LABEL } from "@/components/ui/Cta";
+import RelatedLinks from "@/components/ui/RelatedLinks";
+import SectionHeader from "@/components/ui/SectionHeader";
+import StepList from "@/components/ui/StepList";
+import TwoLayers from "@/components/ui/TwoLayers";
+import { BODY, CONTAINER, PROSE_W, SECTION_Y } from "@/lib/ui";
+import { PHILOSOPHY, SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 
 const PATH = "/services/external-manager";
 
@@ -67,6 +72,77 @@ const PLANS = [
       "制度改定・人の問題・組織課題への対応",
       "分院・訪問・承継など、次の展開の経営設計（個別プロジェクトの実行は別途）",
     ],
+  },
+];
+
+/* 1. 院長が一人で抱えている仕事 */
+const BURDENS = [
+  "採用と、スタッフの問題",
+  "書類・届出・施設基準",
+  "業者・ディーラーとの調整",
+  "数字の確認と、それを踏まえた判断",
+  "施設とのやりとり",
+  "制度改定への対応",
+  "分院・訪問・承継など、次の展開",
+];
+
+/* 4. 医院側が担う範囲（ARCHに依存させないための役割分担） */
+const CLINIC_SIDE = [
+  {
+    title: "院長",
+    body: "医院の方向と、最終的な経営判断。ARCHは判断の材料と選択肢を揃え、相手役を務めます。",
+  },
+  {
+    title: "スタッフ",
+    body: "決めた手順を日々まわすこと。ARCHは手順と確認方法をつくり、スタッフだけで回る状態まで伴走します。",
+  },
+  {
+    title: "情報の開示",
+    body: "数字・資料・現場の状況を共有していただくこと。確認できない状態で判断はしません。",
+  },
+  {
+    title: "時間の確保",
+    body: "定例の打ち合わせと、引き継ぎの時間。仕組みを医院に残すために必要な時間です。",
+  },
+];
+
+/* 5. 進め方 */
+const PROCESS = [
+  {
+    title: "初回適性相談",
+    body: "医院の目的・現状・体制を伺い、ARCHが入るべきかどうかを判断します。",
+  },
+  {
+    title: "現状の確認と、範囲の決定",
+    body: "どこまでをARCHが担い、どこからを医院が担うかを、契約前に文書で決めます。",
+  },
+  {
+    title: "仕組みづくり",
+    body: "担当・手順・期限・確認方法を決め、現場で動く形にします。定例会で進み具合を確認します。",
+  },
+  {
+    title: "医院への引き継ぎ",
+    body: "手順書と判断基準を医院に渡し、スタッフだけで回ることを一緒に確認します。",
+  },
+  {
+    title: "自走の確認と、その先の判断",
+    body: "運営が回っていれば運営の支援は終了です。経営判断の相手役が必要な場合だけ、外部事務長として続けます。",
+  },
+];
+
+/* 8. 自走・卒業・継続の条件 */
+const EXIT_TERMS = [
+  {
+    title: "運営レイヤーは、完了させる",
+    body: "医院スタッフだけで基本運営が回ることを確認したら、その支援は完了です。顧問料の名目で続けることはしません。",
+  },
+  {
+    title: "経営レイヤーも担えるようになれば、卒業",
+    body: "院長と医院の中で経営判断まで担えるようになれば、契約は終わります。ARCHはこれを失注ではなく「卒業」と呼びます。",
+  },
+  {
+    title: "続けるのは、経営価値が残る場合だけ",
+    body: "外部事務長として続けるのは、判断の相手役として価値が残る場合です。契約を続けること自体を目的にしません。",
   },
 ];
 
@@ -140,206 +216,310 @@ export default function ExternalManagerPage() {
         lead="助言だけでは医院は回りません。外部事務長として、決めるところから実際に手を動かすところまで入ります。"
       />
 
-      {/* ────────────── 何をするのか ────────────── */}
-      <section aria-labelledby="scope-heading" className="bg-arch-cream">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+      {/* ────────────── 1. 院長が抱えている負担 ────────────── */}
+      <section aria-labelledby="burden-heading" className="bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <Reveal className="lg:col-span-5">
+              <SectionHeader
+                no="01"
+                label="BURDEN"
+                id="burden-heading"
+                title={
+                  <>
+                    <span className="block">院長が、</span>
+                    <span className="block">一人で抱えている仕事</span>
+                  </>
+                }
+                lead={<p>診療を続けながら、これらを一人で判断し続けるのは簡単ではありません。</p>}
+              />
+            </Reveal>
+            <Reveal delay={60} className="lg:col-span-7">
+              <ul className="border-t border-arch-deep">
+                {BURDENS.map((b) => (
+                  <li
+                    key={b}
+                    className="border-b border-arch-line py-4 text-[1.0625rem] leading-[1.7] text-arch-ink"
+                  >
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────── 2. ARCHの役割 ────────────── */}
+      <section aria-labelledby="role-heading" className="border-t border-arch-line bg-arch-paper">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <BrandPhoto
+                name="meeting"
+                ratio="aspect-[3/2]"
+                sizes="(max-width: 1023px) 100vw, 50vw"
+              />
+            </Reveal>
+            <Reveal delay={80}>
+              <SectionHeader no="02" label="ROLE" id="role-heading" title="ARCHの役割" />
+              <p className="serif-jp mt-8 text-[clamp(1.125rem,1.9vw,1.375rem)] leading-[1.8] text-arch-deep">
+                {PHILOSOPHY.mainLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </p>
+              <p className={`mt-8 ${BODY}`}>
+                {PHILOSOPHY.subLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────── 3. ARCHが担う範囲 ────────────── */}
+      <section aria-labelledby="scope-heading" className="border-t border-arch-line bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
           <Reveal>
-            <h2
+            <SectionHeader
+              no="03"
+              label="SCOPE"
               id="scope-heading"
-              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
-            >
-              引き受ける実務
-            </h2>
-            <p className="mt-6 max-w-[720px] text-base leading-[1.9] text-arch-ink-soft">
-              どこまでを ARCH が担うかは、契約前に文書で決めます。
-              「何となく相談できる人」ではなく、担当が決まっている状態にすることが目的です。
-            </p>
+              title="ARCHが担う範囲"
+              lead={
+                <p>
+                  どこまでをARCHが担うかは、契約前に文書で決めます。
+                  「何でも頼める人」ではなく、担当と範囲が決まっている状態にすることが目的です。
+                </p>
+              }
+            />
           </Reveal>
 
-          <div className="mt-14 grid gap-x-10 gap-y-0 border-t border-arch-rule md:grid-cols-2">
+          <div className="mt-12 grid gap-x-12 border-t border-arch-deep md:mt-16 md:grid-cols-2">
             {SCOPE.map((s, i) => (
-              <Reveal key={s.title} delay={Math.min(i, 3) * 60}>
-                <div className="border-b border-arch-rule py-8">
-                  <h3 className="display-jp text-lg text-arch-forest">{s.title}</h3>
-                  <p className="mt-3 max-w-[36rem] text-base leading-[1.9] text-arch-ink-soft">
+              <Reveal key={s.title} delay={Math.min(i, 3) * 50}>
+                <div className="h-full border-b border-arch-line py-7">
+                  <h3 className="display-jp text-[1.125rem] text-arch-ink">{s.title}</h3>
+                  <p className="mt-3 max-w-[36rem] text-[0.98rem] leading-[1.9] text-arch-ink-soft">
                     {s.body}
                   </p>
                 </div>
               </Reveal>
             ))}
           </div>
+
+          {/* 訪問歯科の切り分け */}
+          <Reveal>
+            <div className="mt-14 grid gap-8 border-t border-arch-line pt-10 md:grid-cols-2 md:gap-12">
+              <div>
+                <p className="mono-micro text-arch-green">VISIT DENTAL</p>
+                <h3 className="display-jp mt-3 text-[1.125rem] text-arch-ink">
+                  今ある訪問診療を良くする
+                </h3>
+                <p className="mt-3 text-[0.98rem] leading-[1.9] text-arch-ink-soft">
+                  すでに訪問診療が動いている場合、記録・報告・施設との連絡・担当の決め方などの整理は、外部事務長の範囲で対応できます。
+                </p>
+              </div>
+              <div>
+                <p className="mono-micro text-arch-green">NEW PROJECT</p>
+                <h3 className="display-jp mt-3 text-[1.125rem] text-arch-ink">
+                  まだない訪問歯科をゼロからつくる
+                </h3>
+                <p className="mt-3 text-[0.98rem] leading-[1.9] text-arch-ink-soft">
+                  期間を区切った個別のプロジェクトになり、外部事務長の契約には自動的に含みません。訪問歯科コンサルティングとして別途お見積もりします。
+                </p>
+                <Cta href="/services/visit-dental-consulting" variant="text" className="mt-4">
+                  訪問歯科コンサルティングを見る
+                </Cta>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ────────────── 料金 ────────────── */}
+      {/* ────────────── 4. 医院側が担う範囲 ────────────── */}
+      <section aria-labelledby="clinic-heading" className="border-t border-arch-line bg-arch-paper">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <Reveal>
+            <SectionHeader
+              no="04"
+              label="CLINIC SIDE"
+              id="clinic-heading"
+              title="医院側が担う範囲"
+              lead={
+                <p>
+                  ARCHが入っても、医院の主役は院長とスタッフです。
+                  医院をARCHに依存させないために、最初から役割を分けておきます。
+                </p>
+              }
+            />
+          </Reveal>
+          <div className="mt-12 md:mt-16">
+            <StepList steps={CLINIC_SIDE} numbered={false} />
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────── 5. 進め方 ────────────── */}
+      <section aria-labelledby="process-heading" className="border-t border-arch-line bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <Reveal>
+            <SectionHeader no="05" label="PROCESS" id="process-heading" title="進め方" />
+          </Reveal>
+          <div className="mt-12 md:mt-16">
+            <StepList steps={PROCESS} />
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────── 6・7. 運営レイヤー／経営レイヤー ────────────── */}
+      <section aria-labelledby="layers-heading" className="border-t border-arch-line bg-arch-paper">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <Reveal>
+            <SectionHeader
+              no="06"
+              label="OPERATIONS / MANAGEMENT"
+              id="layers-heading"
+              title="運営レイヤーと、経営レイヤー"
+              lead={
+                <p>
+                  外部事務長の仕事は二つの層に分かれます。
+                  運営は仕組みにして医院へ渡し、経営判断は価値がある限り一緒に担います。
+                </p>
+              }
+            />
+          </Reveal>
+          <div className="mt-12 md:mt-16">
+            <TwoLayers withClosing={false} />
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────── 8. 自走・卒業・継続の条件 ────────────── */}
+      <section aria-labelledby="exit-heading" className="border-t border-arch-line bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <Reveal>
+            <SectionHeader no="07" label="GRADUATION" id="exit-heading" title="自走・卒業・継続の条件" />
+          </Reveal>
+          <div className="mt-12 md:mt-16">
+            <StepList steps={EXIT_TERMS} numbered={false} />
+          </div>
+          <Reveal>
+            <p className="serif-jp mt-14 text-[clamp(1.375rem,3vw,2.125rem)] leading-[1.6] text-arch-ink">
+              <span className="block">自走できれば卒業。</span>
+              <span className="block">経営価値が残れば、外部事務長として続く。</span>
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ────────────── 9. 料金 ──────────────
+          料金・契約条件の表記は 2026-08-22 改定のまま変更しない（変更は鈴木集の判断事項）。
+          docs/CONTENT_DECISIONS_REQUIRED.md 参照 */}
       <section
         id="plans"
         aria-labelledby="plans-heading"
-        className="scroll-mt-20 border-t border-arch-rule bg-arch-cream-raised"
+        className="scroll-mt-20 border-t border-arch-line bg-arch-paper"
       >
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
           <Reveal>
-            <h2
+            <SectionHeader
+              no="08"
+              label="FEE"
               id="plans-heading"
-              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
-            >
-              料金
-            </h2>
-            <p className="mt-6 max-w-[720px] text-base leading-[1.9] text-arch-ink-soft">
-              プランの違いは、作業量ではなく<strong className="font-bold text-arch-ink">ARCHが扱う判断の範囲</strong>です。
-              15万円は医院が自走する運営の仕組みをつくるプラン、30万円はその運営に加えて院長の重要な経営判断まで一緒に担うプランです。
-            </p>
+              title="料金"
+              lead={
+                <p>
+                  プランの違いは、作業量ではなく
+                  <strong className="font-bold text-arch-ink">ARCHが扱う判断の範囲</strong>
+                  です。15万円は医院が自走する運営の仕組みをつくるプラン、30万円はその運営に加えて院長の重要な経営判断まで一緒に担うプランです。
+                </p>
+              }
+            />
           </Reveal>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            {PLANS.map((p) => (
-              <Reveal key={p.id}>
-                <div className="flex h-full flex-col border border-arch-rule bg-arch-cream p-8 md:p-10">
-                  <p className="text-sm tracking-wider text-arch-moss">{p.depth}</p>
-                  <h3 className="display-jp mt-2 text-2xl text-arch-forest">{p.name}</h3>
+          <div className="mt-12 grid border-t border-arch-deep md:mt-16 lg:grid-cols-2">
+            {PLANS.map((p, i) => (
+              <Reveal
+                key={p.id}
+                className={`py-10 md:py-12 ${
+                  i === 0
+                    ? "lg:pr-12"
+                    : "border-t border-arch-line lg:border-l lg:border-t-0 lg:pl-12"
+                }`}
+              >
+                <p className="text-[0.875rem] font-bold tracking-[0.04em] text-arch-green">{p.depth}</p>
+                <h3 className="display-jp mt-2 text-[1.5rem] text-arch-ink">{p.name}</h3>
 
-                  {/* 狭い画面で金額が途中で折り返さないよう、単位を 1 行にまとめる */}
-                  <p className="mt-6">
-                    <span className="block text-sm text-arch-ink-soft">月額</span>
-                    <span className="mt-1 flex items-baseline gap-1 whitespace-nowrap">
-                      <span className="display-jp text-[2rem] tabular-nums text-arch-ink sm:text-4xl">
-                        {p.price}
-                      </span>
-                      <span className="text-sm text-arch-ink-soft sm:text-base">
-                        円（税別）
-                      </span>
+                {/* 狭い画面で金額が途中で折り返さないよう、単位を 1 行にまとめる */}
+                <p className="mt-6">
+                  <span className="block text-sm text-arch-ink-soft">月額</span>
+                  <span className="mt-1 flex items-baseline gap-1.5 whitespace-nowrap">
+                    <span className="num-en text-[2.25rem] font-medium text-arch-deep sm:text-[2.75rem]">
+                      {p.price}
                     </span>
-                  </p>
+                    <span className="text-sm text-arch-ink-soft sm:text-base">円（税別）</span>
+                  </span>
+                </p>
 
-                  {p.terms.length > 0 && (
-                    <ul className="mt-4 space-y-1">
-                      {p.terms.map((t) => (
-                        <li key={t} className="text-sm leading-[1.8] text-arch-ink-soft">
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <p className="mt-6 border-t border-arch-rule pt-6 text-base leading-[1.9] text-arch-ink">
-                    {p.body}
-                  </p>
-
-                  <ul className="mt-6 space-y-3">
-                    {p.items.map((it) => (
-                      <li
-                        key={it}
-                        className="flex gap-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft"
-                      >
-                        <span aria-hidden="true" className="text-arch-gold">
-                          —
-                        </span>
-                        <span>{it}</span>
+                {p.terms.length > 0 && (
+                  <ul className="mt-4 space-y-1">
+                    {p.terms.map((t) => (
+                      <li key={t} className="text-sm leading-[1.8] text-arch-ink-soft">
+                        {t}
                       </li>
                     ))}
                   </ul>
-                </div>
+                )}
+
+                <p className="mt-6 border-t border-arch-line pt-6 text-[1rem] leading-[1.9] text-arch-ink">
+                  {p.body}
+                </p>
+
+                <ul className="mt-6 space-y-3">
+                  {p.items.map((it) => (
+                    <li
+                      key={it}
+                      className="flex items-baseline gap-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft"
+                    >
+                      <span aria-hidden="true" className="h-px w-3 shrink-0 translate-y-[-0.3em] bg-arch-green" />
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
               </Reveal>
             ))}
           </div>
 
-          <p className="mt-10 max-w-[720px] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
+          <p className={`mt-6 ${PROSE_W} text-[0.95rem] leading-[1.9] text-arch-ink-soft`}>
             両プランとも最低契約期間は6か月です。支援開始時に、現状把握・業務整理・設計にかかる初期費用を別途お見積もりします。
             月額料金・初期費用はいずれも税別です。
           </p>
-        </div>
-      </section>
 
-      {/* ────────────── 境界線 ────────────── */}
-      <section
-        aria-labelledby="boundary-heading"
-        className="border-t border-arch-rule bg-arch-cream"
-      >
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
-          <Reveal>
-            <h2
-              id="boundary-heading"
-              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
-            >
-              訪問歯科は、どちらで対応するか
-            </h2>
-          </Reveal>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            <Reveal>
-              <div className="h-full border border-arch-rule bg-arch-cream-raised p-8 md:p-10">
-                <p className="display-jp text-xl leading-[1.6] text-arch-forest">
-                  今ある訪問診療を良くする
-                </p>
-                <p className="mt-6 text-base leading-[1.9] text-arch-ink-soft">
-                  すでに訪問診療が動いている場合、その運営の整理は外部事務長の範囲で対応できます。
-                  記録、報告、施設との連絡、担当の決め方などが対象です。
-                </p>
-                <p className="mt-8 text-base font-bold text-arch-ink">
-                  → 外部事務長で対応可能
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={80}>
-              <div className="h-full border-2 border-arch-forest bg-arch-cream-raised p-8 md:p-10">
-                <p className="display-jp text-xl leading-[1.6] text-arch-forest">
-                  まだない訪問歯科をゼロからつくる
-                </p>
-                <p className="mt-6 text-base leading-[1.9] text-arch-ink-soft">
-                  訪問歯科をこれから立ち上げる場合は、期間を区切った個別のプロジェクトになります。
-                  外部事務長の契約には自動的に含みません。
-                </p>
-                <p className="mt-8 text-base font-bold text-arch-ink">
-                  → 訪問歯科コンサルティングとして別途お見積もり
-                </p>
-                <Link
-                  href="/services/visit-dental-consulting"
-                  className="mt-8 inline-flex min-h-11 items-center gap-3 text-base font-bold text-arch-forest underline underline-offset-8"
-                >
-                  訪問歯科コンサルティングを見る
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Link>
-              </div>
-            </Reveal>
-          </div>
+          <Cta href="#contact" className="mt-10">
+            {CONSULT_LABEL}
+          </Cta>
         </div>
       </section>
 
       {/* ────────────── 関連ページへの内部リンク ────────────── */}
-      <section
-        aria-labelledby="related-heading"
-        className="border-t border-arch-rule bg-arch-cream"
-      >
-        <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28 lg:px-10">
-          <h2 id="related-heading" className="display-jp text-xl text-arch-ink">
-            あわせて読む
-          </h2>
-          <ul className="mt-8 border-t border-arch-rule">
-            <li className="border-b border-arch-rule">
-              <Link
-                href="/cases/hachioji-external-manager"
-                className="block py-5 text-[0.95rem] leading-[1.8] text-arch-ink hover:text-arch-forest"
-              >
-                <span className="mr-3 text-sm text-arch-moss">支援実績</span>
-                東京都八王子市｜補助金申請・施設基準の取得・分院展開の支援
-              </Link>
-            </li>
-            {relatedColumns.map((c) => (
-              <li key={c.slug} className="border-b border-arch-rule">
-                <Link
-                  href={columnHref(c)}
-                  className="block py-5 text-[0.95rem] leading-[1.8] text-arch-ink hover:text-arch-forest"
-                >
-                  <span className="mr-3 text-sm text-arch-moss">コラム</span>
-                  {c.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <RelatedLinks
+        links={[
+          {
+            href: "/cases/hachioji-external-manager",
+            kind: "支援実績",
+            title: "東京都八王子市｜補助金申請・施設基準の取得・分院展開の支援",
+          },
+          ...relatedColumns.map((c) => ({ href: columnHref(c), kind: "コラム", title: c.title })),
+        ]}
+      />
 
+      {/* ────────────── 10. 初回適性相談 ────────────── */}
       <ContactForm idPrefix="external-manager" defaultTopic="外部事務長" />
     </>
   );

@@ -29,7 +29,7 @@ export default function SupportAreaList() {
       </dl>
 
       {/* 相談段階の地域は、支援実績と枠を分けて示す */}
-      <div className="mt-10 border-l-4 border-arch-gold bg-arch-cream-raised px-6 py-5">
+      <div className="mt-10 border-l-2 border-arch-deep bg-arch-white px-6 py-5">
         <p className="text-sm text-arch-ink-muted">ご相談をいただいている範囲</p>
         <p className="mt-2 text-[1.0625rem] leading-[1.8] text-arch-ink">
           {CONSULTATION_AREA_NOTE}

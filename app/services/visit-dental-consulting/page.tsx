@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { COLUMN_METAS, columnHref } from "@/lib/columns";
+import BrandPhoto from "@/components/ui/BrandPhoto";
+import Cta, { CONSULT_LABEL } from "@/components/ui/Cta";
+import RelatedLinks from "@/components/ui/RelatedLinks";
+import SectionHeader from "@/components/ui/SectionHeader";
+import StepList, { type Step } from "@/components/ui/StepList";
+import { BODY, CONTAINER, PROSE_W, SECTION_Y } from "@/lib/ui";
 import { SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 
 const PATH = "/services/visit-dental-consulting";
@@ -50,27 +55,54 @@ const TARGETS = [
   },
 ];
 
-/* 基本工程 */
-const STEPS = [
+/**
+ * 時間軸（現状確認 → 終了または経営レイヤーへ）
+ * 「患者を紹介する」ことを中心価値にしない。医院の中に体制をつくり、自院で施設との関係を積み上げる。
+ */
+const TIMELINE_STEPS: Step[] = [
   {
-    title: "現状と地域性の確認",
-    body: "医院の現状、周辺の施設の状況、すでにある関係を確認します。地域によって取れる手が変わるため、ここから始めます。",
+    phase: "判断する",
+    title: "現状確認",
+    body: "医院の体制・数字、周辺の施設の状況、すでにある関係を確認します。地域によって取れる手が変わるため、ここから始めます。",
   },
   {
-    title: "目標・対象患者・訪問体制の設計",
-    body: "どこまで伸ばすのか、誰を対象にするのか、誰がどの曜日に動くのかを決めます。",
+    title: "適性判断",
+    body: "訪問歯科に取り組むべきか、今始めるべきかを判断します。向いていない場合は、そうお伝えします。",
   },
   {
-    title: "施設連携・無料検診などの入口づくり",
-    body: "施設に説明する資料と、検診から診療につなげるまでの手順を用意します。",
+    phase: "設計する",
+    title: "体制設計",
+    body: "目標、対象、担当、曜日、移動を決めます。誰が何をどの順番でやるかを先に決めます。",
   },
   {
-    title: "院内フロー・書類・スタッフ研修",
-    body: "記録、報告、請求までの流れを決め、様式をそろえ、スタッフが迷わず動ける状態にします。",
+    title: "機材・制度・導線",
+    body: "必要な機材、届出や施設基準、院内から訪問先までの動き方を整えます。",
   },
   {
-    title: "稼働開始後の確認と改善",
-    body: "動き出した後の件数と収支を確認し、続けられる形に整えます。",
+    title: "施設連携",
+    body: "施設への説明資料と、検診から診療につなげる手順をつくります。紹介に頼らず、自院で関係を積み上げる入口を設計します。",
+  },
+  {
+    phase: "動かす",
+    title: "院内運用",
+    body: "記録・報告・請求までの流れと様式をそろえ、スタッフが迷わず動ける状態まで研修します。",
+  },
+  {
+    title: "稼働",
+    body: "実際の訪問を始めます。立ち上がりの時期は、現場で詰まっている箇所を一緒に確認します。",
+  },
+  {
+    title: "改善",
+    body: "件数と収支を並べて確認し、続けられる形に直します。",
+  },
+  {
+    phase: "残す",
+    title: "自走化",
+    body: "医院のスタッフだけで回ることを確認し、手順と判断基準を医院に引き継ぎます。",
+  },
+  {
+    title: "終了、または経営レイヤーへ",
+    body: "自走できれば支援は終了です。経営判断の相手役が必要な場合は、外部事務長として続けることもできます。",
   },
 ];
 
@@ -109,169 +141,133 @@ export default function VisitDentalConsultingPage() {
           </>
         }
         lead="立ち上げも、一度つくった体制の再設計も、期間を区切った個別のプロジェクトとしてご一緒します。"
-        image={{
-          src: "/images/visit-dental-partnership.jpg",
-          // 握手が文字の下に隠れないよう、画像の下寄りを見せる
-          position: "object-[50%_70%]",
-        }}
       />
 
-      {/* ────────────── 対象 ────────────── */}
-      <section aria-labelledby="targets-heading" className="bg-arch-cream">
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
-          <Reveal>
-            <h2
-              id="targets-heading"
-              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
-            >
-              対象になる状況
-            </h2>
-          </Reveal>
-
-          <div className="mt-14 border-t border-arch-rule">
-            {TARGETS.map((t, i) => (
-              <Reveal key={t.title} delay={Math.min(i, 3) * 60}>
-                <div className="grid gap-3 border-b border-arch-rule py-8 md:grid-cols-12 md:gap-8">
-                  <h3 className="display-jp text-lg leading-[1.6] text-arch-forest md:col-span-5">
-                    {t.title}
-                  </h3>
-                  <p className="text-base leading-[1.9] text-arch-ink-soft md:col-span-7">
-                    {t.body}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+      {/* ────────────── 考え方 ────────────── */}
+      <section aria-labelledby="approach-heading" className="bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+            <Reveal className="lg:order-2 lg:col-span-7">
+              <BrandPhoto
+                name="implementation"
+                ratio="aspect-[4/3] sm:aspect-[3/2]"
+                sizes="(max-width: 1023px) 100vw, 58vw"
+              />
+            </Reveal>
+            <Reveal delay={80} className="lg:order-1 lg:col-span-5">
+              <SectionHeader
+                no="01"
+                label="APPROACH"
+                id="approach-heading"
+                title={
+                  <>
+                    <span className="block">患者を紹介する仕事では</span>
+                    <span className="block">ありません。</span>
+                  </>
+                }
+              />
+              <div className={`mt-8 ${PROSE_W} space-y-5 ${BODY}`}>
+                <p>
+                  訪問歯科は、医院の中に体制をつくり、施設との関係を自院で積み上げていく事業です。
+                </p>
+                <p>
+                  ARCHは、体制・書類・施設連携・院内運用を現場で動く状態までつくり、最後は医院だけで回る形にして引き継ぎます。
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ────────────── 基本工程 ────────────── */}
-      <section
-        aria-labelledby="steps-heading"
-        className="border-t border-arch-rule bg-arch-cream-raised"
-      >
-        <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-36 lg:px-10">
+      {/* ────────────── 対象 ────────────── */}
+      <section aria-labelledby="targets-heading" className="border-t border-arch-line bg-arch-paper">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
           <Reveal>
-            <h2
-              id="steps-heading"
-              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
-            >
-              基本工程
-            </h2>
-            <p className="mt-6 max-w-[720px] text-base leading-[1.9] text-arch-ink-soft">
-              医院の状況によって順番と重さは変わりますが、進め方の骨格は同じです。
-            </p>
+            <SectionHeader no="02" label="FOR" id="targets-heading" title="対象になる状況" />
           </Reveal>
-
-          <ol className="mt-14 border-t border-arch-rule">
-            {STEPS.map((s, i) => (
-              <Reveal as="li" key={s.title} delay={Math.min(i, 3) * 60}>
-                <div className="grid gap-3 border-b border-arch-rule py-8 md:grid-cols-12 md:gap-8">
-                  <p className="mono-micro text-arch-gold-deep tabular-nums md:col-span-1">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="display-jp text-lg leading-[1.6] text-arch-forest md:col-span-4">
-                    {s.title}
-                  </h3>
-                  <p className="text-base leading-[1.9] text-arch-ink-soft md:col-span-7">
-                    {s.body}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
+          <div className="mt-12 md:mt-16">
+            <StepList steps={TARGETS} numbered={false} />
+          </div>
         </div>
       </section>
 
-      {/* ────────────── 費用と範囲 ────────────── */}
-      <section
-        aria-labelledby="fee-heading"
-        className="border-t border-arch-rule bg-arch-cream"
-      >
-        <div className="mx-auto max-w-[720px] px-6 py-24 md:py-36 lg:px-10">
+      {/* ────────────── 時間軸 ────────────── */}
+      <section aria-labelledby="steps-heading" className="border-t border-arch-line bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
           <Reveal>
-            <h2
-              id="fee-heading"
-              className="display-jp text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-arch-ink"
-            >
-              支援期間と費用
-            </h2>
-            <p className="mt-10 border-l-4 border-arch-gold bg-arch-cream-raised px-6 py-6 text-[1.0625rem] leading-[1.9] text-arch-ink">
-              支援期間・費用は、医院の状況と支援範囲に応じて個別にお見積もりします。
-            </p>
-            <p className="mt-8 border-l-4 border-arch-rule bg-arch-cream-raised px-6 py-6 text-[1.0625rem] leading-[1.9] text-arch-ink">
-              施設への営業、面談同行などの実行支援は、
-              <br className="hidden sm:block" />
-              地域や支援内容に応じて別途ご相談・お見積もりとなります。
-            </p>
-            <p className="mt-10 text-base leading-[1.9] text-arch-ink-soft">
-              すでに訪問診療が動いていて、その運営を整理したいだけの場合は、
-              <Link
-                href="/services/external-manager"
-                className="underline underline-offset-4 hover:text-arch-forest"
-              >
-                外部事務長
-              </Link>
-              の範囲で対応できることがあります。どちらに当てはまるか分からない場合も、初回相談で切り分けます。
-            </p>
+            <SectionHeader
+              no="03"
+              label="TIMELINE"
+              id="steps-heading"
+              title="進め方（時間軸）"
+              lead={
+                <p>
+                  医院の状況によって順番と重さは変わりますが、進め方の骨格は同じです。
+                  最後は、医院だけで回る状態にして終わります。
+                </p>
+              }
+            />
           </Reveal>
+          <div className="mt-12 md:mt-16">
+            <StepList steps={TIMELINE_STEPS} />
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────── 費用と範囲（表記は変更しない） ────────────── */}
+      <section aria-labelledby="fee-heading" className="border-t border-arch-line bg-arch-paper">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <div className="max-w-[44rem]">
+            <Reveal>
+              <SectionHeader no="04" label="FEE" id="fee-heading" title="支援期間と費用" />
+              <p className="mt-10 border-l-2 border-arch-deep bg-arch-white px-6 py-5 text-[1.0625rem] leading-[1.9] text-arch-ink">
+                支援期間・費用は、医院の状況と支援範囲に応じて個別にお見積もりします。
+              </p>
+              <p className="mt-5 border-l-2 border-arch-line bg-arch-white px-6 py-5 text-[1.0625rem] leading-[1.9] text-arch-ink">
+                施設への営業、面談同行などの実行支援は、
+                <br className="hidden sm:block" />
+                地域や支援内容に応じて別途ご相談・お見積もりとなります。
+              </p>
+              <p className="mt-10 text-base leading-[1.9] text-arch-ink-soft">
+                すでに訪問診療が動いていて、その運営を整理したいだけの場合は、
+                <Link
+                  href="/services/external-manager"
+                  className="underline underline-offset-4 hover:text-arch-green"
+                >
+                  外部事務長
+                </Link>
+                の範囲で対応できることがあります。どちらに当てはまるか分からない場合も、初回適性相談で切り分けます。
+              </p>
+              <Cta href="#contact" className="mt-10">
+                {CONSULT_LABEL}
+              </Cta>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ────────────── 関連ページへの内部リンク ────────────── */}
-      <section
-        aria-labelledby="related-heading"
-        className="border-t border-arch-rule bg-arch-cream-raised"
+      <RelatedLinks
+        links={[
+          {
+            href: "/cases/setagaya-visit-dental",
+            kind: "支援実績",
+            title: "東京都世田谷区｜訪問歯科をゼロから立ち上げ、4か月で施設1件・検診36名",
+          },
+          {
+            href: "/cases/sapporo-visit-dental",
+            kind: "支援実績",
+            title: "北海道札幌市｜訪問歯科を中心とした医院運営",
+          },
+          ...relatedColumns.map((c) => ({ href: columnHref(c), kind: "コラム", title: c.title })),
+        ]}
       >
-        <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28 lg:px-10">
-          <h2 id="related-heading" className="display-jp text-xl text-arch-ink">
-            あわせて読む
-          </h2>
-          <ul className="mt-8 border-t border-arch-rule">
-            <li className="border-b border-arch-rule">
-              <Link
-                href="/cases/setagaya-visit-dental"
-                className="block py-5 text-[0.95rem] leading-[1.8] text-arch-ink hover:text-arch-forest"
-              >
-                <span className="mr-3 text-sm text-arch-moss">支援実績</span>
-                東京都世田谷区｜訪問歯科をゼロから立ち上げ、4か月で施設1件・検診36名
-              </Link>
-            </li>
-            <li className="border-b border-arch-rule">
-              <Link
-                href="/cases/sapporo-visit-dental"
-                className="block py-5 text-[0.95rem] leading-[1.8] text-arch-ink hover:text-arch-forest"
-              >
-                <span className="mr-3 text-sm text-arch-moss">支援実績</span>
-                北海道札幌市｜訪問歯科を中心とした医院運営
-              </Link>
-            </li>
-            {relatedColumns.map((c) => (
-              <li key={c.slug} className="border-b border-arch-rule">
-                <Link
-                  href={columnHref(c)}
-                  className="block py-5 text-[0.95rem] leading-[1.8] text-arch-ink hover:text-arch-forest"
-                >
-                  <span className="mr-3 text-sm text-arch-moss">コラム</span>
-                  {c.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/services/external-manager"
-            className="mt-10 inline-flex min-h-14 items-center gap-4 border border-arch-forest px-8 text-base font-bold text-arch-forest transition-colors hover:bg-arch-forest hover:text-arch-cream"
-          >
-            外部事務長を見る
-            <ArrowRight size={18} aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
+        <Cta href="/services/external-manager" variant="secondary" className="mt-10">
+          外部事務長を見る
+        </Cta>
+      </RelatedLinks>
 
-      <ContactForm
-        idPrefix="visit-dental"
-        defaultTopic="訪問歯科コンサルティング"
-      />
+      <ContactForm idPrefix="visit-dental" defaultTopic="訪問歯科コンサルティング" />
     </>
   );
 }

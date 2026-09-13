@@ -1,23 +1,35 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Noto_Sans_JP } from "next/font/google";
+import { Inter, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { COMPANY, OG_IMAGE, SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/site";
+import { BRAND_LOGO } from "@/lib/brand";
 
-/* 日本語本文：Noto Sans JP（400 / 500 / 700 / 900） */
+/* 基本書体：Noto Sans JP（本文・ナビ・ボタン・基本の見出し） */
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-jp",
   subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
-/* 小さな英字ラベルにだけ使う等幅フォント */
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/* 明朝：HERO・ARCH Philosophy・代表のことばなど、用途を限定して使う。
+   ファーストビューの見出しにも使うが、本文には使わない */
+const notoSerifJP = Noto_Serif_JP({
+  variable: "--font-noto-serif-jp",
   subsets: ["latin"],
+  weight: ["500", "600"],
+  display: "swap",
+  preload: false,
+});
+
+/* 英字ラベル・番号・メタ情報（DENTAL OPERATIONS PARTNER / CASE 番号など） */
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -84,7 +96,7 @@ const siteJsonLd = {
       name: COMPANY.name,
       alternateName: COMPANY.nameKana,
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo.jpg` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}${BRAND_LOGO.path}` },
       description:
         "歯科医院の外部事務長として院長の経営実務を整理し、医院が回り続ける体制をつくる合同会社。訪問歯科の立ち上げ・立て直しは個別のコンサルティングとして支援。",
       foundingDate: COMPANY.founded,
@@ -134,14 +146,16 @@ export default function RootLayout({
           <style>{`.arch-reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
       </head>
-      <body className={`${notoSansJP.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${notoSansJP.variable} ${notoSerifJP.variable} ${inter.variable} antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-arch-forest focus:px-5 focus:py-3 focus:text-arch-cream"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-arch-deep focus:px-5 focus:py-3 focus:text-arch-white"
         >
           本文へスキップ
         </a>

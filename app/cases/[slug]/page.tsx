@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
@@ -13,6 +12,8 @@ import {
   getCase,
 } from "@/lib/cases";
 import { OG_IMAGE, absoluteUrl } from "@/lib/site";
+import Cta from "@/components/ui/Cta";
+import { CONTAINER, SECTION_Y } from "@/lib/ui";
 
 export function generateStaticParams() {
   return CASES.map((c) => ({ slug: c.slug }));
@@ -67,98 +68,131 @@ export default async function CasePage({ params }: Params) {
 
       <PageHero eyebrow="CASE" title={item.area} lead={item.summary} />
 
-      {/* ────────────── 確認できた数字 ────────────── */}
-      <section aria-labelledby="facts-heading" className="bg-arch-cream">
-        <div className="mx-auto max-w-[720px] px-6 py-24 md:py-36 lg:px-10">
-          <Reveal>
-            <h2
-              id="facts-heading"
-              className="display-jp text-[clamp(1.5rem,4.5vw,2.25rem)] leading-[1.3] text-arch-ink"
-            >
-              確認できた内容
-            </h2>
-            <dl className="mt-10 border-t border-arch-rule">
-              {item.facts.map((f) => (
-                <div
-                  key={f.label}
-                  className="grid gap-1 border-b border-arch-rule py-5 sm:grid-cols-12 sm:gap-6"
-                >
-                  <dt className="text-[0.95rem] text-arch-ink-muted sm:col-span-5">
-                    {f.label}
-                  </dt>
-                  <dd className="text-[1.0625rem] leading-[1.8] text-arch-ink sm:col-span-7">
-                    {f.value}
-                  </dd>
+      {/* ────────────── Situation → ARCHの関与 → 実装したこと → 確認できた結果 → 現在地 ────────────── */}
+      <section aria-label="支援の内容" className="bg-arch-white">
+        <div className={`${CONTAINER} ${SECTION_Y}`}>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            {/* 大きな数字（確認済みの値だけ） */}
+            <Reveal className="lg:col-span-4">
+              <p className="mono-micro flex items-center gap-3 text-arch-green">
+                <span>CASE</span>
+                <span aria-hidden="true" className="h-px w-6 bg-arch-green/50" />
+                <span>{item.code}</span>
+              </p>
+              <p className="mt-6">
+                {item.headline.numeric ? (
+                  <span className="flex items-baseline gap-1.5">
+                    <span className="num-en text-[clamp(3.25rem,7vw,5rem)] font-medium leading-none text-arch-deep">
+                      {item.headline.value}
+                    </span>
+                    <span className="text-xl font-bold text-arch-deep">{item.headline.unit}</span>
+                  </span>
+                ) : (
+                  <span className="display-jp block text-[clamp(1.875rem,3.4vw,2.5rem)] leading-tight text-arch-deep">
+                    {item.headline.value}
+                  </span>
+                )}
+                <span className="mt-3 block text-[0.875rem] leading-[1.7] text-arch-ink-muted">
+                  {item.headline.caption}
+                </span>
+              </p>
+            </Reveal>
+
+            <div className="lg:col-span-8">
+              {(
+                [
+                  ["SITUATION", "状況", <p key="s">{item.story.problem}</p>],
+                  ["INVOLVEMENT", "ARCHの関与", <p key="a">{item.story.action}</p>],
+                  [
+                    "IMPLEMENTED",
+                    "実装したこと",
+                    <ul key="w" className="border-t border-arch-line">
+                      {item.work.map((w) => (
+                        <li key={w} className="border-b border-arch-line py-3">
+                          {w}
+                        </li>
+                      ))}
+                    </ul>,
+                  ],
+                  [
+                    "RESULT",
+                    "確認できた結果",
+                    <dl key="f" className="border-t border-arch-line">
+                      {item.facts.map((f) => (
+                        <div
+                          key={f.label}
+                          className="grid gap-1 border-b border-arch-line py-3 sm:grid-cols-12 sm:gap-6"
+                        >
+                          <dt className="text-[0.9rem] text-arch-ink-muted sm:col-span-5">{f.label}</dt>
+                          <dd className="font-bold text-arch-ink sm:col-span-7">{f.value}</dd>
+                        </div>
+                      ))}
+                    </dl>,
+                  ],
+                  ["NOW", "現在地", <p key="n">{item.status}</p>],
+                ] as const
+              ).map(([en, label, content], i) => (
+                <Reveal key={en} delay={Math.min(i, 3) * 50}>
+                  <div className={`grid gap-3 border-t border-arch-deep py-8 md:grid-cols-12 md:gap-8 ${i === 4 ? "border-b" : ""}`}>
+                    <div className="md:col-span-4">
+                      <p className="mono-micro text-arch-green">{en}</p>
+                      <h2 className="display-jp mt-2 text-[1.125rem] text-arch-ink">{label}</h2>
+                    </div>
+                    <div className="text-[1.0rem] leading-[1.9] text-arch-ink-soft md:col-span-8">
+                      {content}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+
+              {item.notes.length > 0 && (
+                <Reveal>
+                  <div className="mt-10 border-l-2 border-arch-deep bg-arch-pale px-6 py-5">
+                    <p className="text-[0.875rem] font-bold text-arch-deep">数字の読み方について</p>
+                    <ul className="mt-3 space-y-2">
+                      {item.notes.map((n) => (
+                        <li key={n} className="text-[0.95rem] leading-[1.9] text-arch-ink">
+                          {n}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              )}
+
+              {/* 院長コメント：公開承認が取れている場合のみ表示する */}
+              {showComment && (
+                <Reveal>
+                  <figure className="mt-10 border-l-2 border-arch-green bg-arch-paper px-6 py-8">
+                    <blockquote className="text-[1.0625rem] leading-[1.9] text-arch-ink">
+                      {HACHIOJI_COMMENT}
+                    </blockquote>
+                    <figcaption className="mt-4 text-[0.95rem] text-arch-ink-muted">
+                      {item.area}／院長
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              )}
+
+              <Reveal>
+                <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-arch-line pt-8">
+                  <p className="text-sm text-arch-ink-muted">関連するサービス</p>
+                  <Cta href={`/services/${item.service}`} variant="text">
+                    {SERVICE_LABEL[item.service]}
+                  </Cta>
                 </div>
-              ))}
-            </dl>
-          </Reveal>
-
-          <Reveal>
-            <h2 className="display-jp mt-20 text-[clamp(1.5rem,4.5vw,2.25rem)] leading-[1.3] text-arch-ink">
-              支援内容
-            </h2>
-            <ul className="mt-10 border-t border-arch-rule">
-              {item.work.map((w) => (
-                <li
-                  key={w}
-                  className="border-b border-arch-rule py-5 text-[1.0625rem] leading-[1.8] text-arch-ink"
-                >
-                  {w}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          {item.notes.length > 0 && (
-            <Reveal>
-              <div className="mt-16 border-l-4 border-arch-rule bg-arch-cream-raised px-6 py-6">
-                <p className="text-sm text-arch-ink-muted">数字の読み方について</p>
-                <ul className="mt-3 space-y-3">
-                  {item.notes.map((n) => (
-                    <li key={n} className="text-base leading-[1.9] text-arch-ink-soft">
-                      {n}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          )}
-
-          {/* 院長コメント：公開承認が取れている場合のみ表示する */}
-          {showComment && (
-            <Reveal>
-              <figure className="mt-16 border-l-4 border-arch-gold bg-arch-cream-raised px-6 py-8">
-                <blockquote className="text-[1.0625rem] leading-[1.9] text-arch-ink">
-                  {HACHIOJI_COMMENT}
-                </blockquote>
-                <figcaption className="mt-4 text-[0.95rem] text-arch-ink-muted">
-                  {item.area}／院長
-                </figcaption>
-              </figure>
-            </Reveal>
-          )}
-
-          <Reveal>
-            <div className="mt-16 border border-arch-rule bg-arch-cream-raised p-6 md:p-8">
-              <p className="text-sm text-arch-ink-muted">関連するサービス</p>
-              <Link
-                href={`/services/${item.service}`}
-                className="display-jp mt-3 inline-flex min-h-11 items-center text-xl text-arch-forest underline underline-offset-8 hover:text-arch-forest-soft"
-              >
-                {SERVICE_LABEL[item.service]}
-              </Link>
+              </Reveal>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ────────────── ほかの支援実績 ────────────── */}
       <section
         aria-labelledby="others-heading"
-        className="border-t border-arch-rule bg-arch-cream-raised"
+        className="border-t border-arch-line bg-arch-paper"
       >
-        <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28 lg:px-10">
+        <div className={`${CONTAINER} py-[64px] md:py-[96px]`}>
           <h2 id="others-heading" className="display-jp text-xl text-arch-ink">
             ほかの支援実績
           </h2>
@@ -175,13 +209,9 @@ export default async function CasePage({ params }: Params) {
               </li>
             ))}
           </ul>
-          <Link
-            href="/cases"
-            className="mt-10 inline-flex min-h-14 items-center gap-4 border border-arch-forest px-8 text-base font-bold text-arch-forest transition-colors hover:bg-arch-forest hover:text-arch-cream"
-          >
+          <Cta href="/cases" variant="secondary" className="mt-10">
             支援実績の一覧へ
-            <ArrowRight size={18} aria-hidden="true" />
-          </Link>
+          </Cta>
         </div>
       </section>
 

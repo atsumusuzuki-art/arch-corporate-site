@@ -9,6 +9,8 @@
  *   このコンポーネントだけを使う（フォーム設定の分裂を解消するため）。
  * ・送信後は /thanks へ遷移し、そこで受付完了を表示する。
  * ・料金プラン・予算・売上・患者数は聞かない。
+ * ・見出しは「初回適性相談」。ARCHと組むべきかを最初に整理する場であり、
+ *   「何でも無料で相談できる場」には見せない（無料の範囲に含めないものを明示する）。
  *
  * JavaScript なしで動く素の form なので Server Component のまま置ける。
  * 同一ページに複数置く場合に id が衝突しないよう idPrefix を必ず変える。
@@ -32,17 +34,23 @@ const TOPICS = [
   "どちらに当てはまるか相談したい",
 ] as const;
 
-/** 見出しの表示上の 2 行。トップのファーストビューと同じ意味の切れ目にそろえる */
-const HEADING_LINES = ["院長が一人で抱え始めたとき", "ARCHが入る。"];
+/** 見出しの表示上の 2 行 */
+const HEADING_LINES = ["ARCHと組むべきかを、", "最初に整理します。"];
+
+/** 初回適性相談で確認すること */
+const CHECKS = ["医院の目的", "現状", "体制", "資金", "訪問歯科との適性", "ARCHとの相性"];
+
+/** 初回適性相談（無料）には含めないもの。ARCHフィロソフィー「相談は開く。責任は有料」 */
+const NOT_INCLUDED = ["詳細な診断書", "実行計画書", "資料の作成", "同行", "実装の責任"];
 
 const STEPS = [
-  "お問い合わせ",
-  "原則2営業日以内にメール",
-  "30分のオンライン初回相談（無料）",
+  "フォームから送信",
+  "原則2営業日以内にメールでご連絡",
+  "30分のオンライン初回適性相談（無料）",
 ];
 
 const fieldClass =
-  "w-full min-h-11 border border-arch-rule bg-arch-cream-raised px-4 py-3 text-base text-arch-ink outline-none transition-colors focus:border-arch-forest";
+  "w-full min-h-11 rounded-[2px] border border-arch-rule bg-arch-paper px-4 py-3 text-base text-arch-ink outline-none transition-colors focus:border-arch-deep focus:bg-arch-white";
 
 const labelClass = "block text-[0.95rem] font-bold text-arch-ink";
 
@@ -67,37 +75,56 @@ export default function ContactForm({
   const id = (name: string) => `${idPrefix}-${name}`;
 
   return (
-    <section id="contact" className="bg-arch-cream-raised border-t border-arch-rule">
-      <div className="mx-auto max-w-[1200px] px-6 lg:px-10 py-24 md:py-36">
+    <section
+      id="contact"
+      aria-label="初回適性相談"
+      className="scroll-mt-20 border-t border-arch-rule bg-arch-white"
+    >
+      <div className="mx-auto max-w-[1280px] px-5 py-[76px] sm:px-6 md:py-[112px] lg:px-10 lg:py-[136px]">
         <div className="grid gap-12 md:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           {/* 左：見出しと流れ */}
           <div>
+            <p className="mono-micro flex items-center gap-3 text-arch-green">
+              <span>FIRST CONSULTATION</span>
+            </p>
             {intro && (
-              <p className="mb-6 max-w-[34rem] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
+              <p className="mt-6 max-w-[34rem] text-[0.95rem] leading-[1.9] text-arch-ink-soft">
                 {intro}
               </p>
             )}
             {/* h2 は 1 つのまま。PC・スマホとも意味の切れ目で必ず 2 行にする */}
-            <h2 className="display-jp text-[clamp(1.375rem,4.5vw,1.75rem)] leading-[1.45] text-arch-ink">
+            <h2 className="display-jp mt-5 text-[clamp(1.5rem,3.2vw,2.25rem)] leading-[1.5] text-arch-ink">
               {HEADING_LINES.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
               ))}
             </h2>
-            <p className="mt-8 max-w-[36rem] text-base leading-[1.9] text-arch-ink-soft">
-              初回相談で、現在の業務とARCHが担う範囲を整理します。
+            <p className="mt-7 max-w-[36rem] text-base leading-[1.95] text-arch-ink-soft">
+              {CHECKS.join("、")}を確認します。
               <br />
-              送信後、原則2営業日以内にご連絡します。
+              支援をお受けするかどうかも、ここで判断します。
             </p>
+
+            <div className="mt-8 border-l-2 border-arch-deep bg-arch-pale px-5 py-5">
+              <p className="text-[0.875rem] font-bold text-arch-deep">
+                初回適性相談（無料）に含まれないもの
+              </p>
+              <p className="mt-2 text-[0.9375rem] leading-[1.9] text-arch-ink">
+                {NOT_INCLUDED.join("・")}
+              </p>
+              <p className="mt-2 text-[0.8125rem] leading-[1.8] text-arch-ink-soft">
+                これらは、支援の範囲を決めたうえで有料でお引き受けします。
+              </p>
+            </div>
 
             <ol className="mt-10 border-t border-arch-rule">
               {STEPS.map((s, i) => (
                 <li
                   key={s}
-                  className="flex items-baseline gap-5 border-b border-arch-rule py-5"
+                  className="flex items-baseline gap-5 border-b border-arch-rule py-4"
                 >
-                  <span className="mono-micro text-arch-gold-deep tabular-nums">
+                  <span className="mono-micro text-arch-green tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-[0.95rem] leading-[1.8] text-arch-ink">{s}</span>
@@ -129,7 +156,7 @@ export default function ContactForm({
               />
 
               {/* 相談種別 */}
-              <fieldset className="sm:col-span-2 border border-arch-rule bg-arch-cream p-5 md:p-6">
+              <fieldset className="sm:col-span-2 rounded-[2px] border border-arch-rule bg-arch-paper p-5 md:p-6">
                 <legend className="px-2 text-[0.95rem] font-bold text-arch-ink">
                   相談種別
                   <Required />
@@ -146,7 +173,7 @@ export default function ContactForm({
                         value={t}
                         required
                         defaultChecked={t === defaultTopic}
-                        className="h-5 w-5 accent-[#0D3B2E]"
+                        className="h-5 w-5 accent-[#08533C]"
                       />
                       <span>{t}</span>
                     </label>
@@ -260,7 +287,7 @@ export default function ContactForm({
                     type="checkbox"
                     value="同意する"
                     required
-                    className="mt-1 h-5 w-5 shrink-0 accent-[#0D3B2E]"
+                    className="mt-1 h-5 w-5 shrink-0 accent-[#08533C]"
                   />
                   <span>
                     <Link
@@ -278,9 +305,9 @@ export default function ContactForm({
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="inline-flex min-h-14 w-full items-center justify-center bg-arch-forest px-10 text-base font-bold text-arch-cream transition-colors hover:bg-arch-forest-soft sm:w-auto"
+                  className="inline-flex min-h-14 w-full items-center justify-center rounded-[2px] bg-arch-deep px-10 text-base font-bold text-arch-white transition-colors hover:bg-arch-green sm:w-auto"
                 >
-                  相談内容を送る
+                  初回適性相談を申し込む
                 </button>
                 {/* 迷惑メール対策のため、受信用アドレスは画面に出さない */}
                 <p className="mt-4 text-sm text-arch-ink-muted">

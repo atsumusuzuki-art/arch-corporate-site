@@ -39,7 +39,7 @@ export default function ColumnsIndex() {
       />
 
       <section className="bg-arch-cream">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-10 py-24 md:py-36">
+        <div className="mx-auto max-w-[1280px] px-6 lg:px-10 py-24 md:py-36">
           <ul className="border-t border-arch-rule">
             {COLUMN_METAS.map((c, i) => (
               <Reveal as="li" key={c.slug} delay={Math.min(i, 4) * 60}>

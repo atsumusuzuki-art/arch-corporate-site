@@ -40,7 +40,7 @@ export default function Breadcrumb({ items, baseUrl = SITE_URL }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
         <ol className="flex flex-wrap items-center gap-x-3 gap-y-1 py-4 text-sm text-arch-ink-muted">
           {items.map((c, i) => {
             const isLast = i === items.length - 1;

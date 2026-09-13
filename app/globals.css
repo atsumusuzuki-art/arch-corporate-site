@@ -1,37 +1,59 @@
 @import "tailwindcss";
 
 /* ============================================================
-   ARCH デザイントークン
-   一画面一メッセージ／大きな文字／広い余白／静かな動き
-   ・グラデーション、大きな角丸、強い影、白100%背景は使わない
+   ARCH デザイントークン（2026-09 改修）
+   コンセプト「現場の設計図」— 静か／知的／現場を知っている
+   ・Paper / White が約7割、Deep Green / Green が約2割、Pale Green 等が1割弱
+   ・グラデーション、ガラス風の半透明UI、強い影、ネオン、紫系は使わない
    ============================================================ */
 
 :root {
-  /* ページの地色 */
-  --background: #f3ede0; /* ARCH Cream */
-  --foreground: #0f1211; /* ARCH Ink */
+  /* ── 基本カラー（ブランド定義そのまま） ── */
+  --arch-paper: #f7f4ee;       /* Paper：ページの地色 */
+  --arch-white: #ffffff;       /* White：一段持ち上げる面 */
+  --arch-green: #0f5c3e;       /* ARCH Green：リンク・小さなアクセント */
+  --arch-deep: #08533c;        /* Deep Green：ボタン・深緑の帯 */
+  --arch-forest-tone: #2c4a3b; /* Forest：ラベルなど落ち着いた緑 */
+  --arch-pale: #e6f2ed;        /* Pale Green：面の切り替え */
+  --arch-light: #a7d6b0;       /* Light Green：深緑の上の補足文字・細い差し色 */
+  --arch-ink-base: #1a1a1a;    /* Ink */
+  --arch-muted-base: #6b716d;  /* Muted：Paper 上で 4.55:1 */
+  --arch-line: #d5d2cb;        /* Line：1px 罫線 */
 
-  /* ブランドカラー */
-  --arch-cream: #f3ede0;
-  --arch-cream-raised: #faf6ec;
-  --arch-ink: #0f1211;
-  --arch-ink-soft: #3a3c3a;
-  --arch-ink-muted: #686a67; /* 本文小さめの補足用。クリーム地で AA(4.5:1) を満たす濃さ */
-  --arch-forest: #0d3b2e;
-  --arch-forest-soft: #1e5a40;
-  --arch-moss: #2f6a51; /* クリーム地に置くラベル用の緑（AA 確保のため濃いめ） */
-  --arch-sage: #b9d0c1; /* 深緑地に置く補足文字（AA 確保のため明るめ） */
-  --arch-gold: #b8944a;
-  --arch-gold-on-dark: #c9a960; /* 深緑地に小さな文字を置くとき用（AA 確保） */
-  --arch-gold-deep: #7d6124;    /* クリーム地に小さな文字を置くとき用（AA 確保） */
-  --arch-rule: #d8cfbc;
-  --arch-rule-dark: #1c4a38;
+  --background: var(--arch-paper);
+  --foreground: var(--arch-ink-base);
+
+  /* ── 既存クラス名との互換（全ページが新しい配色に揃うよう、値だけ差し替える） ── */
+  --arch-cream: var(--arch-paper);
+  --arch-cream-raised: var(--arch-white);
+  --arch-ink: var(--arch-ink-base);
+  --arch-ink-soft: #3d423f;          /* 本文。Paper 上で 9.3:1 */
+  --arch-ink-muted: var(--arch-muted-base);
+  --arch-forest: var(--arch-deep);
+  --arch-forest-soft: var(--arch-green);
+  --arch-moss: var(--arch-forest-tone);
+  --arch-sage: var(--arch-light);    /* 深緑の上の補足文字。Deep Green 上で 5.6:1 */
+  /* ゴールドは今回の配色から外した。旧クラス名は緑系の差し色に置き換える */
+  --arch-gold: var(--arch-light);
+  --arch-gold-on-dark: var(--arch-light);
+  --arch-gold-deep: var(--arch-green);
+  --arch-rule: var(--arch-line);
+  --arch-rule-dark: #2f6e55;
   --arch-danger: #8c2f2f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-arch-paper: var(--arch-paper);
+  --color-arch-white: var(--arch-white);
+  --color-arch-green: var(--arch-green);
+  --color-arch-deep: var(--arch-deep);
+  --color-arch-pale: var(--arch-pale);
+  --color-arch-light: var(--arch-light);
+  --color-arch-line: var(--arch-line);
+  --color-arch-muted: var(--arch-muted-base);
 
   --color-arch-cream: var(--arch-cream);
   --color-arch-cream-raised: var(--arch-cream-raised);
@@ -49,10 +71,14 @@
   --color-arch-rule-dark: var(--arch-rule-dark);
   --color-arch-danger: var(--arch-danger);
 
-  /* 書体：日本語も英語も Noto Sans JP。等幅は小さな英字ラベルにだけ使う */
+  /* 書体
+     ・本文／見出し／ナビ／ボタン … Noto Sans JP
+     ・HERO・思想・代表のことば … Noto Serif JP（用途を限定）
+     ・英字ラベル・番号・メタ情報 … Inter */
   --font-sans: var(--font-noto-jp);
   --font-display: var(--font-noto-jp);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-noto-serif-jp);
+  --font-mono: var(--font-inter);
 }
 
 html {
@@ -75,42 +101,117 @@ body {
   overflow-x: hidden;
 }
 
-/* 見出し用（700〜900） */
+/* 見出し用（Noto Sans JP 700）。静かで読みやすい太さにとどめる */
 .display-jp {
   font-family: var(--font-noto-jp), "Noto Sans JP", sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
 }
 
-/* 小さな英字ラベル（等幅を使うのはここだけ） */
+/* 明朝は HERO・思想・代表のことばだけに使う。本文には使わない */
+.serif-jp {
+  font-family: var(--font-noto-serif-jp), "Noto Serif JP", "Hiragino Mincho ProN",
+    "Yu Mincho", serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt" 1;
+}
+
+/* 英字ラベル・番号・メタ情報（Inter / 11〜13px / 0.12〜0.18em） */
 .mono-micro {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-inter), "Inter", var(--font-noto-jp), sans-serif;
   font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.mono-label {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
+.mono-label {
+  font-family: var(--font-inter), "Inter", var(--font-noto-jp), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* 英字の数字（CASE の大きな数字など） */
+.num-en {
+  font-family: var(--font-inter), "Inter", var(--font-noto-jp), sans-serif;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
+}
+
+/* ブランド画像：モバイルとデスクトップで object-position を個別に指定する。
+   値は lib/brand.ts の BRAND_IMAGES から CSS 変数で渡す */
+.brand-img {
+  object-fit: cover;
+  object-position: var(--pos-m, 50% 50%);
+}
+@media (min-width: 1024px) {
+  .brand-img {
+    object-position: var(--pos-d, var(--pos-m, 50% 50%));
+  }
+}
+
+/* ============================================================
+   TOP HERO — ガラス越しの ARCH の空間に、コピーを置く
+   ・画像そのものは暗くしない。Paper 色の半透明レイヤーだけを重ねる
+   ・スマホ：上（文章）ほど Paper を濃く、下へ行くほどガラス空間が見える
+   ・PC  ：左（文章）ほど Paper を濃く、右へ行くほどガラス空間が見える
+   ============================================================ */
+.hero-wash {
+  /* スマホ：上（コピー）は Paper を強く、中段からガラスと植物が見え始め、下部で ARCH サインと会議室がはっきり見える */
+  background: linear-gradient(
+    180deg,
+    rgba(247, 244, 238, 0.95) 0%,
+    rgba(247, 244, 238, 0.9) 24%,
+    rgba(247, 244, 238, 0.8) 40%,
+    rgba(247, 244, 238, 0.5) 54%,
+    rgba(247, 244, 238, 0.14) 70%,
+    rgba(247, 244, 238, 0.06) 100%
+  );
+}
+/* 背景画像の端を Paper に溶かす（スマホは上端、PC は左端） */
+/* スマホ：上半分の画像は下端を、下半分の画像は上端を溶かして 1 枚につなぐ。PC は左端だけ溶かす */
+.hero-photo-top {
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+}
+.hero-photo {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 34%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 34%);
+}
+@media (min-width: 1024px) {
+  .hero-photo {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+  }
+}
+@media (min-width: 1024px) {
+  .hero-wash {
+    background: linear-gradient(
+      90deg,
+      rgba(247, 244, 238, 0.98) 0%,
+      rgba(247, 244, 238, 0.95) 34%,
+      rgba(247, 244, 238, 0.72) 48%,
+      rgba(247, 244, 238, 0.12) 68%,
+      rgba(247, 244, 238, 0) 100%
+    );
+  }
+}
+
 /* ============================================================
    動き — 画面に入ったとき 1 回だけ、静かに
-   フェード ＋ 下から 16px / 520ms / ease-out
+   フェード ＋ 下から 8px / 240ms / ease-out（スクロール連動・パララックスは使わない）
    ============================================================ */
 
 .arch-reveal {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(8px);
   transition:
-    opacity 520ms ease-out,
-    transform 520ms ease-out;
+    opacity 240ms ease-out,
+    transform 240ms ease-out;
 }
 
 .arch-reveal.is-visible {
@@ -118,12 +219,24 @@ body {
   transform: none;
 }
 
+/* 罫線が左から引かれる（line reveal）。Reveal の中に置く */
+.arch-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 480ms ease-out 80ms;
+}
+.is-visible .arch-line,
+.arch-line.is-visible {
+  transform: scaleX(1);
+}
+
 /* 動きを減らす設定では一切動かさない */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .arch-reveal {
+  .arch-reveal,
+  .arch-line {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

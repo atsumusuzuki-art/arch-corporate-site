@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同会社ARCH — 名刺デザイン案（3パターン）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Noto+Sans+JP:wght@200;300;400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   ARCH 名刺デザイン — スクリーンプレビュー + 印刷共通
+   名刺サイズ：91mm × 55mm（日本標準）
+   表示スケール：×5 → 455px × 275px
+================================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:  #2C4A3B;
+  --forest2: #1C3228;
+  --darkbg:  #0E1E16;
+  --cream:   #F7F4EE;
+  --cream2:  #F0EDE5;
+  --ink:     #1A1A1A;
+  --muted:   #8A8A86;
+  --subtle:  #C4C0BA;
+  --gold:    #B8935A;
+  --white:   #FFFFFF;
+  --rule:    #D8D4CE;
+  --green-light: #9CC4AE;
+
+  --serif-jp: 'Noto Serif JP', 'Hiragino Mincho ProN', 'YuMincho', 'Yu Mincho', serif;
+  --sans:     'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --sans-jp:  'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+
+  --card-w: 455px;
+  --card-h: 275px;
+}
+
+html { background: #F0EDEA; }
+
+body {
+  font-family: var(--sans-jp);
+  color: #2A2A28;
+  line-height: 1.6;
+  padding: 48px 40px 80px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ─── PAGE HEADER ─── */
+.page-header { margin-bottom: 56px; border-left: 3px solid var(--forest); padding-left: 20px; }
+.page-header h1 { font-size: 22px; font-weight: 300; color: var(--ink); letter-spacing: .06em; font-family: var(--serif-jp); }
+.page-header p  { font-size: 13px; color: var(--muted); margin-top: 6px; letter-spacing: .04em; }
+
+/* ─── SECTION ─── */
+.section { margin-bottom: 72px; }
+.section-tag { display: inline-flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
+.pat-num  { font-size: 10px; letter-spacing: .2em; color: var(--forest); font-family: var(--sans); text-transform: uppercase; font-weight: 400; }
+.pat-name { font-size: 18px; font-weight: 300; color: var(--ink); font-family: var(--serif-jp); letter-spacing: .05em; }
+.pat-sub  { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: .04em; margin-bottom: 24px; }
+
+/* ─── CARD ROW ─── */
+.card-row { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+.card-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.face-label { font-size: 11px; color: var(--muted); letter-spacing: .1em; font-family: var(--sans); }
+
+/* ─── CARD BASE ─── */
+.card {
+  width: var(--card-w);
+  height: var(--card-h);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 3px;
+}
+
+/* ================================================================
+   PATTERN A — 建築事務所スタイル
+   白ベース・細線・余白最大・縦階層
+================================================================ */
+
+/* FRONT */
+.a-front {
+  background: var(--white);
+  border: 0.5px solid var(--rule);
+  padding: 30px 34px 0 34px;
+}
+.a-logo {
+  font-size: 13px;
+  letter-spacing: .26em;
+  color: var(--forest);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.a-company {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-top: 4px;
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.a-rule {
+  width: 28px;
+  height: .5px;
+  background: var(--forest);
+  opacity: .35;
+  margin: 16px 0 14px;
+}
+.a-title-jp {
+  font-size: 17px;
+  color: var(--ink);
+  font-family: var(--serif-jp);
+  font-weight: 300;
+  letter-spacing: .08em;
+}
+.a-title-en {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .18em;
+  margin-top: 5px;
+  font-family: var(--sans);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.a-name-jp {
+  font-size: 30px;
+  color: var(--ink);
+  font-family: var(--serif-jp);
+  font-weight: 200;
+  letter-spacing: .14em;
+  margin-top: 14px;
+}
+.a-name-en {
+  font-size: 10px;
+  color: #BBBBBB;
+  letter-spacing: .24em;
+  margin-top: 5px;
+  font-family: var(--sans);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.a-bottom {
+  position: absolute;
+  bottom: 26px;
+  left: 34px;
+  right: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.a-contacts {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.9;
+  letter-spacing: .04em;
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.a-contacts span { color: var(--subtle); margin-right: 8px; }
+
+/* BACK */
+.a-back {
+  background: var(--forest);
+  padding: 30px 36px;
+  display: flex;
+  flex-direction: column;
+}
+.ab-logo {
+  font-size: 13px;
+  letter-spacing: .26em;
+  color: rgba(255,255,255,.8);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.ab-mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 6px;
+}
+.ab-copy {
+  font-size: 21px;
+  color: var(--white);
+  font-family: var(--serif-jp);
+  font-weight: 200;
+  letter-spacing: .08em;
+  line-height: 1.75;
+}
+.ab-copy em {
+  font-style: normal;
+  color: var(--green-light);
+}
+.ab-services {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 14px;
+  row-gap: 5px;
+  border-top: .5px solid rgba(255,255,255,.18);
+  padding-top: 14px;
+  margin-top: 8px;
+}
+.ab-svc {
+  font-size: 9px;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .09em;
+  font-family: var(--sans-jp);
+  font-weight: 300;
+}
+
+/* ================================================================
+   PATTERN B — 士業スタイル
+   クリーム地・左グリーンボーダー・名前を主役に
+================================================================ */
+
+/* FRONT */
+.b-front {
+  background: var(--cream);
+  border: 0.5px solid #CCC8C0;
+  border-left: 3px solid var(--forest);
+  padding: 28px 32px 0 28px;
+}
+.b-logo {
+  font-size: 13px;
+  letter-spacing: .26em;
+  color: var(--forest);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.b-company {
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin-top: 4px;
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.b-name-jp {
+  font-size: 34px;
+  color: var(--ink);
+  font-family: var(--serif-jp);
+  font-weight: 200;
+  letter-spacing: .16em;
+  margin-top: 18px;
+}
+.b-name-en {
+  font-size: 10px;
+  color: #BBBBBB;
+  letter-spacing: .22em;
+  font-family: var(--sans);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.b-divh {
+  height: .5px;
+  background: var(--rule);
+  margin: 14px 0 12px;
+}
+.b-titles {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.b-title-jp {
+  font-size: 14px;
+  color: var(--forest);
+  font-family: var(--serif-jp);
+  font-weight: 400;
+  letter-spacing: .1em;
+}
+.b-title-en {
+  font-size: 9px;
+  color: #AAAAAA;
+  letter-spacing: .16em;
+  font-family: var(--sans);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.b-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 28px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.b-contacts {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.b-contacts span { color: var(--subtle); margin-right: 8px; }
+
+/* BACK */
+.b-back {
+  background: var(--forest);
+  padding: 30px 36px;
+}
+.bb-logo {
+  font-size: 13px;
+  letter-spacing: .26em;
+  color: rgba(255,255,255,.8);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.bb-copy {
+  font-size: 22px;
+  color: var(--white);
+  font-family: var(--serif-jp);
+  font-weight: 200;
+  letter-spacing: .08em;
+  line-height: 1.75;
+  margin-top: 26px;
+}
+.bb-copy em {
+  font-style: normal;
+  color: var(--green-light);
+}
+.bb-accent-rule {
+  width: 32px;
+  height: .5px;
+  background: rgba(255,255,255,.35);
+  margin: 20px 0 16px;
+}
+.bb-svcs {
+  font-size: 9.5px;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .09em;
+  line-height: 2;
+  font-family: var(--sans-jp);
+  font-weight: 300;
+}
+
+/* ================================================================
+   PATTERN C — プレミアムミニマル
+   センター軸・ダークバック・ゴールドアクセント
+================================================================ */
+
+/* FRONT */
+.c-front {
+  background: var(--white);
+  border: 0.5px solid #E0DDD7;
+  padding: 26px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.c-logo {
+  font-size: 12px;
+  letter-spacing: .34em;
+  color: var(--forest);
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.c-company {
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: #BBBBBB;
+  margin-top: 3px;
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.c-vline {
+  width: .5px;
+  height: 22px;
+  background: var(--rule);
+  margin: 14px auto;
+}
+.c-name-jp {
+  font-size: 36px;
+  color: var(--ink);
+  font-family: var(--serif-jp);
+  font-weight: 200;
+  letter-spacing: .2em;
+}
+.c-name-en {
+  font-size: 10px;
+  letter-spacing: .24em;
+  color: #BBBBBB;
+  font-family: var(--sans);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+.c-vline2 {
+  width: .5px;
+  height: 14px;
+  background: var(--rule);
+  margin: 12px auto 0;
+}
+.c-title-jp {
+  font-size: 13px;
+  color: var(--forest);
+  font-family: var(--serif-jp);
+  font-weight: 400;
+  letter-spacing: .1em;
+  margin-top: 10px;
+}
+.c-title-en {
+  font-size: 9px;
+  letter-spacing: .16em;
+  color: #BBBBBB;
+  font-family: var(--sans);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.c-bottom {
+  position: absolute;
+  bottom: 22px;
+  left: 36px;
+  right: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.c-contacts {
+  font-size: 9.5px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-family: var(--sans);
+  font-weight: 300;
+  text-align: left;
+}
+.c-contacts span { color: var(--subtle); margin-right: 8px; }
+
+/* BACK */
+.c-back {
+  background: var(--darkbg);
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.cb-logo {
+  font-size: 11px;
+  letter-spacing: .34em;
+  color: rgba(255,255,255,.55);
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.cb-copy {
+  font-size: 21px;
+  color: var(--cream2);
+  font-family: var(--serif-jp);
+  font-weight: 200;
+  letter-spacing: .09em;
+  line-height: 1.78;
+  margin-top: 28px;
+}
+.cb-copy em {
+  font-style: normal;
+  color: var(--gold);
+}
+.cb-services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 12px;
+  row-gap: 4px;
+  margin-top: 22px;
+  border-top: .5px solid rgba(255,255,255,.1);
+  padding-top: 14px;
+  width: 100%;
+}
+.cb-svc {
+  font-size: 8.5px;
+  color: rgba(255,255,255,.38);
+  letter-spacing: .09em;
+  font-family: var(--sans-jp);
+  font-weight: 300;
+}
+
+/* ─── QR PLACEHOLDER ─── */
+.qr-block img {
+  width: 58px;
+  height: 58px;
+  display: block;
+  image-rendering: pixelated;
+}
+.qr-block-inv img {
+  width: 58px;
+  height: 58px;
+  display: block;
+  image-rendering: pixelated;
+  filter: invert(1);
+}
+
+/* ─── SPEC NOTE ─── */
+.spec-section {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: .5px solid #C8C4BE;
+}
+.spec-section h2 {
+  font-size: 13px;
+  letter-spacing: .18em;
+  color: var(--forest);
+  font-family: var(--sans);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px 32px;
+}
+.spec-item dt {
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-family: var(--sans);
+}
+.spec-item dd {
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.notice {
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: #EAE7E1;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ─── PRINT ─── */
+@media print {
+  html { background: white; }
+  body { padding: 20px; max-width: none; }
+  .card { box-shadow: none !important; }
+  .spec-section { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>合同会社ARCH — 名刺デザイン案</h1>
+  <p>3パターン　表裏モックアップ　/ Meishi Design Proposals — Pattern A, B, C</p>
+</header>
+
+<!-- ================================================================
+     PATTERN A
+================================================================ -->
+<section class="section">
+  <div class="section-tag">
+    <span class="pat-num">Pattern A</span>
+    <span class="pat-name">建築事務所スタイル</span>
+  </div>
+  <p class="pat-sub">白ベース、細線・ショートルール、縦階層の静かなレイアウト。余白最大、情報は最小。</p>
+
+  <div class="card-row">
+    <div class="card-wrap">
+      <div class="card a-front">
+        <span class="a-logo">ARCH</span>
+        <div class="a-company">合同会社ARCH</div>
+        <div class="a-rule"></div>
+        <div class="a-title-jp">外部事務長</div>
+        <div class="a-title-en">Dental Operations Partner</div>
+        <div class="a-name-jp">鈴木 集</div>
+        <div class="a-name-en">Atsumu Suzuki</div>
+        <div class="a-bottom">
+          <div class="a-contacts">
+            <span>T</span>090-7247-3013<br>
+            <span>M</span>atsumu.suzuki@arch-yh.com<br>
+            <span>W</span>arch-yh.com
+          </div>
+          <div class="qr-block">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.arch-yh.com/&bgcolor=FFFFFF&color=1A1A1A&margin=0" alt="QR: arch-yh.com">
+          </div>
+        </div>
+      </div>
+      <span class="face-label">表面 (Front)</span>
+    </div>
+
+    <div class="card-wrap">
+      <div class="card a-back">
+        <span class="ab-logo">ARCH</span>
+        <div class="ab-mid">
+          <div class="ab-copy">
+            歯科医院の運営を、<br>
+            <em>"回り続ける組織"</em>へ。
+          </div>
+        </div>
+        <div class="ab-services">
+          <span class="ab-svc">訪問歯科運営支援</span>
+          <span class="ab-svc">外部事務長支援</span>
+          <span class="ab-svc">医院オペレーション改善</span>
+          <span class="ab-svc">レセプト / 算定支援</span>
+          <span class="ab-svc">分院展開サポート</span>
+        </div>
+      </div>
+      <span class="face-label">裏面 (Back)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PATTERN B（確定版・ロゴ入り）
+================================================================ -->
+<section class="section">
+  <div class="section-tag">
+    <span class="pat-num">Pattern B — 確定</span>
+    <span class="pat-name">士業スタイル（実ロゴ入り）</span>
+  </div>
+  <p class="pat-sub">クリーム地、左グリーンボーダー。ロゴマークを左上に配置、名前を主役に。裏面はロゴ背景色（#08533C）で統一。</p>
+
+  <div class="card-row">
+    <div class="card-wrap">
+      <div class="card b-front">
+        <!-- ロゴマーク + 会社名 -->
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:2px">
+          <img src="./public/images/logo.jpg" alt="ARCHロゴ"
+               style="width:52px;height:52px;object-fit:cover;flex-shrink:0;border-radius:1px">
+          <div>
+            <div class="b-company" style="font-size:10px;letter-spacing:.12em;color:#6A6A66;margin-bottom:1px">合同会社</div>
+            <div style="font-size:11px;letter-spacing:.24em;color:#2C4A3B;font-family:var(--sans);font-weight:400">ARCH</div>
+          </div>
+        </div>
+        <div class="b-name-jp">鈴木 集</div>
+        <div class="b-name-en">Atsumu Suzuki</div>
+        <div class="b-divh"></div>
+        <div class="b-titles">
+          <span class="b-title-jp">外部事務長</span>
+          <span class="b-title-en">Dental Operations Partner</span>
+        </div>
+        <div class="b-bottom">
+          <div class="b-contacts">
+            <span>T</span>090-7247-3013<br>
+            <span>M</span>atsumu.suzuki@arch-yh.com<br>
+            <span>W</span>arch-yh.com
+          </div>
+          <div class="qr-block">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.arch-yh.com/&bgcolor=F7F4EE&color=2C4A3B&margin=0" alt="QR: arch-yh.com">
+          </div>
+        </div>
+      </div>
+      <span class="face-label">表面 (Front)</span>
+    </div>
+
+    <div class="card-wrap">
+      <!-- 裏面：背景色をロゴの#08533Cに合わせて統一 -->
+      <div class="card b-back" style="background:#08533C;display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 34px">
+        <img src="./public/images/logo.jpg" alt="ARCHロゴ"
+             style="width:95px;height:95px;object-fit:cover;border-radius:1px">
+        <div style="font-size:20px;color:#FFFFFF;font-family:var(--serif-jp);font-weight:200;letter-spacing:.08em;line-height:1.75;margin-top:12px">
+          歯科医院の運営を、<br><em style="font-style:normal;color:#8ECAAA">"回り続ける組織"</em>へ。
+        </div>
+        <div style="width:28px;height:.5px;background:rgba(255,255,255,.3);margin:14px auto 12px"></div>
+        <div style="font-size:9px;color:rgba(255,255,255,.48);letter-spacing:.09em;line-height:2;font-family:var(--sans-jp);font-weight:300">
+          訪問歯科運営支援　／　外部事務長支援　／　医院オペレーション改善<br>
+          レセプト / 算定支援　／　分院展開サポート
+        </div>
+      </div>
+      <span class="face-label">裏面 (Back)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PATTERN C
+================================================================ -->
+<section class="section">
+  <div class="section-tag">
+    <span class="pat-num">Pattern C</span>
+    <span class="pat-name">プレミアムミニマル</span>
+  </div>
+  <p class="pat-sub">センター軸、縦ライン、超余白。裏面はダークフォレスト+ゴールド。最もドラマチックな仕上がり。</p>
+
+  <div class="card-row">
+    <div class="card-wrap">
+      <div class="card c-front">
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <span class="c-logo">ARCH</span>
+          <div class="c-company">合同会社ARCH</div>
+          <div class="c-vline"></div>
+          <div class="c-name-jp">鈴木 集</div>
+          <div class="c-name-en">Atsumu Suzuki</div>
+          <div class="c-vline2"></div>
+          <div class="c-title-jp">外部事務長</div>
+          <div class="c-title-en">Dental Operations Partner</div>
+        </div>
+        <div class="c-bottom">
+          <div class="c-contacts">
+            <span>T</span>090-7247-3013<br>
+            <span>M</span>atsumu.suzuki@arch-yh.com<br>
+            <span>W</span>arch-yh.com
+          </div>
+          <div class="qr-block">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.arch-yh.com/&bgcolor=FFFFFF&color=1A1A1A&margin=0" alt="QR: arch-yh.com">
+          </div>
+        </div>
+      </div>
+      <span class="face-label">表面 (Front)</span>
+    </div>
+
+    <div class="card-wrap">
+      <div class="card c-back">
+        <span class="cb-logo">A R C H</span>
+        <div class="cb-copy">
+          歯科医院の運営を、<br>
+          <em>"回り続ける組織"</em>へ。
+        </div>
+        <div class="cb-services">
+          <span class="cb-svc">訪問歯科運営支援</span>
+          <span class="cb-svc">外部事務長支援</span>
+          <span class="cb-svc">医院オペレーション改善</span>
+          <span class="cb-svc">レセプト / 算定支援</span>
+          <span class="cb-svc">分院展開サポート</span>
+        </div>
+      </div>
+      <span class="face-label">裏面 (Back)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SPEC NOTES
+================================================================ -->
+<section class="spec-section">
+  <h2>Design Specification</h2>
+  <dl class="spec-grid">
+    <div class="spec-item">
+      <dt>仕上がりサイズ</dt>
+      <dd>91mm × 55mm（日本標準名刺）<br>塗り足し 3mm 各辺</dd>
+    </div>
+    <div class="spec-item">
+      <dt>推奨用紙</dt>
+      <dd>マット紙 / ケント紙 / リネン紙<br>厚口（180〜220kg）ツヤなし推奨</dd>
+    </div>
+    <div class="spec-item">
+      <dt>カラーモード</dt>
+      <dd>CMYK（印刷入稿時に変換）<br>Forest Green → C75 M40 Y70 K30 目安</dd>
+    </div>
+    <div class="spec-item">
+      <dt>日本語フォント</dt>
+      <dd>Noto Serif JP 200〜400<br>（代替：ヒラギノ明朝 / 游明朝）</dd>
+    </div>
+    <div class="spec-item">
+      <dt>欧文フォント</dt>
+      <dd>Inter 200〜400<br>（代替：Helvetica Neue / Optima）</dd>
+    </div>
+    <div class="spec-item">
+      <dt>カラーパレット</dt>
+      <dd>Forest #2C4A3B　Dark #0E1E16<br>Cream #F7F4EE　Gold #B8935A<br>Ink #1A1A1A　Muted #8A8A86</dd>
+    </div>
+    <div class="spec-item">
+      <dt>QRコード</dt>
+      <dd>リンク先: https://www.arch-yh.com/<br>印刷時は専用ツールで生成（バージョン3以上）</dd>
+    </div>
+    <div class="spec-item">
+      <dt>加工オプション（任意）</dt>
+      <dd>Pattern C 裏面：箔押し（金）対応可<br>"回り続ける組織" の引用符のみ</dd>
+    </div>
+  </dl>
+
+  <div class="notice">
+    ⚠️ 電話番号「090-7247-3013」は未登録のためプレースホルダーです。確定後に差し替えてください。<br>
+    ⚠️ QRコードは外部API（goqr.me）による確認用プレビューです。入稿データには正規QR生成ツールを使用してください。<br>
+    ⚠️ このHTMLはデザイン確認用モックアップです。印刷入稿はIllustratorまたはPhotoshop等での再現が必要です。
+  </div>
+</section>
+
+</body>
+</html>

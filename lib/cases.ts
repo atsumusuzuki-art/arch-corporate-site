@@ -29,8 +29,21 @@ export type CaseStory = {
   result: string;
 };
 
+/** 一覧・トップで大きく見せる数字（確認済みのものだけ。無い場合は文字で示す） */
+export type CaseHeadline = {
+  value: string;
+  /** 単位（万円・名など）。数字でない見出しのときは省略 */
+  unit?: string;
+  /** 数字の意味と時点（必ず添える） */
+  caption: string;
+  /** value が数字かどうか（数字なら Inter で大きく表示） */
+  numeric: boolean;
+};
+
 export type CaseItem = {
   slug: string;
+  /** 英字の地域コード（CASE ROW の小見出し） */
+  code: string;
   /** 地域（医院名は載せない） */
   area: string;
   /** 一覧に出す短い説明 */
@@ -47,11 +60,19 @@ export type CaseItem = {
   service: "external-manager" | "visit-dental-consulting";
   /** トップページ用の3行要約。数字は facts と同じ確認済みのものだけを使う */
   story: CaseStory;
+  /** 大きく見せる数字（facts と同じ確認済みの値） */
+  headline: CaseHeadline;
+  /**
+   * 現在地。確認済みの事実の範囲で、時点を添えて書く。
+   * ※ 2026-09 改修時に既存の記載から要約したもの。docs/CONTENT_DECISIONS_REQUIRED.md で確認待ち
+   */
+  status: string;
 };
 
 export const CASES: CaseItem[] = [
   {
     slug: "sapporo-visit-dental",
+    code: "SAPPORO",
     area: "北海道札幌市",
     summary: "訪問歯科を中心とした医院運営",
     title: "北海道札幌市｜訪問歯科を中心とした医院運営",
@@ -80,9 +101,17 @@ export const CASES: CaseItem[] = [
       action: "医院運営と訪問体制を設計し、月次で数字を確認。",
       result: "2026年6月時点で、医院全体の月商800万円。",
     },
+    headline: {
+      value: "800",
+      unit: "万円",
+      caption: "医院全体の月商（2026年6月時点）",
+      numeric: true,
+    },
+    status: "訪問歯科を中心とした医院運営を継続（2026年6月時点）",
   },
   {
     slug: "setagaya-visit-dental",
+    code: "SETAGAYA",
     area: "東京都世田谷区",
     summary: "訪問歯科をゼロから立ち上げ",
     title: "東京都世田谷区｜訪問歯科をゼロから立ち上げ",
@@ -112,9 +141,17 @@ export const CASES: CaseItem[] = [
       action: "訪問体制・施設への入口・書類・研修まで一式を設計。",
       result: "4か月で施設1件、検診36名のうち15名が利用を開始。",
     },
+    headline: {
+      value: "15",
+      unit: "名",
+      caption: "訪問歯科の利用開始（検診36名のうち・立ち上げ4か月時点）",
+      numeric: true,
+    },
+    status: "立ち上げ4か月時点の数字（連携施設1件）",
   },
   {
     slug: "hachioji-external-manager",
+    code: "HACHIOJI",
     area: "東京都八王子市",
     summary: "外部事務長として院長の実務を引き受け",
     title: "東京都八王子市｜補助金申請・施設基準の取得・分院展開の支援",
@@ -138,6 +175,12 @@ export const CASES: CaseItem[] = [
       action: "外部事務長として、範囲を決めて実務を引き受け。",
       result: "補助金申請、施設基準取得の研修会、分院展開まで継続支援。",
     },
+    headline: {
+      value: "外部事務長",
+      caption: "補助金申請／施設基準の取得／分院展開",
+      numeric: false,
+    },
+    status: "外部事務長として継続して支援中",
   },
 ];
 
