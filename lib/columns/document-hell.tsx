@@ -105,7 +105,7 @@ export function Body() {
       </ul>
       <p>
         書類の種類も量も、訪問先の構成によって変わります。自院の書類の流れを一度棚卸ししたい場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         の相談で、現在の書類と手順を並べて整理するところからご一緒します。
       </p>
     </>

@@ -288,10 +288,10 @@ export default function ExternalManagerPage() {
                   まだない訪問歯科をゼロからつくる
                 </h3>
                 <p className="mt-3 text-[0.98rem] leading-[1.9] text-arch-ink-soft">
-                  期間を区切った個別のプロジェクトになり、外部事務長の契約には自動的に含みません。訪問歯科コンサルティングとして別途お見積もりします。
+                  立ち上げそのものは、外部事務長の契約に自動的には含みません。訪問歯科支援（立ち上げ・再設計）として別途設計し、お見積もりします。
                 </p>
                 <Cta href="/services/visit-dental-consulting" variant="text" className="mt-4">
-                  訪問歯科コンサルティングを見る
+                  訪問歯科支援を見る
                 </Cta>
               </div>
             </div>

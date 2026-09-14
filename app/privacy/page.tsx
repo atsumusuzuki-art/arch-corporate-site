@@ -124,7 +124,7 @@ export default function PrivacyPage() {
               サービスの内容については
               <Link href="/services/external-manager">外部事務長</Link>
               および
-              <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+              <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
               をご覧ください。
             </p>
           </div>

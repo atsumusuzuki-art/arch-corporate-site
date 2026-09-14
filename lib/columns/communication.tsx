@@ -107,7 +107,7 @@ export function Body() {
       <p>
         伝え方の設計は、スタッフ個人の努力ではなく医院の運用として決めるものだと考えています。
         報告書の書式づくりや申し送りの手順を整理したい場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         で、現在の訪問の流れを一緒に洗い出すところから始めます。
       </p>
     </>

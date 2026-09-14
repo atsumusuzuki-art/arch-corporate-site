@@ -106,7 +106,7 @@ export function Body() {
       <p>
         どこまでを院内で持ち、どこから外に出すかは、訪問件数と人員によって変わります。
         施設への報告書式や家族対応の手順を整理したい場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         で、現在の連絡の流れを書き出すところから一緒に進めます。
       </p>
     </>

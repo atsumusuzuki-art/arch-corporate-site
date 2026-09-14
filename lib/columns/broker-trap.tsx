@@ -89,7 +89,7 @@ export function Body() {
       <p>
         条件の妥当性は、医院の規模・地域・現在の訪問件数によって変わります。
         提案を受け取って判断に迷う場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         の初回適性相談で、契約条件と自院の数字を並べて整理するところからご一緒します。
       </p>
     </>

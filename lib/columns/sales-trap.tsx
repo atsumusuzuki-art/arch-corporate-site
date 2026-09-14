@@ -105,7 +105,7 @@ export function Body() {
       <p>
         どこから手を付けるかは、現在の訪問件数と院内の人員によって変わります。
         資料の作り直しと受け入れ体制の整理を並行して進めたい場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         で、現状の営業導線を書き出すところからご一緒します。
       </p>
     </>

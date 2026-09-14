@@ -39,7 +39,7 @@ const GA_MEASUREMENT_ID = "G-RLJ2058GWZ";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "歯科医院の外部事務長／訪問歯科コンサルティング｜合同会社ARCH",
+    default: "歯科医院の外部事務長／訪問歯科支援｜合同会社ARCH",
     template: `%s｜${SITE_NAME}`,
   },
   description:
@@ -54,14 +54,14 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "歯科医院の外部事務長／訪問歯科コンサルティング｜合同会社ARCH",
+    title: "歯科医院の外部事務長／訪問歯科支援｜合同会社ARCH",
     description:
       "訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社。助言だけで終わらず、現場で機能する状態までつくります。",
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "合同会社ARCH" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "歯科医院の外部事務長／訪問歯科コンサルティング｜合同会社ARCH",
+    title: "歯科医院の外部事務長／訪問歯科支援｜合同会社ARCH",
     description:
       "訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社。",
     images: [OG_IMAGE],

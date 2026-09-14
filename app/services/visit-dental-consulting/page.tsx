@@ -17,17 +17,17 @@ import { PRICING, SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 const PATH = "/services/visit-dental-consulting";
 
 export const metadata: Metadata = {
-  title: "訪問歯科コンサルティング｜訪問歯科を、回り続ける事業にする",
+  title: "訪問歯科支援｜訪問歯科を、回り続ける事業にする",
   description:
     "訪問歯科の新規立ち上げと、一度つくったが回っていない体制の再設計を支援します。標準立ち上げ支援は月額30万円・最低契約期間6か月。院内に実働責任者がいる場合は、ARCHから自走型立ち上げ支援（月額15万円）をご提案することがあります。",
   alternates: { canonical: absoluteUrl(PATH) },
   openGraph: {
     type: "website",
     url: absoluteUrl(PATH),
-    title: "訪問歯科コンサルティング｜合同会社ARCH",
+    title: "訪問歯科支援｜合同会社ARCH",
     description:
-      "訪問歯科を、回り続ける事業にする。立ち上げも、一度つくった体制の再設計も、期間を区切った個別のプロジェクトとして支援します。",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "訪問歯科コンサルティング｜合同会社ARCH" }],
+      "訪問歯科を、回り続ける事業にする。立ち上げも、一度つくった体制の再設計も、最低6か月を基本に、医院の状態と支援内容に応じて進めます。",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "訪問歯科支援｜合同会社ARCH" }],
   },
 };
 
@@ -110,9 +110,9 @@ const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_URL}${PATH}#service`,
-  name: "訪問歯科コンサルティング",
+  name: "訪問歯科支援（立ち上げ・再設計）",
   description:
-    "訪問歯科の新規立ち上げと、回っていない体制の再設計を、期間を区切った個別のプロジェクトとして支援するサービス。支援期間と費用は医院の状況と支援範囲に応じて個別に見積もる。",
+    "訪問歯科の新規立ち上げと、回っていない体制の再設計を支援するサービス。最低契約期間6か月を基本に、医院の状態と支援内容に応じて支援範囲と費用を設計する。",
   url: absoluteUrl(PATH),
   provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "Country", name: "日本" },
@@ -137,7 +137,7 @@ export default function VisitDentalConsultingPage() {
     <>
       <JsonLd data={serviceJsonLd} />
       <Breadcrumb
-        items={[{ label: "ホーム", href: "/" }, { label: "訪問歯科コンサルティング" }]}
+        items={[{ label: "ホーム", href: "/" }, { label: "訪問歯科支援" }]}
       />
 
       <PageHero
@@ -149,7 +149,7 @@ export default function VisitDentalConsultingPage() {
             <span className="block">回り続ける事業にする。</span>
           </>
         }
-        lead="立ち上げも、一度つくった体制の再設計も、期間を区切った個別のプロジェクトとしてご一緒します。"
+        lead="立ち上げも、一度つくった体制の再設計も、最低6か月を基本に、医院の状態と支援内容に応じて進めます。"
       />
 
       {/* ────────────── 考え方 ────────────── */}
@@ -381,7 +381,7 @@ export default function VisitDentalConsultingPage() {
         </Cta>
       </RelatedLinks>
 
-      <ContactForm idPrefix="visit-dental" defaultTopic="訪問歯科コンサルティング" />
+      <ContactForm idPrefix="visit-dental" defaultTopic="訪問歯科の立ち上げ・再設計" />
     </>
   );
 }

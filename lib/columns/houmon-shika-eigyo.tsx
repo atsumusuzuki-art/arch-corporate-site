@@ -151,7 +151,7 @@ export function Body() {
       <p>
         施設への訪問に同行する形での支援は、地域や支援内容に応じて別途ご相談・お見積もりとなります。
         進め方の設計そのものは
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         の中で、増えた後の事務の整理は
         <Link href="/services/external-manager">外部事務長</Link>
         の中でご一緒しています。

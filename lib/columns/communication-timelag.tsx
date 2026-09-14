@@ -114,7 +114,7 @@ export function Body() {
       <p>
         どこまで院内で持ち、どこから外に出すかは、医院の人数と訪問件数によって変わります。
         連絡対応が院長に集中している状態を整理したい場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         の初回適性相談で、現在の連絡の流れを書き出すところからご一緒します。
       </p>
     </>

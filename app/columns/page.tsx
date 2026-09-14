@@ -84,7 +84,7 @@ export default function ColumnsIndex() {
             >
               <p className="mono-micro text-arch-ink-muted">SERVICE</p>
               <p className="display-jp mt-3 text-xl text-arch-forest">
-                訪問歯科コンサルティング
+                訪問歯科支援
               </p>
               <p className="mt-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft">
                 訪問歯科を、回り続ける事業にする。

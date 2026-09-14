@@ -139,8 +139,8 @@ export function Body() {
       </ul>
       <p>
         立ち上げの進め方は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
-        で、期間を区切った個別のプロジェクトとしてご一緒しています。
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
+        で、最低6か月を基本に、医院の状態と支援内容に応じてご一緒しています。
         すでに動いている訪問診療の運営を整理したいだけの場合は、
         <Link href="/services/external-manager">外部事務長</Link>
         の範囲で対応できることもあります。

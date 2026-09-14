@@ -111,7 +111,7 @@ export function Body() {
       <p>
         どこまで引き取り、何を施設にお願いするかは、施設の人員体制によって変わります。
         施設との役割分担を整理したい場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         の相談で、現在の訪問内容と施設側の負担を並べて見直すところからご一緒します。
       </p>
     </>

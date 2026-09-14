@@ -29,7 +29,7 @@ function fmt(date: string) {
 
 const SERVICE_LABEL = {
   "external-manager": "外部事務長",
-  "visit-dental-consulting": "訪問歯科コンサルティング",
+  "visit-dental-consulting": "訪問歯科支援",
 } as const;
 
 export default function ArticleLayout({
@@ -191,7 +191,7 @@ export default function ArticleLayout({
       <ContactForm
         idPrefix="column"
         defaultTopic={
-          meta.service === "external-manager" ? "外部事務長" : "訪問歯科コンサルティング"
+          meta.service === "external-manager" ? "外部事務長" : "訪問歯科の立ち上げ・再設計"
         }
       />
     </>

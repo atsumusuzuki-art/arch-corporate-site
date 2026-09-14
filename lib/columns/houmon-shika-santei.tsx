@@ -141,7 +141,7 @@ export function Body() {
         記録の様式づくりと、請求前の確認の工程を医院に合わせて設計するところは、
         <Link href="/services/external-manager">外部事務長</Link>
         の範囲で対応しています。訪問歯科をこれから立ち上げる、あるいは一度つくった体制を組み直す場合は、
-        <Link href="/services/visit-dental-consulting">訪問歯科コンサルティング</Link>
+        <Link href="/services/visit-dental-consulting">訪問歯科支援</Link>
         としてご一緒します。
       </p>
     </>

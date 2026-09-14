@@ -25,7 +25,7 @@ export const COMPANY = {
   addressLocality: "横浜市",
   addressLabel: "神奈川県横浜市",
   areaServed: "全国",
-  business: "歯科医院の外部事務長／訪問歯科コンサルティング",
+  business: "歯科医院の外部事務長／訪問歯科支援（立ち上げ・再設計）",
   email: "hello@arch-yh.com",
 } as const;
 
@@ -82,11 +82,11 @@ export const PILLARS = [
     href: "/services/visit-dental-consulting",
     no: "01",
     direction: "訪問歯科を立ち上げる・再設計する",
-    label: "訪問歯科コンサルティング",
+    label: "訪問歯科支援",
     shortLabel: "訪問歯科支援",
     body: "現状確認と適性判断から、体制・施設連携・院内運用、稼働後の改善、医院だけで回る状態まで。訪問歯科は、医院運営を一緒に見ていく入口でもあります。",
     seoDescription:
-      "訪問歯科を回り続ける事業にするための、期間を区切った個別のコンサルティングです。",
+      "訪問歯科の立ち上げと、回っていない体制の再設計を支援します。最低契約期間6か月を基本に、医院の状態と支援内容に応じて進めます。",
   },
   {
     href: "/services/external-manager",
