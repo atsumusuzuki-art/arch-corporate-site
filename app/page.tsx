@@ -31,7 +31,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "歯科医院の外部事務長／訪問歯科支援",
+  title: { absolute: "歯科医院の外部事務長／訪問歯科支援｜合同会社ARCH" },
   description:
     "合同会社ARCHは、訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社です。助言だけで終わらず、現場で機能する状態までつくり、仕組みとして医院に残します。",
   alternates: { canonical: SITE_URL },
