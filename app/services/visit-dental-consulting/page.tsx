@@ -12,14 +12,14 @@ import RelatedLinks from "@/components/ui/RelatedLinks";
 import SectionHeader from "@/components/ui/SectionHeader";
 import StepList, { type Step } from "@/components/ui/StepList";
 import { BODY, CONTAINER, PROSE_W, SECTION_Y } from "@/lib/ui";
-import { SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
+import { PRICING, SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 
 const PATH = "/services/visit-dental-consulting";
 
 export const metadata: Metadata = {
   title: "訪問歯科コンサルティング｜訪問歯科を、回り続ける事業にする",
   description:
-    "訪問歯科の新規立ち上げと、一度つくったが回っていない体制の再設計を、期間を区切った個別のプロジェクトとして支援します。施設連携の導線、訪問チーム、院内フロー、書類、スタッフ研修、稼働後の数字確認まで。",
+    "訪問歯科の新規立ち上げと、一度つくったが回っていない体制の再設計を支援します。標準立ち上げ支援は月額30万円・最低契約期間6か月。院内に実働責任者がいる場合は、ARCHから自走型立ち上げ支援（月額15万円）をご提案することがあります。",
   alternates: { canonical: absoluteUrl(PATH) },
   openGraph: {
     type: "website",
@@ -117,6 +117,15 @@ const serviceJsonLd = {
   provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "Country", name: "日本" },
   audience: { "@type": "Audience", audienceType: "歯科医院" },
+  /* 明確な商品として出すのは標準立ち上げ支援のみ。
+     自走型（条件付き・ARCH側から提案）は「誰でも申し込める商品」と誤解されるため列挙しない */
+  offers: {
+    "@type": "Offer",
+    name: PRICING.standard.name,
+    price: PRICING.standard.priceNum,
+    priceCurrency: "JPY",
+    description: `${PRICING.standard.body} 月額（税別）。${PRICING.standard.term}。支援内容に応じて初期費用を別途お見積もりする場合があります。`,
+  },
 };
 
 export default function VisitDentalConsultingPage() {
@@ -214,35 +223,140 @@ export default function VisitDentalConsultingPage() {
         </div>
       </section>
 
-      {/* ────────────── 費用と範囲（表記は変更しない） ────────────── */}
+      {/* ────────────── 支援期間と費用 ──────────────
+          2026-09-14 確定の商品体系。数字と条件は lib/site.ts の PRICING（正本は
+          docs/ARCH_PRODUCT_CONTRACT_POLICY_2026-09.md）から取る。
+          価格の比較を主役にせず、医院の状態と実行体制による違いとして見せる */}
       <section aria-labelledby="fee-heading" className="border-t border-arch-line bg-arch-paper">
         <div className={`${CONTAINER} ${SECTION_Y}`}>
-          <div className="max-w-[44rem]">
-            <Reveal>
-              <SectionHeader no="04" label="FEE" id="fee-heading" title="支援期間と費用" />
-              <p className="mt-10 border-l-2 border-arch-deep bg-arch-white px-6 py-5 text-[1.0625rem] leading-[1.9] text-arch-ink">
-                支援期間・費用は、医院の状況と支援範囲に応じて個別にお見積もりします。
+          <Reveal>
+            <SectionHeader
+              no="04"
+              label="FEE"
+              id="fee-heading"
+              title="支援期間と費用"
+              lead={
+                <p>
+                  金額の大小ではなく、医院の状態と、医院側の実行体制で支援の形が変わります。
+                  どの形になるかは、初回適性相談で現状を確認したうえで決めます。
+                </p>
+              }
+            />
+          </Reveal>
+
+          {/* 主商品：標準立ち上げ支援 */}
+          <Reveal>
+            <div className="mt-12 border-t border-arch-deep pt-10 md:mt-16 md:pt-12">
+              <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+                <div className="lg:col-span-5">
+                  <p className="mono-micro text-arch-green">{PRICING.standard.label}</p>
+                  <h3 className="display-jp mt-3 text-[clamp(1.5rem,2.8vw,2rem)] leading-[1.4] text-arch-ink">
+                    {PRICING.standard.name}
+                  </h3>
+                  <p className="mt-6">
+                    <span className="block text-sm text-arch-ink-soft">月額</span>
+                    <span className="mt-1 flex items-baseline gap-1.5 whitespace-nowrap">
+                      <span className="num-en text-[2.5rem] font-medium text-arch-deep sm:text-[3rem]">
+                        {PRICING.standard.price}
+                      </span>
+                      <span className="text-sm text-arch-ink-soft sm:text-base">円（税別）</span>
+                    </span>
+                  </p>
+                  <p className="mt-3 text-[0.95rem] text-arch-ink-soft">{PRICING.standard.term}</p>
+                </div>
+
+                <div className="lg:col-span-7">
+                  <p className={`${BODY} ${PROSE_W}`}>{PRICING.standard.body}</p>
+                  <ul className="mt-7 grid gap-x-8 border-t border-arch-line sm:grid-cols-2">
+                    {PRICING.standard.items.map((it) => (
+                      <li
+                        key={it}
+                        className="border-b border-arch-line py-3 text-[0.95rem] leading-[1.7] text-arch-ink"
+                      >
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* 条件付き：自走型立ち上げ支援 */}
+          <Reveal>
+            <div className="mt-12 border-l-2 border-arch-deep bg-arch-white px-6 py-7 md:px-8">
+              <p className="mono-micro text-arch-green">{PRICING.selfDriven.label}</p>
+              <h3 className="display-jp mt-3 text-[1.25rem] text-arch-ink">
+                {PRICING.selfDriven.name}（月額{PRICING.selfDriven.price}円・税別／
+                {PRICING.selfDriven.term}）
+              </h3>
+              <p className={`mt-4 ${PROSE_W} text-[0.98rem] leading-[1.9] text-arch-ink-soft`}>
+                {PRICING.selfDriven.body}
               </p>
-              <p className="mt-5 border-l-2 border-arch-line bg-arch-white px-6 py-5 text-[1.0625rem] leading-[1.9] text-arch-ink">
-                施設への営業、面談同行などの実行支援は、
-                <br className="hidden sm:block" />
-                地域や支援内容に応じて別途ご相談・お見積もりとなります。
+              <ul className="mt-4 space-y-2">
+                {PRICING.selfDriven.conditions.map((c) => (
+                  <li
+                    key={c}
+                    className="flex items-baseline gap-3 text-[0.95rem] leading-[1.8] text-arch-ink"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-px w-3 shrink-0 translate-y-[-0.3em] bg-arch-green"
+                    />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-[0.95rem] font-bold text-arch-deep">
+                {PRICING.selfDriven.note}
               </p>
-              <p className="mt-10 text-base leading-[1.9] text-arch-ink-soft">
-                すでに訪問診療が動いていて、その運営を整理したいだけの場合は、
-                <Link
-                  href="/services/external-manager"
-                  className="underline underline-offset-4 hover:text-arch-green"
-                >
-                  外部事務長
-                </Link>
-                の範囲で対応できることがあります。どちらに当てはまるか分からない場合も、初回適性相談で切り分けます。
+            </div>
+          </Reveal>
+
+          {/* 立ち上げのあと */}
+          <Reveal>
+            <div className="mt-12 border-t border-arch-line pt-10">
+              <p className="mono-micro text-arch-green">{PRICING.continuing.label}</p>
+              <h3 className="display-jp mt-3 text-[1.25rem] text-arch-ink">
+                立ち上げのあと（{PRICING.continuing.name}｜月額{PRICING.continuing.price}円・税別を基本）
+              </h3>
+              <p className={`mt-4 ${PROSE_W} text-[0.98rem] leading-[1.9] text-arch-ink-soft`}>
+                {PRICING.continuing.body}
+                {PRICING.continuing.note}
               </p>
-              <Cta href="#contact" className="mt-10">
-                {CONSULT_LABEL}
+              <Cta href="/services/external-manager" variant="text" className="mt-4">
+                外部事務長を見る
               </Cta>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
+
+          {/* 費用と契約の注記 */}
+          <Reveal>
+            <dl className="mt-12 grid gap-x-10 border-t border-arch-line md:grid-cols-2">
+              {PRICING.notes.map((n) => (
+                <div key={n.title} className="border-b border-arch-line py-5">
+                  <dt className="text-[0.875rem] font-bold text-arch-ink">{n.title}</dt>
+                  <dd className="mt-2 text-[0.95rem] leading-[1.9] text-arch-ink-soft">{n.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+
+          <Reveal>
+            <p className={`mt-8 ${PROSE_W} text-[0.95rem] leading-[1.9] text-arch-ink-soft`}>
+              すでに訪問診療が動いていて、その運営や経営の相談から始めたい場合は、
+              <Link
+                href="/services/external-manager"
+                className="underline underline-offset-4 hover:text-arch-green"
+              >
+                外部事務長
+              </Link>
+              の範囲で対応できることがあります。どちらに当てはまるか分からない場合も、初回適性相談で切り分けます。
+            </p>
+            <Cta href="#contact" className="mt-8">
+              {CONSULT_LABEL}
+            </Cta>
+          </Reveal>
         </div>
       </section>
 

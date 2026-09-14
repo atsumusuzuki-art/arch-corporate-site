@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import JsonLd from "@/components/JsonLd";
@@ -12,68 +13,24 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import StepList from "@/components/ui/StepList";
 import TwoLayers from "@/components/ui/TwoLayers";
 import { BODY, CONTAINER, PROSE_W, SECTION_Y } from "@/lib/ui";
-import { PHILOSOPHY, SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
+import { PHILOSOPHY, PRICING, SITE_URL, absoluteUrl, OG_IMAGE } from "@/lib/site";
 
 const PATH = "/services/external-manager";
 
 export const metadata: Metadata = {
   title: "外部事務長｜院長の経営実務を整理し、医院が回り続ける体制をつくる",
   description:
-    "歯科医院の外部事務長として、院長が抱えている経営実務を整理します。医院の自走をつくる運営伴走（月額15万円）と、重要な経営判断まで扱う経営伴走（月額30万円）の2プランです。いずれも最低契約期間は6か月で、初期費用は別途お見積もりします。",
+    "合同会社ARCHは、訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社です。立ち上げ・運営が安定したあとも経営の面で価値が残る場合は、継続外部事務長（月額15万円が基本）として支えます。すでに運営が進んでいる医院の相談も、初回適性相談で支援範囲を個別に設計します。",
   alternates: { canonical: absoluteUrl(PATH) },
   openGraph: {
     type: "website",
     url: absoluteUrl(PATH),
     title: "外部事務長｜合同会社ARCH",
     description:
-      "院長が抱えている経営実務を整理し、医院が回り続ける体制をつくる。運営伴走と経営伴走の2つのプラン。",
+      "院長が抱えている経営実務を整理し、医院が回り続ける体制をつくる。立ち上げのあとも経営の価値が残る場合は、継続外部事務長として支えます。",
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "外部事務長｜合同会社ARCH" }],
   },
 };
-
-/**
- * 料金プラン
- * ARCHフィロソフィー Ver.2.0 の二層構造に合わせ、
- * 「医院を自走させる運営レイヤー」と「重要判断を扱う経営レイヤー」で分ける。
- */
-const PLANS = [
-  {
-    id: "operations",
-    name: "外部事務長｜運営伴走",
-    depth: "運営レイヤー｜医院が自走する仕組みをつくる",
-    price: "150,000",
-    priceNum: 150000,
-    priceNote: "月額（税別）",
-    terms: ["最低契約期間 6か月", "初期費用あり（支援範囲に応じて別途お見積もり）"],
-    body:
-      "日々の運営課題を整理し、医院のスタッフだけで基本運営が回る状態をつくります。担当・手順・期限を明確にし、ARCHが抜けても止まらない仕組みへ変えていくプランです。",
-    items: [
-      "現状の診断と、整える順番の決定",
-      "記録・請求・採用・施設連携など、対象業務の仕組み化",
-      "役割分担・手順書・確認方法の整備",
-      "定例会と進捗確認",
-      "6か月を一区切りとした引き継ぎと、自走できる状態の確認",
-    ],
-  },
-  {
-    id: "management",
-    name: "外部事務長｜経営伴走",
-    depth: "経営レイヤー｜院長の重要な判断まで一緒に担う",
-    price: "300,000",
-    priceNum: 300000,
-    priceNote: "月額（税別）",
-    terms: ["最低契約期間 6か月", "初期費用あり（支援範囲に応じて別途お見積もり）"],
-    body:
-      "運営の仕組み化に加え、院長が抱えている重要な経営判断まで一緒に扱います。作業量ではなく、判断の重さと関与する範囲に対して設計するプランです。",
-    items: [
-      "運営伴走プランの支援内容",
-      "経営判断の相手役と、経営会議への参加",
-      "数字を経営判断に変える月次確認",
-      "制度改定・人の問題・組織課題への対応",
-      "分院・訪問・承継など、次の展開の経営設計（個別プロジェクトの実行は別途）",
-    ],
-  },
-];
 
 /* 1. 院長が一人で抱えている仕事 */
 const BURDENS = [
@@ -180,18 +137,18 @@ const serviceJsonLd = {
   "@id": `${SITE_URL}${PATH}#service`,
   name: "歯科医院の外部事務長",
   description:
-    "歯科医院の外部事務長として、院長が抱えている経営実務を整理し、医院が回り続ける体制をつくるサービス。運営伴走と経営伴走の2つのプランがある。",
+    "訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長のサービス。立ち上げ・運営が安定したあとも経営の面で価値が残る場合は、継続外部事務長として支える。",
   url: absoluteUrl(PATH),
   provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "Country", name: "日本" },
   audience: { "@type": "Audience", audienceType: "歯科医院" },
-  offers: PLANS.map((p) => ({
+  offers: {
     "@type": "Offer",
-    name: p.name,
-    price: p.priceNum,
+    name: PRICING.continuing.name,
+    price: PRICING.continuing.priceNum,
     priceCurrency: "JPY",
-    description: `${p.body} ${p.priceNote}。最低契約期間6か月。初期費用は別途お見積もり。`,
-  })),
+    description: `${PRICING.continuing.body} 月額（税別）を基本とし、期間の経過だけでは自動的に移行しない。支援範囲は医院ごとに個別に設計する。`,
+  },
 };
 
 export default function ExternalManagerPage() {
@@ -419,8 +376,9 @@ export default function ExternalManagerPage() {
       </section>
 
       {/* ────────────── 9. 料金 ──────────────
-          料金・契約条件の表記は 2026-08-22 改定のまま変更しない（変更は鈴木集の判断事項）。
-          docs/CONTENT_DECISIONS_REQUIRED.md 参照 */}
+          2026-09-14 確定の商品体系。数字と条件は lib/site.ts の PRICING（正本は
+          docs/ARCH_PRODUCT_CONTRACT_POLICY_2026-09.md）から取る。
+          旧「運営伴走15万／経営伴走30万」の2プラン比較は廃止した */}
       <section
         id="plans"
         aria-labelledby="plans-heading"
@@ -435,71 +393,105 @@ export default function ExternalManagerPage() {
               title="料金"
               lead={
                 <p>
-                  プランの違いは、作業量ではなく
-                  <strong className="font-bold text-arch-ink">ARCHが扱う判断の範囲</strong>
-                  です。15万円は医院が自走する運営の仕組みをつくるプラン、30万円はその運営に加えて院長の重要な経営判断まで一緒に担うプランです。
+                  ARCHの支援は、医院の状態で形が変わります。訪問歯科をこれから立ち上げる場合は
+                  <Link
+                    href="/services/visit-dental-consulting"
+                    className="underline underline-offset-4 hover:text-arch-green"
+                  >
+                    立ち上げ支援
+                  </Link>
+                  から始まり、立ち上げ・運営が安定したあとも経営の面で価値が残る場合に、継続外部事務長として続けます。
                 </p>
               }
             />
           </Reveal>
 
-          <div className="mt-12 grid border-t border-arch-deep md:mt-16 lg:grid-cols-2">
-            {PLANS.map((p, i) => (
-              <Reveal
-                key={p.id}
-                className={`py-10 md:py-12 ${
-                  i === 0
-                    ? "lg:pr-12"
-                    : "border-t border-arch-line lg:border-l lg:border-t-0 lg:pl-12"
-                }`}
-              >
-                <p className="text-[0.875rem] font-bold tracking-[0.04em] text-arch-green">{p.depth}</p>
-                <h3 className="display-jp mt-2 text-[1.5rem] text-arch-ink">{p.name}</h3>
-
-                {/* 狭い画面で金額が途中で折り返さないよう、単位を 1 行にまとめる */}
-                <p className="mt-6">
-                  <span className="block text-sm text-arch-ink-soft">月額</span>
-                  <span className="mt-1 flex items-baseline gap-1.5 whitespace-nowrap">
-                    <span className="num-en text-[2.25rem] font-medium text-arch-deep sm:text-[2.75rem]">
-                      {p.price}
+          {/* 継続外部事務長 */}
+          <Reveal>
+            <div className="mt-12 border-t border-arch-deep pt-10 md:mt-16 md:pt-12">
+              <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+                <div className="lg:col-span-5">
+                  <p className="mono-micro text-arch-green">{PRICING.continuing.label}</p>
+                  <h3 className="display-jp mt-3 text-[clamp(1.5rem,2.8vw,2rem)] leading-[1.4] text-arch-ink">
+                    {PRICING.continuing.name}
+                  </h3>
+                  <p className="mt-6">
+                    <span className="block text-sm text-arch-ink-soft">月額</span>
+                    <span className="mt-1 flex items-baseline gap-1.5 whitespace-nowrap">
+                      <span className="num-en text-[2.5rem] font-medium text-arch-deep sm:text-[3rem]">
+                        {PRICING.continuing.price}
+                      </span>
+                      <span className="text-sm text-arch-ink-soft sm:text-base">
+                        円（税別）を基本
+                      </span>
                     </span>
-                    <span className="text-sm text-arch-ink-soft sm:text-base">円（税別）</span>
-                  </span>
-                </p>
+                  </p>
+                </div>
 
-                {p.terms.length > 0 && (
-                  <ul className="mt-4 space-y-1">
-                    {p.terms.map((t) => (
-                      <li key={t} className="text-sm leading-[1.8] text-arch-ink-soft">
-                        {t}
+                <div className="lg:col-span-7">
+                  <p className={`${BODY} ${PROSE_W}`}>{PRICING.continuing.body}</p>
+                  <p className="mt-6 text-[0.875rem] font-bold text-arch-ink">続ける理由</p>
+                  <ul className="mt-3 grid gap-x-8 border-t border-arch-line sm:grid-cols-2">
+                    {PRICING.continuing.reasons.map((r) => (
+                      <li
+                        key={r}
+                        className="border-b border-arch-line py-3 text-[0.95rem] leading-[1.7] text-arch-ink"
+                      >
+                        {r}
                       </li>
                     ))}
                   </ul>
-                )}
+                  <p className="mt-6 border-l-2 border-arch-deep pl-5 text-[0.95rem] leading-[1.9] text-arch-ink">
+                    {PRICING.continuing.note}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
 
-                <p className="mt-6 border-t border-arch-line pt-6 text-[1rem] leading-[1.9] text-arch-ink">
-                  {p.body}
-                </p>
+          {/* 立ち上げから始まる場合 */}
+          <Reveal>
+            <div className="mt-12 border-t border-arch-line pt-10">
+              <h3 className="display-jp text-[1.25rem] text-arch-ink">
+                訪問歯科の立ち上げから始まる場合
+              </h3>
+              <p className={`mt-4 ${PROSE_W} text-[0.98rem] leading-[1.9] text-arch-ink-soft`}>
+                ARCHが実働を伴う{PRICING.standard.name}（月額{PRICING.standard.price}円・税別／
+                {PRICING.standard.term}）が標準です。院内に実働責任者がおり、医院側で実装を進められる場合には、ARCH側から
+                {PRICING.selfDriven.name}（月額{PRICING.selfDriven.price}円・税別／
+                {PRICING.selfDriven.term}）をご提案する場合があります。
+                {PRICING.selfDriven.note}
+              </p>
+              <Cta href="/services/visit-dental-consulting" variant="text" className="mt-4">
+                立ち上げ支援の詳細を見る
+              </Cta>
+            </div>
+          </Reveal>
 
-                <ul className="mt-6 space-y-3">
-                  {p.items.map((it) => (
-                    <li
-                      key={it}
-                      className="flex items-baseline gap-3 text-[0.95rem] leading-[1.8] text-arch-ink-soft"
-                    >
-                      <span aria-hidden="true" className="h-px w-3 shrink-0 translate-y-[-0.3em] bg-arch-green" />
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            ))}
-          </div>
+          {/* すでに運営が進んでいる医院 */}
+          <Reveal>
+            <div className="mt-10 border-t border-arch-line pt-10">
+              <h3 className="display-jp text-[1.25rem] text-arch-ink">
+                すでに運営が進んでいる医院からのご相談
+              </h3>
+              <p className={`mt-4 ${PROSE_W} text-[0.98rem] leading-[1.9] text-arch-ink-soft`}>
+                立ち上げ支援を必要としない医院からの、運営・経営・承継のご相談も承ります。
+                初回適性相談で現状を確認したうえで、必要な支援範囲を個別に設計します。
+              </p>
+            </div>
+          </Reveal>
 
-          <p className={`mt-6 ${PROSE_W} text-[0.95rem] leading-[1.9] text-arch-ink-soft`}>
-            両プランとも最低契約期間は6か月です。支援開始時に、現状把握・業務整理・設計にかかる初期費用を別途お見積もりします。
-            月額料金・初期費用はいずれも税別です。
-          </p>
+          {/* 費用と契約の注記 */}
+          <Reveal>
+            <dl className="mt-12 grid gap-x-10 border-t border-arch-line md:grid-cols-2">
+              {PRICING.notes.map((n) => (
+                <div key={n.title} className="border-b border-arch-line py-5">
+                  <dt className="text-[0.875rem] font-bold text-arch-ink">{n.title}</dt>
+                  <dd className="mt-2 text-[0.95rem] leading-[1.9] text-arch-ink-soft">{n.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
 
           <Cta href="#contact" className="mt-10">
             {CONSULT_LABEL}

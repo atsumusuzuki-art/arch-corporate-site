@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: `%s｜${SITE_NAME}`,
   },
   description:
-    "合同会社ARCHは、歯科医院の外部事務長として院長が抱える経営実務を整理し、医院が回り続ける体制をつくります。訪問歯科の立ち上げと立て直しは、個別のコンサルティングとして支援します。",
+    "合同会社ARCHは、訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社です。助言だけで終わらず、現場で機能する状態までつくり、仕組みとして医院に残します。",
   applicationName: SITE_NAME,
   authors: [{ name: `${SITE_NAME} 代表 ${COMPANY.representative}` }],
   creator: SITE_NAME,
@@ -56,14 +56,14 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "歯科医院の外部事務長／訪問歯科コンサルティング｜合同会社ARCH",
     description:
-      "助言だけでは医院は回らない。院長が一人で抱え始めたとき、ARCHが入る。歯科医院の外部事務長と訪問歯科コンサルティングの2本柱で支援します。",
+      "訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社。助言だけで終わらず、現場で機能する状態までつくります。",
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "合同会社ARCH" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "歯科医院の外部事務長／訪問歯科コンサルティング｜合同会社ARCH",
     description:
-      "助言だけでは医院は回らない。院長が一人で抱え始めたとき、ARCHが入る。",
+      "訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社。",
     images: [OG_IMAGE],
   },
   robots: {
@@ -98,7 +98,7 @@ const siteJsonLd = {
       url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}${BRAND_LOGO.path}` },
       description:
-        "歯科医院の外部事務長として院長の経営実務を整理し、医院が回り続ける体制をつくる合同会社。訪問歯科の立ち上げ・立て直しは個別のコンサルティングとして支援。",
+        "訪問歯科を入口に、歯科医院の立ち上げ・運営・承継を支える外部事務長会社。助言だけで終わらず、現場で機能する状態までつくり、仕組みとして医院に残す。",
       foundingDate: COMPANY.founded,
       founder: { "@id": `${SITE_URL}/#atsumu-suzuki` },
       address: {
