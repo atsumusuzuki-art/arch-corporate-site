@@ -63,8 +63,9 @@ export type CaseItem = {
   /** 大きく見せる数字（facts と同じ確認済みの値） */
   headline: CaseHeadline;
   /**
-   * 現在地。確認済みの事実の範囲で、時点を添えて書く。
-   * ※ 2026-09 改修時に既存の記載から要約したもの。docs/CONTENT_DECISIONS_REQUIRED.md で確認待ち
+   * 現在地。いま ARCH がどう関わっているかを書く欄。
+   * 時間が経つと古くなる表現（「2026年6月時点」「立ち上げ4か月時点」など）はここには書かない。
+   * 実績の数字と時点は facts / notes 側に置く。
    */
   status: string;
 };
@@ -107,7 +108,7 @@ export const CASES: CaseItem[] = [
       caption: "医院全体の月商（2026年6月時点）",
       numeric: true,
     },
-    status: "訪問歯科を中心とした医院運営を継続（2026年6月時点）",
+    status: "訪問歯科を中心とした医院運営を継続して支援中",
   },
   {
     slug: "setagaya-visit-dental",
@@ -147,7 +148,7 @@ export const CASES: CaseItem[] = [
       caption: "訪問歯科の利用開始（検診36名のうち・立ち上げ4か月時点）",
       numeric: true,
     },
-    status: "立ち上げ4か月時点の数字（連携施設1件）",
+    status: "訪問歯科の立ち上げ後、施設連携と運営改善を継続して支援中",
   },
   {
     slug: "hachioji-external-manager",
@@ -180,7 +181,7 @@ export const CASES: CaseItem[] = [
       caption: "補助金申請／施設基準の取得／分院展開",
       numeric: false,
     },
-    status: "外部事務長として継続して支援中",
+    status: "外部事務長として医院運営を継続して支援中",
   },
 ];
 

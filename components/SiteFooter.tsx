@@ -4,6 +4,7 @@
  * ・ARCH ／ DENTAL OPERATIONS PARTNER ／ 歯科医院の外部事務長 を控えめに示す（<BrandSignature />）
  * ・ロゴは現行の正式ロゴのみ。新しいシンボルマークは使わない
  * ・会社情報と既存リンク（会社概要・プライバシーポリシー）は維持する
+ * ・ブランド画像に関する注記は、サイト内でここ 1 か所だけに置く
  * Server Component。
  */
 
@@ -75,9 +76,13 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <p className="mt-14 border-t border-arch-line pt-8 text-sm text-arch-ink-muted">
-          © 2026 {COMPANY.name}
-        </p>
+        <div className="mt-14 flex flex-col gap-2 border-t border-arch-line pt-8 sm:flex-row sm:items-baseline sm:justify-between">
+          <p className="text-sm text-arch-ink-muted">© 2026 {COMPANY.name}</p>
+          {/* ブランド画像に関する注記。サイト内で 1 回だけ、この場所に置く */}
+          <p className="text-[0.75rem] leading-[1.7] text-arch-ink-muted">
+            ※サイト内の一部ビジュアルはブランドイメージです。
+          </p>
+        </div>
       </div>
     </footer>
   );

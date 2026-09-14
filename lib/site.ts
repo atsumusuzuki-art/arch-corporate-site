@@ -171,14 +171,31 @@ export const TWO_LAYERS = [
 export const TWO_LAYERS_CLOSING = ["自走できれば卒業。", "経営価値が残れば、", "外部事務長として続く。"] as const;
 
 /**
+ * 代表の経歴（正式表記）
+ * ------------------------------------------------------------------
+ * サイト内で経歴に触れるときは、この表記に揃える（2026-09 統一）。
+ * 勤務先の所在地は断定しない。確認できている事実だけを書き、意味を足さない。
+ * 「6か月で黒字化」は医療法人在籍時の経験であり、ARCHの支援実績ではない。
+ */
+export const CAREER_STATEMENT =
+  "医療法人で歯科事務局長を務め、訪問歯科部門を立ち上げ。6か月で黒字化。";
+
+/** 経歴の箇条書き（会社概要ページ） */
+export const CAREER_STEPS = [
+  "元小学校教員",
+  "医療法人で歯科事務局長",
+  "訪問歯科部門を立ち上げ、6か月で黒字化",
+  "合同会社ARCH設立",
+] as const;
+
+/**
  * 代表のあゆみ（タイムライン）
  * 年が確定しているものだけ year を入れる。推測で年を作らない。
- * 「6か月で黒字化」は医療法人在籍時の経験であり、ARCHの支援実績ではない。
  */
 export const TIMELINE = [
   { year: "", label: "小学校教員" },
-  { year: "", label: "横浜市の広域医療法人で歯科事務局長" },
-  { year: "", label: "在籍時に訪問歯科を単独で立ち上げ、6か月で黒字化" },
+  { year: "", label: "医療法人で歯科事務局長" },
+  { year: "", label: "訪問歯科部門を立ち上げ、6か月で黒字化" },
   { year: "2024年2月", label: "合同会社ARCH設立" },
   { year: "2024年4月", label: "本格稼働" },
   { year: "現在", label: "北海道・宮城・東京・神奈川の医院を支援" },
@@ -236,5 +253,10 @@ export const PAGE_DATES: Record<string, { published: string; modified: string }>
 export const absoluteUrl = (path: string) =>
   path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 
-/** OGP 画像（1200×630 の実ファイル） */
-export const OG_IMAGE = "/images/og-image.png";
+/**
+ * OGP 画像（1200×630 の実ファイル）
+ * 2026-09：現行ブランドに合わせ、HERO と同じガラスサインの画像を 1200×630 に切り出したものへ変更。
+ * 旧 /images/og-image.png はファイルとして残置（削除しない）。
+ * ブランドビジュアルであり、実在のオフィス写真ではない。
+ */
+export const OG_IMAGE = "/images/og-arch-2026.jpg";

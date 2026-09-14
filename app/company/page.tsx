@@ -10,6 +10,7 @@ import BrandSignature from "@/components/brand/BrandSignature";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { BODY, CONTAINER, PROSE_W, SECTION_Y } from "@/lib/ui";
 import {
+  CAREER_STEPS,
   COMPANY,
   PHILOSOPHY,
   REPRESENTATIVE_ROLES,
@@ -43,14 +44,6 @@ const PROFILE = [
   { label: "事業内容", value: COMPANY.business },
   { label: "お問い合わせ", value: "初回適性相談のフォーム", href: "#contact" },
   { label: "公式サイト", value: SITE_URL },
-];
-
-/* 代表経歴 */
-const CAREER = [
-  "元小学校教員",
-  "横浜市の広域医療法人で歯科事務局長",
-  "北海道で訪問歯科を立ち上げ、6か月で黒字化",
-  "合同会社ARCH設立",
 ];
 
 /* ARCHが引き受けない仕事（ARCHフィロソフィー Ver.2.0「断る方向」より） */
@@ -170,7 +163,7 @@ export default function CompanyPage() {
 
                 <h3 className="display-jp mt-12 text-[1.125rem] text-arch-ink">経歴</h3>
                 <ol className="mt-4 border-t border-arch-deep">
-                  {CAREER.map((c) => (
+                  {CAREER_STEPS.map((c) => (
                     <li
                       key={c}
                       className="border-b border-arch-line py-4 text-base leading-[1.8] text-arch-ink"
