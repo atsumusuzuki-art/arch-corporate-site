@@ -352,7 +352,7 @@ export default function ExternalManagerPage() {
             />
           </Reveal>
           <div className="mt-12 md:mt-16">
-            <TwoLayers withClosing={false} />
+            <TwoLayers />
           </div>
         </div>
       </section>
