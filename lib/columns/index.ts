@@ -6,6 +6,7 @@ import { columnHref } from "./types";
 import * as brokerTrap from "./broker-trap";
 import * as communication from "./communication";
 import * as communicationTimelag from "./communication-timelag";
+import * as dentalPatientCommunication from "./dental-patient-communication";
 import * as documentHell from "./document-hell";
 import * as facilityCollaboration from "./facility-collaboration";
 import * as facilityNeeds from "./facility-needs";
@@ -27,6 +28,7 @@ const MODULES: ColumnModule[] = [
   brokerTrap,
   communication,
   communicationTimelag,
+  dentalPatientCommunication,
   documentHell,
   facilityCollaboration,
   facilityNeeds,

@@ -1,0 +1,35 @@
+{
+  "status": {
+    "articleApproved": true,
+    "publicationApproved": false,
+    "approvedOn": "2026-09-19",
+    "note": "本文へのOKを受領。掲載実装・本番公開は未実施。公開日は実際に公開する日に設定する。"
+  },
+  "meta": {
+    "slug": "dental-patient-communication",
+    "basePath": "/columns",
+    "title": "歯科と患者のコミュニケーション。外来と訪問で意識したい「顔」と「声」",
+    "description": "歯科と患者のコミュニケーションを、外来と訪問に分けて考えます。チェア横からの説明やマスク越しの声、訪問先での目線と尊厳への配慮。訪問経験を重ねても省略したくない、顔を合わせることと穏やかな声かけを取り上げます。",
+    "category": "医院運営",
+    "published": null,
+    "modified": null,
+    "conclusion": "外来では、顔を合わせる時間と、はっきり穏やかに話す声を大切にする。訪問では、ご本人に向き合って声をかけ、必要に応じて目線の高さを合わせる基本を、慣れてからも省略しない。",
+    "service": "external-manager",
+    "sources": [
+      {
+        "label": "山梨県「認知症の人に寄り添い、支え合うまちづくりにご協力をお願いします。」（厚生労働省掲載）",
+        "url": "https://www.mhlw.go.jp/content/000736649.pdf"
+      }
+    ]
+  },
+  "relatedExistingArticles": [
+    "/columns/communication-timelag",
+    "/columns/facility-collaboration"
+  ],
+  "notes": [
+    "titleは承認済み記事タイトルをそのまま使用する。サイト共通の社名サフィックスは既存実装に従う。",
+    "description・conclusion・slug・categoryは掲載用の設定案。本文はarticle.mdを正とする。",
+    "publishedとmodifiedのnullは未公開を表す引き渡し用データであり、そのままサイト実装へ代入しない。",
+    "関連既存記事は候補。既存の関連記事表示との重複を確認し、承認済み本文には勝手に追記しない。"
+  ]
+}
