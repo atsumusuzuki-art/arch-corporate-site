@@ -16,6 +16,7 @@ import * as salesTrap from "./sales-trap";
 import * as snsDxRecruitment from "./sns-dx-recruitment";
 import * as staffRole from "./staff-role";
 import * as turnoverStrategy from "./turnover-strategy";
+import * as visitDentalPainContact from "./visit-dental-pain-contact";
 import * as waitingRoomVisual from "./waiting-room-visual";
 
 /* 旧 SEO 記事 3 本。公開 URL が /column（単数形）のため basePath が異なるだけで、
@@ -41,6 +42,7 @@ const MODULES: ColumnModule[] = [
   snsDxRecruitment,
   staffRole,
   turnoverStrategy,
+  visitDentalPainContact,
   waitingRoomVisual,
 ];
 

@@ -1,0 +1,31 @@
+{
+  "status": {
+    "articleApproved": true,
+    "publicationApproved": false,
+    "approvedOn": "2026-09-29",
+    "note": "本文とタイトルの承認を受領。掲載実装・本番公開は今回未実施。"
+  },
+  "meta": {
+    "slug": "visit-dental-pain-contact",
+    "basePath": "/columns",
+    "title": "「歯が痛い」の連絡で、訪問歯科の担当者が先に考えること",
+    "description": "施設から「歯が痛い」「入れ歯が当たる」と連絡が入ったとき、医院の担当者は何を確認するか。歯科医師からの聞き返しと施設職員の二度手間を減らすために、最初の電話で聞くこと、指示の確認、院内で共有したい担当者の役割を考えます。",
+    "category": "訪問歯科",
+    "published": null,
+    "modified": null,
+    "conclusion": "施設からの痛みの連絡では、歯科医師が次に必要とする情報を想像し、最初の電話で分かる範囲を確認する。担当者が先を考えて連絡を進めることで、施設への聞き直しを減らす。",
+    "service": "visit-dental-consulting",
+    "sources": [
+      {
+        "label": "厚生労働省「医師法第17条、歯科医師法第17条及び保健師助産師看護師法第31条の解釈について（その2）」",
+        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc7178&dataType=1"
+      }
+    ]
+  },
+  "notes": [
+    "本文とタイトルは承認済み。article.mdを正本とする。その他のmetaは掲載設定案。",
+    "published／modifiedのnullは引き渡し用。本番公開時に実際の日付を設定する。",
+    "出典は医療職との連携・指示確認の根拠。事務担当者の独立した診断・服薬判断を認める根拠として扱わない。",
+    "まとめを箇条書きにする旧編集ルールより、今回の承認本文を優先して維持する。"
+  ]
+}
