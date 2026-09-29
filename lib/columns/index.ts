@@ -16,6 +16,7 @@ import * as salesTrap from "./sales-trap";
 import * as snsDxRecruitment from "./sns-dx-recruitment";
 import * as staffRole from "./staff-role";
 import * as turnoverStrategy from "./turnover-strategy";
+import * as visitDentalEarlyArrival from "./visit-dental-early-arrival";
 import * as visitDentalPainContact from "./visit-dental-pain-contact";
 import * as waitingRoomVisual from "./waiting-room-visual";
 
@@ -42,6 +43,7 @@ const MODULES: ColumnModule[] = [
   snsDxRecruitment,
   staffRole,
   turnoverStrategy,
+  visitDentalEarlyArrival,
   visitDentalPainContact,
   waitingRoomVisual,
 ];
