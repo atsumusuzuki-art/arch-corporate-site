@@ -11,6 +11,7 @@ import * as documentHell from "./document-hell";
 import * as facilityCollaboration from "./facility-collaboration";
 import * as facilityNeeds from "./facility-needs";
 import * as invisibleProfit from "./invisible-profit";
+import * as newDentureAdjustmentExpectations from "./new-denture-adjustment-expectations";
 import * as profitTrap from "./profit-trap";
 import * as salesTrap from "./sales-trap";
 import * as snsDxRecruitment from "./sns-dx-recruitment";
@@ -38,6 +39,7 @@ const MODULES: ColumnModule[] = [
   houmonShikaHajimekata,
   houmonShikaSantei,
   invisibleProfit,
+  newDentureAdjustmentExpectations,
   profitTrap,
   salesTrap,
   snsDxRecruitment,

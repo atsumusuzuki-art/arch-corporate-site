@@ -29,6 +29,11 @@ export type ColumnMeta = {
   modified: string;
   /** 記事の最初に置く結論。1〜2 文で言い切る */
   conclusion: string;
+  /**
+   * 記事冒頭の「この記事の結論」枠を出すかどうか。
+   * 既定は表示（未指定 = true）。題目直下に解説・副題を置かない指定の記事だけ false にする。
+   */
+  showConclusion?: boolean;
   /** 関連サービス（本文末の内部リンクに使う） */
   service: "external-manager" | "visit-dental-consulting";
   /** 制度・統計に触れた場合に必ず添える一次資料 */

@@ -1,0 +1,37 @@
+{
+  "status": {
+    "articleApproved": true,
+    "publicationApproved": false,
+    "approvedOn": "2026-10-20",
+    "note": "本文・タイトルを承認済み。Claude Codeへの引き継ぎ保存までの依頼。公開日は未指定。"
+  },
+  "meta": {
+    "slug": "new-denture-adjustment-expectations",
+    "basePath": "/columns",
+    "title": "新しい入れ歯を使っていない。理由は「痛い」だった",
+    "description": "新しい入れ歯を作ったのに、痛くて使っていない。訪問歯科の現場で感じた「作ったらすぐ噛める」という患者・家族・介護側のイメージと、装着後も調整を続ける診療の流れとのずれから、医院が伝えたい説明と連絡方法を考えます。",
+    "category": "訪問歯科",
+    "published": null,
+    "modified": null,
+    "conclusion": "新しい入れ歯は、お渡しした後も状態の確認と調整が続きます。その流れと、痛くて使えないときの連絡方法を、患者さん・家族・介護側へ医院から説明しておくことが大切です。",
+    "service": "visit-dental-consulting",
+    "sources": [
+      {
+        "label": "日本歯科医学会「有床義歯の管理について」（令和8年3月）",
+        "url": "https://www.jads.jp/assets/pdf/basic/r08/document-260326-3.pdf"
+      }
+    ]
+  },
+  "presentation": {
+    "addSubtitle": false,
+    "showConclusionBox": false,
+    "font": "Noto Sans JP",
+    "note": "本文はH1の次に最初のH2から開始。題目直下の小さな解説・副題・追加の結論枠を置かない。conclusionは既存データ型との互換用設定案。presentationは引き継ぎ専用。"
+  },
+  "notes": [
+    "article.mdを承認原稿の正本とする。その他の掲載設定は案。",
+    "公開日・更新日は引き渡し時点では未確定。実際の公開時に日本時間の実日付を設定する。",
+    "根拠は出典の調整回数・新製義歯管理の箇所。全員が毎回痛む、同じ回数の調整が必須などの一律断定に変えない。",
+    "未確認の実名・数値・経過・解決結果は追加しない。"
+  ]
+}

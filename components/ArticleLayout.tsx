@@ -112,11 +112,13 @@ export default function ArticleLayout({
             </div>
           </dl>
 
-          {/* 結論を最初に置く */}
-          <div className="mt-10 border-l-2 border-arch-deep bg-arch-white px-6 py-6">
-            <p className="text-sm text-arch-ink-muted">この記事の結論</p>
-            <p className="mt-3 text-base leading-[1.9] text-arch-ink">{meta.conclusion}</p>
-          </div>
+          {/* 結論を最初に置く（showConclusion: false の記事だけ省く） */}
+          {meta.showConclusion !== false && (
+            <div className="mt-10 border-l-2 border-arch-deep bg-arch-white px-6 py-6">
+              <p className="text-sm text-arch-ink-muted">この記事の結論</p>
+              <p className="mt-3 text-base leading-[1.9] text-arch-ink">{meta.conclusion}</p>
+            </div>
+          )}
 
           <div className="prose-custom mt-14">{children}</div>
 
