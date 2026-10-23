@@ -488,7 +488,7 @@ export default function VisitDentalLpSamplePage() {
               >
                 {/* 既存サイトと同じ送信基盤を使い、送信後は受付完了ページへ移動する */}
                 <input type="hidden" name="_subject" value="【ARCH】訪問歯科LPからの相談" />
-                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_captcha" value="true" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_next" value={`${SITE_URL}/thanks`} />
                 <input type="hidden" name="相談種別" value="訪問歯科コンサルティング" />

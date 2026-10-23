@@ -1,0 +1,16 @@
+.git
+.env*
+**/.env*
+**/.DS_Store
+**/._*
+node_modules
+.next
+docs
+*.md
+*.log
+*.patch
+.vscode
+.idea
+tests
+test-results
+playwright-report

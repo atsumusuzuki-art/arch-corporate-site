@@ -1,37 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
+import "./fonts.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { COMPANY, OG_IMAGE, SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/site";
 import { BRAND_LOGO } from "@/lib/brand";
-
-/* 基本書体：Noto Sans JP（本文・ナビ・ボタン・基本の見出し） */
-const notoSansJP = Noto_Sans_JP({
-  variable: "--font-noto-jp",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
-
-/* 明朝：HERO・ARCH Philosophy・代表のことばなど、用途を限定して使う。
-   ファーストビューの見出しにも使うが、本文には使わない */
-const notoSerifJP = Noto_Serif_JP({
-  variable: "--font-noto-serif-jp",
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  display: "swap",
-  preload: false,
-});
-
-/* 英字ラベル・番号・メタ情報（DENTAL OPERATIONS PARTNER / CASE 番号など） */
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
 
 /** GA4 測定 ID */
 const GA_MEASUREMENT_ID = "G-RLJ2058GWZ";
@@ -147,7 +121,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body
-        className={`${notoSansJP.variable} ${notoSerifJP.variable} ${inter.variable} antialiased`}
+        className="antialiased"
       >
         <script
           type="application/ld+json"

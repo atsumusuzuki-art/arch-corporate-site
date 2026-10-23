@@ -9,7 +9,35 @@ import type { NextConfig } from "next";
  *
  * サイト内リンクはすべて新 URL を直接指すこと（転送を経由させない）。
  */
+// 安全設定（CSP: 読み込める外部資源と送信先の制限）。
+const securityHeaders = [
+  {
+    "key": "Content-Security-Policy",
+    "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://*.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.google.com https://www.recaptcha.net; form-action 'self' https://arch-yh.com https://formsubmit.co; upgrade-insecure-requests"
+  },
+  {
+    "key": "X-Content-Type-Options",
+    "value": "nosniff"
+  },
+  {
+    "key": "X-Frame-Options",
+    "value": "DENY"
+  },
+  {
+    "key": "Referrer-Policy",
+    "value": "strict-origin-when-cross-origin"
+  },
+  {
+    "key": "Permissions-Policy",
+    "value": "camera=(), microphone=(), geolocation=()"
+  }
+];
+
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
+  },
   async redirects() {
     return [
       // ── 外部事務長に集約 ──

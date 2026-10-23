@@ -142,7 +142,7 @@ export default function ContactForm({
             >
               {/* FormSubmit.co の設定（既存の送信先をそのまま使う） */}
               <input type="hidden" name="_subject" value="【ARCH】サイトからの相談" />
-              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_captcha" value="true" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_next" value={`${SITE_URL}/thanks`} />
               {/* ハニーポット（スパム対策）。スクリーンリーダーからも隠す */}

@@ -1,0 +1,15 @@
+/* 同じ書体を自サイトから配信し、ビルド時のGoogle Fontsへの依存をなくす。 */
+@import "@fontsource/noto-sans-jp/400.css";
+@import "@fontsource/noto-sans-jp/500.css";
+@import "@fontsource/noto-sans-jp/700.css";
+@import "@fontsource/noto-serif-jp/500.css";
+@import "@fontsource/noto-serif-jp/600.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+:root {
+  --font-noto-jp: "Noto Sans JP";
+  --font-noto-serif-jp: "Noto Serif JP";
+  --font-inter: "Inter";
+}

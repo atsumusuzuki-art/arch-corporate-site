@@ -84,7 +84,7 @@ export default function ServiceInquiryForm({
         {!useRadio && subjectTag && (
           <input type="hidden" name="_subject" value={subjectTag} />
         )}
-        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_captcha" value="true" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_next" value={thankYouUrl} />
         {/* ハニーポット（スパム対策） */}
